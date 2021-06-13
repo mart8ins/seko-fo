@@ -1,0 +1,14 @@
+.landing-feed {
+    width: 95%;
+    height: 400px;
+    margin: 20px auto;
+    border: 1px solid black;
+}
+
+@media screen and (min-width: 768px) {
+    .landing-feed {
+        width: 90%;
+        height: 400px;
+        margin-left: 65px;
+    }
+}

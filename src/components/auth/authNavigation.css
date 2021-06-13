@@ -1,0 +1,53 @@
+.auth-container {
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-logged-in,
+.logged-in {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 5px;
+}
+
+.not-logged-in a,
+.logged-in a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1rem;
+}
+
+.not-logged-in a {
+    margin-right: 20px;
+}
+
+.logged-in a {
+    margin-right: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .auth-container {
+        flex-direction: row;
+    }
+
+    .not-logged-in a,
+    .logged-in a {
+        font-size: 1.2rem;
+        justify-content: flex-end;
+    }
+
+    .not-logged-in a:hover,
+    .logged-in a:hover {
+        color: rgb(204, 245, 110);
+        transform: scale(1.02);
+    }
+
+    .active a {
+        color: rgb(204, 245, 110);
+    }
+}

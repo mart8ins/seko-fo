@@ -1,0 +1,19 @@
+/* ********************
+        FONTS
+*************************/
+/* NAVIGATION FONT font-family: 'Bebas Neue', cursive; */
+/* BRAND FONT - font-family: 'Righteous', cursive;*/
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Righteous&display=swap');
+
+
+.navigation_feed {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+@media screen and (min-width: 768px) {
+    .navigation_feed {
+        flex-direction: row;
+    }
+}
