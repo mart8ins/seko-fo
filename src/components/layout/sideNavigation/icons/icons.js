@@ -4,10 +4,11 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faBlog } from '@fortawesome/free-solid-svg-icons';
 import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import { faSmileWink } from '@fortawesome/free-solid-svg-icons';
+import {faRss} from '@fortawesome/free-solid-svg-icons'
 
-const blog = {
-    icon: <FontAwesomeIcon icon={faBlog} />,
-    type: "blogs"
+const content = {
+    icon: <FontAwesomeIcon icon={faRss} />,
+    type: "content"
 }
 
 const friends = {
@@ -27,6 +28,6 @@ const jokes = {
     type: "relax"
 }
 
-const allIcons = [friends, msg, blog, news, jokes];
+const allIcons = [friends, msg, content, news, jokes];
 
 export default allIcons;

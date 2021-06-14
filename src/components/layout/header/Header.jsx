@@ -1,12 +1,12 @@
 import "./header.css";
 import Avatar from "../../user/avatar/Avatar";
+import { Link } from "react-router-dom";
 import AuthNavigation from "../../auth/AuthNavigation";
 
 
 function Header() {
     return <div className="header-container">
-        <div className="brand-container">Seko</div>
-        {/* <Avatar /> */}
+        <div className="brand-container"><Link to="/">Seko</Link></div>
         <AuthNavigation />
     </div>
 }

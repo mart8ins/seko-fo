@@ -1,8 +1,13 @@
 import Header from "./layout/header/Header";
 import Feed from "./layout/feed/Feed";
 import SideNavigation from "./layout/sideNavigation/SideNavigation";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import "./App.css"
+
+// depending on auth status - side navigations shows only for logged users
+// not logged users sees only main sites feed
+// TODO - need to implement context for this
+let isLogged = true;
 
 function App() {
     return (
@@ -12,8 +17,11 @@ function App() {
                     <Header />
                 </div>
                 <div className="navigation_feed">
-                    <SideNavigation />
-                    <Route exact path="/" component={Feed}></Route>
+                    {isLogged && <SideNavigation />}
+
+                    <div className={isLogged ? "feed-isLogged" : "feed-notLogged"}>
+                        <Feed />
+                    </div>
                 </div>
             </BrowserRouter>
         </div>
