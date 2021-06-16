@@ -14,6 +14,7 @@
 }
 
 .signup__container input {
+    width: 120px;
     margin: 10px 5px;
     border: none;
     padding: 4px;
@@ -24,7 +25,8 @@
     letter-spacing: 1px;
 }
 
-.signup__container input:last-child {
+.signup__btn {
+    border: none;
     padding: 2px;
     width: 70%;
     margin: 20px auto;
@@ -42,21 +44,22 @@
 
 @media screen and (min-width: 768px) {
     .signup__container {
-        padding: 40px;
+        padding: 50px;
     }
 
     .signup__container input {
-        font-size: 1rem;
+        font-size: 0.9rem;
+        width: 190px;
     }
 
-    .signup__container input:last-child {
+    .signup__btn {
         padding: 5px;
         width: 60%;
         margin: 20px auto;
         font-size: 1.1rem;
     }
 
-    .signup__container input:last-child:hover {
+    .signup__btn:hover {
         cursor: pointer;
         background-color: rgb(172, 143, 143);
     }

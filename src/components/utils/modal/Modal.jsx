@@ -9,9 +9,7 @@ const ModalOverlay = (props) => {
     let authOption = props.authOption; // if true user choose login, false - signup
 
     let content = <div className="modal__overlay">
-        <div>
-            {authOption ? <Login /> : <Signup />}
-        </div>
+        {authOption ? <Login /> : <Signup />}
     </div>
 
     return ReactDOM.createPortal(content, document.getElementById("modal"))
