@@ -1,0 +1,63 @@
+.signup__container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 1px;
+}
+
+.signup__container form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.signup__container input {
+    margin: 10px 5px;
+    border: none;
+    padding: 4px;
+    font-size: 0.6rem;
+    border-radius: 5px;
+    font-family: 'Bebas Neue', cursive;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.signup__container input:last-child {
+    padding: 2px;
+    width: 70%;
+    margin: 20px auto;
+    color: rgb(204, 245, 110);
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    background-color: rgb(124, 100, 100);
+    border-radius: 10px;
+}
+
+.greeting {
+    color: white;
+    font-size: 0.9rem;
+}
+
+@media screen and (min-width: 768px) {
+    .signup__container {
+        padding: 40px;
+    }
+
+    .signup__container input {
+        font-size: 1rem;
+    }
+
+    .signup__container input:last-child {
+        padding: 5px;
+        width: 60%;
+        margin: 20px auto;
+        font-size: 1.1rem;
+    }
+
+    .signup__container input:last-child:hover {
+        cursor: pointer;
+        background-color: rgb(172, 143, 143);
+    }
+}

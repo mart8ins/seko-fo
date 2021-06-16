@@ -5,6 +5,20 @@
 /* BRAND FONT - font-family: 'Righteous', cursive;*/
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Righteous&display=swap');
 
+/*
+main green color - 
+rgb(204, 245, 110);
+
+main background - 
+rgba(0, 0, 0, 0.7);
+
+background for login, signup buttons
+background-color: rgb(124, 100, 100);
+*/
+
+.app {
+    position: relative;
+}
 
 .navigation_feed {
     display: flex;

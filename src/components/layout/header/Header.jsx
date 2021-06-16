@@ -1,7 +1,7 @@
 import "./header.css";
 import Avatar from "../../user/avatar/Avatar";
 import { Link } from "react-router-dom";
-import AuthNavigation from "../../auth/AuthNavigation";
+import AuthNavigation from "../../navigation/AuthNavigation";
 
 
 function Header() {
