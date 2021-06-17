@@ -10,6 +10,8 @@
 .signup__container form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -42,6 +44,12 @@
     font-size: 0.9rem;
 }
 
+.signupError {
+    color: rgb(204, 245, 110);
+    border-radius: 40px;
+    font-size: 0.5rem;
+}
+
 @media screen and (min-width: 768px) {
     .signup__container {
         padding: 50px;
@@ -62,5 +70,13 @@
     .signup__btn:hover {
         cursor: pointer;
         background-color: rgb(172, 143, 143);
+    }
+
+    .greeting {
+        font-size: 1.2rem;
+    }
+
+    .signupError {
+        font-size: 0.8rem;
     }
 }

@@ -23,7 +23,9 @@ function AuthNavigation({ showModal, setShowModal }) {
     }
 
     return <div className="auth-container">
+
         {showModal && <Modal authOption={wantsLogin} />}
+
         <div className="not-logged-in">
             <Link onClick={openAuthModalWithLogin} style={wantsLogin && showModal ? { color: "rgb(204, 245, 110)" } : null} to="">Login</Link>
             <Link onClick={openAuthModalWithSignup} style={!wantsLogin && showModal ? { color: "rgb(204, 245, 110)" } : null} to="">Signup</Link>

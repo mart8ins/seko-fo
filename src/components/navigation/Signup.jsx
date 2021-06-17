@@ -1,22 +1,39 @@
 import React, { useState } from "react";
 import Input from "../utils/formComponents/Input";
 import "./signup.css";
+import signupUser from "../auth/Signup";
 
 const Signup = () => {
+    const [formError, setFormError] = useState("");
     const [signupForm, setSignupForm] = useState({})
-
+    console.log(formError)
     const handleChange = (e) => {
-        e.preventDefault();
         setSignupForm({
             ...signupForm,
             [e.target.name]: e.target.value
         })
+    }
+
+    const submitHandler = async (e) => {
+        try {
+            e.preventDefault();
+            const response = await signupUser(signupForm);
+            console.log(response)
+            setFormError("");
+        } catch (e) {
+            setFormError(e.response.data.message);
+        }
 
     }
-    console.log(signupForm)
+
+
     return <div className="signup__container">
-        <p className="greeting">Welcome new friend!</p>
-        <form>
+        <div>
+            {formError ? <p className="signupError">{formError}</p> : <p className="greeting">Welcome new friend!</p>}
+        </div>
+
+
+        <form onSubmit={submitHandler}>
             <Input onChange={handleChange} type="text" name="firstName" id="firstName" placeholder="First name" required />
 
             <Input onChange={handleChange} type="text" name="lastName" id="lastName" placeholder="Last name" required />
