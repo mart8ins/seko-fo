@@ -1,5 +1,4 @@
 import "./header.css";
-import Avatar from "../../user/avatar/Avatar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthNavigation from "../../navigation/AuthNavigation";

@@ -1,0 +1,24 @@
+.messages_container {
+    max-width: 90%;
+    padding: 5px;
+    margin: 0 auto;
+}
+
+.no__messages {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    margin: 100px auto;
+    font-size: 0.7rem;
+    border-radius: 5px;
+    max-width: 50%;
+    padding: 10px;
+}
+
+
+@media screen and (min-width: 768px) {
+    .no__messages {
+        font-size: 2.1rem;
+        max-width: 70%;
+    }
+}

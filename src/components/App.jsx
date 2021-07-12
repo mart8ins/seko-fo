@@ -7,7 +7,7 @@ import "./App.css"
 // depending on auth status - side navigations shows only for logged users
 // not logged users sees only main sites feed
 // TODO - need to implement context for this
-let isLogged = false;
+let isLogged = true;
 
 function App() {
     return (

@@ -1,0 +1,31 @@
+.avatar-container {
+    width: 85px;
+    height: 85px;
+    border-radius: 50px;
+    padding: 5px;
+    background-color: rgb(100, 99, 99);
+}
+
+.avatar {
+    width: 85px;
+    height: 85px;
+    border-radius: 50px;
+}
+
+
+
+@media screen and (min-width: 768px) {
+    .avatar-container {
+        width: 165px;
+        height: 165px;
+        border-radius: 20px;
+        padding: 5px;
+        background-color: rgb(100, 99, 99);
+    }
+
+    .avatar {
+        width: 165px;
+        height: 165px;
+        border-radius: 20px;
+    }
+}

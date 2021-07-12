@@ -1,10 +1,10 @@
 import React from "react";
 
-function News() {
+function Create() {
     return <div>
-        News
+        Create
     </div>
 
 }
 
-export default News;
+export default Create;

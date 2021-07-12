@@ -1,0 +1,70 @@
+.message__box {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 0.7rem;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.message__box img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+}
+
+.message__box__photo__name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.message__box__name {
+    color: rgb(204, 245, 110);
+    margin: 2px;
+    max-width: 35px;
+    letter-spacing: 1px;
+}
+
+.message__box__right {
+    background-color: rgba(248, 244, 244, 0.1);
+    text-align: center;
+    border-radius: 5px;
+}
+
+.no__new__messages,
+.is__new__messages {
+    padding: 4px;
+}
+
+.no__new__messages {
+    color: white;
+    font-size: 0.7rem;
+}
+
+.is__new__messages {
+    color: rgb(204, 245, 110);
+    font-size: 0.6rem;
+}
+
+.message__count {
+    color: white;
+    border-radius: 50%;
+    padding: 4px;
+    font-size: 0.8rem;
+}
+
+@media screen and (min-width: 768px) {
+    .message__box {
+        cursor: pointer;
+    }
+
+    .message__box img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50px;
+    }
+}

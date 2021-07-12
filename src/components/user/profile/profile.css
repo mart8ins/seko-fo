@@ -1,0 +1,24 @@
+.user__profile {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.user__profile__header {
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* display: flex; */
+}
+
+@media screen and (min-width: 768px) {
+    .user__profile__header {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
