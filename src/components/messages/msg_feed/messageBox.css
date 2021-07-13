@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    cursor: pointer;
+    box-shadow: 2px 2px 5px black;
 }
 
 .message__box img {
@@ -22,17 +22,27 @@
     align-items: center;
 }
 
-.message__box__name {
+.message__box__name,
+.message__box__connected__status {
     color: rgb(204, 245, 110);
     margin: 2px;
-    max-width: 35px;
+    font-size: 2.2vw;
     letter-spacing: 1px;
+}
+
+.message__box__name {
+    color: white;
+}
+
+.not__connected {
+    color: red;
 }
 
 .message__box__right {
     background-color: rgba(248, 244, 244, 0.1);
     text-align: center;
     border-radius: 5px;
+    margin-right: 10px;
 }
 
 .no__new__messages,
@@ -42,12 +52,12 @@
 
 .no__new__messages {
     color: white;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
 }
 
 .is__new__messages {
     color: rgb(204, 245, 110);
-    font-size: 0.6rem;
+    font-size: 0.5rem;
 }
 
 .message__count {
@@ -60,11 +70,23 @@
 @media screen and (min-width: 768px) {
     .message__box {
         cursor: pointer;
+        margin-bottom: 15px;
     }
 
     .message__box img {
         width: 70px;
         height: 70px;
         border-radius: 50px;
+    }
+
+    .message__box__photo__name {
+        flex-direction: row;
+        width: 70%;
+        justify-content: space-evenly;
+    }
+
+    .message__box__name,
+    .message__box__connected__status {
+        font-size: 1.7vw;
     }
 }
