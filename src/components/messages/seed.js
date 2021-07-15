@@ -5,7 +5,7 @@ const messages = [
             {
                 id: 1,
                 text: "Čau, kā iet?",
-                isRead: true,
+                isRead: false,
                 date: new Date(),
                 type: "recieved"
             },
@@ -26,7 +26,14 @@ const messages = [
             {
                 id: 4,
                 text: "Esmu pašreiz Valmierā. Garlaikojos.",
-                isRead: false,
+                isRead: true,
+                date: new Date(),
+                type: "recieved"
+            },
+            {
+                id: 55,
+                text: "Un daudz domāju.",
+                isRead: true,
                 date: new Date(),
                 type: "recieved"
             }
@@ -62,6 +69,27 @@ const messages = [
                 isRead: true,
                 date: new Date(),
                 type: "sent"
+            },
+            {
+                id: 9,
+                text: "Labprāt!!!!!!!!",
+                isRead: true,
+                date: new Date(),
+                type: "sent"
+            },
+            {
+                id: 10,
+                text: "Labprāt!!!!!!!!",
+                isRead: true,
+                date: new Date(),
+                type: "sent"
+            },
+            {
+                id: 10,
+                text: "Kautkāds nonsens",
+                isRead: true,
+                date: new Date(),
+                type: "recieved"
             }
         ]
     }

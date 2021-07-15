@@ -2,8 +2,8 @@ import "./sideNavigation.css";
 import SideNavElement from "./SideNavElement";
 import allIcons from "./icons/icons";
 
-const renderNavIcons = (icon) => {
-    return <SideNavElement icon={icon} />
+const renderNavIcons = (icon, i) => {
+    return <SideNavElement key={i} icon={icon} />
 }
 
 function SideNavigation() {

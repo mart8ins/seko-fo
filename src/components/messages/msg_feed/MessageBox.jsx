@@ -1,24 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./messageBox.css";
+import MessageFeed from "./MessageFeed";
+import MessageSend from "./MessageSend";
 
 
 
 function MessageBox({ userMessages }) {
+    // state for user message feed/conversation
+    const [showFeed, setShowFeed] = useState(false);
+
     const photo = userMessages.user.photo;
     const userName = userMessages.user.name;
     const isConnected = userMessages.user.isConnected;
     const messages = userMessages.messages;
-    console.log(messages)
 
 
     /* loop throug messages to check if there is unread recieved messages */
     // set status of unread messages
     const isAllMessagesRead = {
-        status: true,
-        count: 1
+        status: false,
+        count: 0
     };
     for (let msg in messages) {
-        console.log(messages[msg])
+        // console.log(messages[msg])
         if (messages[msg].isRead) {
             isAllMessagesRead.status = true;
             isAllMessagesRead.count = 0;
@@ -29,16 +33,26 @@ function MessageBox({ userMessages }) {
         }
     }
 
+    const renderMessages = (msg, i) => {
+        return <MessageFeed key={i} messages={msg} />
+    }
+
+    const showMessageFeed = () => {
+        !showFeed ? setShowFeed(true) : setShowFeed(false);
+
+        /* NEED TO INTERACT TO DB TO SET ALL UNREAD MESSAGES AS READED IF THEY ARE  */
+    }
+
 
     return <div>
-        <div className="message__box">
+        <div className="message__box" onClick={showMessageFeed}>
             <div className="message__box__photo__name">
                 {isConnected ?
                     <div className="message__box__connected__status">Connected</div>
                     :
-                    <div className="message__box__connected__status not__connected">Not connected</div>
+                    <div className="message__box__connected__status not__connected">Connected</div>
                 }
-                <img src={photo} alt="users photo" />
+                <img src={photo} alt="user" />
                 <div className="message__box__name">{userName}</div>
             </div>
             <div className="message__box__right">
@@ -49,9 +63,13 @@ function MessageBox({ userMessages }) {
                         <div className="is__new__messages">You got <span className="message__count">{isAllMessagesRead.count}</span> new message{isAllMessagesRead.count > 1 ? "s" : ""}!</div>}
                 </div>
             </div>
-
         </div>
-
+        {showFeed ? <div className="message__feed">
+            {messages.map(renderMessages)}
+            <MessageSend />
+        </div>
+            :
+            null}
     </div>
 
 }

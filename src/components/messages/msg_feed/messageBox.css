@@ -1,7 +1,7 @@
 .message__box {
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 5px;
-    margin-top: 5px;
+    margin-top: 10px;
     font-size: 0.7rem;
     padding: 5px;
     display: flex;
@@ -36,6 +36,7 @@
 
 .not__connected {
     color: red;
+    text-decoration: line-through;
 }
 
 .message__box__right {
@@ -67,7 +68,18 @@
     font-size: 0.8rem;
 }
 
+.message__feed {
+    margin-top: 15px;
+    padding: 0px 8px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
 @media screen and (min-width: 768px) {
+    .message__feed {
+        max-height: 700px;
+    }
+
     .message__box {
         cursor: pointer;
         margin-bottom: 15px;
@@ -88,5 +100,14 @@
     .message__box__name,
     .message__box__connected__status {
         font-size: 1.7vw;
+    }
+
+    .no__new__messages,
+    .is__new__messages {
+        font-size: 1rem;
+    }
+
+    .message__count {
+        font-size: 1.2rem;
     }
 }

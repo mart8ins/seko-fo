@@ -4,8 +4,8 @@ import "./messages.css";
 import messages from "./seed";
 
 
-const renderMessageBox = (userMessages) => {
-    return <MessageBox userMessages={userMessages} />
+const renderMessageBox = (userMessages, i) => {
+    return <MessageBox key={i} userMessages={userMessages} />
 }
 
 function Messages() {
