@@ -6,10 +6,8 @@ import "./messageFeed.css";
 function MessageFeed({ messages }) {
     // console.log(messages)
     const messageArray = [messages];
-    console.log(messages)
 
     const renderMessagesFeed = (msg) => {
-        console.log(msg.date.toLocaleString())
         return (
             <div className="message__feed__container">
                 {msg.type === "recieved" ?

@@ -33,7 +33,7 @@ const messages = [
             {
                 id: 55,
                 text: "Un daudz domāju.",
-                isRead: true,
+                isRead: false,
                 date: new Date(),
                 type: "recieved"
             }

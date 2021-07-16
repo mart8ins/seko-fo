@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import LandingPage from "../../landing/Landing";
 
 import Create from "../../create/Create";
-import Friends from "../../friends/Friends";
+import Friends from "../../connections/Connections";
 import Messages from "../../messages/Messages";
 import Settings from "../../settings/Settings";
 
