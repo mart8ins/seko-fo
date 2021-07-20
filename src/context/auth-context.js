@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext();
 
@@ -10,11 +10,19 @@ const AuthContextProvider = ({children}) => {
             userId: null,
             email: null,
             isLoggedIn: false,
-            showAuthModal: false
+            showAuthModal: false,
+            expiration: undefined
     };
 
     const [authData, setAuthData] = useState(authDataFromLocalStorage);
 
+    if(authData.expiration) {
+        const expirationDateCheck = new Date(authData.expiration).getTime() > new Date().getTime();
+        if(!expirationDateCheck) {
+            localStorage.removeItem("authData");
+        }
+    }
+    
     return (
         <AuthContext.Provider value={{authData, setAuthData}}>
             {children}

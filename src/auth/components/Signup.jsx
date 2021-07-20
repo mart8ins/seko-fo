@@ -23,23 +23,21 @@ const Signup = () => {
         try {
             e.preventDefault();
             const response = await signupUser(signupForm); // post data to backend
-            console.log(response)
-
-            localStorage.setItem("authData", JSON.stringify({
-                token: response.data.token,
-                userId: response.data.userId,
-                email: response.data.email,
-                isLoggedIn: true,
-                showAuthModal: false
-            }))
             setFormError("");
-            setAuthData({
+            console.log(response)
+            const tokenExpirationDate = new Date(new Date().getTime() + 1000 * 60 * 60);
+
+            const objectToStore = {
                 token: response.data.token,
                 userId: response.data.userId,
                 email: response.data.email,
                 isLoggedIn: true,
-                showAuthModal: false
-            })
+                showAuthModal: false,
+                expiration: tokenExpirationDate
+            }
+
+            localStorage.setItem("authData", JSON.stringify(objectToStore))
+            setAuthData(objectToStore)
 
         } catch (e) {
             setFormError(e.response.data.message);

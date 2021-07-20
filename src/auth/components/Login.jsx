@@ -23,19 +23,20 @@ const Login = () => {
             e.preventDefault();
             const response = await loginUser(loginForm);
             setFormError("");
-            localStorage.setItem("authData", JSON.stringify({
+            const tokenExpirationDate = new Date(new Date().getTime() + 1000 * 60 * 60);
+
+            const objectToStore = {
                 token: response.data.token,
                 userId: response.data.userId,
                 email: response.data.email,
                 isLoggedIn: true,
-                showAuthModal: false
-            }))
-            setAuthData({ // set auth status context for the app
-                ...authData,
-                token: response.data.token,
-                isLoggedIn: true,
-                showAuthModal: false
-            })
+                showAuthModal: false,
+                expiration: tokenExpirationDate
+            }
+
+            localStorage.setItem("authData", JSON.stringify(objectToStore))
+            setAuthData(objectToStore) // set auth status context for the app
+
         } catch (e) {
             setFormError(e.response.data.message);
         }
