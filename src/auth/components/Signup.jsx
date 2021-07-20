@@ -23,13 +23,24 @@ const Signup = () => {
         try {
             e.preventDefault();
             const response = await signupUser(signupForm); // post data to backend
+            console.log(response)
+
+            localStorage.setItem("authData", JSON.stringify({
+                token: response.data.token,
+                userId: response.data.userId,
+                email: response.data.email,
+                isLoggedIn: true,
+                showAuthModal: false
+            }))
             setFormError("");
             setAuthData({
-                ...authData,
                 token: response.data.token,
+                userId: response.data.userId,
+                email: response.data.email,
                 isLoggedIn: true,
                 showAuthModal: false
             })
+
         } catch (e) {
             setFormError(e.response.data.message);
         }

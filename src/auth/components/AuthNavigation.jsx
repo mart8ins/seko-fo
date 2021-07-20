@@ -5,10 +5,7 @@ import AuthModal from "../../utils/modals/authModal/AuthModal";
 import { AuthContext } from "../../context/auth-context";
 
 
-function AuthNavigation({ showModal, setShowModal }) {
-    /* showModal, setShowModal -> state from parent component - Header */
-
-
+function AuthNavigation() {
     // context for auth
     const { authData, setAuthData } = useContext(AuthContext);
 
@@ -34,11 +31,13 @@ function AuthNavigation({ showModal, setShowModal }) {
 
     const logoutUser = () => {
         setAuthData({
-            ...authData,
-            token: undefined,
+            token: null,
+            userId: null,
+            email: null,
             isLoggedIn: false,
             showAuthModal: false
         })
+        localStorage.removeItem("authData");
     }
 
     return <div className="auth-container">

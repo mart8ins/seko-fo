@@ -23,6 +23,13 @@ const Login = () => {
             e.preventDefault();
             const response = await loginUser(loginForm);
             setFormError("");
+            localStorage.setItem("authData", JSON.stringify({
+                token: response.data.token,
+                userId: response.data.userId,
+                email: response.data.email,
+                isLoggedIn: true,
+                showAuthModal: false
+            }))
             setAuthData({ // set auth status context for the app
                 ...authData,
                 token: response.data.token,
