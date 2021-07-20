@@ -5,6 +5,9 @@
     border-radius: 5px;
     font-family: 'Bebas Neue', cursive;
     letter-spacing: 1px;
+    position: relative;
+    z-index: 11;
+    margin-top: 100px;
 }
 
 .signup__container form {

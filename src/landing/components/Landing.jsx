@@ -1,7 +1,11 @@
 import React from "react";
 
 function LandingPage() {
-    return <div>
+
+    const onc = () => {
+        console.log("landing pages!!!!!")
+    }
+    return <div onClick={onc}>
         Landing page
     </div>
 
