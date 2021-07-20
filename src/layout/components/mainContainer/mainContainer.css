@@ -1,0 +1,28 @@
+.navigation_feed {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.feed-isLogged {
+    width: 95%;
+    height: 400px;
+    margin: 20px auto;
+}
+
+.feed-notLogged {
+    width: 95%;
+    margin: 20px auto;
+}
+
+@media screen and (min-width: 768px) {
+    .navigation_feed {
+        flex-direction: row;
+    }
+
+    .feed-isLogged {
+        width: 90%;
+        height: 400px;
+        margin-left: 90px;
+    }
+}

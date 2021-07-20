@@ -1,31 +1,19 @@
 import Header from "./layout/components/header/Header";
-import Feed from "./layout/components/feed/Feed";
-import SideNavigation from "./layout/components/sideNavigation/SideNavigation";
+import MainContainer from "./layout/components/mainContainer/MainContainer";
 import { BrowserRouter } from "react-router-dom";
-import "./App.css"
-
-// depending on auth status - side navigations shows only for logged users
-// not logged users sees only main sites feed
-// TODO - need to implement context for this
-let isLogged = false;
+import "./App.css";
+import AuthContextProvider from "./context/auth-context";
 
 function App() {
     return (
         <div className="app">
-            <BrowserRouter>
-                <div>
+            <AuthContextProvider>
+                <BrowserRouter>
                     <Header />
-                </div>
-                <div className="navigation_feed">
-                    {isLogged && <SideNavigation />}
-
-                    <div className={isLogged ? "feed-isLogged" : "feed-notLogged"}>
-                        <Feed />
-                    </div>
-                </div>
-            </BrowserRouter>
+                    <MainContainer />
+                </BrowserRouter>
+            </AuthContextProvider>
         </div>
     )
 }
-
 export default App;

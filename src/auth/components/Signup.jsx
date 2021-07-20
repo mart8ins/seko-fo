@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Input from "../../utils/formComponents/Input";
 import "./signup.css";
 import signupUser from "../Signup.js";
 
+import { AuthContext } from "../../context/auth-context";
+
 const Signup = () => {
     const [formError, setFormError] = useState("");
-    const [signupForm, setSignupForm] = useState({})
+    const [signupForm, setSignupForm] = useState({});
 
+    const { authData, setAuthData } = useContext(AuthContext);
+
+    // handle signup form data change
     const handleChange = (e) => {
         setSignupForm({
             ...signupForm,
@@ -17,15 +22,18 @@ const Signup = () => {
     const submitHandler = async (e) => {
         try {
             e.preventDefault();
-            const response = await signupUser(signupForm);
-            console.log(response)
+            const response = await signupUser(signupForm); // post data to backend
             setFormError("");
+            setAuthData({
+                ...authData,
+                token: response.data.token,
+                isLoggedIn: true,
+                showAuthModal: false
+            })
         } catch (e) {
             setFormError(e.response.data.message);
         }
-
     }
-
 
     return <div className="signup__container">
         <div>

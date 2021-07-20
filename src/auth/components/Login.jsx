@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Input from "../../utils/formComponents/Input";
 import loginUser from "../Login.js";
+import { AuthContext } from "../../context/auth-context";
 /* styles used from signup componente, from "./signup" */
 
 
@@ -8,6 +9,7 @@ const Login = () => {
     const [formError, setFormError] = useState("");
     const [loginForm, setLoginForm] = useState({});
 
+    const { authData, setAuthData } = useContext(AuthContext);
 
     const handleChange = (e) => {
         setLoginForm({
@@ -20,8 +22,13 @@ const Login = () => {
         try {
             e.preventDefault();
             const response = await loginUser(loginForm);
-            console.log(response)
             setFormError("");
+            setAuthData({ // set auth status context for the app
+                ...authData,
+                token: response.data.token,
+                isLoggedIn: true,
+                showAuthModal: false
+            })
         } catch (e) {
             setFormError(e.response.data.message);
         }
