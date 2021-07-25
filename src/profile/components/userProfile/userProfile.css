@@ -7,6 +7,23 @@
     border: 3px solid rgb(204, 245, 110);
 }
 
+.connected__status {
+    padding: 0px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.connected__status__true {
+    color: green;
+    font-size: 0.9rem;
+}
+
+.connected__status__false {
+    color: red;
+    font-size: 0.8rem;
+}
+
 .user__profile__header {
     display: flex;
     flex-direction: column;
@@ -29,6 +46,16 @@
 }
 
 @media screen and (min-width: 768px) {
+    .connected__status {
+        padding-right: 10px;
+        text-align: right;
+    }
+
+    .connected__status__true,
+    .connected__status__false {
+        font-size: 1rem;
+    }
+
     .user__profile__header {
         align-items: flex-start;
     }

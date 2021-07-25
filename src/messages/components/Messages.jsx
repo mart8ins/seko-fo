@@ -1,11 +1,12 @@
 import React from "react";
 import MessageBox from "./msg_feed/MessageBox";
 import "./messages.css";
+import { v4 as uuidv4 } from 'uuid';
 import messages from "../seed";
 
 
-const renderMessageBox = (userMessages, i) => {
-    return <MessageBox key={i} userMessages={userMessages} />
+const renderMessageBox = (userMessages) => {
+    return <MessageBox key={uuidv4()} userMessages={userMessages} />
 }
 
 function Messages() {

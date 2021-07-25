@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./messageBox.css";
+import { v4 as uuidv4 } from 'uuid';
 import MessageFeed from "./MessageFeed";
 import MessageSend from "./MessageSend";
 
@@ -33,8 +34,8 @@ function MessageBox({ userMessages }) {
         }
     }
 
-    const renderMessages = (msg, i) => {
-        return <MessageFeed key={i} messages={msg} />
+    const renderMessages = (msg) => {
+        return <MessageFeed key={uuidv4()} messages={msg} />
     }
 
     const showMessageFeed = () => {

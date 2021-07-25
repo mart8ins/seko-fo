@@ -1,18 +1,19 @@
 import React from "react";
 import "./connection.css";
+import { v4 as uuidv4 } from 'uuid';
 import ConnectionCard from "../connectionCard/ConnectionCard";
 
-const Connection = (props) => {
-    const connected = props.data.type === "connected" ? props.data.connected : props.data.explore;
+const MyConnections = ({ connected }) => {
+    const connections = connected;
 
     const renderConnectionCards = (user) => {
-        return <ConnectionCard user={user} />
+        return <ConnectionCard key={uuidv4()} user={user} />
     }
     return (
         <div className="connection__cards__container">
-            {connected.map(renderConnectionCards)}
+            {connections.map(renderConnectionCards)}
         </div>
     )
 }
 
-export default Connection;
+export default MyConnections;
