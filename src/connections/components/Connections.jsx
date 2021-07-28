@@ -16,6 +16,8 @@ function Connections() {
     const [connectionRequests, setConnectionRequests] = useState({});
 
     const [explore, setExplore] = useState([]); // all users in database
+    console.log(explore, "explored iekš Connections.jsx")
+    // explore needs to be except users what im connected with
 
 
     // EXPLORE 
@@ -50,7 +52,7 @@ function Connections() {
         <div className="connections__feed__block">
             <h4>Explore and get connected with new people!</h4>
             <div className="connections__feed__block__items">
-                {explore.length ? <ExploreConnections explore={explore} /> : <div style={{ textAlign: "center" }}>Currently there are no active connection options</div>}
+                {explore.length ? <ExploreConnections explore={explore} setExplore={setExplore} setConnectedWith={setConnectedWith} /> : <div style={{ textAlign: "center" }}>Currently there are no active connection options</div>}
             </div>
         </div>
 

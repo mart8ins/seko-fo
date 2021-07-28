@@ -3,40 +3,49 @@ import { Link } from "react-router-dom";
 import "./connectionCard.css";
 import { AuthContext } from "../../../context/auth-context";
 import { useEffect } from "react/cjs/react.development";
-import { requestConnection } from "../../../fetch/users/users";
+import { requestConnection, acceptConnectionRequest } from "../../../fetch/users/users";
 
-const ConnectionCard = ({ user }) => {
+const ConnectionCard = ({ user, setExplore, setConnectedWith }) => {
     const { authData } = useContext(AuthContext); // logged users data
     const [requestIsSent, setRequestIsSent] = useState(false); // status if request for connection is sent to explored user
-    const [recievedRequests, setRecievedRequests] = useState(user.connections.requests.recieved); // explored users recieved requests
+    const [recievedRequests, setRecievedRequests] = useState(user.connections ? user.connections.requests.recieved : []); // explored users recieved requests
 
-    const [sentRequests, setSentRequests] = useState(user.connections.requests.sent); // to check if logged user recieved requst from explored user
-    const [requestIsRecieved, setRequestIsRecieved] = useState(false);
-    // check if explored user already sent invitation request for logged user
+    const [sentRequests, setSentRequests] = useState(user.connections ? user.connections.requests.sent : []); // to check if logged user recieved requst from explored user
+    const [requestIsRecieved, setRequestIsRecieved] = useState(false); // check if explored user already sent invitation request for logged user
 
 
-    // send request for connection to explored user, is status is 200 then request is successfully sent
+
+    // send request for connection to explored user, is status is 201 then request is successfully created
     const sendRequestForConnection = async (e) => {
         e.preventDefault();
         const res = await requestConnection(user._id, authData.token);
-        if (res.status === 200) {
+        if (res.status === 201) {
             setRequestIsSent(true);
         }
     }
 
     // accept incoming connection request
-    const acceptIncomingRequestForConnection = (e) => {
+    const acceptIncomingRequestForConnection = async (e) => {
         e.preventDefault();
-        console.log("Incoming accepted")
+        const res = await acceptConnectionRequest(user._id, authData.token);
+        const { updatedExplore } = res.data.data;
+        const { updatedConnectedWith } = res.data.data;
+
+        setExplore(updatedExplore);
+        setConnectedWith(updatedConnectedWith);
     }
 
     useEffect(() => {
         // check if explored user recieved request from logged user and set state (for page refresh)
-        setRequestIsSent(recievedRequests.some((user) => user.user == authData.userId)) // return boolean
+        if (recievedRequests.length) {
+            setRequestIsSent(recievedRequests.some((user) => user.user == authData.userId)) // return boolean
+        }
     }, [recievedRequests])
     useEffect(() => {
         // check if explored already sent request for logged user
-        setRequestIsRecieved(sentRequests.some((user) => user.user == authData.userId)) // return boolean
+        if (sentRequests.length) {
+            setRequestIsRecieved(sentRequests.some((user) => user.user == authData.userId)) // return boolean
+        }
     }, [sentRequests])
 
     return (
@@ -53,10 +62,10 @@ const ConnectionCard = ({ user }) => {
                         // <form onSubmit={sendRequestForConnection}>
                         <div>
                             {requestIsSent ?
-                                <button onClick={sendRequestForConnection} className="card__user__options__btns request__sent" disabled>Request sent</button>
+                                <button className="card__user__options__btns request__sent" disabled>Request sent</button>
                                 :
                                 !requestIsRecieved ?
-                                    <button className="card__user__options__btns request__connection">Request connection</button>
+                                    <button onClick={sendRequestForConnection} className="card__user__options__btns request__connection">Request connection</button>
                                     :
                                     <button onClick={acceptIncomingRequestForConnection} className="card__user__options__btns request__pending">Accept request</button>
                             }
