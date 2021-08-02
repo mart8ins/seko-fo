@@ -15,7 +15,6 @@ function UserProfile() {
     // check if explored user is in logged users connections / connected array
     const { authData } = useContext(AuthContext);
     const [logedUserConnections, setLogedUserConnections] = useState([]);
-    console.log(logedUserConnections)
 
     // store in local state logged users connections and set explored user connection status
     const getUsersConnectionsData = async () => {
@@ -29,7 +28,6 @@ function UserProfile() {
 
     // get exlored users main data
     const getUserData = async () => {
-        console.log(userId, "kooo?")
         const response = await getUser(userId, authData.token);
         await setExploredUser(response.data.user);
     }

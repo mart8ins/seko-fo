@@ -24,7 +24,6 @@ const Signup = () => {
             e.preventDefault();
             const response = await signupUser(signupForm); // post data to backend
             setFormError("");
-            console.log(response)
             const tokenExpirationDate = new Date(new Date().getTime() + 1000 * 60 * 60);
 
             const objectToStore = {

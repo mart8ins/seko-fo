@@ -23,7 +23,6 @@ function MessageBox({ userMessages }) {
         count: 0
     };
     for (let msg in messages) {
-        // console.log(messages[msg])
         if (messages[msg].isRead) {
             isAllMessagesRead.status = true;
             isAllMessagesRead.count = 0;

@@ -1,36 +1,49 @@
 .card__container {
-    background-color: rgba(0, 0, 0, 0.842);
+    background-color: rgba(0, 0, 0, 0.2);
     box-shadow: 2px 2px 5px black;
-    margin: 5px;
-    padding: 5px;
+    margin: 10px;
+    padding: 10px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 170px;
+    min-height: 230px;
 }
 
 .card__user__name {
     font-weight: bold;
     color: white;
-    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 4px 10px;
     display: inline-block;
-    width: 200px;
+    max-width: 175px;
+    margin-bottom: 5px;
+    border-radius: 2px;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
 }
 
 .card__user__photo {
-    width: 80px;
+    max-width: 120px;
     border-radius: 4px;
-    box-shadow: 0px 0px 43px white;
+    /* box-shadow: 0px 0px 43px white; */
     margin-bottom: 10px;
+    border: 4px solid white;
 }
 
 .card__user__options__container {
     display: flex;
     flex-direction: column;
+}
+
+.buttons__container {
+    margin: 5px;
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 5px;
 }
 
 .card__user__options__btns {
@@ -41,42 +54,53 @@
     text-transform: uppercase;
     font-size: 0.7rem;
     box-shadow: 0px 0px 22px black;
-    background-color: rgb(158, 154, 154);
-    color: white;
+    background-color: transparent;
+    border: 1px solid rgb(204, 245, 110);
+    color: rgb(204, 245, 110);
     font-weight: bold;
     min-width: 160px;
 }
 
 .card__user__options__btns a {
     text-decoration: none;
+    color: rgb(204, 245, 110);
+}
+
+/* pending is recieved and un accepted*/
+/* sent is users sent request for explored user*/
+.request__pending {
+    background-color: rgb(165, 47, 47);
+    border: 1px solid rgb(165, 47, 47);
     color: white;
 }
 
-
-.request__sent,
-.request__pending {
+.request__sent {
     background-color: rgb(204, 245, 110);
-    color: grey;
+    border: 1px solid rgb(204, 245, 110);
+    color: black;
 }
 
 @media screen and (min-width: 768px) {
 
     .card__user__options__btns:hover {
-        background-color: rgb(184, 182, 182);
-    }
-
-    .card__user__options__btns:hover {
+        background-color: rgba(205, 245, 110, 0.466);
+        color: white;
         cursor: pointer;
     }
 
-    .request__pending:hover {
-        color: black;
-        background-color: white;
+    .card__user__options__btns a:hover {
+        color: white;
     }
 
     .request__sent:hover {
         cursor: default;
         background-color: rgb(204, 245, 110);
-        color: grey;
+        color: black;
+    }
+
+    .request__pending:hover {
+        color: white;
+        background-color: rgb(189, 69, 69);
+        border: 1px solid rgb(189, 69, 69);
     }
 }

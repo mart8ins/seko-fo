@@ -4,7 +4,6 @@ import "./messageFeed.css";
 
 
 function MessageFeed({ messages }) {
-    // console.log(messages)
     const messageArray = [messages];
 
     const renderMessagesFeed = (msg) => {

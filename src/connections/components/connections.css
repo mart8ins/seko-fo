@@ -19,7 +19,9 @@
     background-color: rgb(204, 245, 110);
     border-radius: 5px;
     text-align: center;
-    color: rgb(67, 83, 133);
+    color: rgba(0, 0, 0, 0.671);
+    font-family: 'Staatliches', cursive;
+    letter-spacing: 1.5px;
 }
 
 .connections__feed__block__items {
@@ -35,6 +37,5 @@
 
     .connections__feed__block h4 {
         text-align: left;
-        text-decoration: underline;
     }
 }
