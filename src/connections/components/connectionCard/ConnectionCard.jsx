@@ -6,30 +6,32 @@ import { ConnectionsContext } from "../../../context/connections-context";
 import { useEffect } from "react/cjs/react.development";
 import { requestConnection, acceptConnectionRequest } from "../../../fetch/users/users";
 
-const ConnectionCard = ({ user, sent, recieved, setRecieved }) => {
-    const { setExplore, setConnectedWith } = useContext(ConnectionsContext);
+const ConnectionCard = ({ user, sent, recieved }) => {
     /*
-    {sent, recieved} ->>> params not state for setRecieved <<<<--- true or false for buttons for ConnectionRequests.jsx component
-    to show Request sent or Accept request
-    */
+   {sent, recieved} ->>> params not state  <<<<--- true or false for buttons for ConnectionRequests.jsx component
+   to show Request sent or Accept request
+   */
+    const { setExplore, setConnectedWith, setRequestRecieved, setRequestSent } = useContext(ConnectionsContext);
+
     const { authData } = useContext(AuthContext); // logged users data
-    const [requestIsSent, setRequestIsSent] = useState(false); // status if request for connection is sent to explored user
 
-    // explored users recieved requests and to check if logged user recieved requst from explored user
+
+
+    // explored users recieved requests array
     const [recievedRequests, setRecievedRequests] = useState(user.connections ? user.connections.requests.recieved : []);
+    // explored users sent requests array
     const [sentRequests, setSentRequests] = useState(user.connections ? user.connections.requests.sent : []);
-    // check if explored user already sent invitation request for logged user
+    // state if explored user already sent invitation request to logged user
     const [requestIsRecieved, setRequestIsRecieved] = useState(false);
-
+    // state if request for connection is already sent to explored user
+    const [requestIsSent, setRequestIsSent] = useState(false);
 
     // send request for connection to explored user, is status is 201 then request is successfully created
     const sendRequestForConnection = async (e) => {
         e.preventDefault();
         const res = await requestConnection(user._id, authData.token);
-        // const { updatedRequests } = res.data.data;
-        if (res.status === 201) {
-            setRequestIsSent(true);
-        }
+        const { updatedRequests } = res.data.data;
+        setRequestSent(updatedRequests.sent);
     }
 
     // accept incoming connection request
@@ -40,21 +42,19 @@ const ConnectionCard = ({ user, sent, recieved, setRecieved }) => {
         // update UI with new data after connection request is accepted
         setExplore(updatedExplore);
         setConnectedWith(updatedConnectedWith);
-        if (recieved) {
-            setRecieved(updatedRecievedRequests);
-        }
+        setRequestRecieved(updatedRecievedRequests);
     }
 
     useEffect(() => {
         // check if explored user recieved request from logged user and set state (for page refresh)
         if (recievedRequests.length) {
-            setRequestIsSent(recievedRequests.some((user) => user.userId == authData.userId)) // return boolean
+            setRequestIsSent(recievedRequests.some((user) => user.userId === authData.userId)) // return boolean
         }
     }, [recievedRequests])
     useEffect(() => {
         // check if explored already sent request for logged user
         if (sentRequests.length) {
-            setRequestIsRecieved(sentRequests.some((user) => user.userId == authData.userId)) // return boolean
+            setRequestIsRecieved(sentRequests.some((user) => user.userId === authData.userId)) // return boolean
         }
     }, [sentRequests])
 

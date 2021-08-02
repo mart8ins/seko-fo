@@ -1,18 +1,20 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import "./connection.css";
 import { v4 as uuidv4 } from 'uuid';
 import ConnectionCard from "../connectionCard/ConnectionCard";
-import { ConnectionsContext } from "../../../context/connections-context";
 
-const MyConnections = () => {
-    const { connectedWith } = useContext(ConnectionsContext)
+const MyConnections = ({ connectedWith }) => {
+    const [connected, setConnected] = useState([]);
+    useEffect(() => {
+        setConnected(connectedWith)
+    })
 
     const renderConnectionCards = (user) => {
         return <ConnectionCard key={uuidv4()} user={user} />
     }
     return (
         <div className="connection__cards__container">
-            {connectedWith.map(renderConnectionCards)}
+            {connected.map(renderConnectionCards)}
         </div>
     )
 }

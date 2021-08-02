@@ -1,20 +1,22 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import "./connectionRequest.css";
-import { ConnectionsContext } from "../../../context/connections-context";
 import { v4 as uuidv4 } from 'uuid';
 import ConnectionCard from "../connectionCard/ConnectionCard";
 
-const ConnectionRequest = () => {
-    const { connectionRequests } = useContext(ConnectionsContext);
-    const [recieved, setRecieved] = useState(connectionRequests.recieved);
-    const [sent, setSent] = useState(connectionRequests.sent);
+const ConnectionRequest = ({ requestSent, requestRecieved }) => {
+    const [recieved, setRecieved] = useState([]);
+    const [sent, setSent] = useState([]);
+
+    useEffect(() => {
+        setRecieved(requestRecieved);
+        setSent(requestSent);
+    })
 
     const renderRecieved = (recieved) => {
         return <ConnectionCard
             key={uuidv4()}
             user={recieved}
             recieved
-            setRecieved={setRecieved}
         />
     }
     const renderSent = (sent) => {
@@ -27,7 +29,7 @@ const ConnectionRequest = () => {
 
     return (
         <div className="connection__request__container">
-            {recieved.length ?
+            {recieved && recieved.length ?
                 <div className="connection__request__type__container type__recieved">
                     <h5>Recieved <span className="request__count">{recieved && recieved.length}</span> requests for connection</h5>
                     <div className="connection__request__recieved">
@@ -36,7 +38,7 @@ const ConnectionRequest = () => {
                 </div> : null}
 
 
-            {sent.length ?
+            {sent && sent.length ?
                 <div className="connection__request__type__container type__sent">
                     <h5>Sent <span className="request__count">{sent && sent.length}</span> requests for connection</h5>
                     <div className="connection__request__sent">

@@ -1,11 +1,14 @@
-import React, { useContext } from "react";
-import { ConnectionsContext } from "../../../context/connections-context";
+import React, { useEffect, useState } from "react";
 import "./connection.css";
 import { v4 as uuidv4 } from 'uuid';
 import ConnectionCard from "../connectionCard/ConnectionCard";
 
-const ExploreConnections = () => {
-    const { explore } = useContext(ConnectionsContext);
+const ExploreConnections = ({ explore }) => {
+    const [exploreConnections, setExplore] = useState([])
+
+    useEffect(() => {
+        setExplore(explore);
+    })
 
     const renderConnectionCards = (user) => {
         return <ConnectionCard
@@ -15,7 +18,7 @@ const ExploreConnections = () => {
     }
     return (
         <div className="connection__cards__container">
-            {explore.map(renderConnectionCards)}
+            {exploreConnections.map(renderConnectionCards)}
         </div>
     )
 }

@@ -11,30 +11,39 @@ const ConnectionsContextProvider = ({children})=> {
 
     const [explore, setExplore] = useState([]);
     const [connectedWith, setConnectedWith] = useState([]);
-    const [connectionRequests, setConnectionRequests] = useState({});
+    const [requestRecieved, setRequestRecieved] = useState([]);
+    const [requestSent, setRequestSent] = useState([]);
 
     useEffect(()=> {
             fetchNotConnectedUsers();
             fetchUserConnections();
-    },[token])
+    },[token]);
+
+    useEffect(()=> {
+        fetchNotConnectedUsers();
+    }, [requestSent])
 
     // fetch all users which is not connected and without logged user
     const fetchNotConnectedUsers = async () => {
         const res = await getAllNotConnectedUsers(token);
         setExplore(res.data.users);
     }
+
     // fetch user connections what includes connected [], requests {}
     const fetchUserConnections = async() => {
         const res = await getUsersConnections(userId, token);
         setConnectedWith(res.data.connections.connected);
-        setConnectionRequests(res.data.connections.requests);
+        setRequestRecieved(res.data.connections.requests.recieved);
+        setRequestSent(res.data.connections.requests.sent)
     }
 
     return <ConnectionsContext.Provider value={
         {
             explore, setExplore,
             connectedWith, setConnectedWith,
-            connectionRequests, setConnectionRequests
+            // connectionRequests, setConnectionRequests
+            requestRecieved, setRequestRecieved,
+            requestSent, setRequestSent
         }}>
         {children}
     </ConnectionsContext.Provider>
