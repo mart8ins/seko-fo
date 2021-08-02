@@ -1,39 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import "./connections.css";
 import ExploreConnections from "./exploreConnections/ExploreConnections";
 import MyConnections from "./myConnections/MyConnections";
 import ConnectionRequest from "./connectionRequest/ConnectionRequest";
-import { AuthContext } from "../../context/auth-context";
-import { getUsersConnections } from "../../fetch/users/users";
-import { getAllUsers } from "../../fetch/users/users";
+import { ConnectionsContext } from "../../context/connections-context";
 
 
 function Connections() {
-    const { authData } = useContext(AuthContext); // logged users data
-    const [connectedWith, setConnectedWith] = useState([]); // logged users actual connections/connected people
-
-    /* connectionRequests ir objekts ar 2 array - recieved un sent, to vēlāk jāapdomā un jānodod kompinentē pareizi */
-    const [connectionRequests, setConnectionRequests] = useState({});
-
-    const [explore, setExplore] = useState([]); // all not-connected users in database
-
-
-    // EXPLORE 
-    useEffect(() => {
-        fetchAllUsers();
-        fetchLoggedUserConnections();
-    }, [])
-
-    const fetchLoggedUserConnections = async () => {
-        const responseData = await getUsersConnections(authData.userId, authData.token);
-        setConnectedWith(responseData.data.connections.connected);
-        setConnectionRequests(responseData.data.connections.requests)
-    }
-
-    const fetchAllUsers = async () => {
-        const usersResponseData = await getAllUsers(authData.token);
-        setExplore(usersResponseData.data.users)
-    }
+    const { explore,
+        connectedWith,
+        connectionRequests
+    } = useContext(ConnectionsContext);
 
     return <div className="connections__feed__container">
 
@@ -43,10 +20,7 @@ function Connections() {
             </div>
             <div className="connections__feed__block__items">
                 {connectionRequests.recieved || connectionRequests.sent ?
-                    <ConnectionRequest
-                        requests={connectionRequests}
-                        setExplore={setExplore}
-                        setConnectedWith={setConnectedWith} />
+                    <ConnectionRequest />
                     :
                     <div style={{ textAlign: "center" }}>There are no pending requests</div>}
             </div>
@@ -56,7 +30,7 @@ function Connections() {
             <div className="connections__feed__block">
                 <h4>Your connections: {connectedWith.length}</h4>
                 <div className="connections__feed__block__items">
-                    <MyConnections connected={connectedWith} />
+                    <MyConnections />
                 </div>
             </div>
             :
@@ -66,11 +40,9 @@ function Connections() {
         <div className="connections__feed__block">
             <h4>Explore and get connected with new people!</h4>
             <div className="connections__feed__block__items">
-                {explore.length ? <ExploreConnections
-                    explore={explore}
-                    setExplore={setExplore}
-                    setConnectedWith={setConnectedWith}
-                /> : <div style={{ textAlign: "center" }}>Currently there are no active connection options</div>}
+                {explore.length ? <ExploreConnections />
+                    :
+                    <div style={{ textAlign: "center" }}>Currently there are no active connection options</div>}
             </div>
         </div>
     </div>

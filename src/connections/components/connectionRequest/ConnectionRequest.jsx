@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./connectionRequest.css";
+import { ConnectionsContext } from "../../../context/connections-context";
 import { v4 as uuidv4 } from 'uuid';
 import ConnectionCard from "../connectionCard/ConnectionCard";
 
-const ConnectionRequest = ({ requests, setExplore, setConnectedWith }) => {
-    const [recieved, setRecieved] = useState(requests.recieved);
-    const [sent, setSent] = useState(requests.sent);
+const ConnectionRequest = () => {
+    const { connectionRequests } = useContext(ConnectionsContext);
+    const [recieved, setRecieved] = useState(connectionRequests.recieved);
+    const [sent, setSent] = useState(connectionRequests.sent);
 
     const renderRecieved = (recieved) => {
         return <ConnectionCard
             key={uuidv4()}
             user={recieved}
             recieved
-            setExplore={setExplore}
-            setConnectedWith={setConnectedWith}
             setRecieved={setRecieved}
         />
     }
@@ -22,8 +22,6 @@ const ConnectionRequest = ({ requests, setExplore, setConnectedWith }) => {
             key={uuidv4()}
             user={sent}
             sent
-            setExplore={setExplore}
-            setConnectedWith={setConnectedWith}
         />
     }
 

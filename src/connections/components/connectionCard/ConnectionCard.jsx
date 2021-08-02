@@ -2,20 +2,25 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./connectionCard.css";
 import { AuthContext } from "../../../context/auth-context";
+import { ConnectionsContext } from "../../../context/connections-context";
 import { useEffect } from "react/cjs/react.development";
 import { requestConnection, acceptConnectionRequest } from "../../../fetch/users/users";
 
-const ConnectionCard = ({ user, setExplore, setConnectedWith, sent, recieved, setRecieved }) => {
+const ConnectionCard = ({ user, sent, recieved, setRecieved }) => {
+    const { setExplore, setConnectedWith } = useContext(ConnectionsContext);
     /*
     {sent, recieved} ->>> params not state for setRecieved <<<<--- true or false for buttons for ConnectionRequests.jsx component
     to show Request sent or Accept request
     */
     const { authData } = useContext(AuthContext); // logged users data
     const [requestIsSent, setRequestIsSent] = useState(false); // status if request for connection is sent to explored user
-    const [recievedRequests, setRecievedRequests] = useState(user.connections ? user.connections.requests.recieved : []); // explored users recieved requests
 
-    const [sentRequests, setSentRequests] = useState(user.connections ? user.connections.requests.sent : []); // to check if logged user recieved requst from explored user
-    const [requestIsRecieved, setRequestIsRecieved] = useState(false); // check if explored user already sent invitation request for logged user
+    // explored users recieved requests and to check if logged user recieved requst from explored user
+    const [recievedRequests, setRecievedRequests] = useState(user.connections ? user.connections.requests.recieved : []);
+    const [sentRequests, setSentRequests] = useState(user.connections ? user.connections.requests.sent : []);
+    // check if explored user already sent invitation request for logged user
+    const [requestIsRecieved, setRequestIsRecieved] = useState(false);
+
 
     // send request for connection to explored user, is status is 201 then request is successfully created
     const sendRequestForConnection = async (e) => {
@@ -32,7 +37,6 @@ const ConnectionCard = ({ user, setExplore, setConnectedWith, sent, recieved, se
         e.preventDefault();
         const res = await acceptConnectionRequest(user._id || user.userId, authData.token);
         const { updatedExplore, updatedConnectedWith, updatedRecievedRequests } = res.data.data;
-
         // update UI with new data after connection request is accepted
         setExplore(updatedExplore);
         setConnectedWith(updatedConnectedWith);
@@ -95,24 +99,6 @@ const ConnectionCard = ({ user, setExplore, setConnectedWith, sent, recieved, se
                                     className="card__user__options__btns request__pending">
                                     Accept request
                                 </button> : null}
-
-                                {/* {requestIsSent ?
-                                    <button className="card__user__options__btns request__sent" disabled>Request sent</button>
-                                    :
-                                    !requestIsRecieved ?
-                                        <button
-                                            onClick={sendRequestForConnection}
-                                            className="card__user__options__btns request__connection">
-                                            Request connection
-                                        </button>
-                                        :
-                                        <button
-                                            onClick={acceptIncomingRequestForConnection}
-                                            className="card__user__options__btns request__pending">
-                                            Accept request
-                                        </button>
-                                } */}
-
                             </div>
                             : null}
                     </div>

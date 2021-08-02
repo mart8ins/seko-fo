@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const getAllUsers = async (token) => {
+// fetch all users which is not connected and without logged user
+const getAllNotConnectedUsers = async (token) => {
     const config = {
         headers: {
             Authorization: 'Bearer ' + token //the token is a variable which holds the token
@@ -56,7 +57,7 @@ const acceptConnectionRequest = async(acceptedUser, token) => {
 }
 
 export {
-    getAllUsers,
+    getAllNotConnectedUsers,
     getUser,
     getUsersConnections,
     requestConnection,
