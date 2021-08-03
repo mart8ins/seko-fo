@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./connections.css";
 import ExploreConnections from "./exploreConnections/ExploreConnections";
 import MyConnections from "./myConnections/MyConnections";
@@ -19,7 +19,7 @@ function Connections() {
                 <h4>Requests for connection </h4>
             </div>
             <div className="connections__feed__block__items">
-                {requestRecieved || requestSent ?
+                {requestRecieved.length || requestSent.length ?
                     <ConnectionRequest
                         requestSent={requestSent}
                         requestRecieved={requestRecieved}
@@ -29,16 +29,18 @@ function Connections() {
             </div>
         </div>
 
-        {connectedWith.length ?
-            <div className="connections__feed__block">
-                <h4>Your connections: {connectedWith.length}</h4>
+
+        <div className="connections__feed__block">
+            <h4>Your connections: {connectedWith.length}</h4>
+            {connectedWith.length ?
                 <div className="connections__feed__block__items">
                     <MyConnections connectedWith={connectedWith} />
                 </div>
-            </div>
-            :
-            null
-        }
+                :
+                <div style={{ textAlign: "center" }}>Currently you dont have any connected people. Explore and connect!</div>
+            }
+        </div>
+
 
         <div className="connections__feed__block">
             <h4>Explore and get connected with new people!</h4>

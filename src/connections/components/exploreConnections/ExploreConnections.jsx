@@ -8,7 +8,7 @@ const ExploreConnections = ({ explore }) => {
 
     useEffect(() => {
         setExplore(explore);
-    })
+    }, [explore])
 
     const renderConnectionCards = (user) => {
         return <ConnectionCard

@@ -1,5 +1,5 @@
 import "./header.css";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthNavigation from "../../../auth/components/AuthNavigation";
 import { AuthContext } from "../../../context/auth-context";

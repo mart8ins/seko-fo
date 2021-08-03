@@ -9,7 +9,7 @@ const Login = () => {
     const [formError, setFormError] = useState("");
     const [loginForm, setLoginForm] = useState({});
 
-    const { authData, setAuthData } = useContext(AuthContext);
+    const { setAuthData } = useContext(AuthContext);
 
     const handleChange = (e) => {
         setLoginForm({

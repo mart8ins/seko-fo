@@ -9,7 +9,7 @@ const Signup = () => {
     const [formError, setFormError] = useState("");
     const [signupForm, setSignupForm] = useState({});
 
-    const { authData, setAuthData } = useContext(AuthContext);
+    const { setAuthData } = useContext(AuthContext);
 
     // handle signup form data change
     const handleChange = (e) => {

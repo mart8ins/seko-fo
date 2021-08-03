@@ -10,7 +10,7 @@ const ConnectionRequest = ({ requestSent, requestRecieved }) => {
     useEffect(() => {
         setRecieved(requestRecieved);
         setSent(requestSent);
-    })
+    }, [requestRecieved, requestSent])
 
     const renderRecieved = (recieved) => {
         return <ConnectionCard
