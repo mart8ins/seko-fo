@@ -1,67 +1,37 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
 import "./userProfile.css";
-import { getUser, getUsersConnections } from "../../../fetch/users/users";
+import { getUser } from "../../../fetch/users/users";
 import { AuthContext } from "../../../context/auth-context";
+import useConnectionStatus from "../../../hooks/useConnectionStatus";
 
 
 function UserProfile() {
     const { authData } = useContext(AuthContext);
 
-    // state for if user is connected with explored user
-    const [isConnected, setIsConnected] = useState(false);
-
     // explored user id and state for user
     let { userId } = useParams();
     const [exploredUser, setExploredUser] = useState({});
-    const [exploredUserRecievedRequests, setExploredUserRecievedRequests] = useState([]);
-    const [exploredUserSentRequests, setExploredUserSentRequests] = useState([]);
 
 
-    // explored users buttons state - REQUEST SENT AND ACCEPT REQUEST
-    const [requestIsSent, setRequestIsSent] = useState(false);
-    const [requestIsRecieved, setRequestIsRecieved] = useState(false);
+    let { isConnected, isRequestRecieved, isRequestSent } = useConnectionStatus(userId, authData.userId, authData.token);
 
-    // fetch logged users connections and retrieve connected array
-    const [logedUserConnections, setLogedUserConnections] = useState([]);
-    const getUsersConnectionsData = async () => {
-        const response = await getUsersConnections(authData.userId, authData.token);
-        setLogedUserConnections(response.data.connections.connected);
-    }
+    console.log("User is connected", isConnected)
+    console.log("logged user recieved request form explored ", isRequestRecieved)
+    console.log("logged user sent request to explored user", isRequestSent)
+
+
     // fetch explored user all data
     const getUserData = async () => {
         const response = await getUser(userId, authData.token);
         setExploredUser(response.data.user);
-        setExploredUserRecievedRequests(response.data.user.connections.requests.recieved);
-        setExploredUserSentRequests(response.data.user.connections.requests.sent);
     }
 
     // fecth data
     useEffect(() => {
         getUserData();
-        getUsersConnectionsData();
     }, [userId])
 
-    // to check if explored user is connected with logged user
-    useEffect(() => {
-        const checkConnection = logedUserConnections.filter((user) => {
-            return String(user.userId) === String(userId);
-        })
-        checkConnection[0] ? setIsConnected(true) : setIsConnected(false);
-    }, [logedUserConnections, userId])
-
-    useEffect(() => {
-        setRequestIsSent(exploredUserSentRequests.some((user) => String(user.userId) === String(authData.userId)))
-    }, [exploredUserSentRequests, authData.userId]);
-
-    useEffect(() => {
-        setRequestIsRecieved(exploredUserRecievedRequests.some((user) => String(user.userId) === String(authData.userId)))
-    }, [exploredUserRecievedRequests, authData.userId]);
-
-
-
-
-    console.log(requestIsSent, requestIsRecieved)
     return <div>
         <div className="user__profile">
             <div className="connected__status">
@@ -84,9 +54,9 @@ function UserProfile() {
                 <button className="user__profile__options__btns">New msg</button>
                 {isConnected && <button className="user__profile__options__btns">Remove from connections</button>}
 
-                {!isConnected && !requestIsRecieved && !requestIsSent ? <button className="user__profile__options__btns">Request connection</button> : null}
-                {!isConnected && requestIsRecieved && <button className="user__profile__options__btns request__sent">Request sent</button>}
-                {!isConnected && requestIsSent && <button className="user__profile__options__btns request__pending">Accept request</button>}
+                {!isConnected && !isRequestRecieved && !isRequestSent ? <button className="user__profile__options__btns">Request connection</button> : null}
+                {!isConnected && isRequestSent && <button className="user__profile__options__btns request__sent">Request sent</button>}
+                {!isConnected && isRequestRecieved && <button className="user__profile__options__btns request__pending">Accept request</button>}
 
             </div>
 
