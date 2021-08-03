@@ -16,11 +16,6 @@ function UserProfile() {
 
     let { isConnected, isRequestRecieved, isRequestSent } = useConnectionStatus(userId, authData.userId, authData.token);
 
-    console.log("User is connected", isConnected)
-    console.log("logged user recieved request form explored ", isRequestRecieved)
-    console.log("logged user sent request to explored user", isRequestSent)
-
-
     // fetch explored user all data
     const getUserData = async () => {
         const response = await getUser(userId, authData.token);
@@ -52,7 +47,7 @@ function UserProfile() {
 
             <div className="user__profile__options__btns__container">
                 <button className="user__profile__options__btns">New msg</button>
-                {isConnected && <button className="user__profile__options__btns">Remove from connections</button>}
+                {isConnected && <button className="user__profile__options__btns request__remove">Remove from connections</button>}
 
                 {!isConnected && !isRequestRecieved && !isRequestSent ? <button className="user__profile__options__btns">Request connection</button> : null}
                 {!isConnected && isRequestSent && <button className="user__profile__options__btns request__sent">Request sent</button>}
