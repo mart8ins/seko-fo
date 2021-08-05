@@ -30,12 +30,21 @@
 }
 
 .user__profile__header {
+    width: 90%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 5px;
-    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
+}
+
+.user__profile__photo__name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .user__profile__header img {
@@ -44,10 +53,12 @@
 }
 
 .user__profile__header h4 {
-    color: white;
+    color: rgb(129, 129, 129);
     text-transform: uppercase;
     margin: 0;
     text-align: center;
+    background-color: white;
+    padding: 4px;
 }
 
 .user__profile__bio {
@@ -121,6 +132,14 @@
     margin-top: 10px;
 }
 
+.user__profile__content {
+    width: 95%;
+    background-color: white;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 
 
 @media screen and (min-width: 768px) {
@@ -139,12 +158,12 @@
     }
 
     .user__profile__header {
-        align-items: flex-start;
+        width: 40%;
     }
 
-    .user__profile__header img {
-        width: 180px;
-        padding: 20px;
+    .user__profile__photo__name img {
+        min-width: 180px;
+        padding: 10px;
     }
 
     .user__profile__bio {

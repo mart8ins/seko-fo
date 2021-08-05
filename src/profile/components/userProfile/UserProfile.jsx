@@ -34,7 +34,7 @@ function UserProfile() {
             </div>
             <div className="user__profile__data">
                 <div className="user__profile__header">
-                    <div>
+                    <div className="user__profile__photo__name">
                         <img alt="User" src={exploredUser.photo || "https://images.unsplash.com/photo-1514588645531-00b8822ad997?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"} />
                         <h4>{`${exploredUser.firstName} ${exploredUser.lastName}`}</h4>
                     </div>
@@ -52,13 +52,12 @@ function UserProfile() {
                 {!isConnected && !isRequestRecieved && !isRequestSent ? <button className="user__profile__options__btns">Request connection</button> : null}
                 {!isConnected && isRequestSent && <button className="user__profile__options__btns request__sent">Request sent</button>}
                 {!isConnected && isRequestRecieved && <button className="user__profile__options__btns request__pending">Accept request</button>}
-
             </div>
-
-
-            <div className="user__profile__content">
-                Content
-            </div>
+        </div>
+        <div className="user__profile__content">
+            <div>Blogs</div>
+            <div>Progress</div>
+            <div>Laika josla</div>
         </div>
 
 
