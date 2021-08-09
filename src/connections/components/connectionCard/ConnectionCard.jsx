@@ -44,34 +44,37 @@ const ConnectionCard = ({ user, sent, recieved }) => {
                         </Link>
                         <button
                             className="card__user__options__btns">
-                            New msg
+                            Send message
                         </button>
 
 
 
                         {!isConnected ?
                             <div>
-                                {isRequestSent || sent ?
+                                {!isRequestRecieved && !isRequestSent ?
                                     <button
-                                        className="card__user__options__btns request__sent"
-                                        disabled>
-                                        Request sent
-                                    </button> : null}
-
-                                {!isRequestRecieved && !isRequestSent ? <button
-                                    onClick={sendRequest}
-                                    className="card__user__options__btns request__connection">
-                                    Request connection
-                                </button> : null}
-
-
-                                {isRequestRecieved || recieved ? <button
-                                    onClick={acceptRequest}
-                                    className="card__user__options__btns request__pending">
-                                    Accept request
-                                </button> : null}
+                                        onClick={sendRequest}
+                                        className="card__user__options__btns request__connection">
+                                        Request connection
+                                    </button>
+                                    :
+                                    isRequestSent || sent ?
+                                        <button
+                                            className="card__user__options__btns request__sent"
+                                            disabled>
+                                            Request sent
+                                        </button>
+                                        :
+                                        <button
+                                            onClick={acceptRequest}
+                                            className="card__user__options__btns request__pending">
+                                            Accept request
+                                        </button>
+                                }
                             </div>
                             : null}
+
+
                     </div>
                 </div>
             </div>

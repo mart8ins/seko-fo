@@ -22,7 +22,7 @@ const AboutUser = ({ exploredUser, isConnected, isRequestRecieved, isRequestSent
             </div>
 
             <div className="user__profile__options__btns__container">
-                <button className="user__profile__options__btns">New msg</button>
+                <button className="user__profile__options__btns">Send message</button>
                 {isConnected && <button className="user__profile__options__btns request__remove">Remove from connections</button>}
 
                 {!isConnected && !isRequestRecieved && !isRequestSent ? <button onClick={sendRequest} className="user__profile__options__btns">Request connection</button> : null}
