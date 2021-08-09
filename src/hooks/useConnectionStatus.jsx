@@ -28,7 +28,7 @@ const useConnectionStatus = (exploredId, loggedId, token) => {
     useEffect(() => {
         getUserData();
         getUsersConnectionsData();
-    }, [exploredId, loggedId]);
+    }, [exploredId, loggedId, isConnected, isRequestRecieved, isRequestSent]);
 
 
     // to check if explored user is connected with logged user

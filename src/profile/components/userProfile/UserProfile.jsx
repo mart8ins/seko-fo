@@ -1,59 +1,88 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
 import "./userProfile.css";
+import AboutUser from "./components/about/AboutUser";
 import { getUser } from "../../../fetch/users/users";
 import { AuthContext } from "../../../context/auth-context";
+import { ConnectionsContext } from "../../../context/connections-context";
 import useConnectionStatus from "../../../hooks/useConnectionStatus";
+import { requestConnection, acceptConnectionRequest } from "../../../fetch/users/users";
 
 
 function UserProfile() {
-    const { authData } = useContext(AuthContext);
+    let { userId } = useParams(); // explored users id
+    const { authData } = useContext(AuthContext); // logged users data
 
-    // explored user id and state for user
-    let { userId } = useParams();
+    // explored user data
     const [exploredUser, setExploredUser] = useState({});
 
+    // local components state for connection status changes 
+    const [isCon, setIsCon] = useState(false);
+    const [isReqRecieved, setIsReqRecieved] = useState(false);
+    const [isReqSent, setIsReqSent] = useState(false);
 
+    // connection status hook for button status on page load
     let { isConnected, isRequestRecieved, isRequestSent } = useConnectionStatus(userId, authData.userId, authData.token);
+
+    // connections context for logged user. after accepting or requesting connection update context with request status
+    const { setExplore,
+        setConnectedWith,
+        setRequestRecieved,
+        setRequestSent,
+        connectedWith,
+        requestRecieved,
+        requestSent } = useContext(ConnectionsContext);
+
+    // use effect for local button status, thei changes
+    useEffect(() => {
+        setIsCon(isConnected);
+        setIsReqRecieved(isRequestRecieved);
+        setIsReqSent(isRequestSent);
+    }, [isConnected, isRequestRecieved, isRequestSent])
+
 
     // fetch explored user all data
     const getUserData = async () => {
         const response = await getUser(userId, authData.token);
         setExploredUser(response.data.user);
     }
-
-    // fecth data
+    // effect for fetching explored user data
     useEffect(() => {
         getUserData();
-    }, [userId])
+    }, [userId, connectedWith, requestRecieved, requestSent])
+
+
+    // send request for connection to explored user, is status is 201 then request is successfully created
+    const sendRequestForConnection = async (e) => {
+        e.preventDefault();
+        const res = await requestConnection(userId, authData.token);
+        const { updatedRequests } = res.data.data;
+        setRequestSent(updatedRequests.sent);
+        setIsReqSent(true);
+    }
+
+    // accept incoming connection request
+    const acceptIncomingRequestForConnection = async (e) => {
+        e.preventDefault();
+        const res = await acceptConnectionRequest(userId, authData.token);
+        const { updatedExplore, updatedConnectedWith, updatedRecievedRequests } = res.data.data;
+        // update UI with new data after connection request is accepted
+        setExplore(updatedExplore);
+        setConnectedWith(updatedConnectedWith);
+        setRequestRecieved(updatedRecievedRequests);
+        setIsCon(true);
+    }
+
 
     return <div>
-        <div className="user__profile">
-            <div className="connected__status">
-                {isConnected ? <div className="connected__status__true">Connected</div> : <div className="connected__status__false">Not connected</div>}
-            </div>
-            <div className="user__profile__data">
-                <div className="user__profile__header">
-                    <div className="user__profile__photo__name">
-                        <img alt="User" src={exploredUser.photo || "https://images.unsplash.com/photo-1514588645531-00b8822ad997?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"} />
-                        <h4>{`${exploredUser.firstName} ${exploredUser.lastName}`}</h4>
-                    </div>
-                </div>
-                <div className="user__profile__bio">
-                    <h3 className="about__me__heading">About me</h3>
-                    <p className="about__me__text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-                </div>
-            </div>
+        <AboutUser
+            exploredUser={exploredUser}
+            isConnected={isCon}
+            isRequestRecieved={isReqRecieved}
+            isRequestSent={isReqSent}
+            sendRequestForConnection={sendRequestForConnection}
+            acceptIncomingRequestForConnection={acceptIncomingRequestForConnection} />
 
-            <div className="user__profile__options__btns__container">
-                <button className="user__profile__options__btns">New msg</button>
-                {isConnected && <button className="user__profile__options__btns request__remove">Remove from connections</button>}
-
-                {!isConnected && !isRequestRecieved && !isRequestSent ? <button className="user__profile__options__btns">Request connection</button> : null}
-                {!isConnected && isRequestSent && <button className="user__profile__options__btns request__sent">Request sent</button>}
-                {!isConnected && isRequestRecieved && <button className="user__profile__options__btns request__pending">Accept request</button>}
-            </div>
-        </div>
         <div className="user__profile__content">
             <div>Blogs</div>
             <div>Progress</div>

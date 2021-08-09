@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const baseUrlUsers = "http://localhost:3002/api/users/";
+
 // fetch all users which is not connected and without logged user
 const getAllNotConnectedUsers = async (token) => {
     const config = {
@@ -7,7 +9,7 @@ const getAllNotConnectedUsers = async (token) => {
             Authorization: 'Bearer ' + token //the token is a variable which holds the token
           }
     }
-    const url = "http://localhost:3002/api/users/";
+    const url = baseUrlUsers;
     const res = await axios.get(url, config);
     return res;
 }
@@ -18,7 +20,7 @@ const getUser = async (uid, token) => {
             Authorization: 'Bearer ' + token //the token is a variable which holds the token
           }
     }
-    const url = `http://localhost:3002/api/users/${uid}`;
+    const url = `${baseUrlUsers}${uid}`;
     const res = await axios.get(url, config);
     return res;
 }
@@ -29,7 +31,7 @@ const getUsersConnections = async (uid, token) => {
             Authorization: 'Bearer ' + token //the token is a variable which holds the token
           }
     }
-    const url = `http://localhost:3002/api/users/${uid}/connections`;
+    const url = `${baseUrlUsers}${uid}/connections`;
     const res = await axios.get(url, config);
     return res;
 }
@@ -40,7 +42,7 @@ const requestConnection = async(exploredUserID, token)=> {
             Authorization: 'Bearer ' + token //the token is a variable which holds the token
           }
     }
-    const url = `http://localhost:3002/api/users/${exploredUserID}/connections/request`;
+    const url = `${baseUrlUsers}${exploredUserID}/connections/request`;
     const res = axios.post(url, {}, config);
     return res;
 }
@@ -51,7 +53,7 @@ const acceptConnectionRequest = async(acceptedUser, token) => {
             Authorization: 'Bearer ' + token //the token is a variable which holds the token
           }
     }
-    const url = `http://localhost:3002/api/users/${acceptedUser}/connections/accept`;
+    const url = `${baseUrlUsers}${acceptedUser}/connections/accept`;
     const res = axios.post(url, {}, config);
     return res;
 }
