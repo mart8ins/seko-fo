@@ -1,17 +1,25 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
 import "./userProfile.css";
+// COMPONENTS
 import AboutUser from "./components/about/AboutUser";
+// FETCH 
 import { getUser } from "../../../fetch/users/users";
+// CONTEXT
 import { AuthContext } from "../../../context/auth-context";
-import { ConnectionsContext } from "../../../context/connections-context";
+// HOOKS
 import useConnectionStatus from "../../../hooks/useConnectionStatus";
-import { requestConnection, acceptConnectionRequest } from "../../../fetch/users/users";
+import useConnectPeople from "../../../hooks/useConnectPeople";
 
 
 function UserProfile() {
-    let { userId } = useParams(); // explored users id
-    const { authData } = useContext(AuthContext); // logged users data
+    // explored users id
+    let { userId } = useParams();
+    // logged users data 
+    const { authData } = useContext(AuthContext);
+
+    // hook for accepting or requesting connection
+    const { sendRequestForConnection, acceptIncomingRequestForConnection } = useConnectPeople(userId);
 
     // explored user data
     const [exploredUser, setExploredUser] = useState({});
@@ -23,15 +31,6 @@ function UserProfile() {
 
     // connection status hook for button status on page load
     let { isConnected, isRequestRecieved, isRequestSent } = useConnectionStatus(userId, authData.userId, authData.token);
-
-    // connections context for logged user. after accepting or requesting connection update context with request status
-    const { setExplore,
-        setConnectedWith,
-        setRequestRecieved,
-        setRequestSent,
-        connectedWith,
-        requestRecieved,
-        requestSent } = useContext(ConnectionsContext);
 
     // use effect for local button status, thei changes
     useEffect(() => {
@@ -49,30 +48,20 @@ function UserProfile() {
     // effect for fetching explored user data
     useEffect(() => {
         getUserData();
-    }, [userId, connectedWith, requestRecieved, requestSent])
+    }, [userId])
+
 
 
     // send request for connection to explored user, is status is 201 then request is successfully created
-    const sendRequestForConnection = async (e) => {
-        e.preventDefault();
-        const res = await requestConnection(userId, authData.token);
-        const { updatedRequests } = res.data.data;
-        setRequestSent(updatedRequests.sent);
+    const sendRequest = () => {
+        sendRequestForConnection();
         setIsReqSent(true);
     }
-
     // accept incoming connection request
-    const acceptIncomingRequestForConnection = async (e) => {
-        e.preventDefault();
-        const res = await acceptConnectionRequest(userId, authData.token);
-        const { updatedExplore, updatedConnectedWith, updatedRecievedRequests } = res.data.data;
-        // update UI with new data after connection request is accepted
-        setExplore(updatedExplore);
-        setConnectedWith(updatedConnectedWith);
-        setRequestRecieved(updatedRecievedRequests);
+    const acceptRequest = () => {
+        acceptIncomingRequestForConnection();
         setIsCon(true);
     }
-
 
     return <div>
         <AboutUser
@@ -80,8 +69,8 @@ function UserProfile() {
             isConnected={isCon}
             isRequestRecieved={isReqRecieved}
             isRequestSent={isReqSent}
-            sendRequestForConnection={sendRequestForConnection}
-            acceptIncomingRequestForConnection={acceptIncomingRequestForConnection} />
+            sendRequest={sendRequest}
+            acceptRequest={acceptRequest} />
 
         <div className="user__profile__content">
             <div>Blogs</div>

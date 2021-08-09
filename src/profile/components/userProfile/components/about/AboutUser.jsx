@@ -1,7 +1,7 @@
 import React from "react";
 
 // 
-const AboutUser = ({ exploredUser, isConnected, isRequestRecieved, isRequestSent, acceptIncomingRequestForConnection, sendRequestForConnection }) => {
+const AboutUser = ({ exploredUser, isConnected, isRequestRecieved, isRequestSent, acceptRequest, sendRequest }) => {
 
     return <div>
         <div className="user__profile">
@@ -25,9 +25,9 @@ const AboutUser = ({ exploredUser, isConnected, isRequestRecieved, isRequestSent
                 <button className="user__profile__options__btns">New msg</button>
                 {isConnected && <button className="user__profile__options__btns request__remove">Remove from connections</button>}
 
-                {!isConnected && !isRequestRecieved && !isRequestSent ? <button onClick={sendRequestForConnection} className="user__profile__options__btns">Request connection</button> : null}
+                {!isConnected && !isRequestRecieved && !isRequestSent ? <button onClick={sendRequest} className="user__profile__options__btns">Request connection</button> : null}
                 {!isConnected && isRequestSent && <button className="user__profile__options__btns request__sent">Request sent</button>}
-                {!isConnected && isRequestRecieved && <button onClick={acceptIncomingRequestForConnection} className="user__profile__options__btns request__pending">Accept request</button>}
+                {!isConnected && isRequestRecieved && <button onClick={acceptRequest} className="user__profile__options__btns request__pending">Accept request</button>}
             </div>
         </div>
     </div>
