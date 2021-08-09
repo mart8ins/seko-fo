@@ -1,5 +1,6 @@
 .connection__request__container {
     padding: 5px;
+    position: relative;
 }
 
 .connection__request__type__container {

@@ -1,4 +1,5 @@
 .connections__feed__container {
+    position: relative;
     width: 95%;
     margin: 0px auto;
     display: flex;

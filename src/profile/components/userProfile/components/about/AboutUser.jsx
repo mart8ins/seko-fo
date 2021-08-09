@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import { MessageContext } from "../../../../../context/message-context";
+
 
 // 
 const AboutUser = ({ exploredUser, isConnected, isRequestRecieved, isRequestSent, acceptRequest, sendRequest }) => {
+    console.log(exploredUser)
+    const { messageModalContext, setMessageModalContext } = useContext(MessageContext);
+
+    const openMessageModal = () => {
+        setMessageModalContext({
+            userId: exploredUser._id,
+            firstName: exploredUser.firstName,
+            lastName: exploredUser.lastName,
+            show: !messageModalContext.show
+        })
+    }
+
 
     return <div>
         <div className="user__profile">
@@ -22,7 +36,7 @@ const AboutUser = ({ exploredUser, isConnected, isRequestRecieved, isRequestSent
             </div>
 
             <div className="user__profile__options__btns__container">
-                <button className="user__profile__options__btns">Send message</button>
+                <button onClick={openMessageModal} className="user__profile__options__btns">Send message</button>
                 {isConnected && <button className="user__profile__options__btns request__remove">Remove from connections</button>}
 
                 {!isConnected && !isRequestRecieved && !isRequestSent ? <button onClick={sendRequest} className="user__profile__options__btns">Request connection</button> : null}

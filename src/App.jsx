@@ -4,16 +4,19 @@ import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import AuthContextProvider from "./context/auth-context";
 import ConnectionsContextProvider from "./context/connections-context";
+import MessageContextProvider from "./context/message-context";
 
 function App() {
     return (
         <div className="app">
             <AuthContextProvider>
                 <ConnectionsContextProvider>
-                    <BrowserRouter>
-                        <Header />
-                        <MainContainer />
-                    </BrowserRouter>
+                    <MessageContextProvider>
+                        <BrowserRouter>
+                            <Header />
+                            <MainContainer />
+                        </BrowserRouter>
+                    </MessageContextProvider>
                 </ConnectionsContextProvider>
             </AuthContextProvider>
         </div>

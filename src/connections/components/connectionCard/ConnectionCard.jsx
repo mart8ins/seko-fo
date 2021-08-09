@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./connectionCard.css";
 // CONTEXT
 import { AuthContext } from "../../../context/auth-context";
+import { MessageContext } from "../../../context/message-context";
 // HOOKS
 import useConnectPeople from "../../../hooks/useConnectPeople";
 import useConnectionStatus from "../../../hooks/useConnectionStatus";
@@ -10,6 +11,10 @@ import useConnectionStatus from "../../../hooks/useConnectionStatus";
 const ConnectionCard = ({ user, sent, recieved }) => {
     /* {sent, recieved} ->>> params not state  <<<<--- true or false for buttons for ConnectionRequests.jsx component
    to show Request sent or Accept request */
+
+    // message context to open message modal
+    const { messageModalContext, setMessageModalContext } = useContext(MessageContext);
+
 
     // logged users data
     const { authData } = useContext(AuthContext);
@@ -28,8 +33,19 @@ const ConnectionCard = ({ user, sent, recieved }) => {
         acceptIncomingRequestForConnection()
     }
 
+    const openMessageModal = () => {
+        setMessageModalContext({
+            userId: user.userId,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            show: !messageModalContext.show
+        })
+    }
+
+
     return (
         <div>
+
             <div className="card__container">
                 <div className="card__user__name">{user.firstName + " " + user.lastName}</div>
                 <img className="card__user__photo" alt="User" src={user.photo || "https://images.unsplash.com/photo-1514588645531-00b8822ad997?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"} />
@@ -43,6 +59,7 @@ const ConnectionCard = ({ user, sent, recieved }) => {
                             </button>
                         </Link>
                         <button
+                            onClick={openMessageModal}
                             className="card__user__options__btns">
                             Send message
                         </button>

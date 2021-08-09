@@ -33,6 +33,7 @@ background-color: rgb(124, 100, 100);
 */
 body {
     font-family: 'Lora', serif;
+    position: relative;
 }
 
 h1,
@@ -47,6 +48,10 @@ h6 {
 
 .app {
     position: relative;
+}
+
+#modal {
+    height: 100%;
 }
 
 /* CUSTOM SCROLLBAR FOR APP */
