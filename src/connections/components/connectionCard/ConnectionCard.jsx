@@ -35,7 +35,7 @@ const ConnectionCard = ({ user, sent, recieved }) => {
 
     const openMessageModal = () => {
         setMessageModalContext({
-            userId: user.userId,
+            userId: user.userId || user._id,
             firstName: user.firstName,
             lastName: user.lastName,
             show: !messageModalContext.show

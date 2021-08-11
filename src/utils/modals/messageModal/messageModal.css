@@ -4,7 +4,7 @@
     width: 100%;
     top: -50px;
     height: 110%;
-    background-color: rgba(27, 27, 7, 0.795);
+    background-color: rgba(95, 95, 24, 0.795);
     overflow: hidden;
 }
 
@@ -31,16 +31,17 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     text-transform: uppercase;
+
 }
 
 .message__modal__close {
     position: absolute;
     top: 6px;
     right: 20px;
-    background-color: white;
+    background-color: rgb(145, 138, 138);
     border-radius: 50%;
-    color: black;
-    padding: 0px 5px;
+    color: rgb(204, 245, 110);
+    padding: 0px 5px 0px 6px;
     font-size: 1.2rem;
 }
 
@@ -75,12 +76,31 @@
     margin-top: 15px;
     border-radius: 5px;
     text-transform: uppercase;
-    background-color: rgb(131, 126, 126);
+    background-color: rgb(34, 32, 32);
     font-size: 0.8rem;
     color: white;
+    color: rgb(204, 245, 110);
     font-weight: bold;
     padding: 10px 15px;
-    box-shadow: 0px 2px 4px white;
+    box-shadow: 0px 2px 4px rgb(204, 245, 110);
+}
+
+.message__sent__success {
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.message__sent__success a {
+    color: white;
+    margin-top: 20px;
+    text-transform: capitalize;
 }
 
 @media screen and (min-width: 768px) {
@@ -94,7 +114,7 @@
     }
 
     .message__modal__close:hover {
-        background-color: white;
+        background-color: rgb(99, 96, 96);
     }
 
     .message__modal__send button {
@@ -103,5 +123,10 @@
 
     .message__modal__send button:hover {
         background-color: rgb(78, 75, 75);
+    }
+
+    .message__sent__success {
+        font-weight: bold;
+        font-size: 1.2rem;
     }
 }

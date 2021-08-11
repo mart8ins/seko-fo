@@ -4,7 +4,6 @@ import { MessageContext } from "../../../../../context/message-context";
 
 // 
 const AboutUser = ({ exploredUser, isConnected, isRequestRecieved, isRequestSent, acceptRequest, sendRequest }) => {
-    console.log(exploredUser)
     const { messageModalContext, setMessageModalContext } = useContext(MessageContext);
 
     const openMessageModal = () => {
