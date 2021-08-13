@@ -1,46 +1,79 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./messageBox.css";
 import { v4 as uuidv4 } from 'uuid';
+// COMPONENTS
 import MessageFeed from "./MessageFeed";
 import MessageSend from "./MessageSend";
+// HOOKS
+import useConnectionStatus from "../../../hooks/useConnectionStatus";
+// CONTEXT
+import { AuthContext } from "../../../context/auth-context";
+// FETCH
+import { setAllMessagesAsRead } from "../../../fetch/users/users";
 
 
 
 function MessageBox({ userMessages }) {
+    const { authData } = useContext(AuthContext);
+    const [messages, setMessages] = useState(userMessages.messages);
+    const [isAllMessagesRead, setIsAllMessagesRead] = useState({
+        status: true,
+        count: 0
+    })
+
     // state for user message feed/conversation
     const [showFeed, setShowFeed] = useState(false);
 
+    // details for explored user for message box
+    const userId = userMessages.user.userId;
+    const firstName = userMessages.user.firstName;
+    const lastName = userMessages.user.lastName;
     const photo = userMessages.user.photo;
-    const userName = userMessages.user.name;
-    const isConnected = userMessages.user.isConnected;
-    const messages = userMessages.messages;
 
+    // connected status
+    const { isConnected } = useConnectionStatus(userId, authData.userId, authData.token);
 
     /* loop throug messages to check if there is unread recieved messages */
     // set status of unread messages
-    const isAllMessagesRead = {
-        status: false,
-        count: 0
-    };
-    for (let msg in messages) {
-        if (messages[msg].isRead) {
-            isAllMessagesRead.status = true;
-            isAllMessagesRead.count = 0;
+    useEffect(() => {
+        let s = true;
+        let c = 0;
+        for (let msg in messages) {
+            if (messages[msg].isRead) {
+                s = true;
+                c = 0;
+            }
+            if (!messages[msg].isRead && messages[msg].type === "recieved") {
+                s = false;
+                c += 1;
+            }
         }
-        if (!messages[msg].isRead && messages[msg].type === "recieved") {
-            isAllMessagesRead.status = false;
-            isAllMessagesRead.count = isAllMessagesRead.count + 1;
-        }
-    }
+        setIsAllMessagesRead({
+            status: s,
+            count: c
+        })
+    }, [messages])
 
     const renderMessages = (msg) => {
         return <MessageFeed key={uuidv4()} messages={msg} />
     }
 
+    // to open / close message box with user, also update unreade message status and count
     const showMessageFeed = () => {
         !showFeed ? setShowFeed(true) : setShowFeed(false);
+        if (!isAllMessagesRead.status && !showFeed) {
+            messagesAreRead();
+            setIsAllMessagesRead({
+                status: true,
+                count: 0
+            })
+        }
+    }
 
-        /* NEED TO INTERACT TO DB TO SET ALL UNREAD MESSAGES AS READED IF THEY ARE  */
+    // update all messages as read after message box is once opend
+    const messagesAreRead = async () => {
+        const res = await setAllMessagesAsRead(authData.token, userId);
+        setMessages(res.data.updatedMessages);
     }
 
 
@@ -53,7 +86,7 @@ function MessageBox({ userMessages }) {
                     <div className="message__box__connected__status not__connected">Connected</div>
                 }
                 <img src={photo} alt="user" />
-                <div className="message__box__name">{userName}</div>
+                <div className="message__box__name">{firstName} {lastName}</div>
             </div>
             <div className="message__box__right">
                 <div>
@@ -66,7 +99,7 @@ function MessageBox({ userMessages }) {
         </div>
         {showFeed ? <div className="message__feed">
             {messages.map(renderMessages)}
-            <MessageSend />
+            <MessageSend userId={userId} />
         </div>
             :
             null}

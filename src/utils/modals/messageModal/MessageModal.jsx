@@ -7,7 +7,6 @@ import "./messageModal.css";
 import { MessageContext } from "../../../context/message-context";
 import { AuthContext } from "../../../context/auth-context";
 // HOOKS
-import useConnectionStatus from "../../../hooks/useConnectionStatus";
 import { sendMessageToUser } from "../../../fetch/users/users";
 
 const MessageModal = ({ userId, firstName, lastName }) => {
@@ -18,21 +17,17 @@ const MessageModal = ({ userId, firstName, lastName }) => {
     const [messageText, setMessageText] = useState("");
 
     // CREATING MESSAGE OBJECT WITH MESSAGE AND USER DATA
-    const { isConnected } = useConnectionStatus(userId, authData.userId, authData.token);
-
     const messageObj = {
         message: {
             id: uuidv4(),
             text: messageText,
-            date: Date.now(),
-            type: "sent",
-            isRead: false
+            date: new Date().getTime(),
+            type: "sent"
         },
         user: {
             userId: userId,
             firstName,
-            lastName,
-            isConnected
+            lastName
         }
     }
 
@@ -43,7 +38,6 @@ const MessageModal = ({ userId, firstName, lastName }) => {
     }
     const sendMessage = async () => {
         const res = await sendMessageToUser(authData.token, messageObj);
-        console.log(res.data)
         setMessageText("");
         setMessageSentSuccess(true);
     }
