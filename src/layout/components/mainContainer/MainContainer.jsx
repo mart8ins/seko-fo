@@ -12,16 +12,16 @@ import "./mainContainer.css";
 
 const MainContainer = () => {
     const { authData: { isLoggedIn } } = useContext(AuthContext);
-    const { messageModalContext } = useContext(MessageContext);
+    const { messageData } = useContext(MessageContext);
 
 
     return (<div>
         {
-            messageModalContext.show ?
+            messageData.show ?
                 <MessageModal
-                    userId={messageModalContext.userId}
-                    firstName={messageModalContext.firstName}
-                    lastName={messageModalContext.lastName}
+                    userId={messageData.userId}
+                    firstName={messageData.firstName}
+                    lastName={messageData.lastName}
                 />
                 :
                 null

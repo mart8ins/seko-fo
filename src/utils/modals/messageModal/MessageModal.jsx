@@ -1,53 +1,24 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import ReactDOM from "react-dom";
-import { v4 as uuidv4 } from 'uuid';
 import "./messageModal.css";
-// CONTEXT
-import { MessageContext } from "../../../context/message-context";
-import { AuthContext } from "../../../context/auth-context";
 // HOOKS
-import { sendMessageToUser } from "../../../fetch/users/users";
+import useSendMessage from "../../../hooks/useSendMessage";
 
 const MessageModal = ({ userId, firstName, lastName }) => {
-    const [messageSentSuccess, setMessageSentSuccess] = useState(false);
-    const { authData } = useContext(AuthContext);
-    const { messageModalContext, setMessageModalContext } = useContext(MessageContext);
-
-    const [messageText, setMessageText] = useState("");
-
-    // CREATING MESSAGE OBJECT WITH MESSAGE AND USER DATA
-    const messageObj = {
-        message: {
-            id: uuidv4(),
-            text: messageText,
-            date: new Date().getTime(),
-            type: "sent"
-        },
-        user: {
-            userId: userId,
-            firstName,
-            lastName
-        }
-    }
-
+    const { sendMessage, setMessageText, messageData, setMessageData, messageSentSuccess } = useSendMessage(userId, firstName, lastName);
 
     // HANDLE MESSAGE SENDING
     const handleChange = (e) => {
         setMessageText(e.target.value);
     }
-    const sendMessage = async () => {
-        const res = await sendMessageToUser(authData.token, messageObj);
-        setMessageText("");
-        setMessageSentSuccess(true);
-    }
+
     const hideMessageModal = () => {
-        setMessageModalContext({
-            ...messageModalContext,
+        setMessageData({
+            ...messageData,
             show: false
         })
     }
-
     const content = <div>
         <div className="message__modal__overlay" onClick={hideMessageModal}></div>
         <div className="message__modal">

@@ -13,7 +13,7 @@ const ConnectionCard = ({ user, sent, recieved }) => {
    to show Request sent or Accept request */
 
     // message context to open message modal
-    const { messageModalContext, setMessageModalContext } = useContext(MessageContext);
+    const { messageData, setMessageData } = useContext(MessageContext);
 
 
     // logged users data
@@ -34,11 +34,11 @@ const ConnectionCard = ({ user, sent, recieved }) => {
     }
 
     const openMessageModal = () => {
-        setMessageModalContext({
+        setMessageData({
             userId: user.userId || user._id,
             firstName: user.firstName,
             lastName: user.lastName,
-            show: !messageModalContext.show
+            show: !messageData.show
         })
     }
 

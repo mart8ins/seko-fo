@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const MessageContext = createContext();
 
 const MessageContextProvider = ({children}) => {
-    const [messageModalContext, setMessageModalContext] = useState({
+    const [messageData, setMessageData] = useState({
         show: false,
         firstName: undefined,
         lastName: undefined,
@@ -11,7 +11,7 @@ const MessageContextProvider = ({children}) => {
     });
 
 
-    return <MessageContext.Provider value={{messageModalContext, setMessageModalContext}}>
+    return <MessageContext.Provider value={{messageData, setMessageData}}>
         {children}
     </MessageContext.Provider>
 
