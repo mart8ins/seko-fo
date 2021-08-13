@@ -2,28 +2,19 @@ import React, { useState, useEffect, useContext } from "react";
 import MessageBox from "./msg_feed/MessageBox";
 import "./messages.css";
 import { v4 as uuidv4 } from 'uuid';
-import { getAllMessages } from "../../fetch/users/users";
-// import messages from "../seed";
-import { AuthContext } from "../../context/auth-context";
+import { MessageContext } from "../../context/message-context";
 
 
 function Messages() {
-    const { authData } = useContext(AuthContext);
-    const [messages, setMessages] = useState([]);
+    // all conversations with users
+    const { messages } = useContext(MessageContext);
 
-    useEffect(() => {
-        fetchMessages();
-    }, [authData.token])
-
-    const fetchMessages = async () => {
-        const res = await getAllMessages(authData.token);
-        setMessages(res.data.messages);
-    }
-
+    // every rendered MessageBox is unique conversation with user(unique)
     const renderMessageBox = (userMessages) => {
         return <MessageBox key={uuidv4()} userMessages={userMessages} />
     }
 
+    // is there is no conversations
     const noMsg = <div className="no__messages">
         Currently you dont have any messages to show...
     </div>;

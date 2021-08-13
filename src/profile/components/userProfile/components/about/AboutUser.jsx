@@ -4,14 +4,14 @@ import { MessageContext } from "../../../../../context/message-context";
 
 // 
 const AboutUser = ({ exploredUser, isConnected, isRequestRecieved, isRequestSent, acceptRequest, sendRequest }) => {
-    const { messageModalContext, setMessageModalContext } = useContext(MessageContext);
+    const { messageData, setMessageData } = useContext(MessageContext);
 
     const openMessageModal = () => {
-        setMessageModalContext({
+        setMessageData({
             userId: exploredUser._id,
             firstName: exploredUser.firstName,
             lastName: exploredUser.lastName,
-            show: !messageModalContext.show
+            show: !messageData.show
         })
     }
 

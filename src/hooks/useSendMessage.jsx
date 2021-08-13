@@ -8,7 +8,7 @@ const useSendMessage = (userId, firstName, lastName) => {
     const { authData } = useContext(AuthContext);
     const [messageSentSuccess, setMessageSentSuccess] = useState(false);
     const [messageText, setMessageText] = useState("");
-    const { messageData, setMessageData } = useContext(MessageContext);
+    const { messageData, setMessageData, messages, setMessages } = useContext(MessageContext);
 
     // CREATING MESSAGE OBJECT WITH MESSAGE AND USER DATA
     const messageObj = {
@@ -37,7 +37,9 @@ const useSendMessage = (userId, firstName, lastName) => {
         setMessageText,
         messageData,
         setMessageData,
-        messageSentSuccess
+        messageSentSuccess,
+        messages,
+        setMessages
     }
 }
 

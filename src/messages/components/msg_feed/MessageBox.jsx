@@ -8,21 +8,30 @@ import MessageSend from "./MessageSend";
 import useConnectionStatus from "../../../hooks/useConnectionStatus";
 // CONTEXT
 import { AuthContext } from "../../../context/auth-context";
+import { MessageContext } from "../../../context/message-context";
 // FETCH
-import { setAllMessagesAsRead } from "../../../fetch/users/users";
+import { setAllMessagesAsRead, getAllMessages } from "../../../fetch/users/users";
 
 
 
 function MessageBox({ userMessages }) {
+    // userMessages is object {user: {}, messages: []}
+
     const { authData } = useContext(AuthContext);
-    const [messages, setMessages] = useState(userMessages.messages);
+
+    const { messages, setMessages } = useContext(MessageContext);
+
+    // state for user message feed/conversation
+    const [showFeed, setShowFeed] = useState(false);
+
+    // messages is array with messages/conversation with unique user
+    const [conversation, setConversation] = useState(userMessages.messages);
+
+    // state for conversation unread messages and their count
     const [isAllMessagesRead, setIsAllMessagesRead] = useState({
         status: true,
         count: 0
     })
-
-    // state for user message feed/conversation
-    const [showFeed, setShowFeed] = useState(false);
 
     // details for explored user for message box
     const userId = userMessages.user.userId;
@@ -38,12 +47,12 @@ function MessageBox({ userMessages }) {
     useEffect(() => {
         let s = true;
         let c = 0;
-        for (let msg in messages) {
-            if (messages[msg].isRead) {
+        for (let msg in conversation) {
+            if (conversation[msg].isRead && conversation[msg].type === "recieved") {
                 s = true;
                 c = 0;
             }
-            if (!messages[msg].isRead && messages[msg].type === "recieved") {
+            if (!conversation[msg].isRead && conversation[msg].type === "recieved") {
                 s = false;
                 c += 1;
             }
@@ -52,7 +61,7 @@ function MessageBox({ userMessages }) {
             status: s,
             count: c
         })
-    }, [messages])
+    }, [])
 
     const renderMessages = (msg) => {
         return <MessageFeed key={uuidv4()} messages={msg} />
@@ -60,20 +69,24 @@ function MessageBox({ userMessages }) {
 
     // to open / close message box with user, also update unreade message status and count
     const showMessageFeed = () => {
-        !showFeed ? setShowFeed(true) : setShowFeed(false);
+        setShowFeed(!showFeed);
         if (!isAllMessagesRead.status && !showFeed) {
             messagesAreRead();
             setIsAllMessagesRead({
                 status: true,
                 count: 0
-            })
+            });
         }
     }
 
     // update all messages as read after message box is once opend
     const messagesAreRead = async () => {
         const res = await setAllMessagesAsRead(authData.token, userId);
-        setMessages(res.data.updatedMessages);
+        const res1 = await getAllMessages(authData.token);
+        console.log(res1.data, "jeee")
+        console.log(res.data, "ble")
+        setConversation(res.data.updatedMessages);
+        setMessages(res1.data.messages)// update context
     }
 
 
@@ -98,8 +111,8 @@ function MessageBox({ userMessages }) {
             </div>
         </div>
         {showFeed ? <div className="message__feed">
-            {messages.map(renderMessages)}
-            <MessageSend userId={userId} />
+            {conversation.map(renderMessages)}
+            <MessageSend userId={userId} firstName={firstName} lastName={lastName} />
         </div>
             :
             null}
