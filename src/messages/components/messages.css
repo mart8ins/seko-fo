@@ -1,10 +1,10 @@
-.messages_container {
+.all__conversations__container {
     max-width: 95%;
-    padding: 5px;
+    padding: 15px;
     margin: 0 auto;
 }
 
-.no__messages {
+.no__conversations {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     text-align: center;
@@ -17,11 +17,11 @@
 
 
 @media screen and (min-width: 768px) {
-    .messages_container {
+    .all__conversations__container {
         max-width: 70%;
     }
 
-    .no__messages {
+    .no__conversations {
         font-size: 2.1rem;
         max-width: 70%;
     }

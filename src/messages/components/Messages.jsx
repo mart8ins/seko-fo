@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import MessageBox from "./msg_feed/MessageBox";
 import "./messages.css";
 import { v4 as uuidv4 } from 'uuid';
@@ -7,21 +7,23 @@ import { MessageContext } from "../../context/message-context";
 
 function Messages() {
     // all conversations with users
-    const { messages } = useContext(MessageContext);
+    const { conversations } = useContext(MessageContext);
 
     // every rendered MessageBox is unique conversation with user(unique)
+    // user with whom conversation exists
     const renderMessageBox = (userMessages) => {
-        return <MessageBox key={uuidv4()} userMessages={userMessages} />
+        // to messages box is passed explored user messages and user data with logged user
+        return <MessageBox key={uuidv4()} user={userMessages.user} messages={userMessages.messages} />
     }
 
-    // is there is no conversations
-    const noMsg = <div className="no__messages">
-        Currently you dont have any messages to show...
+    // if there is no conversations
+    const noMsg = <div className="no__conversations">
+        Currently you dont have any conversations to show...
     </div>;
 
     return <div>
-        <div className="messages_container">
-            {!messages.length ? noMsg : messages.map(renderMessageBox)}
+        <div className="all__conversations__container">
+            {!conversations.length ? noMsg : conversations.map(renderMessageBox)}
         </div>
 
     </div>

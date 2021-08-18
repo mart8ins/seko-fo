@@ -70,13 +70,24 @@ const sendMessageToUser = async(token, messageBody) => {
     return res;
 }
 
-const getAllMessages = async(token) => {
+const getAllConversations = async(token) => {
     const config = {
         headers: {
             Authorization: 'Bearer ' + token 
           }
     }
     const url = `${baseUrlUsers}messages`;
+    const res = await axios.get(url, config);
+    return res;
+}
+
+const getMessageFeed = async(token, userId) => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + token 
+          }
+    }
+    const url = `${baseUrlUsers}messages/feed?userId=${userId}`;
     const res = await axios.get(url, config);
     return res;
 }
@@ -99,6 +110,7 @@ export {
     requestConnection,
     acceptConnectionRequest,
     sendMessageToUser,
-    getAllMessages,
-    setAllMessagesAsRead
+    getAllConversations,
+    setAllMessagesAsRead,
+    getMessageFeed
 };

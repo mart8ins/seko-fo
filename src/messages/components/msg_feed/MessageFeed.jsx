@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { MessageContext } from "../../../context/message-context";
+import React from "react";
 import "./messageFeed.css";
 
 

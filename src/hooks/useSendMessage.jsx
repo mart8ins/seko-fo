@@ -6,9 +6,11 @@ import { sendMessageToUser } from "../fetch/users/users";
 
 const useSendMessage = (userId, firstName, lastName) => {
     const { authData } = useContext(AuthContext);
+    const { messageData, setMessageData, conversations, setConversations } = useContext(MessageContext);
+
     const [messageSentSuccess, setMessageSentSuccess] = useState(false);
     const [messageText, setMessageText] = useState("");
-    const { messageData, setMessageData, messages, setMessages } = useContext(MessageContext);
+
 
     // CREATING MESSAGE OBJECT WITH MESSAGE AND USER DATA
     const messageObj = {
@@ -26,7 +28,7 @@ const useSendMessage = (userId, firstName, lastName) => {
     }
 
     const sendMessage = async () => {
-        const res = await sendMessageToUser(authData.token, messageObj);
+        await sendMessageToUser(authData.token, messageObj);
         setMessageText("");
         setMessageSentSuccess(true);
     }
@@ -38,8 +40,7 @@ const useSendMessage = (userId, firstName, lastName) => {
         messageData,
         setMessageData,
         messageSentSuccess,
-        messages,
-        setMessages
+        conversations, setConversations
     }
 }
 
