@@ -5,7 +5,7 @@
 
 .message__feed__left,
 .message__feed__right {
-    font-size: 3.2vw;
+    font-size: 0.6rem;
     padding: 1px 5px;
     border-radius: 40px;
     display: flex;
@@ -23,6 +23,7 @@
 
 .message__feed__left p:nth-child(1) {
     background-color: rgb(112, 108, 102);
+    width: max-content;
 }
 
 .message__feed__right p:nth-child(1) {
@@ -51,12 +52,12 @@
 
     .message__feed__container {
         margin: 25px auto;
-        width: 65%;
+        width: 42%;
     }
 
     .message__feed__left,
     .message__feed__right {
-        font-size: 0.9vw;
+        font-size: 0.8rem;
     }
 
     .message__feed__left p,

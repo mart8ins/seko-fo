@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { AuthContext } from "../context/auth-context";
 import { MessageContext } from "../context/message-context";
@@ -8,7 +8,8 @@ const useSendMessage = (userId, firstName, lastName) => {
     const { authData } = useContext(AuthContext);
     const { messageData, setMessageData, conversations, setConversations } = useContext(MessageContext);
 
-    const [messageSentSuccess, setMessageSentSuccess] = useState(false);
+    const [messageSentSuccess, setMessageSentSuccess] = useState(false); // for MessageModal
+
     const [messageText, setMessageText] = useState("");
 
 
@@ -37,6 +38,8 @@ const useSendMessage = (userId, firstName, lastName) => {
     return {
         sendMessage,
         setMessageText,
+        messageObj,
+        messageText,
         messageData,
         setMessageData,
         messageSentSuccess,

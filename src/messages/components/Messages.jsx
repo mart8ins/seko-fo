@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import MessageBox from "./msg_feed/MessageBox";
+import MessageBox from "./message_feed/MessageBox";
 import "./messages.css";
 import { v4 as uuidv4 } from 'uuid';
 import { MessageContext } from "../../context/message-context";

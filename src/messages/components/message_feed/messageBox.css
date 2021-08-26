@@ -94,12 +94,13 @@
     .message__box__photo__name {
         flex-direction: row;
         width: 70%;
-        justify-content: space-evenly;
+        justify-content: flex-start;
     }
 
     .message__box__name,
     .message__box__connected__status {
         font-size: 1.7vw;
+        margin: 15px;
     }
 
     .no__new__messages,

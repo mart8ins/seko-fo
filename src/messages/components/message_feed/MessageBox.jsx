@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./messageBox.css";
-import { v4 as uuidv4 } from 'uuid';
 // COMPONENTS
 import MessageFeed from "./MessageFeed";
 import MessageSend from "./MessageSend";
@@ -81,9 +80,21 @@ function MessageBox({ user, messages }) {
         fetchMessageFeed();
     }
 
-    const renderMessageFeed = (msg) => {
-        return <MessageFeed key={uuidv4()} messages={msg} />
+
+    const [newM, setNewM] = useState({})
+
+    const handleLiveMessage = (liveMessage) => {
+        const newM = liveMessage;
+        newM.message.isRead = true;
+
+        setNewM(newM)
     }
+
+    useEffect(() => {
+        setMessageFeed([...messageFeed, newM])
+    }, [newM])
+
+
 
 
     return <div>
@@ -107,8 +118,8 @@ function MessageBox({ user, messages }) {
             </div>
         </div>
         {showFeed ? <div className="message__feed">
-            {messageFeed.map(renderMessageFeed)}
-            <MessageSend userId={user.userId} firstName={user.firstName} lastName={user.lastName} />
+            <MessageFeed messages={messageFeed} />
+            <MessageSend userId={user.userId} firstName={user.firstName} lastName={user.lastName} handleLiveMessage={handleLiveMessage} />
         </div>
             :
             null}

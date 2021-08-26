@@ -29,8 +29,6 @@ const MessageContextProvider = ({children}) => {
         userId: undefined
     });
 
-    console.log(conversations, "konversi")
-
     return <MessageContext.Provider value={{
         messageData, setMessageData, 
         conversations, setConversations}}>
