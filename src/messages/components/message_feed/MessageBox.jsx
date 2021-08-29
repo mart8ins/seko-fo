@@ -11,33 +11,37 @@ import { AuthContext } from "../../../context/auth-context";
 import { setAllMessagesAsRead, getMessageFeed } from "../../../fetch/users/users";
 
 
-
-function MessageBox({ user, messages }) {
+function MessageBox({ user }) {
     const { authData } = useContext(AuthContext);
 
-    // connected status
+    // explored users connected status
     const { isConnected } = useConnectionStatus(user.userId, authData.userId, authData.token);
 
-    // state for user message feed/conversation window/box
+    // state for showing user message feed/conversation window/box
     const [showFeed, setShowFeed] = useState(false);
-
-    // all message feed
-    const [messageFeed, setMessageFeed] = useState([]);
-
-    useEffect(() => {
-        fetchMessageFeed();
-    }, [messages])
-
-    const fetchMessageFeed = async () => {
-        const res = await getMessageFeed(authData.token, user.userId);
-        setMessageFeed(res.data.messages);
-    }
 
     // state for conversation unread messages and their count
     const [isAllMessagesRead, setIsAllMessagesRead] = useState({
         status: true,
         count: 0
-    })
+    });
+
+    // all message feed
+    const [messageFeed, setMessageFeed] = useState([]);
+
+    /*
+        MOST OF THIS LOGIC BELOW IS NOT TO DISPLAY MESSAGES IN FEED BUT SHOW UNREAD MESSAGE COUNT/STATUS 
+        AND AFTER OPENING MESSAGE BOX FEED SET ALL MESSAGES AS READ AND UPDATE UI PERMANENTLY
+    */
+
+    useEffect(() => {
+        fetchMessageFeed();
+    }, [user])
+
+    const fetchMessageFeed = async () => {
+        const res = await getMessageFeed(authData.token, user.userId);
+        setMessageFeed(res.data.messages);
+    }
 
     /* loop throug messages to check if there is unread recieved messages */
     // set status of unread messages and count
@@ -70,7 +74,6 @@ function MessageBox({ user, messages }) {
                 status: true,
                 count: 0
             });
-
         }
     }
 
@@ -79,23 +82,6 @@ function MessageBox({ user, messages }) {
         await setAllMessagesAsRead(authData.token, user.userId);
         fetchMessageFeed();
     }
-
-
-    const [newM, setNewM] = useState({})
-
-    const handleLiveMessage = (liveMessage) => {
-        const newM = liveMessage;
-        newM.message.isRead = true;
-
-        setNewM(newM)
-    }
-
-    useEffect(() => {
-        setMessageFeed([...messageFeed, newM])
-    }, [newM])
-
-
-
 
     return <div>
         <div className="message__box" onClick={showMessageFeed}>
@@ -118,8 +104,8 @@ function MessageBox({ user, messages }) {
             </div>
         </div>
         {showFeed ? <div className="message__feed">
-            <MessageFeed messages={messageFeed} />
-            <MessageSend userId={user.userId} firstName={user.firstName} lastName={user.lastName} handleLiveMessage={handleLiveMessage} />
+            <MessageFeed user={user} />
+            <MessageSend userId={user.userId} firstName={user.firstName} lastName={user.lastName} />
         </div>
             :
             null}

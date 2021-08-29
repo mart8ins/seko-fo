@@ -6,14 +6,13 @@ import { MessageContext } from "../../context/message-context";
 
 
 function Messages() {
-    // all conversations with users
+    // conversations with users [{}]
     const { conversations } = useContext(MessageContext);
 
-    // every rendered MessageBox is unique conversation with user(unique)
-    // user with whom conversation exists
+    // every rendered MessageBox is conversation with unique user
     const renderMessageBox = (userMessages) => {
-        // to messages box is passed explored user messages and user data with logged user
-        return <MessageBox key={uuidv4()} user={userMessages.user} messages={userMessages.messages} />
+        // user: {id, firstName, lastName, photo}]
+        return <MessageBox key={uuidv4()} user={userMessages.user} />
     }
 
     // if there is no conversations

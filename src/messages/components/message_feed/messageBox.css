@@ -10,6 +10,10 @@
     box-shadow: 2px 2px 5px black;
 }
 
+.message__box:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
 .message__box img {
     width: 35px;
     height: 35px;

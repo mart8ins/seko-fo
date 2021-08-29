@@ -38,7 +38,6 @@ const useSendMessage = (userId, firstName, lastName) => {
     return {
         sendMessage,
         setMessageText,
-        messageObj,
         messageText,
         messageData,
         setMessageData,
