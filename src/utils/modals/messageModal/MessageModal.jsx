@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ReactDOM from "react-dom";
 import "./messageModal.css";
@@ -6,11 +6,12 @@ import "./messageModal.css";
 import useSendMessage from "../../../hooks/useSendMessage";
 
 const MessageModal = ({ userId, firstName, lastName }) => {
-    const { sendMessage, setMessageText, messageData, setMessageData, messageSentSuccess } = useSendMessage(userId, firstName, lastName);
+    const [text, setText] = useState("");
+    const { sendMessage, messageData, setMessageData, messageSentSuccess } = useSendMessage(userId, firstName, lastName);
 
     // HANDLE MESSAGE SENDING
     const handleChange = (e) => {
-        setMessageText(e.target.value);
+        setText(e.target.value);
     }
 
     const hideMessageModal = () => {
@@ -18,6 +19,10 @@ const MessageModal = ({ userId, firstName, lastName }) => {
             ...messageData,
             show: false
         })
+    }
+
+    const send = () => {
+        sendMessage(text, false);
     }
     const content = <div>
         <div className="message__modal__overlay" onClick={hideMessageModal}></div>
@@ -28,7 +33,7 @@ const MessageModal = ({ userId, firstName, lastName }) => {
             {!messageSentSuccess ?
                 <div className="message__modal__send">
                     <textarea onChange={handleChange} name="message"></textarea>
-                    <button onClick={sendMessage}>Send</button>
+                    <button onClick={send}>Send</button>
                 </div>
                 :
                 <div className="message__sent__success">

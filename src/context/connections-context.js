@@ -14,6 +14,9 @@ const ConnectionsContextProvider = ({children})=> {
     const [requestRecieved, setRequestRecieved] = useState([]);
     const [requestSent, setRequestSent] = useState([]);
 
+    // ALL USER ON MOMENT WHO IS ONLINE
+    const [usersOnline, setUsersOnline] = useState([]);
+
     // fetch all users which is not connected and without logged user
     const fetchNotConnectedUsers = async () => {
         const res = await getAllNotConnectedUsers(token);
@@ -42,7 +45,8 @@ const ConnectionsContextProvider = ({children})=> {
             explore, setExplore,
             connectedWith, setConnectedWith,
             requestRecieved, setRequestRecieved,
-            requestSent, setRequestSent
+            requestSent, setRequestSent,
+            usersOnline, setUsersOnline
         }}>
         {children}
     </ConnectionsContext.Provider>

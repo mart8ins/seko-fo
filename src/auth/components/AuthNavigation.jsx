@@ -3,11 +3,17 @@ import { NavLink, Link } from "react-router-dom";
 import "./authNavigation.css";
 import AuthModal from "../../utils/modals/authModal/AuthModal";
 import { AuthContext } from "../../context/auth-context";
+import { ConnectionsContext } from "../../context/connections-context";
+
+import socketClient from "socket.io-client";
+const ENDPOINT = "http://localhost:3002/";
+const socket = socketClient(ENDPOINT);
 
 
 function AuthNavigation() {
     // context for auth
     const { authData, setAuthData } = useContext(AuthContext);
+    const { setUsersOnline } = useContext(ConnectionsContext);
 
     // states for choosen option for authentification SIGNUP OR LOGIN
     const [wantsLogin, setWantsLogin] = useState(false);
@@ -30,6 +36,10 @@ function AuthNavigation() {
     }
 
     const logoutUser = () => {
+        socket.emit("USER IS OFFLINE", { userId: authData.userId }, (users) => {
+            setUsersOnline(users)
+        });
+        socket.emit("user left conversations", { userId: authData.userId });
         setAuthData({
             token: null,
             userId: null,
@@ -38,6 +48,7 @@ function AuthNavigation() {
             showAuthModal: false
         })
         localStorage.removeItem("authData");
+
     }
 
     return <div className="auth-container">

@@ -22,7 +22,6 @@ const AuthContextProvider = ({children}) => {
             localStorage.removeItem("authData");
         }
     }
-    
     return (
         <AuthContext.Provider value={{authData, setAuthData}}>
             {children}

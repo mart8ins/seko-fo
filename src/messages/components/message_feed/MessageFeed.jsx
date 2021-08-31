@@ -7,22 +7,12 @@ import socketClient from "socket.io-client";
 const ENDPOINT = "http://localhost:3002/";
 const socket = socketClient(ENDPOINT);
 
-function MessageFeed({ user }) {
+function MessageFeed({ user, readedMessages }) {
     // user = {userId, firstName, lastName, photo}
     const { authData } = useContext(AuthContext);
 
-    // SOCKET.IO IMPLEMENTATION
-
     // messages retrieved from BE with socket
     const [messages, setMessages] = useState([]);
-
-    // use socket to get all messages for user, emit event for current explored user
-    useEffect(() => {
-        socket.emit("user messages", { userId: authData.userId, exploredUserId: user.userId });
-        socket.on("user messages", (messages) => {
-            setMessages(messages)
-        })
-    });
 
     // RENDER MESSAGE FEED MESSAGES ACORDINGLY - RECIEVED / SENT
     const renderMessagesFeed = (msg) => {
