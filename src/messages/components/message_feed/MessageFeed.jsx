@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import "./messageFeed.css";
 import { v4 as uuidv4 } from 'uuid';
 import { AuthContext } from "../../../context/auth-context";
@@ -7,12 +7,9 @@ import socketClient from "socket.io-client";
 const ENDPOINT = "http://localhost:3002/";
 const socket = socketClient(ENDPOINT);
 
-function MessageFeed({ user, readedMessages }) {
-    // user = {userId, firstName, lastName, photo}
+function MessageFeed({ messages }) {
     const { authData } = useContext(AuthContext);
 
-    // messages retrieved from BE with socket
-    const [messages, setMessages] = useState([]);
 
     // RENDER MESSAGE FEED MESSAGES ACORDINGLY - RECIEVED / SENT
     const renderMessagesFeed = (msg) => {

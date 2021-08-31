@@ -7,15 +7,17 @@ import MessageSend from "./MessageSend";
 import useConnectionStatus from "../../../hooks/useConnectionStatus";
 // CONTEXT
 import { AuthContext } from "../../../context/auth-context";
+import { MessageContext } from "../../../context/message-context";
 // FETCH
 import { setAllMessagesAsRead } from "../../../fetch/users/users";
+
 
 import socketClient from "socket.io-client";
 const ENDPOINT = "http://localhost:3002/";
 const socket = socketClient(ENDPOINT);
 
 
-function MessageBox({ user }) {
+function MessageBox({ user, messages }) {
     const { authData } = useContext(AuthContext);
     // explored users connected status
     const { isConnected } = useConnectionStatus(user.userId, authData.userId, authData.token);
@@ -29,6 +31,24 @@ function MessageBox({ user }) {
         count: 0
     });
 
+    useEffect(() => {
+        let s = true;
+        let c = 0;
+        for (let msg in messages) {
+            if (messages[msg].isRead && messages[msg].type === "recieved") {
+                s = true;
+                c = 0;
+            }
+            if (!messages[msg].isRead && messages[msg].type === "recieved") {
+                s = false;
+                c += 1;
+            }
+        };
+        setIsRead({
+            status: s,
+            count: c
+        });
+    }, [messages])
 
     // to open / close message box with user, also update unreade message status and count
     const showMessageFeed = () => {
@@ -41,7 +61,6 @@ function MessageBox({ user }) {
             });
         }
     }
-
 
     // update all messages as read after message box is once opend
     const messagesAreRead = async () => {
@@ -70,7 +89,7 @@ function MessageBox({ user }) {
         </div>
 
         {showFeed ? <div className="message__feed">
-            <MessageFeed user={user} />
+            <MessageFeed user={user} messages={messages} />
             <MessageSend feedOpen={showFeed} userId={user.userId} firstName={user.firstName} lastName={user.lastName} />
         </div>
             :

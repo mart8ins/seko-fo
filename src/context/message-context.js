@@ -13,7 +13,7 @@ const MessageContextProvider = ({children}) => {
     // FETCH ALL USER CONVERSATIONS
     useEffect(() => {
         fetchConversations();
-    }, [authData.token]);
+    },[]);
 
     const fetchConversations = async () => {
         const res = await getAllConversations(authData.token);
@@ -31,7 +31,7 @@ const MessageContextProvider = ({children}) => {
 
     return <MessageContext.Provider value={{
         messageData, setMessageData, 
-        conversations, setConversations}}>
+        conversations, setConversations, fetchConversations}}>
         {children}
     </MessageContext.Provider>
 

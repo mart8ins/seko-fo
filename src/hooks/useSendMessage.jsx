@@ -6,7 +6,7 @@ import { sendMessageToUser } from "../fetch/users/users";
 
 const useSendMessage = (userId, firstName, lastName) => {
     const { authData } = useContext(AuthContext);
-    const { messageData, setMessageData, conversations, setConversations } = useContext(MessageContext);
+    const { messageData, setMessageData, conversations } = useContext(MessageContext);
 
     const [messageSentSuccess, setMessageSentSuccess] = useState(false); // for MessageModal
 
@@ -36,7 +36,7 @@ const useSendMessage = (userId, firstName, lastName) => {
         messageData,
         setMessageData,
         messageSentSuccess,
-        conversations, setConversations
+        conversations
     }
 }
 
