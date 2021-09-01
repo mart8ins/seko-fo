@@ -23,9 +23,7 @@ function MessageFeed({ user }) {
 
     useEffect(() => {
         socket.on("SEND MESSAGE", ({ socketId, messageData }) => {
-            console.log("kur ir dati iekš message feed?")
-            console.log(socketId, "socket id no bekenda iekš messageFeed")
-            console.log(messageData, "messageData no bekenda iekš messageFeed")
+
         })
     })
 

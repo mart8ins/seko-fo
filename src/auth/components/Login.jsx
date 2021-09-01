@@ -31,7 +31,8 @@ const Login = () => {
                 email: response.data.email,
                 isLoggedIn: true,
                 showAuthModal: false,
-                expiration: tokenExpirationDate
+                expiration: tokenExpirationDate,
+                fullName: response.data.fullName
             }
 
             localStorage.setItem("authData", JSON.stringify(objectToStore))

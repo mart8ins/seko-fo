@@ -7,6 +7,7 @@ const AuthContextProvider = ({children}) => {
     const authDataFromLocalStorage = JSON.parse(localStorage.getItem("authData")) || {
             token: null,
             userId: null,
+            fullName: null,
             email: null,
             isLoggedIn: false,
             showAuthModal: false,

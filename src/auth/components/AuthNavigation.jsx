@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import "./authNavigation.css";
 import AuthModal from "../../utils/modals/authModal/AuthModal";
@@ -12,6 +12,18 @@ function AuthNavigation() {
     // context for auth
     const { authData, setAuthData } = useContext(AuthContext);
     const { setUsersOnline } = useContext(ConnectionsContext);
+
+    const [date, setDate] = useState(new Date().toDateString());
+    const [time, setTime] = useState(new Date().toLocaleTimeString());
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setTime(new Date().toLocaleTimeString());
+        }, 1000)
+        return () => {
+            clearInterval(interval)
+        }
+    })
 
     // states for choosen option for authentification SIGNUP OR LOGIN
     const [wantsLogin, setWantsLogin] = useState(false);
@@ -56,6 +68,10 @@ function AuthNavigation() {
         </div>
             :
             <div className="logged-in">
+                <div className="user__data">
+                    <div className="current__time">{date} <span>{time}</span></div>
+                    <div className="user__name">Logged as <span>{authData.fullName}</span></div>
+                </div>
                 <NavLink onClick={logoutUser} exact to="/">Logout</NavLink>
             </div>
         }

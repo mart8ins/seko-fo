@@ -29,7 +29,6 @@ const MessageSend = ({ userId, firstName, lastName, feedOpen }) => {
     }
 
     const send = () => {
-        console.log("useri online", usersOnline)
         const exploredUserSocketId = usersOnline.find((user) => user.userId === userId);
         const socketId = exploredUserSocketId.socketId;
         sendMessage(text, feedOpen, socketId);

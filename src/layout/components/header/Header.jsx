@@ -7,7 +7,6 @@ import { AuthContext } from "../../../context/auth-context";
 
 function Header() {
     const { authData, setAuthData } = useContext(AuthContext);
-
     // to hide auth modal when clicking brand name in header
     const handleClick = () => {
         setAuthData({
@@ -17,7 +16,7 @@ function Header() {
     }
 
     return <div className="header-container">
-        <div onClick={handleClick} className="brand-container"><Link to="/">Seko</Link></div>
+        <div onClick={handleClick} className="brand-container"><Link to="/">PROGRESS</Link></div>
         <AuthNavigation />
     </div>
 }
