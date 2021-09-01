@@ -4,13 +4,16 @@ import { AuthContext } from "../context/auth-context";
 import { MessageContext } from "../context/message-context";
 import { sendMessageToUser } from "../fetch/users/users";
 
+import socket from "../socket/socket";
+
 const useSendMessage = (userId, firstName, lastName) => {
     const { authData } = useContext(AuthContext);
     const { messageData, setMessageData, conversations } = useContext(MessageContext);
 
     const [messageSentSuccess, setMessageSentSuccess] = useState(false); // for MessageModal
 
-    const sendMessage = async (text, feedOpen) => {
+    const sendMessage = async (text, feedOpen, socketId) => {
+
         // CREATING MESSAGE OBJECT WITH MESSAGE AND USER DATA
         const messageObj = {
             message: {
@@ -26,6 +29,7 @@ const useSendMessage = (userId, firstName, lastName) => {
                 lastName
             }
         }
+        socket.emit("SEND MESSAGE", { exploredUserSocket: socketId, messageData: messageObj });
         await sendMessageToUser(authData.token, messageObj);
         setMessageSentSuccess(true);
     }

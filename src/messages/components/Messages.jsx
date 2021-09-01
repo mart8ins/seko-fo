@@ -1,13 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import MessageBox from "./message_feed/MessageBox";
 import "./messages.css";
 import { v4 as uuidv4 } from 'uuid';
 import { MessageContext } from "../../context/message-context";
-import { useEffect } from "react/cjs/react.development";
-// import { AuthContext } from "../../context/auth-context";
 
 function Messages() {
-    // const { authData } = useContext(AuthContext);
     // conversations with users [{}]
     const { conversations, fetchConversations } = useContext(MessageContext);
 

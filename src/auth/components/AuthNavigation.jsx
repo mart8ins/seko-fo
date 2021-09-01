@@ -5,9 +5,7 @@ import AuthModal from "../../utils/modals/authModal/AuthModal";
 import { AuthContext } from "../../context/auth-context";
 import { ConnectionsContext } from "../../context/connections-context";
 
-import socketClient from "socket.io-client";
-const ENDPOINT = "http://localhost:3002/";
-const socket = socketClient(ENDPOINT);
+import socket from "../../socket/socket";
 
 
 function AuthNavigation() {
@@ -39,7 +37,6 @@ function AuthNavigation() {
         socket.emit("USER IS OFFLINE", { userId: authData.userId }, (users) => {
             setUsersOnline(users)
         });
-        socket.emit("user left conversations", { userId: authData.userId });
         setAuthData({
             token: null,
             userId: null,

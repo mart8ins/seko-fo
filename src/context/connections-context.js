@@ -31,7 +31,7 @@ const ConnectionsContextProvider = ({children})=> {
         setRequestSent(res.data.connections.requests.sent)
     }
 
-            useEffect(()=> {
+        useEffect(()=> {
                 fetchNotConnectedUsers();
                 fetchUserConnections();
         },[token]);

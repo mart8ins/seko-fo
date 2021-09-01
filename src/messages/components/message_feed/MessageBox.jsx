@@ -7,18 +7,12 @@ import MessageSend from "./MessageSend";
 import useConnectionStatus from "../../../hooks/useConnectionStatus";
 // CONTEXT
 import { AuthContext } from "../../../context/auth-context";
-import { MessageContext } from "../../../context/message-context";
 // FETCH
 import { setAllMessagesAsRead } from "../../../fetch/users/users";
 
 
-import socketClient from "socket.io-client";
-const ENDPOINT = "http://localhost:3002/";
-const socket = socketClient(ENDPOINT);
-
-
 function MessageBox({ user, messages }) {
-    const { authData } = useContext(AuthContext);
+    const { authData } = useContext(AuthContext);;
     // explored users connected status
     const { isConnected } = useConnectionStatus(user.userId, authData.userId, authData.token);
 

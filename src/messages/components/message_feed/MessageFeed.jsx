@@ -1,15 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./messageFeed.css";
 import { v4 as uuidv4 } from 'uuid';
 import { AuthContext } from "../../../context/auth-context";
+import { ConnectionsContext } from "../../../context/connections-context";
 
-import socketClient from "socket.io-client";
-const ENDPOINT = "http://localhost:3002/";
-const socket = socketClient(ENDPOINT);
+import socket from "../../../socket/socket";
 
-function MessageFeed({ messages }) {
+function MessageFeed({ user }) {
+    const [messages, setMessages] = useState([])
+    // get users who is online
     const { authData } = useContext(AuthContext);
+    const { usersOnline, setUsersOnline } = useContext(ConnectionsContext);
 
+
+    // GET MESSAGE FEED
+    useEffect(() => {
+        socket.emit("GET MESSAGES", { userId: authData.userId, exploredUserId: user.userId }, (messages) => {
+            setMessages(messages);
+        })
+    }, [user]);
+
+
+    useEffect(() => {
+        socket.on("SEND MESSAGE", ({ socketId, messageData }) => {
+            console.log("kur ir dati iekš message feed?")
+            console.log(socketId, "socket id no bekenda iekš messageFeed")
+            console.log(messageData, "messageData no bekenda iekš messageFeed")
+        })
+    })
 
     // RENDER MESSAGE FEED MESSAGES ACORDINGLY - RECIEVED / SENT
     const renderMessagesFeed = (msg) => {

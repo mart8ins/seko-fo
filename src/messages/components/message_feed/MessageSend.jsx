@@ -1,27 +1,38 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./messageSend.css";
 import useSendMessage from "../../../hooks/useSendMessage";
-import { AuthContext } from "../../../context/auth-context";
+import { ConnectionsContext } from "../../../context/connections-context";
 
-import socketClient from "socket.io-client";
-const ENDPOINT = "http://localhost:3002/";
-const socket = socketClient(ENDPOINT);
+import socket from "../../../socket/socket";
 
 
 const MessageSend = ({ userId, firstName, lastName, feedOpen }) => {
-    const { authData } = useContext(AuthContext);
+    // hook for sending message
+    const { sendMessage } = useSendMessage(userId, firstName, lastName);
+
+    const { usersOnline, setUsersOnline } = useContext(ConnectionsContext);
+
+    // message text state
     const [text, setText] = useState("");
 
-    const { sendMessage } = useSendMessage(userId, firstName, lastName);
+    // actual/latest logged users socket from backend before sending message
+    // const [sockets, setSockets] = useState([]);
+
+    useEffect(() => {
+        socket.emit("GET USERS ONLINE", (data) => {
+            setUsersOnline(data)
+        })
+    }, []);
 
     const handleChange = (e) => {
         setText(e.target.value);
     }
 
     const send = () => {
-        sendMessage(text, feedOpen);
-        socket.emit("user messages", { userId: authData.userId, exploredUserId: userId });
-        socket.emit("conversation status", { userId: authData.userId, exploredUserId: userId });
+        console.log("useri online", usersOnline)
+        const exploredUserSocketId = usersOnline.find((user) => user.userId === userId);
+        const socketId = exploredUserSocketId.socketId;
+        sendMessage(text, feedOpen, socketId);
         setText("");
     }
 
