@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 .sidebar {
     display: flex;
     flex-direction: row;
@@ -19,6 +23,21 @@
 
 .active {
     color: white;
+}
+
+.new__messages {
+    color: red;
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 4px;
+    border-radius: 50%;
+    position: relative;
+    top: -9px;
+    right: 17px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
