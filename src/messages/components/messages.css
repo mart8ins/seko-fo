@@ -1,28 +1,96 @@
-.all__conversations__container {
-    max-width: 95%;
-    padding: 15px;
+.main__container {
     margin: 0 auto;
-}
-
-.no__conversations {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    text-align: center;
-    margin: 100px auto;
-    font-size: 0.7rem;
-    border-radius: 5px;
-    max-width: 50%;
+    border: 1px solid red;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
 }
 
+.left__side__contacts {
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    margin-bottom: 10px;
+    height: 230px;
+}
+
+.contact {
+    /* display: inline-block; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+    border: 1px solid grey;
+    margin: 0 25px 10px;
+    min-width: 120px;
+    /* height: 100px; */
+}
+
+.contact p {
+    margin: 0;
+}
+
+.contact img {
+    width: 100px;
+    height: 100px;
+}
+
+.right__side__messages {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 90%;
+    height: 90%;
+    overflow: auto;
+    border: 1px solid green;
+    margin: 15px auto;
+}
+
+.see__messages {
+    height: 65%;
+    border: 1px solid blue;
+    overflow: auto;
+}
+
+.send__messages {
+    height: 35%;
+    border: 1px solid blue;
+}
 
 @media screen and (min-width: 768px) {
-    .all__conversations__container {
-        max-width: 70%;
+    .main__container {
+        margin-left: 20px;
+        flex-direction: row;
     }
 
-    .no__conversations {
-        font-size: 2.1rem;
-        max-width: 70%;
+    .left__side__contacts {
+        width: 20%;
+        flex-direction: column;
+        overflow-y: auto;
+        height: 100%;
+    }
+
+    .contact {
+        min-width: 75%;
+        height: 50px;
+        padding: 10px;
+        border: 1px solid grey;
+        margin: 5px auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /* margin-right: 25px; */
+    }
+
+    .contact img {
+        height: auto;
+    }
+
+    .right__side__messages {
+        padding: 40px;
+        width: 70%;
+        overflow: auto;
     }
 }

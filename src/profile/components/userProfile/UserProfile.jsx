@@ -4,7 +4,7 @@ import "./userProfile.css";
 // COMPONENTS
 import AboutUser from "./components/about/AboutUser";
 // FETCH 
-import { getUser } from "../../../fetch/users/users";
+import { getUser } from "../../../fetch/users/connections";
 // CONTEXT
 import { AuthContext } from "../../../context/auth-context";
 // HOOKS

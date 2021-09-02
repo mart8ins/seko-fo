@@ -1,33 +1,32 @@
 import React, { useContext, useEffect } from "react";
-import MessageBox from "./message_feed/MessageBox";
 import "./messages.css";
 import { v4 as uuidv4 } from 'uuid';
-import { MessageContext } from "../../context/message-context";
+import { ConnectionsContext } from "../../context/connections-context";
+
+
 
 function Messages() {
-    // conversations with users [{}]
-    const { conversations, fetchConversations } = useContext(MessageContext);
+    const { connectedWith } = useContext(ConnectionsContext);
 
-    useEffect(() => {
-        // calling because of unread messages status change to read, update ui
-        fetchConversations();
-    }, []);
-
-
-    // every rendered MessageBox is conversation with unique user
-    const renderMessageBox = (userMessages) => {
-        return <MessageBox key={uuidv4()} user={userMessages.user} messages={userMessages.messages} />
+    const renderConnectedContacts = (contact) => {
+        return <div className="contact">
+            <p>{contact.firstName} {contact.lastName}</p>
+            <img width="70px" src="https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" alt="" />
+        </div>
     }
 
-    const noConversations = <div className="no__conversations">
-        Currently you dont have any conversations to show...
-    </div>;
-
-    return <div>
-        <div className="all__conversations__container">
-            {!conversations.length ? noConversations : conversations.map(renderMessageBox)}
+    return <div className="main__container">
+        <div className="left__side__contacts">
+            {connectedWith.length && connectedWith.map(renderConnectedContacts)}
         </div>
-
+        <div className="right__side__messages">
+            <div className="see__messages">
+                messages
+            </div>
+            <div className="send__messages">
+                send message
+            </div>
+        </div>
     </div>
 
 }

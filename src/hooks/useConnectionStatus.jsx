@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getUsersConnections, getUser } from "../fetch/users/users";
+import { getUsersConnections, getUser } from "../fetch/users/connections";
 
 
 const useConnectionStatus = (exploredId, loggedId, token) => {

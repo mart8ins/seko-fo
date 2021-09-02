@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ConnectionsContext } from "../context/connections-context";
 import { AuthContext } from "../context/auth-context";
-import { requestConnection, acceptConnectionRequest } from "../fetch/users/users";
+import { requestConnection, acceptConnectionRequest } from "../fetch/users/connections";
 
 const useConnectPeople = (userId) => {
 

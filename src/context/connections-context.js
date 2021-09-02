@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import {getAllNotConnectedUsers,
-        getUsersConnections} from "../fetch/users/users";
+        getUsersConnections} from "../fetch/users/connections";
 import {AuthContext} from "./auth-context";
 
 

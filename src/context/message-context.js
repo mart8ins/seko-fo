@@ -1,5 +1,5 @@
 import { createContext, useState, useContext,useEffect } from "react";
-import { getAllConversations } from "../fetch/users/users";
+import { getAllConversations } from "../fetch/users/messages";
 import { AuthContext } from "./auth-context";
 
 export const MessageContext = createContext();
