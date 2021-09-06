@@ -4,8 +4,6 @@ import { AuthContext } from "../context/auth-context";
 import { MessageContext } from "../context/message-context";
 import { sendMessageToUser } from "../fetch/users/messages";
 
-import socket from "../socket/socket";
-
 const useSendMessage = (userId, firstName, lastName) => {
     const { authData } = useContext(AuthContext);
     const { messageData, setMessageData, conversations } = useContext(MessageContext);
@@ -29,7 +27,6 @@ const useSendMessage = (userId, firstName, lastName) => {
                 lastName
             }
         }
-        socket.emit("SEND MESSAGE", { exploredUserSocket: socketId, messageData: messageObj });
         await sendMessageToUser(authData.token, messageObj);
         setMessageSentSuccess(true);
     }

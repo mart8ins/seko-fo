@@ -1,13 +1,22 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./messages.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { v4 as uuidv4 } from 'uuid';
 import { ConnectionsContext } from "../../context/connections-context";
+import { AuthContext } from "../../context/auth-context";
+import socket from "../../socket/socket";
 
 
 
 function Messages() {
+    const { authData } = useContext(AuthContext);
+
+    const [room, setRoom] = useState(undefined);
+    // textarea message state
+    const [messageText, setMessageText] = useState("");
+
+    // conversation with user
+    const [messages, setMessages] = useState([]);
+
     // list of all conected users
     const { connectedWith } = useContext(ConnectionsContext);
 
@@ -24,12 +33,12 @@ function Messages() {
             return user.firstName.toLowerCase() === searchValue.toLowerCase() || user.lastName.toLowerCase() === searchValue.toLowerCase();
         })
         setFoundUsers(found);
-    }
+    };
 
     // set active user after clicking found users
     const chooseActiveUser = (contact) => {
         setActiveUser(contact);
-    }
+    };
 
     // for large display render all contacts
     const renderConnectedContacts = (contact) => {
@@ -37,56 +46,87 @@ function Messages() {
             <p>{contact.firstName} {contact.lastName}</p>
             <img src="https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" alt="" />
         </div>
-    }
+    };
+
+    // create socket connection with explored user / join room, room is convrsation id
+    useEffect(() => {
+        if (activeUser) {
+            socket.emit("ACTIVE USER", { loggedUser: authData.userId, exploredUser: activeUser.userId }, (conversation, room) => {
+                setMessages([...conversation]);
+                setRoom(room);
+            });
+        }
+    }, [activeUser]);
+
+    const messageTextHandler = (e) => {
+        setMessageText(e.target.value);
+    };
+
+    const sendMessage = (e) => {
+        e.preventDefault();
+        const newMsg = {
+            text: messageText,
+            sent: true
+        }
+        socket.emit("SEND MESSAGE", { message: newMsg, room: room });
+        setMessages([...messages, newMsg]);
+        setMessageText("");
+    };
+
+    useEffect(() => {
+        socket.on("RECIEVE MESSAGE", (message) => {
+            setMessages([...messages, { text: message.text, sent: false }]);
+        })
+    });
 
 
     return <div className="main__container">
+
         <div className="left__side__sm">
             <div className="search__contact">
                 <input onChange={searchInputHandler} type="text" placeholder="Search contact..." />
             </div>
-
-            <div className="contacts__container__sm">
-                {foundUsers.length && foundUsers.map(renderConnectedContacts) || connectedWith.length && connectedWith.map(renderConnectedContacts)}
-                {/* {
-                    activeUser ?
-                        <div className="contact">
-                            <p>{activeUser.firstName} {activeUser.lastName}</p>
-                            <img src="https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" alt="" />
-                        </div> :
-                        <div className="contact">
-                            <p>User</p>
-                            <div className="no__user__icon">
-                                <FontAwesomeIcon icon={faUser} />
-                            </div>
-
-                        </div>
-                } */}
-            </div>
+            {
+                connectedWith.length ?
+                    <div className="contacts__container__sm">
+                        {foundUsers.length && foundUsers.map(renderConnectedContacts) || connectedWith.length && connectedWith.map(renderConnectedContacts)}
+                    </div> :
+                    <div>
+                        No conected users to show
+                    </div>
+            }
         </div>
 
         <div className="left__side__lg">
             <div className="search__contact">
                 <input onChange={searchInputHandler} type="text" placeholder="Search contact..." />
             </div>
-
             <div className="contacts__container__lg">
-                {foundUsers.length && foundUsers.map(renderConnectedContacts) || connectedWith.length && connectedWith.map(renderConnectedContacts)}
+                {
+                    connectedWith.length ?
+                        <div className="contacts__container__lg">
+                            {foundUsers.length && foundUsers.map(renderConnectedContacts) || connectedWith.length && connectedWith.map(renderConnectedContacts)}
+                        </div> :
+                        <div>
+                            No conected users to show
+                        </div>
+                }
             </div>
         </div>
-
-
-
 
         {activeUser ?
             <div className="right__side">
                 <p className="contact__name">{activeUser && activeUser.firstName} {activeUser && activeUser.lastName}</p>
                 <div className="see__messages">
-                    messages
+                    {messages.map((msg) => {
+                        return <div className={msg.sent ? "sent" : "recieved"}>
+                            {msg.text}
+                        </div>
+                    })}
                 </div>
                 <div className="send__messages">
-                    <textarea placeholder="Send message..."></textarea>
-                    <button>Send</button>
+                    <textarea onChange={messageTextHandler} value={messageText} placeholder="Send message..."></textarea>
+                    <button onClick={sendMessage}>Send</button>
                 </div>
             </div>
             :

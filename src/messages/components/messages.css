@@ -40,8 +40,8 @@
 
 .contacts__container__sm {
     display: flex;
-    max-width: 180px;
-    padding: 20px;
+    max-width: 200px;
+    padding: 10px;
     overflow: auto;
 }
 
@@ -136,6 +136,26 @@
     border-radius: 3px;
     overflow: auto;
     flex: 65%;
+    display: flex;
+    flex-direction: column;
+}
+
+.see__messages .sent,
+.recieved {
+    border-radius: 15px;
+    padding: 8px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.see__messages .sent {
+    background-color: rgb(133, 57, 57);
+    border-bottom-right-radius: 0px;
+}
+
+.see__messages .recieved {
+    border-top-left-radius: 0px;
+    background-color: rgb(73, 107, 75);
 }
 
 .send__messages {
@@ -234,6 +254,26 @@
         margin: 0 auto;
         padding: 25px;
     }
+
+    .see__messages .sent,
+    .recieved {
+        padding: 12px;
+        width: auto;
+        text-align: justify;
+        max-width: 52%;
+    }
+
+    .see__messages .sent {
+        border-bottom-right-radius: 0px;
+        position: relative;
+        left: 44%;
+        text-align: right;
+    }
+
+    .see__messages .recieved {
+        border-top-left-radius: 0px;
+    }
+
 
     .send__messages {
         height: 25%;
