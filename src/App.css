@@ -31,6 +31,15 @@ rgba(0, 0, 0, 0.7);
 background for login, signup buttons
 background-color: rgb(124, 100, 100);
 */
+
+/* 
+Smuka poga ar hoveru
+hoover - background-color: rgb(100, 121, 53);
+background - background-color: rgba(0, 0, 0, 0.5);
+color: rgb(204, 245, 110);
+*/
+
+
 body {
     font-family: 'Lora', serif;
     position: relative;
