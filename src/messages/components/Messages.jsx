@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import "./messages.css";
 import { ConnectionsContext } from "../../context/connections-context";
 import { AuthContext } from "../../context/auth-context";
@@ -18,6 +18,9 @@ function Messages() {
 
     // conversation with user
     const [messages, setMessages] = useState([]);
+
+    // ref for auto scroll after new message
+    const messageContainerRef = useRef();
 
 
     // searched and found users (only full names)
@@ -82,6 +85,17 @@ function Messages() {
         })
     });
 
+    // SCROLL TO BOTTOM FUNCTION USING USEREF
+    const scrollToBottom = () => {
+        messageContainerRef.current?.scrollIntoView({ behavior: "smooth" });
+        console.log(messageContainerRef.current)
+    }
+
+    useEffect(() => {
+        scrollToBottom();
+        console.log(messageContainerRef.current)
+    }, [messages]);
+
 
     return <div className="main__container">
 
@@ -122,7 +136,7 @@ function Messages() {
                 <p className="contact__name">{activeUser.firstName} {activeUser.lastName}</p>
                 <div className="see__messages">
                     {messages.map((msg) => {
-                        return <div className={msg.sent ? "sent" : "recieved"}>
+                        return <div ref={messageContainerRef} className={msg.sent ? "sent" : "recieved"}>
                             {msg.text}
                         </div>
                     })}
