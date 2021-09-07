@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import "./messages.css";
-import { v4 as uuidv4 } from 'uuid';
 import { ConnectionsContext } from "../../context/connections-context";
 import { AuthContext } from "../../context/auth-context";
 import socket from "../../socket/socket";
@@ -9,6 +8,9 @@ import socket from "../../socket/socket";
 
 function Messages() {
     const { authData } = useContext(AuthContext);
+    // list of all conected users
+    const { connectedWith } = useContext(ConnectionsContext);
+
 
     const [room, setRoom] = useState(undefined);
     // textarea message state
@@ -17,8 +19,6 @@ function Messages() {
     // conversation with user
     const [messages, setMessages] = useState([]);
 
-    // list of all conected users
-    const { connectedWith } = useContext(ConnectionsContext);
 
     // searched and found users (only full names)
     const [foundUsers, setFoundUsers] = useState([]);
@@ -66,7 +66,10 @@ function Messages() {
         e.preventDefault();
         const newMsg = {
             text: messageText,
-            sent: true
+            sent: true,
+            senderId: authData.userId,
+            recieverId: activeUser.userId,
+            room: room
         }
         socket.emit("SEND MESSAGE", { message: newMsg, room: room });
         setMessages([...messages, newMsg]);

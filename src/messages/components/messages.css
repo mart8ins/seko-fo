@@ -145,17 +145,17 @@
     border-radius: 15px;
     padding: 8px;
     margin-bottom: 5px;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .see__messages .sent {
-    background-color: rgb(133, 57, 57);
+    background-color: rgb(119, 119, 119);
     border-bottom-right-radius: 0px;
 }
 
 .see__messages .recieved {
     border-top-left-radius: 0px;
-    background-color: rgb(73, 107, 75);
+    background-color: rgb(159, 160, 159);
 }
 
 .send__messages {
@@ -250,28 +250,30 @@
     .see__messages {
         font-size: 0.9rem;
         height: 75%;
-        width: 80%;
+        width: 70%;
         margin: 0 auto;
-        padding: 25px;
+        padding: 15px 25px;
+        font-family: 'Roboto', sans-serif;
     }
 
     .see__messages .sent,
     .recieved {
         padding: 12px;
-        width: auto;
         text-align: justify;
         max-width: 52%;
     }
 
     .see__messages .sent {
         border-bottom-right-radius: 0px;
-        position: relative;
-        left: 44%;
         text-align: right;
+        margin-left: auto;
+        margin-right: 20px;
     }
 
     .see__messages .recieved {
         border-top-left-radius: 0px;
+        margin-right: auto;
+        margin-left: 20px;
     }
 
 
@@ -281,6 +283,7 @@
         margin: 10px auto;
         display: flex;
         flex-direction: column;
+        font-family: 'Roboto', sans-serif;
     }
 
     .send__messages textarea {
