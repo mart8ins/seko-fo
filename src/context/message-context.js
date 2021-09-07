@@ -1,24 +1,8 @@
-import { createContext, useState, useContext,useEffect } from "react";
-import { getAllConversations } from "../fetch/users/messages";
-import { AuthContext } from "./auth-context";
+import { createContext, useState } from "react";
 
 export const MessageContext = createContext();
 
 const MessageContextProvider = ({children}) => {
-    const {authData} = useContext(AuthContext);
-
-    // all existing conversations with users
-    const [conversations, setConversations] = useState([]);
-
-    // FETCH ALL USER CONVERSATIONS
-    useEffect(() => {
-        fetchConversations();
-    },[]);
-
-    const fetchConversations = async () => {
-        const res = await getAllConversations(authData.token);
-        setConversations(res.data.conversations);
-    }
 
     // MODAL SETTINGS
     // data for message modal to show modal/name for user in modal and for possibility to send message using id
@@ -30,8 +14,7 @@ const MessageContextProvider = ({children}) => {
     });
 
     return <MessageContext.Provider value={{
-        messageData, setMessageData, 
-        conversations, setConversations, fetchConversations}}>
+        messageData, setMessageData}}>
         {children}
     </MessageContext.Provider>
 

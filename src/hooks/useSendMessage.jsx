@@ -3,9 +3,9 @@ import { AuthContext } from "../context/auth-context";
 import { MessageContext } from "../context/message-context";
 import { sendMessageToUser } from "../fetch/users/messages";
 
-const useSendMessage = (userId, firstName, lastName) => {
+const useSendMessage = (userId) => {
     const { authData } = useContext(AuthContext);
-    const { messageData, setMessageData, conversations } = useContext(MessageContext);
+    const { messageData, setMessageData } = useContext(MessageContext);
 
     const [messageSentSuccess, setMessageSentSuccess] = useState(false); // for MessageModal
 
@@ -27,8 +27,7 @@ const useSendMessage = (userId, firstName, lastName) => {
         sendMessage,
         messageData,
         setMessageData,
-        messageSentSuccess,
-        conversations
+        messageSentSuccess
     }
 }
 
