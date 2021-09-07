@@ -22,7 +22,7 @@ const MessageModal = ({ userId, firstName, lastName }) => {
     }
 
     const send = () => {
-        sendMessage(text, false);
+        sendMessage(text);
     }
     const content = <div>
         <div className="message__modal__overlay" onClick={hideMessageModal}></div>

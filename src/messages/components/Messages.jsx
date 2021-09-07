@@ -119,7 +119,7 @@ function Messages() {
 
         {activeUser ?
             <div className="right__side">
-                <p className="contact__name">{activeUser && activeUser.firstName} {activeUser && activeUser.lastName}</p>
+                <p className="contact__name">{activeUser.firstName} {activeUser.lastName}</p>
                 <div className="see__messages">
                     {messages.map((msg) => {
                         return <div className={msg.sent ? "sent" : "recieved"}>

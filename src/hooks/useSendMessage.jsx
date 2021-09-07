@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import { v4 as uuidv4 } from 'uuid';
 import { AuthContext } from "../context/auth-context";
 import { MessageContext } from "../context/message-context";
 import { sendMessageToUser } from "../fetch/users/messages";
@@ -10,22 +9,14 @@ const useSendMessage = (userId, firstName, lastName) => {
 
     const [messageSentSuccess, setMessageSentSuccess] = useState(false); // for MessageModal
 
-    const sendMessage = async (text, feedOpen, socketId) => {
+    const sendMessage = async (text) => {
 
         // CREATING MESSAGE OBJECT WITH MESSAGE AND USER DATA
         const messageObj = {
             message: {
-                id: uuidv4(),
-                text: text,
-                date: new Date().getTime(),
-                type: "sent",
-                isRead: feedOpen ? true : false
+                text: text
             },
-            user: {
-                userId: String(userId),
-                firstName,
-                lastName
-            }
+            recieverId: userId
         }
         await sendMessageToUser(authData.token, messageObj);
         setMessageSentSuccess(true);
