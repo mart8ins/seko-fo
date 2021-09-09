@@ -1,0 +1,35 @@
+.settings__container {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin: 5px auto;
+}
+
+.change__user__settings__container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+@media screen and (min-width: 768px) {
+    .settings__container {
+        margin: 40px auto;
+    }
+
+    .change__user__settings__container {
+        width: 90%;
+        margin: 0 auto;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .change__image {
+        width: 35%;
+    }
+
+    .settings__bio {
+        margin: 25px auto;
+    }
+}

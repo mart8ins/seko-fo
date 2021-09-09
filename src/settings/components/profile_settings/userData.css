@@ -1,0 +1,83 @@
+.change__user__data {
+    background-color: rgb(246, 248, 245);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.change__user__data form {
+    margin-bottom: 20px;
+}
+
+.form__element {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.form__element label {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(100, 81, 81);
+    margin-bottom: 5px;
+}
+
+.form__element input {
+    width: 83%;
+    margin: 0 auto;
+    padding: 4px;
+    text-align: center;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.form__element input::placeholder {
+    color: rgb(190, 190, 190);
+}
+
+.form__element input:focus {
+    outline: none;
+    box-shadow: 0px 6px 15px rgb(204, 245, 110);
+    color: rgb(100, 81, 81);
+}
+
+form button {
+    display: block;
+    width: max-content;
+    margin: 15px auto;
+    text-transform: uppercase;
+    padding: 10px;
+    background-color: rgb(204, 245, 110);
+    border: none;
+    border-radius: 5px;
+    color: rgb(100, 81, 81);
+    font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+    .change__user__data {
+        width: 55%;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .form__element label {
+        font-size: 1.2rem;
+    }
+
+    .form__element input {
+        width: 100%;
+        margin: 10px auto;
+        padding: 8px;
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    form button:hover {
+        background-color: rgb(222, 248, 160);
+        cursor: pointer;
+    }
+}
