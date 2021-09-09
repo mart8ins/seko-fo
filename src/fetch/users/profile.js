@@ -13,6 +13,20 @@ const changeProfileData = async (token, profileData) => {
     return res;
 }
 
+const changeProfilePassword = async (token, passwords) => {
+    const config = {
+        headers: {
+             Authorization: 'Bearer ' + token
+        }
+    }
+    const url = `${baseUrlUsers}profile/change/password`;
+    const res = await axios.post(url, {data: passwords}, config);
+    return res;
+}
+
+
+
 export {
-    changeProfileData
+    changeProfileData,
+    changeProfilePassword
 };

@@ -88,12 +88,10 @@ function Messages() {
     // SCROLL TO BOTTOM FUNCTION USING USEREF
     const scrollToBottom = () => {
         messageContainerRef.current?.scrollIntoView({ behavior: "smooth" });
-        console.log(messageContainerRef.current)
     }
 
     useEffect(() => {
         scrollToBottom();
-        console.log(messageContainerRef.current)
     }, [messages]);
 
 
