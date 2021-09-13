@@ -33,11 +33,12 @@ const Signup = () => {
                 isLoggedIn: true,
                 showAuthModal: false,
                 expiration: tokenExpirationDate,
-                fullName: response.data.fullName
+                fullName: response.data.fullName,
+                profilePhoto: undefined
             }
 
             localStorage.setItem("authData", JSON.stringify(objectToStore))
-            setAuthData(objectToStore)
+            setAuthData(objectToStore);
 
         } catch (e) {
             setFormError(e.response.data.message);

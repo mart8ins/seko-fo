@@ -32,7 +32,8 @@ const Login = () => {
                 isLoggedIn: true,
                 showAuthModal: false,
                 expiration: tokenExpirationDate,
-                fullName: response.data.fullName
+                fullName: response.data.fullName,
+                profilePhoto: response.data.photo ? response.data.photo : undefined
             }
 
             localStorage.setItem("authData", JSON.stringify(objectToStore))

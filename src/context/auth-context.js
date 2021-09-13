@@ -11,7 +11,8 @@ const AuthContextProvider = ({children}) => {
             email: null,
             isLoggedIn: false,
             showAuthModal: false,
-            expiration: undefined
+            expiration: undefined,
+            profilePhoto: undefined
     };
 
     const [authData, setAuthData] = useState(authDataFromLocalStorage);

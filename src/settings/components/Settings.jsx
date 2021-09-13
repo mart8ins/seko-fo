@@ -1,5 +1,5 @@
 import React from "react";
-import Photo from "./profile_settings/Photo";
+import ProfilePhotoPicker from "./profile_settings/ProfilePhotoPicker";
 import UserData from "./profile_settings/UserData";
 import "./settings.css";
 
@@ -7,7 +7,7 @@ import "./settings.css";
 function Settings() {
     return <div className="settings__container">
         <div className="change__user__settings__container">
-            <Photo />
+            <ProfilePhotoPicker />
             <UserData />
         </div>
         <div className="settings__bio">

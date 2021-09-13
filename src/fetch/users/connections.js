@@ -1,7 +1,6 @@
 import axios from "axios";
-
-const baseUrlUsers = "http://localhost:3002/api/";
-// /:uid/messages/new
+import globalVariables from "../../globalVariables";
+const baseUrl = globalVariables.server + "api/";
 
 // fetch all users which is not connected and without logged user
 const getAllNotConnectedUsers = async (token) => {
@@ -10,7 +9,7 @@ const getAllNotConnectedUsers = async (token) => {
             Authorization: 'Bearer ' + token //the token is a variable which holds the token
           }
     }
-    const url = baseUrlUsers;
+    const url = baseUrl;
     const res = await axios.get(url, config);
     return res;
 }
@@ -21,7 +20,7 @@ const getUser = async (uid, token) => {
             Authorization: 'Bearer ' + token 
           }
     }
-    const url = `${baseUrlUsers}${uid}`;
+    const url = `${baseUrl}${uid}`;
     const res = await axios.get(url, config);
     return res;
 }
@@ -32,7 +31,7 @@ const getUsersConnections = async (uid, token) => {
             Authorization: 'Bearer ' + token 
           }
     }
-    const url = `${baseUrlUsers}${uid}/connections`;
+    const url = `${baseUrl}${uid}/connections`;
     const res = await axios.get(url, config);
     return res;
 }
@@ -43,7 +42,7 @@ const requestConnection = async(exploredUserID, token)=> {
             Authorization: 'Bearer ' + token 
           }
     }
-    const url = `${baseUrlUsers}${exploredUserID}/connections/request`;
+    const url = `${baseUrl}${exploredUserID}/connections/request`;
     const res = axios.post(url, {}, config);
     return res;
 }
@@ -54,7 +53,7 @@ const acceptConnectionRequest = async(acceptedUser, token) => {
             Authorization: 'Bearer ' + token 
           }
     }
-    const url = `${baseUrlUsers}${acceptedUser}/connections/accept`;
+    const url = `${baseUrl}${acceptedUser}/connections/accept`;
     const res = axios.post(url, {}, config);
     return res;
 }
