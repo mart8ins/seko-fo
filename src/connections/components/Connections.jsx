@@ -5,7 +5,7 @@ import MyConnections from "./myConnections/MyConnections";
 import ConnectionRequest from "./connectionRequest/ConnectionRequest";
 import { ConnectionsContext } from "../../context/connections-context";
 
-
+/* new */
 function Connections() {
     const { explore,
         connectedWith,
