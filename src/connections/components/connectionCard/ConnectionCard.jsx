@@ -1,99 +1,22 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import OptionButtons from "../optionButtons/OptionButtons";
 import "./connectionCard.css";
-// CONTEXT
-import { AuthContext } from "../../../context/auth-context";
-import { MessageContext } from "../../../context/message-context";
-// HOOKS
-import useConnectPeople from "../../../hooks/useConnectPeople";
-import useConnectionStatus from "../../../hooks/useConnectionStatus";
+import globalVariables from "../../../globalVariables";
 
-const ConnectionCard = ({ user, sent, recieved }) => {
-    /* {sent, recieved} ->>> params not state  <<<<--- true or false for buttons for ConnectionRequests.jsx component
-   to show Request sent or Accept request */
+const ConnectionCard = ({ user, connected, userSentRequest, userRecievedRequest }) => {
 
-    // message context to open message modal
-    const { messageData, setMessageData } = useContext(MessageContext);
-
-
-    // logged users data
-    const { authData } = useContext(AuthContext);
-
-    // hook for accepting or requesting connection
-    const { sendRequestForConnection, acceptIncomingRequestForConnection } = useConnectPeople(user.userId || user._id);
-
-    // connection status hook for button status
-    let { isConnected, isRequestRecieved, isRequestSent } = useConnectionStatus(user.userId || user._id, authData.userId, authData.token);
-
-
-    const sendRequest = () => {
-        sendRequestForConnection();
-    }
-    const acceptRequest = () => {
-        acceptIncomingRequestForConnection()
-    }
-
-    const openMessageModal = () => {
-        setMessageData({
-            userId: user.userId || user._id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            show: !messageData.show
-        })
-    }
-
+    const image = user.photo.profile ? `${globalVariables.server}${user.photo.profile}` : "./images/no_image.png"
 
     return (
-        <div>
-
-            <div className="card__container">
-                <div className="card__user__name">{user.firstName + " " + user.lastName}</div>
-                <img className="card__user__photo" alt="User" src={user.photo || "https://images.unsplash.com/photo-1514588645531-00b8822ad997?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"} />
-                <div className="card__user__options__container">
-
-                    <div className="buttons__container">
-                        <Link to={`/user/${user._id || user.userId}/profile`}>
-                            <button
-                                className="card__user__options__btns">
-                                View Profile
-                            </button>
-                        </Link>
-                        <button
-                            onClick={openMessageModal}
-                            className="card__user__options__btns">
-                            Send message
-                        </button>
-
-
-
-                        {!isConnected ?
-                            <div>
-                                {!isRequestRecieved && !isRequestSent ?
-                                    <button
-                                        onClick={sendRequest}
-                                        className="card__user__options__btns request__connection">
-                                        Request connection
-                                    </button>
-                                    :
-                                    isRequestSent || sent ?
-                                        <button
-                                            className="card__user__options__btns request__sent"
-                                            disabled>
-                                            Request sent
-                                        </button>
-                                        :
-                                        <button
-                                            onClick={acceptRequest}
-                                            className="card__user__options__btns request__pending">
-                                            Accept request
-                                        </button>
-                                }
-                            </div>
-                            : null}
-
-
-                    </div>
-                </div>
+        <div className="card__container">
+            <div className="card__user__name">{user.firstName + " " + user.lastName}</div>
+            <img className="card__user__photo" alt="User" src={image} />
+            <div className="card__user__options__container">
+                <OptionButtons
+                    user={user}
+                    connected={connected}
+                    userSentRequest={userSentRequest}
+                    userRecievedRequest={userRecievedRequest} />
             </div>
         </div>
     )

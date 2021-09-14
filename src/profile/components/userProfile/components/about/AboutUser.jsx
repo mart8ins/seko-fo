@@ -3,8 +3,20 @@ import { MessageContext } from "../../../../../context/message-context";
 
 
 // 
-const AboutUser = ({ exploredUser, isConnected, isRequestRecieved, isRequestSent, acceptRequest, sendRequest }) => {
+const AboutUser = ({ acceptRequest, sendRequest }) => {
     const { messageData, setMessageData } = useContext(MessageContext);
+
+    const exploredUser = {
+        firsName: "Test1",
+        lastName: "Test2",
+        photo: {
+            profile: undefined
+        }
+    }
+    let isConnected = false;
+    let isRequestRecieved = false;
+    let isRequestSent = false;
+
 
     const openMessageModal = () => {
         setMessageData({
@@ -15,7 +27,6 @@ const AboutUser = ({ exploredUser, isConnected, isRequestRecieved, isRequestSent
         })
     }
 
-
     return <div>
         <div className="user__profile">
             <div className="connected__status">
@@ -24,7 +35,7 @@ const AboutUser = ({ exploredUser, isConnected, isRequestRecieved, isRequestSent
             <div className="user__profile__data">
                 <div className="user__profile__header">
                     <div className="user__profile__photo__name">
-                        <img alt="User" src={exploredUser.photo || "https://images.unsplash.com/photo-1514588645531-00b8822ad997?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"} />
+                        <img alt="User" src={exploredUser.photo.profile || "https://images.unsplash.com/photo-1514588645531-00b8822ad997?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"} />
                         <h4>{`${exploredUser.firstName} ${exploredUser.lastName}`}</h4>
                     </div>
                 </div>

@@ -1,9 +1,9 @@
 import axios from "axios";
 import globalVariables from "../../globalVariables";
-const baseUrl = globalVariables.server + "api/";
+const baseUrl = globalVariables.server + "api/connections/";
 
 // fetch all users which is not connected and without logged user
-const getAllNotConnectedUsers = async (token) => {
+const fetchAllUsers = async (token) => {
     const config = {
         headers: {
             Authorization: 'Bearer ' + token //the token is a variable which holds the token
@@ -14,56 +14,31 @@ const getAllNotConnectedUsers = async (token) => {
     return res;
 }
 
-const getUser = async (uid, token) => {
+// fetch all users which is not connected and without logged user
+const fetchRequestConnection = async (token, exploredUserId) => {
     const config = {
         headers: {
-            Authorization: 'Bearer ' + token 
+            Authorization: 'Bearer ' + token //the token is a variable which holds the token
           }
     }
-    const url = `${baseUrl}${uid}`;
-    const res = await axios.get(url, config);
+    const url = baseUrl + "sendRequest/";
+    const res = await axios.post(url, {exploredUserId}, config);
     return res;
 }
 
-const getUsersConnections = async (uid, token) => {
+const fetchAcceptConnection = async (token, exploredUserId) => {
     const config = {
         headers: {
-            Authorization: 'Bearer ' + token 
+            Authorization: 'Bearer ' + token //the token is a variable which holds the token
           }
     }
-    const url = `${baseUrl}${uid}/connections`;
-    const res = await axios.get(url, config);
+    const url = baseUrl + "acceptRequest/";
+    const res = await axios.post(url, {exploredUserId}, config);
     return res;
 }
-
-const requestConnection = async(exploredUserID, token)=> {
-    const config = {
-        headers: {
-            Authorization: 'Bearer ' + token 
-          }
-    }
-    const url = `${baseUrl}${exploredUserID}/connections/request`;
-    const res = axios.post(url, {}, config);
-    return res;
-}
-
-const acceptConnectionRequest = async(acceptedUser, token) => {
-    const config = {
-        headers: {
-            Authorization: 'Bearer ' + token 
-          }
-    }
-    const url = `${baseUrl}${acceptedUser}/connections/accept`;
-    const res = axios.post(url, {}, config);
-    return res;
-}
-
-
 
 export {
-    getAllNotConnectedUsers,
-    getUser,
-    getUsersConnections,
-    requestConnection,
-    acceptConnectionRequest
+    fetchAllUsers,
+    fetchRequestConnection,
+    fetchAcceptConnection
 };

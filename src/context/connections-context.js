@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-import {getAllNotConnectedUsers,
-        getUsersConnections} from "../fetch/users/connections";
+import {fetchAllUsers} from "../fetch/users/connections";
+
 import {AuthContext} from "./auth-context";
 
 
@@ -9,44 +9,32 @@ export const ConnectionsContext = createContext();
 const ConnectionsContextProvider = ({children})=> {
     const {authData: {token, userId}} = useContext(AuthContext);
 
-    const [explore, setExplore] = useState([]);
-    const [connectedWith, setConnectedWith] = useState([]);
-    const [requestRecieved, setRequestRecieved] = useState([]);
-    const [requestSent, setRequestSent] = useState([]);
-
-    // ALL USER ON MOMENT WHO IS ONLINE
+     // ALL USER ON MOMENT WHO IS ONLINE
     const [usersOnline, setUsersOnline] = useState([]);
+     
+    // ALL USERS
+    const [explore, setExplore] = useState([]);
+   
 
-    // fetch all users which is not connected and without logged user
-    const fetchNotConnectedUsers = async () => {
-        const res = await getAllNotConnectedUsers(token);
-        setExplore(res.data.users);
+    /* *********************************************************
+    GET ALL USERS EXEPT FOR LOGGED USER FOR EXPLOR USERS SECTION
+    ********************************************************** */
+    useEffect(()=> {
+        getAllUsers(token);
+    },[token]);
+
+    const getAllUsers = async (token) => {
+        const res = await fetchAllUsers(token);
+        const {allUsers} = res.data;
+        setExplore(allUsers);
     }
-
-    // fetch user connections what includes connected [], requests {}
-    const fetchUserConnections = async() => {
-        const res = await getUsersConnections(userId, token);
-        setConnectedWith(res.data.connections.connected);
-        setRequestRecieved(res.data.connections.requests.recieved);
-        setRequestSent(res.data.connections.requests.sent)
-    }
-
-        useEffect(()=> {
-                fetchNotConnectedUsers();
-                fetchUserConnections();
-        },[token]);
-
-        useEffect(()=> {
-            fetchNotConnectedUsers();
-        }, [requestSent])
+    
 
     return <ConnectionsContext.Provider value={
         {
             explore, setExplore,
-            connectedWith, setConnectedWith,
-            requestRecieved, setRequestRecieved,
-            requestSent, setRequestSent,
-            usersOnline, setUsersOnline
+            usersOnline, setUsersOnline,
+            getAllUsers
         }}>
         {children}
     </ConnectionsContext.Provider>

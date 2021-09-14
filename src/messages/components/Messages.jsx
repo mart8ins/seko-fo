@@ -9,7 +9,14 @@ import socket from "../../socket/socket";
 function Messages() {
     const { authData } = useContext(AuthContext);
     // list of all conected users
-    const { connectedWith } = useContext(ConnectionsContext);
+
+    /* MUST DO, RETURN ALL CONNECTED USERS TO SHOW FOR MESSAGING
+    ************************************************************
+    ************************************************************
+    ************************************************************
+    */
+    // const { connectedWith } = useContext(ConnectionsContext);
+    const connectedWith = [];
 
 
     const [room, setRoom] = useState(undefined);
