@@ -14,7 +14,20 @@ const ConnectionsContextProvider = ({children})=> {
      
     // ALL USERS
     const [explore, setExplore] = useState([]);
-   
+
+    // ONLY CONNECTED USERS
+    const [connectedWith, setConnectedWith] = useState([]);
+    useEffect(()=> {
+        let conn = [];
+        explore.forEach((user) => {
+            user.connections.connected.forEach((connected) => {
+                if (String(connected.userId) === userId) {
+                    conn.push(user);
+                }
+            });
+        });
+        setConnectedWith(conn)
+    },[explore])
 
     /* *********************************************************
     GET ALL USERS EXEPT FOR LOGGED USER FOR EXPLOR USERS SECTION
@@ -33,6 +46,7 @@ const ConnectionsContextProvider = ({children})=> {
     return <ConnectionsContext.Provider value={
         {
             explore, setExplore,
+            connectedWith,
             usersOnline, setUsersOnline,
             getAllUsers
         }}>

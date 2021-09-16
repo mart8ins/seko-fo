@@ -8,16 +8,8 @@ import socket from "../../socket/socket";
 
 function Messages() {
     const { authData } = useContext(AuthContext);
-    // list of all conected users
-
-    /* MUST DO, RETURN ALL CONNECTED USERS TO SHOW FOR MESSAGING
-    ************************************************************
-    ************************************************************
-    ************************************************************
-    */
-    // const { connectedWith } = useContext(ConnectionsContext);
-    const connectedWith = [];
-
+    const { connectedWith } = useContext(ConnectionsContext);
+    console.log(connectedWith)
 
     const [room, setRoom] = useState(undefined);
     // textarea message state
@@ -47,12 +39,16 @@ function Messages() {
 
     // set active user after clicking found users
     const chooseActiveUser = (contact) => {
-        setActiveUser(contact);
+        setActiveUser({
+            ...contact,
+            userId: contact._id
+        });
     };
 
     // for large display render all contacts
     const renderConnectedContacts = (contact) => {
-        return <div onClick={() => chooseActiveUser(contact)} className={`contact ${activeUser && activeUser.userId === contact.userId && "activeUser"}`}>
+        const userId = String(contact._id);
+        return <div onClick={() => chooseActiveUser(contact)} className={`contact ${activeUser && activeUser.userId === userId && "activeUser"}`}>
             <p>{contact.firstName} {contact.lastName}</p>
             <img src="https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" alt="" />
         </div>
