@@ -3,6 +3,7 @@ import "./messages.css";
 import { ConnectionsContext } from "../../context/connections-context";
 import { AuthContext } from "../../context/auth-context";
 import socket from "../../socket/socket";
+import globalVariables from "../../globalVariables";
 
 
 
@@ -45,12 +46,17 @@ function Messages() {
         });
     };
 
+    // border-left: 5px solid rgb(40, 207, 40);
+    // border-left: 5px solid rgb(207, 40, 40);
+
+
     // for large display render all contacts
     const renderConnectedContacts = (contact) => {
         const userId = String(contact._id);
-        return <div onClick={() => chooseActiveUser(contact)} className={`contact ${activeUser && activeUser.userId === userId && "activeUser"}`}>
+        const image = contact.photo && contact.photo.profile ? `${globalVariables.server}${contact.photo.profile}` : "/images/no_image.png";
+        return <div style={{ borderLeft: "5px solid rgb(40, 207, 40)" }} onClick={() => chooseActiveUser(contact)} className={`contact ${activeUser && activeUser.userId === userId && "activeUser"}`}>
             <p>{contact.firstName} {contact.lastName}</p>
-            <img src="https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" alt="" />
+            <img src={image} alt="" />
         </div>
     };
 

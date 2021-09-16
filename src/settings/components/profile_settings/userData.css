@@ -70,9 +70,9 @@ fieldset {
     margin-bottom: 10px;
 }
 
-textarea {
-    width: 100%;
-    padding: 5px;
+.form__element textarea {
+    width: 95%;
+    padding: 8px;
     resize: none;
     background-color: whitesmoke;
     border-radius: 10px;
@@ -80,7 +80,7 @@ textarea {
     border: 1px solid white;
 }
 
-textarea:focus {
+.form__element textarea:focus {
     border: 1px solid rgb(204, 245, 110);
 }
 
@@ -118,10 +118,10 @@ textarea:focus {
         font-size: 0.8rem;
     }
 
-    textarea {
+    .form__element textarea {
         width: 50%;
         margin: 0 auto;
-        padding: 10px;
+        padding: 20px;
     }
 
     .disabled__button {
