@@ -34,6 +34,7 @@ const Signup = () => {
                 showAuthModal: false,
                 expiration: tokenExpirationDate,
                 fullName: response.data.fullName,
+                about: "",
                 profilePhoto: undefined
             }
 

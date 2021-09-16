@@ -1,6 +1,7 @@
 import React from "react";
 import ProfilePhotoPicker from "./profile_settings/ProfilePhotoPicker";
 import UserData from "./profile_settings/UserData";
+import AboutMe from "./profile_settings/AboutMe";
 import "./settings.css";
 
 
@@ -10,8 +11,8 @@ function Settings() {
             <ProfilePhotoPicker />
             <UserData />
         </div>
-        <div className="settings__bio">
-            Bio srttings
+        <div className="about__me__container">
+            <AboutMe />
         </div>
     </div>
 

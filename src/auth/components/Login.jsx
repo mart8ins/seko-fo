@@ -33,6 +33,7 @@ const Login = () => {
                 showAuthModal: false,
                 expiration: tokenExpirationDate,
                 fullName: response.data.fullName,
+                about: response.data.about,
                 profilePhoto: response.data.photo ? response.data.photo : undefined
             }
 

@@ -14,6 +14,17 @@ const fetchAllUsers = async (token) => {
     return res;
 }
 
+const fetchUser = async(token, userId) => {
+    const config = {
+        headers: {
+            Authorization: "Bearer " + token
+        }
+    };
+    const url = baseUrl + `user/${userId}/profile`;
+    const res = await axios.get(url, config);
+    return res;
+}
+
 // fetch all users which is not connected and without logged user
 const fetchRequestConnection = async (token, exploredUserId) => {
     const config = {
@@ -38,6 +49,7 @@ const fetchAcceptConnection = async (token, exploredUserId) => {
 }
 
 export {
+    fetchUser,
     fetchAllUsers,
     fetchRequestConnection,
     fetchAcceptConnection

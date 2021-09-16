@@ -70,6 +70,21 @@ fieldset {
     margin-bottom: 10px;
 }
 
+textarea {
+    width: 100%;
+    padding: 5px;
+    resize: none;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid white;
+}
+
+textarea:focus {
+    border: 1px solid rgb(204, 245, 110);
+}
+
+
 @media screen and (min-width: 768px) {
     .change__user__data {
         width: 55%;
@@ -101,5 +116,19 @@ fieldset {
 
     .validation__failed {
         font-size: 0.8rem;
+    }
+
+    textarea {
+        width: 50%;
+        margin: 0 auto;
+        padding: 10px;
+    }
+
+    .disabled__button {
+        padding: 5px 10px;
+        color: rgb(100, 81, 81);
+        background-color: rgb(246, 248, 245);
+        width: initial;
+        font-size: 1rem;
     }
 }

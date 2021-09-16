@@ -1,4 +1,5 @@
-.settings__container {
+.settings__container,
+.about__me__container {
     display: flex;
     flex-direction: column;
     width: 85%;
@@ -29,7 +30,7 @@
         width: 35%;
     }
 
-    .settings__bio {
+    .about__me__container {
         margin: 25px auto;
     }
 }
