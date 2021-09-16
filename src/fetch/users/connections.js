@@ -48,9 +48,21 @@ const fetchAcceptConnection = async (token, exploredUserId) => {
     return res;
 }
 
+const fetchRemoveConnection = async(token, exploredUserId) => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + token //the token is a variable which holds the token
+          }
+    }
+    const url = baseUrl + "removeConnection/";
+    const res = await axios.post(url, {exploredUserId}, config);
+    return res;
+}
+
 export {
     fetchUser,
     fetchAllUsers,
     fetchRequestConnection,
-    fetchAcceptConnection
+    fetchAcceptConnection,
+    fetchRemoveConnection
 };

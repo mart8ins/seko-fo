@@ -15,26 +15,8 @@ function UserProfile() {
     let { userId } = useParams();
     // logged users data 
     const { authData } = useContext(AuthContext);
-
-
     // explored user data
     const [exploredUser, setExploredUser] = useState({});
-
-    // local components state for connection status changes 
-    const [isCon, setIsCon] = useState(false);
-    const [isReqRecieved, setIsReqRecieved] = useState(false);
-    const [isReqSent, setIsReqSent] = useState(false);
-
-
-
-    // send request for connection to explored user, is status is 201 then request is successfully created
-    const sendRequest = () => {
-        console.log("request sent")
-    }
-    // accept incoming connection request
-    const acceptRequest = () => {
-        console.log("request accepted")
-    }
 
     useEffect(() => {
         getUser();
@@ -44,13 +26,9 @@ function UserProfile() {
         const res = await fetchUser(authData.token, userId);
         setExploredUser(res.data.user)
     }
-    console.log(exploredUser)
 
     return <div>
-        <AboutUser
-            sendRequest={sendRequest}
-            acceptRequest={acceptRequest}
-            user={exploredUser} />
+        <AboutUser user={exploredUser} getUser={getUser} />
 
         <div className="user__profile__content">
             <div>Blogs</div>

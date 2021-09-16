@@ -1,23 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
-import { MessageContext } from "../../../../../context/message-context";
 import globalVariables from "../../../../../globalVariables";
 import { AuthContext } from "../../../../../context/auth-context";
 
+import ProfileOptionButtons from "./ProfileOptionButtons";
 
-// 
-const AboutUser = ({ acceptRequest, sendRequest, user }) => {
+const AboutUser = ({ user, getUser }) => {
     const { authData } = useContext(AuthContext);
-    const { messageData, setMessageData } = useContext(MessageContext);
+
     const image = user.photo && user.photo.profile ? `${globalVariables.server}${user.photo.profile}` : "/images/no_image.png";
-    console.log(user)
-    const openMessageModal = () => {
-        setMessageData({
-            userId: user._id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            show: !messageData.show
-        })
-    }
 
     const [status, setStatus] = useState({
         isConnected: false,
@@ -31,7 +21,6 @@ const AboutUser = ({ acceptRequest, sendRequest, user }) => {
         let isRequestSent;
 
         if (user.connections) {
-
             if (user.connections.connected) {
                 isConnected = user.connections.connected.some((user) => {
                     return user.userId === authData.userId;
@@ -39,7 +28,6 @@ const AboutUser = ({ acceptRequest, sendRequest, user }) => {
             } else {
                 isConnected = false;
             }
-
             if (user.connections.requests.sent) {
                 isRequestRecieved = user.connections.requests.sent.some((user) => {
                     return user.userId === authData.userId;
@@ -47,7 +35,6 @@ const AboutUser = ({ acceptRequest, sendRequest, user }) => {
             } else {
                 isRequestRecieved = false;
             }
-
             if (user.connections.requests.recieved) {
                 isRequestSent = user.connections.requests.recieved.some((user) => {
                     return user.userId === authData.userId;
@@ -55,7 +42,6 @@ const AboutUser = ({ acceptRequest, sendRequest, user }) => {
             } else {
                 isRequestSent = false;
             }
-
         }
         setStatus({
             isConnected: isConnected,
@@ -82,15 +68,7 @@ const AboutUser = ({ acceptRequest, sendRequest, user }) => {
                     <p className="about__me__text">{user.about}</p>
                 </div>
             </div>
-
-            <div className="user__profile__options__btns__container">
-                <button onClick={openMessageModal} className="user__profile__options__btns">Send message</button>
-                {status.isConnected && <button className="user__profile__options__btns request__remove">Remove from connections</button>}
-
-                {!status.isConnected && !status.isRequestRecieved && !status.isRequestSent ? <button onClick={sendRequest} className="user__profile__options__btns">Request connection</button> : null}
-                {!status.isConnected && status.isRequestSent && <button className="user__profile__options__btns request__sent">Request sent</button>}
-                {!status.isConnected && status.isRequestRecieved && <button onClick={acceptRequest} className="user__profile__options__btns request__pending">Accept request</button>}
-            </div>
+            <ProfileOptionButtons status={status} user={user} getUser={getUser} />
         </div>
     </div>
 }
