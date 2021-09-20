@@ -9,8 +9,12 @@ import globalVariables from "../../globalVariables";
 
 function Messages() {
     const { authData } = useContext(AuthContext);
-    const { connectedWith } = useContext(ConnectionsContext);
-    console.log(connectedWith)
+    const { connectedWith, notConnectedButMessages } = useContext(ConnectionsContext);
+    const [allUsers, setAllUsers] = useState([]);
+
+    useEffect(() => {
+        setAllUsers([...connectedWith, ...notConnectedButMessages]);
+    }, [connectedWith, notConnectedButMessages]);
 
     const [room, setRoom] = useState(undefined);
     // textarea message state
@@ -32,7 +36,7 @@ function Messages() {
     // search input to find user to start conversation with, search only for full names
     const searchInputHandler = (e) => {
         const searchValue = e.target.value;
-        const found = connectedWith.filter((user) => {
+        const found = allUsers.filter((user) => {
             return user.firstName.toLowerCase() === searchValue.toLowerCase() || user.lastName.toLowerCase() === searchValue.toLowerCase();
         })
         setFoundUsers(found);
@@ -54,9 +58,9 @@ function Messages() {
     const renderConnectedContacts = (contact) => {
         const userId = String(contact._id);
         const image = contact.photo && contact.photo.profile ? `${globalVariables.server}${contact.photo.profile}` : "/images/no_image.png";
-        return <div style={{ borderLeft: "5px solid rgb(40, 207, 40)" }} onClick={() => chooseActiveUser(contact)} className={`contact ${activeUser && activeUser.userId === userId && "activeUser"}`}>
+        return <div style={contact.isConnected ? { borderLeft: "3px solid rgb(69, 187, 69)" } : { borderLeft: "3px solid rgb(177, 72, 72)" }} onClick={() => chooseActiveUser(contact)} className={`contact ${activeUser && activeUser.userId === userId && "activeUser"}`}>
             <p>{contact.firstName} {contact.lastName}</p>
-            <img src={image} alt="" />
+            <img src={image} alt={contact.firstName + contact.lastName} />
         </div>
     };
 
@@ -111,9 +115,9 @@ function Messages() {
                 <input onChange={searchInputHandler} type="text" placeholder="Search contact..." />
             </div>
             {
-                connectedWith.length ?
+                allUsers.length ?
                     <div className="contacts__container__sm">
-                        {foundUsers.length && foundUsers.map(renderConnectedContacts) || connectedWith.length && connectedWith.map(renderConnectedContacts)}
+                        {foundUsers.length && foundUsers.map(renderConnectedContacts) || allUsers.length && allUsers.map(renderConnectedContacts)}
                     </div> :
                     <div>
                         No conected users to show
@@ -127,9 +131,9 @@ function Messages() {
             </div>
             <div className="contacts__container__lg">
                 {
-                    connectedWith.length ?
+                    allUsers.length ?
                         <div className="contacts__container__lg">
-                            {foundUsers.length && foundUsers.map(renderConnectedContacts) || connectedWith.length && connectedWith.map(renderConnectedContacts)}
+                            {foundUsers.length && foundUsers.map(renderConnectedContacts) || allUsers.length && allUsers.map(renderConnectedContacts)}
                         </div> :
                         <div>
                             No conected users to show
@@ -140,7 +144,7 @@ function Messages() {
 
         {activeUser ?
             <div className="right__side">
-                <p className="contact__name">{activeUser.firstName} {activeUser.lastName}</p>
+                <p className="contact__name"><span style={{ color: "red", fontSize: "0.6rem" }}>{!activeUser.isConnected && "not connected"}</span> {activeUser.firstName} {activeUser.lastName}</p>
                 <div className="see__messages">
                     {messages.map((msg) => {
                         return <div ref={messageContainerRef} className={msg.sent ? "sent" : "recieved"}>

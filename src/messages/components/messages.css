@@ -197,6 +197,7 @@
     width: 50%;
     margin: 5px auto;
     color: rgb(204, 245, 110);
+    color: rgb(69, 187, 69);
 }
 
 @media screen and (min-width: 768px) {

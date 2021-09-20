@@ -15,6 +15,7 @@ const ConnectionsContextProvider = ({children})=> {
     // ALL USERS
     const [explore, setExplore] = useState([]);
 
+
     // ONLY CONNECTED USERS
     const [connectedWith, setConnectedWith] = useState([]);
     useEffect(()=> {
@@ -22,12 +23,34 @@ const ConnectionsContextProvider = ({children})=> {
         explore.forEach((user) => {
             user.connections.connected.forEach((connected) => {
                 if (String(connected.userId) === userId) {
-                    conn.push(user);
+                    conn.push({...user, isConnected: true});
                 }
             });
         });
-        setConnectedWith(conn)
-    },[explore])
+        setConnectedWith(conn);
+    },[explore]);
+
+    // USER WHO IS NOT CONNECTED BUT EXISTS MESSAGES
+    const [notConnectedButMessages, setNotConnectedButMessages] = useState([]);
+    useEffect(()=> {
+        let notConn = [];
+        explore.forEach((user)=> {
+            user.messages.forEach((us)=> {
+                  if(us.users.includes(user._id) && us.users.includes(userId) && user._id!== userId) {
+                          let u = user.connections.connected.some((i)=> {
+                            return i.userId === userId;
+                          });
+                          if(!u) {
+                            notConn.push({...user, isConnected: false});
+                          }
+                  };
+             });
+          });
+        setNotConnectedButMessages(notConn);
+    },[explore, connectedWith]);
+
+
+    
 
     /* *********************************************************
     GET ALL USERS EXEPT FOR LOGGED USER FOR EXPLOR USERS SECTION
@@ -47,6 +70,7 @@ const ConnectionsContextProvider = ({children})=> {
         {
             explore, setExplore,
             connectedWith,
+            notConnectedButMessages,
             usersOnline, setUsersOnline,
             getAllUsers
         }}>
