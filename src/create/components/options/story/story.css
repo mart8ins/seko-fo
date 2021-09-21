@@ -1,0 +1,13 @@
+.story__main__container {
+    width: 95%;
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+@media screen and (min-width: 768px) {
+    .story__main__container {
+        width: 75%;
+    }
+}

@@ -31,7 +31,7 @@ function UserProfile() {
         <AboutUser user={exploredUser} getUser={getUser} />
 
         <div className="user__profile__content">
-            <div>Blogs</div>
+            <div>Story</div>
             <div>Progress</div>
             <div>Laika josla</div>
         </div>

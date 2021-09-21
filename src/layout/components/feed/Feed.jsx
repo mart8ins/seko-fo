@@ -9,7 +9,7 @@ import Connections from "../../../connections/components/Connections";
 import Messages from "../../../messages/components/Messages";
 import Settings from "../../../settings/components/Settings";
 import UserProfile from "../../../profile/components/userProfile/UserProfile";
-import Blog from "../../../create/components/options/Blog";
+import Story from "../../../create/components/options/story/Story";
 import Workout from "../../../create/components/options/Workout";
 import Exchange from "../../../create/components/options/Exchange";
 
@@ -21,7 +21,7 @@ function Feed() {
     const { authData: { isLoggedIn } } = useContext(AuthContext);
 
     return <Switch>
-        <RouteGuard path="/create/blog" component={Blog} auth={isLoggedIn} />
+        <RouteGuard path="/create/story" component={Story} auth={isLoggedIn} />
         <RouteGuard path="/create/workout" component={Workout} auth={isLoggedIn} />
         <RouteGuard path="/create/exchange" component={Exchange} auth={isLoggedIn} />
 
