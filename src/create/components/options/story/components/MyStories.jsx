@@ -21,6 +21,7 @@ const MyStories = () => {
                 return <LinkToStory
                     key={storyId}
                     storieId={storyId}
+                    title={story.title}
                     text={story.story}
                     image={image}
                     date={date}

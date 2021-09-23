@@ -4,6 +4,7 @@ import { ConnectionsContext } from "../../context/connections-context";
 import { AuthContext } from "../../context/auth-context";
 import socket from "../../socket/socket";
 import globalVariables from "../../globalVariables";
+import formsValidator from "../../utils/formComponents/formsValidator";
 
 
 
@@ -80,16 +81,20 @@ function Messages() {
 
     const sendMessage = (e) => {
         e.preventDefault();
-        const newMsg = {
-            text: messageText,
-            sent: true,
-            senderId: authData.userId,
-            recieverId: activeUser.userId,
-            room: room
+        const { valid } = formsValidator([{ type: "message", payload: messageText }]);
+
+        if (valid) {
+            const newMsg = {
+                text: messageText,
+                sent: true,
+                senderId: authData.userId,
+                recieverId: activeUser.userId,
+                room: room
+            }
+            socket.emit("SEND MESSAGE", { message: newMsg, room: room });
+            setMessages([...messages, newMsg]);
+            setMessageText("");
         }
-        socket.emit("SEND MESSAGE", { message: newMsg, room: room });
-        setMessages([...messages, newMsg]);
-        setMessageText("");
     };
 
     useEffect(() => {

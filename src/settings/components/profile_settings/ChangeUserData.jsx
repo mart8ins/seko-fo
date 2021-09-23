@@ -4,8 +4,9 @@ import "./userData.css";
 import { AuthContext } from "../../../context/auth-context";
 // FETCH
 import { changeProfileData } from "../../../fetch/users/profile";
-// HOOK
-import profileDataValidator from "./profileDataValidator";
+
+// FORM VALIDATION
+import formsValidator from "../../../utils/formComponents/formsValidator";
 
 const ChangeUserData = () => {
 
@@ -47,7 +48,9 @@ const ChangeUserData = () => {
     const sendProfileChanges = async (e) => {
         e.preventDefault();
         const { firstName, lastName, email } = profileData;
-        const { valid, message } = profileDataValidator(firstName, lastName, email);
+
+        const { valid, message } = formsValidator([{ type: "name", payload: firstName }, { type: "name", payload: lastName }, { type: "email", payload: email }])
+        console.log(valid, message)
         setValidForm({
             valid,
             message

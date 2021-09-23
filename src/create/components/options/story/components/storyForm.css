@@ -5,6 +5,16 @@
     border-radius: 10px;
 }
 
+.new__story__container .story__form__invalid {
+    color: red;
+    font-weight: bold;
+    margin: 0;
+    padding: 2px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.7rem;
+}
+
 .new__story__container h2 {
     color: rgb(255, 255, 255);
     text-shadow: 0 2px 2px rgb(21, 129, 21);
@@ -159,6 +169,13 @@ input:focus {
 @media screen and (min-width: 768px) {
     .new__story__container {
         width: 80%;
+    }
+
+    .new__story__container .story__form__invalid {
+        padding: 10px;
+        margin: 0 auto 10px;
+        max-width: max-content;
+        font-size: 0.9rem;
     }
 
     .new__story__title {

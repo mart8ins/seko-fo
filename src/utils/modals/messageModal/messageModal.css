@@ -20,6 +20,14 @@
     border-radius: 5px;
 }
 
+.message__invalid {
+    color: white;
+    margin: 0;
+    margin-top: 20px;
+    margin-bottom: -20px;
+    text-align: center;
+}
+
 .message__modal__name {
     color: white;
     font-size: 0.9rem;

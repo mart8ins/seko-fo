@@ -4,6 +4,9 @@ import { postStory } from "../../../../../fetch/users/story";
 import { AuthContext } from "../../../../../context/auth-context";
 import { StoryContext } from "../../../../../context/story-context";
 
+// FORM VALIDATOR
+import formsValidator from "../../../../../utils/formComponents/formsValidator";
+
 const StoryForm = () => {
     const { authData } = useContext(AuthContext);
     const { fetchAllStories } = useContext(StoryContext);
@@ -19,6 +22,12 @@ const StoryForm = () => {
         image: undefined,
         private: false,
         comments_allowed: true
+    });
+
+    // STATE FOR STORY FORMS VALIDATION ERRORS
+    const [validForm, setValidForm] = useState({
+        valid: undefined,
+        message: ""
     });
 
     // HANDLE FORMS TEXT
@@ -66,29 +75,48 @@ const StoryForm = () => {
 
     const submitForm = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append("title", formState.title);
-        formData.append("story", formState.story);
-        formData.append("image", formState.image);
-        formData.append("private", formState.private);
-        formData.append("comments_allowed", formState.comments_allowed);
-        const res = await postStory(authData.token, formData);
-        setFormState({
-            title: "",
-            story: "",
-            image: undefined,
-            private: false,
-            comments_allowed: true
-        });
-        setPickedImage(undefined);
-        setImagePreview(undefined);
-        fetchAllStories();
+
+        const { valid, message } = formsValidator(
+            [{ type: "title", payload: formState.title },
+            { type: "story", payload: formState.story }]
+        );
+
+        if (valid) {
+            const formData = new FormData();
+            formData.append("title", formState.title);
+            formData.append("story", formState.story);
+            formData.append("image", formState.image);
+            formData.append("private", formState.private);
+            formData.append("comments_allowed", formState.comments_allowed);
+            const res = await postStory(authData.token, formData);
+            setFormState({
+                title: "",
+                story: "",
+                image: undefined,
+                private: false,
+                comments_allowed: true
+            });
+            setPickedImage(undefined);
+            setImagePreview(undefined);
+            fetchAllStories();
+            setValidForm({
+                valid: undefined,
+                message: ""
+            })
+        } else {
+            setValidForm({
+                valid,
+                message
+            })
+        }
+
 
     }
 
     return (
         <div className="new__story__container">
             <h2>Tell a story...</h2>
+            {!validForm.valid ? <p className="story__form__invalid">{validForm.message}</p> : null}
             <form>
                 <input
                     onChange={handleChange}

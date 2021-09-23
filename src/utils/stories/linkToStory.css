@@ -37,7 +37,7 @@
 }
 
 .to__story__left .story__title {
-    max-width: max-content;
+    width: 200px;
     padding: 5px;
 }
 
