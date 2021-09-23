@@ -1,0 +1,140 @@
+.to__story {
+    width: 95%;
+    margin: 10px auto;
+    height: 150px;
+    border-radius: 4px;
+    padding: 5px;
+    border: 3px solid white;
+    display: flex;
+    transition: 0.4s;
+    position: relative;
+    background-color: white;
+}
+
+.to__story:hover {
+    box-shadow: 0 2px 10px black;
+}
+
+.to__story__left,
+.to__story__right {
+    color: white;
+    width: 49%;
+    opacity: 0.6;
+    position: relative;
+    z-index: 2;
+}
+
+.to__story:hover .to__story__left,
+.to__story:hover .to__story__right {
+    opacity: 1
+}
+
+.to__story__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 0.8rem;
+}
+
+.to__story__left .story__title {
+    max-width: max-content;
+    padding: 5px;
+}
+
+.to__story__left .story__title,
+.story__author {
+    text-align: center;
+    border-radius: 6px;
+    background-color: black;
+    opacity: 0.5;
+    position: relative;
+    left: 20px;
+}
+
+.to__story__left .story__author {
+    border-radius: 2px;
+    color: black;
+    background-color: white;
+    max-width: fit-content;
+    padding: 3px 6px;
+    font-size: 0.7rem;
+}
+
+.to__story:hover .story__title,
+.to__story:hover .story__author {
+    opacity: 0.8;
+}
+
+.to__story__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 0.7rem;
+}
+
+.to__story__right .story__settings {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 25px;
+}
+
+.to__story__right .story__settings p {
+    margin: 1px 0px;
+    font-size: 0.6rem;
+    padding: 4px;
+    background-color: black;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.to__story__right .story__date {
+    text-align: center;
+    border-radius: 6px;
+    background-color: black;
+    opacity: 0.5;
+    padding: 4px;
+}
+
+.to__story:hover .story__date {
+    opacity: 0.8;
+}
+
+.to__story .link__image {
+    width: 90%;
+    height: 95%;
+    position: absolute;
+    left: 9px;
+    right: 20px;
+    top: 5px;
+    bottom: 20px;
+    z-index: 1;
+    object-fit: cover;
+}
+
+@media screen and (min-width: 768px) {
+    .to__story {
+        width: 85%;
+        margin: 15px auto;
+        height: 190px;
+        padding: 15px;
+    }
+
+    .to__story__left {
+        font-size: 1.3rem;
+    }
+
+    .to__story__right {
+        font-size: 0.9rem;
+    }
+
+    .to__story__right .story__settings {
+        margin-top: 0px;
+    }
+
+    .to__story .link__image {
+        width: 95%;
+        left: 20px;
+    }
+}

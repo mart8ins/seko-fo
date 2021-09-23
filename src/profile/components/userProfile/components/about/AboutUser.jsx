@@ -8,7 +8,7 @@ const AboutUser = ({ user, getUser }) => {
     const { authData } = useContext(AuthContext);
 
     const image = user.photo && user.photo.profile ? `${globalVariables.server}${user.photo.profile}` : "/images/no_image.png";
-
+    console.log(user)
     const [status, setStatus] = useState({
         isConnected: false,
         isRequestRecieved: false,

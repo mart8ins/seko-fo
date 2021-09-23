@@ -41,7 +41,7 @@
 }
 
 .new__story__image {
-    margin: 10px auto;
+    margin: 10px auto 40px;
     height: 150px;
     width: 120px;
     background-color: black;
@@ -143,6 +143,10 @@
     color: red;
 }
 
+.story__submit__btn {
+    width: 100px;
+}
+
 
 .new__story__container form textarea:focus,
 input:focus {
@@ -195,5 +199,9 @@ input:focus {
     .check__container {
         width: 20%;
         cursor: pointer;
+    }
+
+    .check__container:hover {
+        transform: scale(1.1)
     }
 }

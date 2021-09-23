@@ -1,14 +1,16 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import "./storyForm.css";
-import { postStory } from "../../../../../fetch/users/create";
+import { postStory } from "../../../../../fetch/users/story";
 import { AuthContext } from "../../../../../context/auth-context";
+import { StoryContext } from "../../../../../context/story-context";
 
 const StoryForm = () => {
     const { authData } = useContext(AuthContext);
+    const { fetchAllStories } = useContext(StoryContext);
     const imagePickerRef = useRef();
 
-    const [pickedImage, setPickedImage] = useState();
-    const [imagePreview, setImagePreview] = useState();
+    const [pickedImage, setPickedImage] = useState(undefined);
+    const [imagePreview, setImagePreview] = useState(undefined);
 
     // FORM STATE
     const [formState, setFormState] = useState({
@@ -16,7 +18,7 @@ const StoryForm = () => {
         story: "",
         image: undefined,
         private: false,
-        comments: true
+        comments_allowed: true
     });
 
     // HANDLE FORMS TEXT
@@ -29,7 +31,6 @@ const StoryForm = () => {
 
     // HANDLE FORMS CHECKBOXES
     const handleChecked = (e) => {
-        console.log(e.target.name)
         setFormState({
             ...formState,
             [e.target.name]: e.target.checked
@@ -70,11 +71,21 @@ const StoryForm = () => {
         formData.append("story", formState.story);
         formData.append("image", formState.image);
         formData.append("private", formState.private);
-        formData.append("comments", formState.comments);
+        formData.append("comments_allowed", formState.comments_allowed);
         const res = await postStory(authData.token, formData);
+        setFormState({
+            title: "",
+            story: "",
+            image: undefined,
+            private: false,
+            comments_allowed: true
+        });
+        setPickedImage(undefined);
+        setImagePreview(undefined);
+        fetchAllStories();
+
     }
 
-    console.log(formState)
     return (
         <div className="new__story__container">
             <h2>Tell a story...</h2>
@@ -89,7 +100,7 @@ const StoryForm = () => {
                     <textarea
                         onChange={handleChange}
                         placeholder="Write some text..."
-                        value={formState.text}
+                        value={formState.story}
                         name="story"
                         required></textarea>
 
@@ -123,19 +134,19 @@ const StoryForm = () => {
                         <span className={`private ${formState.private && "private__checked"}`}>Private {!formState.private && "?"} <span className={`check_mark ${formState.private && "check_mark_checked"}`}>&#10003;</span></span>
                     </label>
 
-                    <label className="check__container" htmlFor="comments">
+                    <label className="check__container" htmlFor="comments_allowed">
                         <input
                             onChange={handleChecked}
-                            name="comments"
-                            id="comments"
+                            name="comments_allowed"
+                            id="comments_allowed"
                             type="checkbox"
-                            checked={formState.comments}
-                            value={formState.comments} />
-                        <span className={`comments ${formState.comments && "comments__checked"}`}>Comments {!formState.comments && "?"} <span className={`check_mark ${formState.comments && "check_mark_checked"}`}>&#10003;</span></span>
+                            checked={formState.comments_allowed}
+                            value={formState.comments_allowed} />
+                        <span className={`comments ${formState.comments_allowed && "comments__checked"}`}>Comments {!formState.comments_allowed && "?"} <span className={`check_mark ${formState.comments_allowed && "check_mark_checked"}`}>&#10003;</span></span>
                     </label>
                 </div>
 
-                <button onClick={submitForm}>Save</button>
+                <button className="story__submit__btn" onClick={submitForm}>Save</button>
             </form>
         </div>
 
