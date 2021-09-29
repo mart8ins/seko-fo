@@ -50,7 +50,6 @@ const ChangeUserData = () => {
         const { firstName, lastName, email } = profileData;
 
         const { valid, message } = formsValidator([{ type: "name", payload: firstName }, { type: "name", payload: lastName }, { type: "email", payload: email }])
-        console.log(valid, message)
         setValidForm({
             valid,
             message

@@ -159,7 +159,7 @@
 
 
 .new__story__container form textarea:focus,
-input:focus {
+.new__story__container form input:focus {
     outline: none;
     box-shadow: 0px 6px 15px rgb(204, 245, 110);
     color: rgb(100, 81, 81);

@@ -15,7 +15,6 @@ const StoryContextProvider = ({children}) => {
 
     const fetchAllStories = async () => {
         const res = await getAllStories(token);
-        console.log(res)
         setStories(res.data.stories);
     }
 

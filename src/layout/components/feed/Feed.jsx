@@ -3,16 +3,16 @@ import React, { useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 import LandingPage from "../../../landing/components/Landing";
 
-import Content from "../../../content/Content";
+import Content from "../../../content/contentFeed/ContentFeed";
 import Create from "../../../create/Create";
 import Connections from "../../../connections/components/Connections";
 import Messages from "../../../messages/components/Messages";
 import Settings from "../../../settings/components/Settings";
 import UserProfile from "../../../profile/components/userProfile/UserProfile";
-import CreateStory from "../../../create/components/options/story/CreateStory";
+import CreateStory from "../../../create/components/options/createStory/CreateStory";
 import Workout from "../../../create/components/options/Workout";
 import Exchange from "../../../create/components/options/Exchange";
-import Story from "../../../content/story/Story";
+import Story from "../../../content/stories/UserStory";
 
 import { AuthContext } from "../../../context/auth-context";
 import RouteGuard from "../../../utils/RouteGuard";

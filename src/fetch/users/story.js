@@ -24,8 +24,19 @@ const getAllStories = async (token) => {
     return res;
 }
 
+const getStory = async (token, storyId) => {
+    const config = {
+        headers: {
+             Authorization: 'Bearer ' + token
+        }
+    }
+    const url = `${baseUrl}/${storyId}`;
+    const res = await axios.get(url, config);
+    return res;
+}
 
 export {
     postStory,
-    getAllStories
+    getAllStories,
+    getStory
 };
