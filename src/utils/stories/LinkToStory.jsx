@@ -3,22 +3,31 @@ import { Link } from "react-router-dom";
 import { AuthContext } from '../../context/auth-context';
 import "./linkToStory.css";
 
-const LinkToStory = ({ storieId, title, image, date, author, privateStory, comments }) => {
-    const { authData: { userId } } = useContext(AuthContext)
+const LinkToStory = ({ storyId, title, image, date, author, privateStory, comments, authorId }) => {
+    const { authData: { userId } } = useContext(AuthContext);
+
     return (
-        <Link to={`/story/${storieId}`}>
+        <Link to={`/story/${storyId}`}>
             <div className="to__story">
                 <img className="link__image" src={image} />
                 <div className="to__story__left">
                     <div className="story__title">{title}</div>
-                    {author && author.userId !== userId ? <div className="story__author">Published by {author.firstName} {author.lastName}</div> : null}
+                    {authorId !== userId ? <div className="story__author">Published by {author}</div> : null}
                 </div>
 
                 <div className="to__story__right">
-                    <div className="story__settings">
-                        {comments ? <p>Comments allowed</p> : <p>Comments are locked</p>}
-                        {privateStory ? <p>Story is private</p> : <p>Story is public</p>}
-                    </div>
+                    {
+                        authorId === userId ?
+                            <div className="story__settings">
+                                {comments ? <p>Comments allowed</p> : <p>Comments are locked</p>}
+                                {privateStory ? <p>Story is private</p> : <p>Story is public</p>}
+                            </div>
+                            :
+                            <div>
+
+                            </div>
+                    }
+
                     <div className="story__date">{date}</div>
                 </div>
             </div>

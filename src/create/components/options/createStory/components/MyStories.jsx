@@ -4,11 +4,8 @@ import LinkToStory from "../../../../../utils/stories/LinkToStory";
 import { StoryContext } from '../../../../../context/story-context';
 import globalVariables from '../../../../../globalVariables';
 
-
-const date = "21.09.2021";
-
 const MyStories = () => {
-    const { userStories, fetchAllStories } = useContext(StoryContext);
+    const { userStories } = useContext(StoryContext);
 
     return (
         <div className="my__stories__container">
@@ -17,17 +14,17 @@ const MyStories = () => {
                 const storyId = story._id;
                 const image = story.image ? `${globalVariables.server}${story.image}` : "/images/no_image.png";
                 const date = new Date(story.date).toLocaleDateString();
-
                 return <LinkToStory
                     key={storyId}
-                    storieId={storyId}
+                    storyId={storyId}
                     title={story.title}
                     text={story.story}
                     image={image}
                     date={date}
-                    author={story.author}
+                    author={story.author.firstName}
                     comments={story.comments_allowed}
-                    privateStory={story.private} />
+                    privateStory={story.private}
+                    authorId={story.author.userId} />
             })}
         </div>
     )

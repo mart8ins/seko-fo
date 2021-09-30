@@ -6,7 +6,7 @@ const StoryOptionButtons = () => {
         <div className="user__story__options__btns">
             <Link to="">Delete</Link>
             <Link to="">Edit</Link>
-            <Link to="">View all my stories</Link>
+            <Link to="/userContentFeed?type=story">View all my stories</Link>
         </div>
     )
 }

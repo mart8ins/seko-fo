@@ -1,20 +1,30 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // react font awesome component
 
 import { faRssSquare } from '@fortawesome/free-solid-svg-icons'; // main feed
-import { faFileMedicalAlt } from '@fortawesome/free-solid-svg-icons'; // create
+
+import { faHouseUser } from '@fortawesome/free-solid-svg-icons'; // main feed
+
+import { faFileSignature } from '@fortawesome/free-solid-svg-icons'; // create
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'; // message
 import { faUserFriends } from '@fortawesome/free-solid-svg-icons'; // friends
 import { faCogs } from '@fortawesome/free-solid-svg-icons'; // settings
 
-// content / feed 
+
+// content feed
 const content = {
     icon: <FontAwesomeIcon icon={faRssSquare} />,
-    type: "content"
+    type: "contentFeed"
+}
+
+// user user 
+const user = {
+    icon: <FontAwesomeIcon icon={faHouseUser} />,
+    type: "userContentFeed"
 }
 
 // create 
 const create = {
-    icon: <FontAwesomeIcon icon={faFileMedicalAlt} />,
+    icon: <FontAwesomeIcon icon={faFileSignature} />,
     type: "create"
 }
 
@@ -37,6 +47,6 @@ const settings = {
 }
 
 // 0 index at the top of side navigation... and so one...
-const allIcons = [content,create, msg, connections, settings];
+const allIcons = [content, user, create, msg, connections, settings];
 
 export default allIcons;

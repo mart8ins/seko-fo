@@ -7,8 +7,6 @@ const StoryRater = () => {
         setRating(e.target.value)
     }
 
-    console.log(rating)
-
     return (
         <div className="user__story__rater">
             <p>Rate this story</p>

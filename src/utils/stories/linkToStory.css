@@ -37,7 +37,7 @@
 }
 
 .to__story__left .story__title {
-    width: 200px;
+    width: 150px;
     padding: 5px;
 }
 
@@ -71,13 +71,15 @@
     justify-content: space-between;
     align-items: flex-end;
     font-size: 0.7rem;
+    margin-right: 40px;
 }
 
 .to__story__right .story__settings {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
-    margin-top: 25px;
+    margin-top: 45px;
+    margin-right: 10px;
 }
 
 .to__story__right .story__settings p {
@@ -121,6 +123,11 @@
         padding: 15px;
     }
 
+    .to__story__left .story__title {
+        width: 250px;
+        padding: 5px;
+    }
+
     .to__story__left {
         font-size: 1.3rem;
     }
@@ -131,6 +138,7 @@
 
     .to__story__right .story__settings {
         margin-top: 0px;
+        flex-direction: column;
     }
 
     .to__story .link__image {

@@ -132,16 +132,6 @@
     margin-top: 10px;
 }
 
-.user__profile__content {
-    width: 95%;
-    background-color: white;
-    margin: 10px auto;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-
-
 @media screen and (min-width: 768px) {
     .connected__status {
         padding-right: 10px;
