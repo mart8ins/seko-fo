@@ -3,7 +3,23 @@ import StoryOptionButtons from "./StoryOptionButtons";
 import StoryOptionUserCard from "./StoryOptionUserCard";
 import StoryRater from "./StoryRater";
 
-const StorySection = ({ backGroundImage, title, rating, ratings, story, date, authorId, userId, firstName, lastName, userProfileImage }) => {
+const StorySection = ({
+    backGroundImage,
+    storyId,
+    title,
+    rating,
+    ratings,
+    story,
+    date,
+    authorId,
+    userId,
+    firstName,
+    lastName,
+    userProfileImage,
+    storyIsRated,
+    userRated,
+    fetchStory
+}) => {
     return (
         <div className="user__story__container">
             {backGroundImage && <img className="user__story__image__background" src={backGroundImage} alt="Background image for users story" />}
@@ -17,7 +33,7 @@ const StorySection = ({ backGroundImage, title, rating, ratings, story, date, au
                             <div>Rating <span className="rating__story__rate">{rating}/10</span> <span>- {ratings && ratings.length || "0"} users rated</span></div>
                         </div>
                         :
-                        <StoryRater />
+                        <StoryRater storyId={storyId} storyIsRated={storyIsRated} userRated={userRated} storyRating={rating} storyRatings={ratings} fetchStory={fetchStory} />
                     }
 
 

@@ -13,6 +13,17 @@ const postStory = async (token, formData) => {
     return res;
 }
 
+const rateStory = async (token, storyId, rate) => {
+    const config = {
+        headers: {
+             Authorization: 'Bearer ' + token
+        }
+    }
+    const url = `${baseUrl}rate`;
+    const res = await axios.post(url, {storyId, rate}, config);
+    return res;
+}
+
 const getAllStories = async (token) => {
     const config = {
         headers: {
@@ -50,5 +61,6 @@ export {
     postStory,
     getAllStories,
     getStory,
-    getAllUserStories
+    getAllUserStories,
+    rateStory
 };

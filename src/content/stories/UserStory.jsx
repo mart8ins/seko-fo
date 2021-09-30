@@ -16,6 +16,9 @@ const StoryContent = () => {
     const [userProfileImage, setUserProfileImage] = useState();
     const [rating, setRating] = useState(0);
 
+    const [storyIsRated, setStoryIsRated] = useState(false);
+    const [userRated, setUserRated] = useState(undefined);
+
     useEffect(() => {
         fetchStory();
     }, [storyId]);
@@ -24,12 +27,23 @@ const StoryContent = () => {
         if (story && story.rating.length) {
             let r = 0;
             story.rating.forEach((rater) => {
+                // keep track of all ratings to get avarage
                 r = r + rater.rate;
+                // check if user already rated story what he reads
+                if (rater.raterId === userId) {
+                    setStoryIsRated(true);
+                    setUserRated(rater.rate)
+                }
             });
             r = r / story.rating.length;
             setRating(r);
         };
     }, [story]);
+
+    // to check if user is alreadu rated this story
+    useEffect(() => {
+
+    })
 
     const fetchStory = async () => {
         const res = await getStory(token, storyId);
@@ -42,16 +56,16 @@ const StoryContent = () => {
         }
     }
 
-
     return (
         <div className="user__story__main__container">
 
             {story &&
                 <StorySection
                     backGroundImage={backGroundImage}
+                    storyId={storyId}
                     title={story.title}
                     rating={rating}
-                    ratings={story.ratings}
+                    ratings={story.rating}
                     story={story.story}
                     date={story.date}
                     authorId={story.author.userId}
@@ -59,6 +73,11 @@ const StoryContent = () => {
                     firstName={story.author.firstName}
                     lastName={story.author.lastName}
                     userProfileImage={userProfileImage}
+
+                    storyIsRated={storyIsRated}
+                    userRated={userRated}
+                    fetchStory={fetchStory}
+
                 />
             }
 

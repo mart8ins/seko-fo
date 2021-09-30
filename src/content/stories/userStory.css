@@ -255,6 +255,33 @@
     border-radius: 5px;
 }
 
+/* IF STORY ALREADY RATED */
+
+.user__story__rater__rating__left,
+.user__story__rater__rating__total {
+    font-size: 0.7rem;
+    padding: 10px;
+}
+
+.user__story__rater__rating__total {
+    padding: 20px;
+}
+
+.user__story__rater__rating__left span {
+    font-size: 1.1rem;
+    background-color: rgba(60, 158, 89, 0.3);
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.user__story__rater__rating__total span {
+    font-size: 0.9rem;
+    background-color: rgba(60, 158, 89, 0.3);
+    padding: 1px 5px;
+    border-radius: 50%;
+}
+
 @media screen and (min-width: 768px) {
     .user__story__container {
         flex-direction: row;
@@ -318,8 +345,6 @@
     }
 
 
-
-
     /* TOP WITH TITLE AND RATE */
     .user__story__view__top__title {
         width: 49%;
@@ -355,8 +380,8 @@
     }
 
     .user__story__rater__value {
-        font-size: 1.9rem;
-        padding: 10px;
+        font-size: 1.7rem;
+        padding: 5px;
     }
 
     .user__story__rater input {
@@ -364,7 +389,7 @@
     }
 
     .user__story__rater button {
-        font-size: 1.2rem;
+        font-size: 1rem;
         border: none;
         background: rgba(0, 0, 0, 0.5);
         border: 1px solid rgba(0, 0, 0, 0.5);
@@ -379,5 +404,21 @@
         cursor: pointer;
         color: white;
         border: 1px solid white;
+    }
+
+    /* IF STORY ALREADY RATED */
+    .user__story__rater__rating__left,
+    .user__story__rater__rating__total {
+        padding: 10px;
+    }
+
+    .user__story__rater__rating__left span {
+        font-size: 1.3rem;
+        padding: 5px 15px;
+    }
+
+    .user__story__rater__rating__total span {
+        font-size: 1.1rem;
+        padding: 5px 10px;
     }
 }

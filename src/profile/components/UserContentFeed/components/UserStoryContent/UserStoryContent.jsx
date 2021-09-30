@@ -19,12 +19,13 @@ const UserStoryContent = ({ user }) => {
 
     const fetchUserStories = async () => {
         const res = await getAllUserStories(authData.token, user._id);
-        setUserStories(res.data.stories);
+        const rev = res.data.stories.reverse();
+        setUserStories(rev);
     }
 
     return (
         <div>
-            {userStories && userStories.map((story) => {
+            {userStories && userStories.reverse().map((story) => {
                 const storyId = story._id;
                 const image = story.image ? `${globalVariables.server}${story.image}` : "/images/no_image.png";
                 const date = new Date(story.date).toLocaleDateString();
