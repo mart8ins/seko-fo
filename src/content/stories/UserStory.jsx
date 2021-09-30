@@ -55,7 +55,6 @@ const StoryContent = () => {
             setUserProfileImage(globalVariables.server + res.data.story.author.photo)
         }
     }
-
     return (
         <div className="user__story__main__container">
 
@@ -77,7 +76,6 @@ const StoryContent = () => {
                     storyIsRated={storyIsRated}
                     userRated={userRated}
                     fetchStory={fetchStory}
-
                 />
             }
 

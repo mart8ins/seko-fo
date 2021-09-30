@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../../context/auth-context";
 import { getAllUserStories } from "../../../../../fetch/users/story";
 import globalVariables from '../../../../../globalVariables';
@@ -41,7 +41,7 @@ const UserStoryContent = ({ user }) => {
             })}
             {userStories && !userStories.length &&
                 <div className="user__no__stories">
-                    User currently dosent have any added stories.
+                    No stories to show. {authData ? <Link to="/create/story">Add a story</Link> : null}
                 </div>}
         </div>
     )

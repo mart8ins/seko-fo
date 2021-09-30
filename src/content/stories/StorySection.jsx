@@ -18,7 +18,8 @@ const StorySection = ({
     userProfileImage,
     storyIsRated,
     userRated,
-    fetchStory
+    fetchStory,
+    imagePath
 }) => {
     return (
         <div className="user__story__container">
@@ -48,7 +49,7 @@ const StorySection = ({
             </div>
 
             {userId === authorId ?
-                <StoryOptionButtons />
+                <StoryOptionButtons storyId={storyId} />
                 :
                 <StoryOptionUserCard firstName={firstName} lastName={lastName} userProfileImage={userProfileImage} authorId={authorId} />
             }

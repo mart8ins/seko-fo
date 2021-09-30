@@ -24,6 +24,17 @@ const rateStory = async (token, storyId, rate) => {
     return res;
 }
 
+const deleteStory = async (token, storyId) => {
+    const config = {
+        headers: {
+             Authorization: 'Bearer ' + token
+        }
+    }
+    const url = `${baseUrl}delete`;
+    const res = await axios.post(url, {storyId}, config);
+    return res;
+}
+
 const getAllStories = async (token) => {
     const config = {
         headers: {
@@ -62,5 +73,6 @@ export {
     getAllStories,
     getStory,
     getAllUserStories,
-    rateStory
+    rateStory,
+    deleteStory
 };

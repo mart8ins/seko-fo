@@ -125,6 +125,29 @@
     border-radius: 4px;
 }
 
+.user__story__options__btns button {
+    color: white;
+    border: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.user__story__options__btns button:hover {
+    cursor: pointer;
+}
+
+.user__story__options__btns .confirm__deletion__btn {
+    background-color: rgb(163, 0, 0);
+    border: 1px solid rgb(163, 0, 0);
+    box-shadow: 0 0 10px white;
+}
+
+.user__story__options__btns .confirm__deletion__btn:hover {
+    background-color: rgb(163, 0, 0);
+    border: 1px solid rgb(163, 0, 0);
+}
+
 .user__story__options__user__card {
     flex: 1;
     font-size: 0.7rem;
@@ -319,7 +342,20 @@
         background-color: rgba(0, 0, 0, 0.6);
     }
 
+    .user__story__options__btns button {
+        margin-top: 20px;
+        width: 170px;
+        text-align: center;
+        font-size: 1.2rem;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
     .user__story__options__btns a:hover {
+        background-color: rgba(0, 0, 0, 1);
+        border: 1px solid black;
+    }
+
+    .user__story__options__btns button:hover {
         background-color: rgba(0, 0, 0, 1);
         border: 1px solid black;
     }
