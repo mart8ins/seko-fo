@@ -14,7 +14,7 @@ const StoryOptionUserCard = ({ firstName, lastName, userProfileImage, authorId }
                     <img src={userProfileImage || "/images/no_image.png"} alt="" />
                 </div>
                 <div className="user__story__options__user__card__link">
-                    <Link to={`/user/${authorId}/profile`}>View users profile</Link>
+                    <Link to={`/user/${authorId}/profile`}>Users profile</Link>
                 </div>
             </div>
 

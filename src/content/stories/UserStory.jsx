@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
 import "./userStory.css";
 import globalVariables from '../../globalVariables';
-import CommentsSection from "./CommentsSection";
+import StoryCommentsSection from "./StoryCommentsSection";
 import StorySection from "./StorySection";
 
 import { getStory } from "../../fetch/users/story";
@@ -18,7 +18,7 @@ const StoryContent = () => {
 
     const [storyIsRated, setStoryIsRated] = useState(false);
     const [userRated, setUserRated] = useState(undefined);
-
+    console.log(story)
     useEffect(() => {
         fetchStory();
     }, [storyId]);
@@ -79,7 +79,13 @@ const StoryContent = () => {
                 />
             }
 
-            {story && <CommentsSection comments_allowed={story.comments_allowed} />}
+            {story && <StoryCommentsSection
+                comments_allowed={story.comments_allowed}
+                storyId={storyId}
+                comments={story.comments}
+                updateStory={fetchStory}
+                storyAuthorId={story.author.userId}
+            />}
 
         </div>
     )
