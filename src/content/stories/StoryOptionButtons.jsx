@@ -25,7 +25,7 @@ const StoryOptionButtons = ({ storyId }) => {
         if (confirmDelete) {
             setTimeout(() => {
                 setConfirmDelete(false);
-            }, 10000)
+            }, 5000)
         }
     }, [confirmDelete])
 
@@ -35,7 +35,7 @@ const StoryOptionButtons = ({ storyId }) => {
 
             {confirmDelete && <button onClick={deleteComplete} className="confirm__deletion__btn" to="">Confirm deletion</button>}
 
-            <Link to="">Edit</Link>
+            <Link to={`/create/story?edit=${storyId}`}>Edit</Link>
             <Link to="/userContentFeed?type=story">View all my stories</Link>
         </div>
     )

@@ -10,7 +10,6 @@ import { fetchUser } from '../../../fetch/users/connections';
 
 const MyProfile = () => {
     const { authData } = useContext(AuthContext);
-
     const [loggedUser, setLoggedUser] = useState(undefined);
 
     useEffect(() => {
@@ -21,7 +20,6 @@ const MyProfile = () => {
         const res = await fetchUser(authData.token, authData.userId);
         setLoggedUser(res.data.user);
     }
-
 
     return (
         <div>

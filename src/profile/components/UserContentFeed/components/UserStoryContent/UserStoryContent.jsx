@@ -8,7 +8,7 @@ import LinkToStory from "../../../../../utils/stories/LinkToStory";
 
 const UserStoryContent = ({ user }) => {
     const { authData } = useContext(AuthContext);
-
+    console.log(user)
     const [userStories, setUserStories] = useState();
 
     useEffect(() => {
@@ -41,7 +41,8 @@ const UserStoryContent = ({ user }) => {
             })}
             {userStories && !userStories.length &&
                 <div className="user__no__stories">
-                    No stories to show. {authData ? <Link to="/create/story">Add a story</Link> : null}
+                    <p>No stories to show</p>
+                    {authData && authData.userId === user._id ? <Link to="/create/story">Add a story</Link> : null}
                 </div>}
         </div>
     )

@@ -1,19 +1,21 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
+import { useHistory, useLocation } from "react-router-dom";
+
 import "./storyForm.css";
 import { postStory } from "../../../../../fetch/users/story";
 import { AuthContext } from "../../../../../context/auth-context";
 import { StoryContext } from "../../../../../context/story-context";
+import queryString from 'query-string';
+import { getStory } from "../../../../../fetch/users/story";
+import globalVariables from '../../../../../globalVariables';
 
 // FORM VALIDATOR
 import formsValidator from "../../../../../utils/formComponents/formsValidator";
 
 const StoryForm = () => {
+    // CONTEXTS
     const { authData } = useContext(AuthContext);
     const { fetchAllStories } = useContext(StoryContext);
-    const imagePickerRef = useRef();
-
-    const [pickedImage, setPickedImage] = useState(undefined);
-    const [imagePreview, setImagePreview] = useState(undefined);
 
     // FORM STATE
     const [formState, setFormState] = useState({
@@ -29,6 +31,55 @@ const StoryForm = () => {
         valid: undefined,
         message: ""
     });
+
+    // IMAGE UPLOAD/ PREVIEW HANDLER
+    const imagePickerRef = useRef();
+    const [pickedImage, setPickedImage] = useState(undefined);
+    const [imagePreview, setImagePreview] = useState(undefined);
+
+    /* 
+    USING STORY CREATION COMPONENT ALSO TO EDIT IT IF USER CLICKS EDIT BUTTON IN STORY PAGE,
+    USER MOVED TO COMPONENT AND FORM VALUE RECIEVED FROM DB
+    */
+
+    const [editStory, setEditStory] = useState(false);
+    const [storyToEditId, setStoryToEditId] = useState(undefined);
+    const location = useLocation();
+    const history = useHistory();
+
+    // EFFECT TO CHECK IF USER WHANTS TO CREATE OR EDIT STORY
+    useEffect(() => {
+        const { edit } = queryString.parse(history.location.search);
+        // if query string name edit exists (story id) then set state for component for edit story
+        // EDIT = story id
+        if (edit) {
+            setStoryToEditId(edit);
+            (async () => {
+                const res = await getStory(authData.token, edit);
+                setFormState({
+                    title: res.data.story.title,
+                    story: res.data.story.story,
+                    image: `${globalVariables.server}${res.data.story.image}`,
+                    private: res.data.story.private,
+                    comments_allowed: res.data.story.comments_allowed
+                })
+            })();
+            setEditStory(true);
+        }
+    }, []);
+
+    // EFFECT FOR IMAGE UPLOAD
+    useEffect(() => {
+        if (pickedImage) {
+            const fileReader = new FileReader;
+            fileReader.onload = () => {
+                setImagePreview(fileReader.result);
+            }
+            fileReader.readAsDataURL(pickedImage)
+        }
+    }, [pickedImage])
+
+
 
     // HANDLE FORMS TEXT
     const handleChange = (e) => {
@@ -57,16 +108,6 @@ const StoryForm = () => {
         }
 
     }
-    useEffect(() => {
-        if (pickedImage) {
-            const fileReader = new FileReader;
-            fileReader.onload = () => {
-                setImagePreview(fileReader.result);
-            }
-            fileReader.readAsDataURL(pickedImage)
-        }
-    }, [pickedImage])
-
 
     // OPEN IMAGE PICKER
     const choseImage = () => {
@@ -85,9 +126,15 @@ const StoryForm = () => {
             const formData = new FormData();
             formData.append("title", formState.title);
             formData.append("story", formState.story);
-            formData.append("image", formState.image);
+            if (pickedImage) {
+                formData.append("image", formState.image);
+            }
             formData.append("private", formState.private);
             formData.append("comments_allowed", formState.comments_allowed);
+            if (editStory) {
+                formData.append("edit_story", storyToEditId)
+            }
+
             const res = await postStory(authData.token, formData);
             setFormState({
                 title: "",
@@ -103,19 +150,18 @@ const StoryForm = () => {
                 valid: undefined,
                 message: ""
             })
+            setEditStory(false);
         } else {
             setValidForm({
                 valid,
                 message
             })
         }
-
-
     }
 
     return (
         <div className="new__story__container">
-            <h2>Tell a story...</h2>
+            <h2>{editStory ? "Edit story" : "Tell a story..."}</h2>
             {!validForm.valid ? <p className="story__form__invalid">{validForm.message}</p> : null}
             <form>
                 <input
@@ -140,10 +186,12 @@ const StoryForm = () => {
                             type="file"
                             name="image" />
                         <div className="add__image" onClick={choseImage}>
-                            Add image
+                            {editStory ? "Change image" : "Add image"}
                         </div>
                         <div className="image__preview">
-                            {imagePreview ? <img src={imagePreview} /> : "Image preview"}
+                            {imagePreview && <img alt="story image preview" src={imagePreview} />}
+                            {editStory && formState.image && !imagePreview && <img alt="story image" src={formState.image} />}
+                            {!imagePreview && !formState.image && "Image preview"}
                         </div>
                     </div>
                 </div>

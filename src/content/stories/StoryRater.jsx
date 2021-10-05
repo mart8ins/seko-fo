@@ -12,7 +12,6 @@ const StoryRater = ({ storyIsRated, userRated, storyRating, storyRatings, fetchS
 
     const sendRate = async () => {
         const res = await rateStory(authData.token, storyId, rating);
-        console.log(res)
         fetchStory();
     }
 

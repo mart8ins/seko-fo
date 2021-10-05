@@ -7,7 +7,6 @@ import UserStoryContent from "./components/UserStoryContent/UserStoryContent";
 import UserProgressContent from "./components/UserProgressContent/UserProgressContent";
 
 const UserContentFeed = ({ user }) => {
-
     // IF AFTER READING CONTENT USER WHANTS TO SEE ALL SPECIFIC TYPE OF CONTENT, 
     // USING LINK REDIRECTS TO IT USING QUERY INSTEAD OF OPENING USER DEFAULT TYPE
     const history = useHistory();

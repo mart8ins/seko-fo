@@ -32,12 +32,25 @@
     height: 200px;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 1rem;
-    text-align: center;
     box-shadow: 0 0 12px black;
     background-color: whitesmoke;
+}
+
+.user__no__stories p {
+    font-size: 0.8rem;
+    margin: 0 0 15px;
+    text-align: center;
+}
+
+.user__no__stories a {
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-left: 10px;
+    color: rgb(100, 81, 81);
+    text-decoration: underline;
 }
 
 @media screen and (min-width: 768px) {
@@ -55,5 +68,18 @@
         cursor: pointer;
         background-color: rgba(0, 0, 0, 0.6);
         color: white;
+    }
+
+    .user__no__stories p {
+        font-size: 1rem;
+        margin: 0 0 20px;
+    }
+
+    .user__no__stories a {
+        font-size: 1.1rem;
+    }
+
+    .user__no__stories a:hover {
+        color: black;
     }
 }
