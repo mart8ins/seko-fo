@@ -21,7 +21,6 @@ const StoryCommentsForm = ({ storyId, updateStory }) => {
         const res = await postStoryComment(authData.token, commentObject);
         await updateStory();
         setComment("");
-        console.log(res.data)
     }
 
     return (

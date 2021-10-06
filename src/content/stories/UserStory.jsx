@@ -18,7 +18,7 @@ const StoryContent = () => {
 
     const [storyIsRated, setStoryIsRated] = useState(false);
     const [userRated, setUserRated] = useState(undefined);
-    console.log(story)
+
     useEffect(() => {
         fetchStory();
     }, [storyId]);

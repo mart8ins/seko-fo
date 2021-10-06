@@ -1,0 +1,104 @@
+.story__header__container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 2px;
+    box-shadow: 0 2px 12px black;
+}
+
+.left__side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 18px white;
+    border-radius: 5px;
+}
+
+.left__side p {
+    margin: 0;
+    padding: 5px 10px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    background-color: black;
+    color: white;
+    height: max-content;
+    box-shadow: 0 2px 12px black;
+    border-radius: 4px;
+}
+
+.right__side__stories__stats {
+    width: 85%;
+    margin: 8px auto;
+}
+
+
+
+.story__stat {
+    display: flex;
+    margin-top: 4px;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: rgba(143, 185, 79, 0.418);
+    box-shadow: 0 2px 12px black;
+}
+
+.story__stat .story__stat__title {
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: rgba(55, 82, 18, 0.747);
+    background-color: rgba(92, 126, 46, 0.747);
+    border: 1px solid white;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    font-style: italic;
+}
+
+.story__stat .story__stat__result {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border: 2px solid white;
+    color: white;
+    background-color: black;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+
+@media screen and (min-width: 768px) {
+    .story__header__container {
+        flex-direction: row;
+    }
+
+    .left__side {
+        width: 30%;
+    }
+
+    .left__side p {
+        font-size: 2.3rem;
+    }
+
+    .story__stat {
+        width: 60%;
+        margin: 10px auto;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .story__stat .story__stat__title {
+        align-self: center;
+        font-size: 0.9rem;
+    }
+
+    .story__stat .story__stat__result {
+        font-size: 1rem;
+        margin: 0;
+    }
+}

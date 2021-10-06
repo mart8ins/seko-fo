@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../../context/auth-context";
 import { getAllUserStories } from "../../../../../fetch/users/story";
 import globalVariables from '../../../../../globalVariables';
+import StoryHeader from "./StoryHeader";
 
 import LinkToStory from "../../../../../utils/stories/LinkToStory";
 
 const UserStoryContent = ({ user }) => {
     const { authData } = useContext(AuthContext);
-    console.log(user)
     const [userStories, setUserStories] = useState();
-
+    const [userStoriesStats, setUserStoriesStats] = useState();
     useEffect(() => {
         if (user) {
             fetchUserStories();
@@ -20,11 +20,15 @@ const UserStoryContent = ({ user }) => {
     const fetchUserStories = async () => {
         const res = await getAllUserStories(authData.token, user._id);
         const rev = res.data.stories.reverse();
+        setUserStoriesStats(res.data.stats);
         setUserStories(rev);
     }
 
     return (
         <div>
+            {user && String(user._id) === authData.userId && <StoryHeader userStoriesStats={userStoriesStats} />}
+
+
             {userStories && userStories.reverse().map((story) => {
                 const storyId = story._id;
                 const image = story.image ? `${globalVariables.server}${story.image}` : "/images/no_image.png";
