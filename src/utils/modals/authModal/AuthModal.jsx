@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import "./authModal.css";
-import Signup from "../../../auth/components/Signup";
-import Login from "../../../auth/components/Login";
+import Signup from "../../../auth/Signup";
+import Login from "../../../auth/Login";
 import { AuthContext } from "../../../context/auth-context";
 
 

@@ -1,5 +1,5 @@
-import Header from "./layout/components/header/Header";
-import MainContainer from "./layout/components/mainContainer/MainContainer";
+import Header from "./layout/header/Header";
+import MainContainer from "./layout/mainContainer/MainContainer";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import AuthContextProvider from "./context/auth-context";

@@ -1,6 +1,6 @@
 import {createContext, useContext, useState, useEffect} from "react";
 import {AuthContext} from "../context/auth-context";
-import {getAllStories} from "../fetch/users/story";
+import {getAllStories} from "../fetch/story";
 
 export const StoryContext = createContext();
 

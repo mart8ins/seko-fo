@@ -1,0 +1,304 @@
+.user__story__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.user__story__image__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* ALL VIEW FOR STORY without OPTION BUTTONS*/
+.user__story__view {
+    padding: 15px;
+    position: relative;
+    z-index: 3;
+}
+
+/* TOP WITH TITLE AND RATE */
+.user__story__view__top {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin: 5px;
+}
+
+.user__story__view__top__title,
+.user__story__view__top__rate {
+    margin: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.user__story__view__top__rate {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    width: max-content;
+    margin: 0 auto;
+    padding: 0 5px;
+}
+
+.rating__story__rate {
+    font-size: 1rem;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    padding: 4px;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.user__story__view__top__title {
+    font-weight: bold;
+    padding: 15px;
+    height: max-content;
+    color: black;
+    font-size: 1.3rem;
+    margin: 15px 0px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Abril Fatface', cursive;
+    background-color: whitesmoke;
+}
+
+
+/* THE STORY */
+.user__story__view__middle {
+    background-color: whitesmoke;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+    margin: 5px;
+    padding: 20px;
+    max-height: 940px;
+    overflow: auto;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    text-align: justify;
+}
+
+/* BOTTOM WITH DATE AND MAYBE SOME STATS */
+.user__story__view__bottom {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: max-content;
+    float: right;
+    margin: 5px 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+
+/* RIGHT SIDE WITH OPTIONS FOR SOMETHING */
+.user__story__options__btns {
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+}
+
+.user__story__options__btns a {
+    color: white;
+    border: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.user__story__options__btns button {
+    color: white;
+    border: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.user__story__options__btns button:hover {
+    cursor: pointer;
+}
+
+.user__story__options__btns .confirm__deletion__btn {
+    background-color: rgb(163, 0, 0);
+    border: 1px solid rgb(163, 0, 0);
+    box-shadow: 0 0 10px white;
+}
+
+.user__story__options__btns .confirm__deletion__btn:hover {
+    background-color: rgb(163, 0, 0);
+    border: 1px solid rgb(163, 0, 0);
+}
+
+.user__story__options__user__card {
+    flex: 1;
+    font-size: 0.7rem;
+    position: relative;
+    z-index: 3;
+}
+
+.user__story__options__user__card__content {
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 50%;
+    margin: 0 auto 10px;
+    color: white;
+    padding: 10px;
+}
+
+.user__story__options__user__card__link {
+    text-align: center;
+}
+
+.user__story__options__user__card__link a {
+    color: white;
+    border: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 5px;
+    font-size: 0.7rem;
+}
+
+.user__story__options__user__card__link a:hover {
+    background-color: rgb(204, 245, 110);
+    border: 1px solid rgb(204, 245, 110);
+    color: black;
+
+}
+
+.user__story__options__user__card p {
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 4px;
+}
+
+.user__story__options__user__card__name {
+    font-weight: bold;
+    text-align: center;
+}
+
+.user__story__options__user__card__image {
+    width: 69%;
+    margin: 5px auto 20px;
+    height: 100px;
+
+}
+
+.user__story__options__user__card__image img {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    border-radius: 50%;
+}
+
+@media screen and (min-width: 768px) {
+    .user__story__container {
+        flex-direction: row;
+    }
+
+    /* TOP WITH TITLE AND RATE */
+    .user__story__view__top {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    /* ALL VIEW FOR STORY without OPTION BUTTONS*/
+    .user__story__view {
+        flex: 4;
+    }
+
+    /* THE STORY */
+    .user__story__view__middle {
+        font-size: 1rem;
+        padding: 40px;
+    }
+
+    /* RIGHT SIDE WITH OPTIONS FOR SOMETHING */
+    .user__story__options__btns {
+        flex: 1;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .user__story__options__btns a {
+        margin-top: 20px;
+        width: 170px;
+        text-align: center;
+        font-size: 1.2rem;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .user__story__options__btns button {
+        margin-top: 20px;
+        width: 170px;
+        text-align: center;
+        font-size: 1.2rem;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .user__story__options__btns a:hover {
+        background-color: rgba(0, 0, 0, 1);
+        border: 1px solid black;
+    }
+
+    .user__story__options__btns button:hover {
+        background-color: rgba(0, 0, 0, 1);
+        border: 1px solid black;
+    }
+
+    .user__story__options__user__card__content {
+        width: 55%;
+        margin-top: 20px;
+        padding: 20px;
+    }
+
+    .user__story__options__user__card p {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+
+    .user__story__options__user__card__name {
+        font-size: 0.9rem;
+    }
+
+    .user__story__options__user__card__image {
+        width: 64%;
+        padding: 5px;
+    }
+
+
+    /* TOP WITH TITLE AND RATE */
+    .user__story__view__top__title {
+        width: 49%;
+        padding: 10px;
+        font-size: 1.9rem;
+    }
+
+    .user__story__view__top__rate {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+
+    .rating__story__rate {
+        font-size: 1.2rem;
+        padding: 5px;
+    }
+
+    /* BOTTOM WITH DATE AND MAYBE SOME STATS */
+    .user__story__view__bottom {
+        text-align: right;
+    }
+}

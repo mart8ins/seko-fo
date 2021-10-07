@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-import {fetchAllUsers} from "../fetch/users/connections";
+import {fetchAllUsers} from "../fetch/connections";
 
 import {AuthContext} from "./auth-context";
 

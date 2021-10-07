@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/auth-context";
 import { MessageContext } from "../context/message-context";
-import { sendMessageToUser } from "../fetch/users/messages";
+import { sendMessageToUser } from "../fetch/messages";
 
 const useSendMessage = (userId) => {
     const { authData } = useContext(AuthContext);
