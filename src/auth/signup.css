@@ -30,16 +30,21 @@
     letter-spacing: 1px;
 }
 
+.signup__container input:focus {
+    outline: none;
+    box-shadow: 0 2px 5px white;
+}
+
 .signup__btn {
     border: none;
-    padding: 2px;
-    width: 70%;
+    padding: 5px 0px;
+    width: 60%;
     margin: 20px auto;
     color: rgb(204, 245, 110);
-    font-size: 0.9rem;
+    font-size: 0.6rem;
     letter-spacing: 3px;
     background-color: rgb(124, 100, 100);
-    border-radius: 10px;
+    border-radius: 4px;
 }
 
 .greeting {
@@ -51,6 +56,11 @@
     color: rgb(204, 245, 110);
     border-radius: 40px;
     font-size: 0.5rem;
+}
+
+.serverError {
+    font-size: 0.5rem;
+    color: red;
 }
 
 @media screen and (min-width: 768px) {
@@ -80,6 +90,10 @@
     }
 
     .signupError {
+        font-size: 0.8rem;
+    }
+
+    .serverError {
         font-size: 0.8rem;
     }
 }

@@ -7,6 +7,7 @@ import { AuthContext } from "../context/auth-context";
 
 
 const Login = () => {
+    const [serverDownError, setServerDownError] = useState("");
     const [formError, setFormError] = useState("");
     const [loginForm, setLoginForm] = useState({});
 
@@ -23,32 +24,41 @@ const Login = () => {
         try {
             e.preventDefault();
             const response = await loginUser(loginForm);
-            setFormError("");
-            const tokenExpirationDate = new Date(new Date().getTime() + 1000 * 60 * 60);
+            if (response && response.status === 200) {
+                console.log(response, "pie logina")
+                setFormError("");
+                const tokenExpirationDate = new Date(new Date().getTime() + 1000 * 60 * 60);
 
-            const objectToStore = {
-                token: response.data.token,
-                userId: response.data.userId,
-                email: response.data.email,
-                isLoggedIn: true,
-                showAuthModal: false,
-                expiration: tokenExpirationDate,
-                fullName: response.data.fullName,
-                about: response.data.about,
-                profilePhoto: response.data.photo ? response.data.photo : undefined
+                const objectToStore = {
+                    token: response.data.token,
+                    userId: response.data.userId,
+                    email: response.data.email,
+                    isLoggedIn: true,
+                    showAuthModal: false,
+                    expiration: tokenExpirationDate,
+                    fullName: response.data.fullName,
+                    about: response.data.about,
+                    profilePhoto: response.data.photo ? response.data.photo : undefined
+                }
+
+                localStorage.setItem("authData", JSON.stringify(objectToStore))
+                setAuthData(objectToStore) // set auth status context for the app
+            } else {
+                setServerDownError("Something went wrong, please try again later.");
             }
-
-            localStorage.setItem("authData", JSON.stringify(objectToStore))
-            setAuthData(objectToStore) // set auth status context for the app
-
         } catch (e) {
-            setFormError(e.response.data.message);
+            if (e.response) {
+                setFormError(e.response.data.message);
+            } else {
+                setServerDownError("Server is down, please try again later.");
+            }
         }
     }
 
     return <div className="signup__container">
         <div>
             {formError ? <p className="signupError">{formError}</p> : <p className="greeting">We missed you!</p>}
+            {serverDownError && <p className="serverError">{serverDownError}</p>}
         </div>
         <form onSubmit={handleSubmit}>
             <Input onChange={handleChange} type="email" name="email" id="email" placeholder="E-mail" required />
