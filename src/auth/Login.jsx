@@ -25,7 +25,6 @@ const Login = () => {
             e.preventDefault();
             const response = await loginUser(loginForm);
             if (response && response.status === 200) {
-                console.log(response, "pie logina")
                 setFormError("");
                 const tokenExpirationDate = new Date(new Date().getTime() + 1000 * 60 * 60);
 

@@ -26,6 +26,9 @@ const StoryForm = () => {
         comments_allowed: true
     });
 
+    // OLD IMAGE STATE, IF USER CHOOSE EDIT STORY AND ALSO CHANGE IMAGE, OLD IS DELETED FROM SERVER
+    const [oldImageToDeleteIfEdit, setOldImageToDeleteIfEdit] = useState(undefined);
+
     // STATE FOR STORY FORMS VALIDATION ERRORS
     const [validForm, setValidForm] = useState({
         valid: undefined,
@@ -36,6 +39,7 @@ const StoryForm = () => {
     const imagePickerRef = useRef();
     const [pickedImage, setPickedImage] = useState(undefined);
     const [imagePreview, setImagePreview] = useState(undefined);
+
 
     /* 
     USING STORY CREATION COMPONENT ALSO TO EDIT IT IF USER CLICKS EDIT BUTTON IN STORY PAGE,
@@ -59,10 +63,14 @@ const StoryForm = () => {
                 setFormState({
                     title: res.data.story.title,
                     story: res.data.story.story,
-                    image: `${globalVariables.server}${res.data.story.image}`,
+                    // image: res.data.story.image ? `${globalVariables.server}${res.data.story.image}` : "",
+                    image: res.data.story.image ? `${globalVariables.server}${res.data.story.image}` : undefined,
                     private: res.data.story.private,
                     comments_allowed: res.data.story.comments_allowed
-                })
+                });
+                if (res.data.story.image) {
+                    setOldImageToDeleteIfEdit(res.data.story.image);
+                }
             })();
             setEditStory(true);
         }
@@ -131,8 +139,12 @@ const StoryForm = () => {
             }
             formData.append("private", formState.private);
             formData.append("comments_allowed", formState.comments_allowed);
+
             if (editStory) {
-                formData.append("edit_story", storyToEditId)
+                formData.append("edit_story", storyToEditId);
+                if (oldImageToDeleteIfEdit) {
+                    formData.append("image_to_delete", oldImageToDeleteIfEdit)
+                }
             }
 
             const res = await postStory(authData.token, formData);
