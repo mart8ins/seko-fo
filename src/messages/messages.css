@@ -9,8 +9,8 @@
     display: flex;
     flex-direction: column;
     height: 85vh;
-    border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.09);
+    background-color: rgb(54, 51, 51);
+    border-radius: 2px;
 }
 
 .left__side__sm {
@@ -21,7 +21,6 @@
     align-items: center;
     flex-direction: column;
     margin-bottom: 15px;
-    /* background-color: whitesmoke; */
 }
 
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!! */
@@ -54,7 +53,7 @@
     margin: 4px;
     min-width: 110px;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(109, 106, 106, 0.2);
     font-weight: bold;
     border: none;
 }
@@ -89,7 +88,7 @@
 }
 
 .activeUser {
-    background-color: rgb(66, 59, 59);
+    background-color: rgb(131, 117, 117);
 }
 
 
@@ -103,15 +102,15 @@
     height: 85%;
     overflow: auto;
     margin: 5px auto;
-    background-color: rgba(0, 0, 0, 0.705);
-    border-radius: 10px;
+    background-color: rgba(94, 89, 89, 0.705);
+    border-radius: 5px;
 }
 
 .user__not__selected {
     height: 100%;
     text-align: center;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -241,7 +240,7 @@
     }
 
     .contact:hover {
-        background-color: rgb(49, 46, 46);
+        background-color: rgb(131, 117, 117);
     }
 
     .contact img {

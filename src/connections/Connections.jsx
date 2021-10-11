@@ -13,6 +13,14 @@ function Connections() {
 
 
     return <div className="connections__feed__container">
+
+        <div className="connections__feed__block">
+            <h4>Explore and get connected with new people!</h4>
+            <div className="connections__feed__block__items">
+                <ExploreConnections explore={explore} />
+            </div>
+        </div>
+
         <div className="connections__feed__block">
             <div>
                 <h4>Requests for connection </h4>
@@ -23,19 +31,13 @@ function Connections() {
             </div>
         </div>
 
-
         <div className="connections__feed__block">
             <h4>Your connections</h4>
             <MyConnections explore={explore} />
         </div>
 
 
-        <div className="connections__feed__block">
-            <h4>Explore and get connected with new people!</h4>
-            <div className="connections__feed__block__items">
-                <ExploreConnections explore={explore} />
-            </div>
-        </div>
+
     </div>
 }
 

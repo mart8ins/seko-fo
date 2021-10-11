@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../../../context/auth-context';
 import { rateStory } from '../../../../fetch/story';
+import "./storyRater.css";
 
 const StoryRater = ({ storyIsRated, userRated, storyRating, storyRatings, fetchStory, storyId }) => {
     const { authData } = useContext(AuthContext);

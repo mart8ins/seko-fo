@@ -10,12 +10,14 @@
     box-shadow: 2px 2px 20px rgb(204, 245, 110);
     border-radius: 4px;
     padding: 10px;
+    background-color: rgb(54, 51, 51);
 }
 
 .image__container img {
     max-width: 100px;
     box-shadow: 2px 2px 20px black;
     border-radius: 4px;
+
 }
 
 .image__buttons__container {

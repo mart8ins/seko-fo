@@ -10,8 +10,6 @@ const CreateOption = ({ name, path, background }) => {
                 <p className="create__option__name">{name}</p>
             </div>
         </Link>
-
-
     )
 }
 

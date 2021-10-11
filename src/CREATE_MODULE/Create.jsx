@@ -8,7 +8,7 @@ function Create() {
 
     return <div className="create__container">
         <div className="create__intro">
-            <p>Create! Improve youself! </p>
+            <p>Create and improve yourself! </p>
         </div>
 
         <div className="create__options__container">
