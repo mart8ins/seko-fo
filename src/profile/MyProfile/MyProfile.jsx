@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 // COMPONENTS
-import UserContentFeed from "../../CONTENT_FEED_MODULE/userConentFeed/UserContentFeed";
+import UserContentFeed from "../../CONTENT_FEED_MODULE/userContentFeed/UserContentFeed";
 // CONTEXT
 import { AuthContext } from '../../context/auth-context';
 // FETCH 

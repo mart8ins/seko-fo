@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import "./userProfile.css";
 // COMPONENTS
 import AboutUser from "./components/AboutUser/AboutUser";
-import UserContentFeed from "../../CONTENT_FEED_MODULE/userConentFeed/UserContentFeed";
+import UserContentFeed from "../../CONTENT_FEED_MODULE/userContentFeed/UserContentFeed";
 // FETCH 
 import { fetchUser } from "../../fetch/connections";
 // CONTEXT

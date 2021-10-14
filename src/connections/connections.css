@@ -4,6 +4,7 @@
     margin: 0px auto;
     display: flex;
     flex-direction: column;
+    padding-bottom: 200px;
 }
 
 .connections__feed__block {
