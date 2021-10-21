@@ -26,6 +26,12 @@ font-family: 'Abril Fatface', cursive;
 */
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 
+/* TRAINING SESSION select OPTIONS 
+font-family: 'Rampart One', cursive;
+*/
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
+
+
 /*
 main green color - 
 rgb(204, 245, 110);
@@ -40,6 +46,7 @@ rgb(45, 89, 221)
 
 main background - 
 rgba(0, 0, 0, 0.7);
+rgb(54, 51, 51);
 
 main background 2;
 background-color: rgb(54, 51, 51);

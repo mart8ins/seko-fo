@@ -1,0 +1,8 @@
+.training__day__form__bottom__sessions__workout__card {
+    margin: 5px;
+    border: 1px solid white;
+    width: 200px;
+    height: 300px;
+}
+
+@media screen and (min-width: 786px) {}

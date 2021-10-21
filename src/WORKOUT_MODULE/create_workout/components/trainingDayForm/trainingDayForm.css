@@ -1,0 +1,416 @@
+.training__day__form__top,
+.training__day__form__middle,
+.training__day__form__bottom {
+    padding: 10px;
+    margin: 20px 5px;
+}
+
+/* TOP LINE TOP LINE TOP LINE TOP LINE TOP LINE TOP LINE
+   TOP LINE TOP LINE TOP LINE TOP LINE TOP LINE TOP LINE
+   TOP LINE TOP LINE TOP LINE TOP LINE TOP LINE TOP LINE
+*/
+.training__day__form__top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.training__day__form__top__title__and__rate {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(95, 90, 90);
+    box-shadow: 0px 5px 10px black;
+    padding: 10px;
+}
+
+.training__day__form__top__title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    font-size: 0.8rem;
+
+}
+
+.training__day__form__top__title input {
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.training__day__form__top__rate {
+    margin-top: 15px;
+}
+
+.training__day__form__top__rate select {
+    outline: none;
+    border: none;
+    padding: 2px;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 4px;
+    font-family: 'Rampart One', cursive;
+    color: black;
+    box-shadow: 0 2px 15px black;
+}
+
+.training__day__form__top__session__save {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.training__day__form__top__session__save button {
+    padding: 10px;
+    background-color: rgb(184, 250, 84);
+    color: black;
+    font-weight: bold;
+    color: rgb(100, 81, 81);
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 15px black;
+}
+
+.training__day__form__top__session__save button[disabled] {
+    color: rgb(184, 184, 184);
+    background-color: grey;
+}
+
+
+
+
+/* MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE
+   MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE
+   MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE
+*/
+.training__day__form__middle {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 22px black;
+    background-color: rgb(95, 90, 90);
+}
+
+.training__day__form__middle__workout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 0px;
+}
+
+.training__day__form__middle__workout select {
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+    font-family: 'Rampart One', cursive;
+    box-shadow: 0 2px 15px black;
+}
+
+.training__day__form__middle__workout__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.training__day__form__middle__workout__image img {
+    max-width: 200px;
+    height: 300px;
+    max-height: 300px;
+    border-radius: 5px;
+}
+
+.training__day__form__middle__workout__image__dumbbell__icon {
+    padding: 10px;
+    color: white;
+    color: rgb(204, 245, 110);
+    font-size: 3rem;
+}
+
+
+/* BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE
+   BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE
+   BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE
+*/
+
+.training__day__form__bottom {
+    padding: 5px;
+}
+
+.training__day__form__bottom__add {
+    display: flex;
+    flex-direction: column;
+    max-width: min-content;
+    margin: 10px auto;
+    box-shadow: 0 2px 15px black;
+    background-color: rgb(95, 90, 90);
+    padding: 0 20px;
+}
+
+.training__day__form__bottom__set__inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+}
+
+.training__day__form__bottom__set__inputs__set__count {
+    font-size: 1rem;
+    color: rgb(204, 245, 110);
+    font-weight: bold;
+    margin: 5px 0px;
+}
+
+.training__day__form__bottom__set__inputs label {
+    font-weight: bold;
+    color: grey;
+}
+
+.training__day__form__bottom__set__inputs input {
+    margin: 5px;
+    width: 100px;
+    text-align: center;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.training__day__form__bottom__set__options__buttons {
+    flex: 1;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.training__day__form__bottom__set__options__buttons button {
+    width: 100px;
+    font-size: 0.8rem;
+    padding: 3px;
+    margin: 8px;
+    font-weight: bold;
+    border: none;
+    background-color: rgb(184, 250, 84);
+    color: rgb(100, 81, 81);
+    box-shadow: 0 2px 15px black;
+}
+
+.training__day__form__bottom__set__options__buttons button[disabled] {
+    color: rgb(184, 184, 184);
+    background-color: grey;
+}
+
+.training__day__form__bottom__workout__options__buttons {
+    margin: 20px auto;
+    width: 80%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.training__day__form__bottom__workout__options__buttons button {
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 2px 12px black;
+    margin: 5px;
+    background-color: rgb(184, 250, 84);
+    color: rgb(100, 81, 81);
+}
+
+.training__day__form__bottom__workout__options__buttons button[disabled] {
+    color: rgb(184, 184, 184);
+    background-color: grey;
+}
+
+.training__day__form__bottom__created__workouts {
+    width: 95%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 10px black;
+    padding: 10px;
+    background-color: rgb(95, 90, 90);
+}
+
+.training__day__form__bottom__created__workouts h4 {
+    margin: 0 auto 20px;
+    color: white;
+    box-shadow: 0 2px 10px black;
+    padding: 10px;
+    max-width: max-content;
+}
+
+.training__day__form__bottom__sessions__workouts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media screen and (min-width: 786px) {
+
+    /*  TOP LINE TOP LINE TOP LINE TOP LINE TOP LINE TOP LINE
+        TOP LINE TOP LINE TOP LINE TOP LINE TOP LINE TOP LINE
+        TOP LINE TOP LINE TOP LINE TOP LINE TOP LINE TOP LINE
+    */
+    .training__day__form__top {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .training__day__form__top__title__and__rate {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .training__day__form__top__title {
+        flex-direction: row;
+        font-size: 1.1rem;
+    }
+
+
+    .training__day__form__top__title input {
+        font-size: 0.9rem;
+    }
+
+    .training__day__form__top__rate {
+        margin-top: 0px;
+    }
+
+    .training__day__form__top__rate select {
+        padding: 6px;
+        font-size: 1rem;
+    }
+
+    .training__day__form__top__session__save button:hover {
+        cursor: pointer;
+        box-shadow: 0 2px 12px rgb(184, 250, 84);
+    }
+
+    .training__day__form__top__session__save button[disabled]:hover {
+        cursor: default;
+        box-shadow: none;
+    }
+
+
+    /* MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE
+   MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE
+   MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE MIDDLE LINE
+*/
+
+    .training__day__form__middle {
+        display: flex;
+        flex-direction: row;
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .training__day__form__middle__workout {
+        flex: 1;
+        flex-direction: row;
+    }
+
+    .training__day__form__middle__workout select {
+        font-size: 1.2rem;
+        padding: 5px 20px;
+    }
+
+    .training__day__form__middle__workout__image {
+        flex: 1;
+    }
+
+    .training__day__form__middle__workout__image img {
+        max-width: 350px;
+    }
+
+    .training__day__form__middle__workout__image__dumbbell__icon {
+        font-size: 5rem;
+    }
+
+
+    /* BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE
+   BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE
+   BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE BOTTOM LINE
+*/
+
+    .training__day__form__bottom__add {
+        flex-direction: row;
+    }
+
+    .training__day__form__bottom__set__inputs {
+        flex-direction: row;
+    }
+
+    .training__day__form__bottom__set__inputs__set__count {
+        font-size: 1.5rem;
+        margin-right: 50px;
+    }
+
+    .training__day__form__bottom__set__options__buttons {
+        flex-direction: row;
+        margin-top: 0px;
+    }
+
+    .training__day__form__bottom__set__options__buttons button {
+        font-size: 1rem;
+    }
+
+
+    .training__day__form__bottom__set__options__buttons button:hover {
+        cursor: pointer;
+        box-shadow: 0 2px 12px rgb(184, 250, 84);
+    }
+
+    .training__day__form__bottom__set__options__buttons button[disabled]:hover {
+        cursor: default;
+        box-shadow: none;
+    }
+
+    .training__day__form__bottom__workout__options__buttons {
+        flex-direction: row;
+    }
+
+
+    .training__day__form__bottom__workout__options__buttons button:hover {
+        cursor: pointer;
+        box-shadow: 0 2px 12px rgb(184, 250, 84);
+    }
+
+    .training__day__form__bottom__workout__options__buttons button[disabled]:hover {
+        cursor: default;
+        box-shadow: none;
+    }
+
+    .training__day__form__bottom__created__workouts {
+        width: 80%;
+        margin-top: 40px;
+    }
+
+    .training__day__form__bottom__sessions__workouts {
+        flex-direction: row;
+    }
+}

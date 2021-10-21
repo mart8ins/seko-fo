@@ -1,0 +1,13 @@
+.create__workout__main__container {
+    width: 98%;
+    margin: 0 auto;
+    padding: 5px;
+    background-color: rgb(54, 51, 51);
+    padding-bottom: 100px;
+}
+
+@media screen and (min-width: 786px) {
+    .create__workout__main__container {
+        width: 90%;
+    }
+}
