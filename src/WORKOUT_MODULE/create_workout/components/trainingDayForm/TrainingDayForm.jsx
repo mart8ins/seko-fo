@@ -130,6 +130,31 @@ const TrainingDayForm = ({ trainingDate }) => {
         console.log("Session saved");
     }
 
+    // DELETE BUTTONS
+    const deleteSet = (id) => {
+        const setArr = allSets;
+        const setToDelete = setArr.findIndex((set) => {
+            return set.id === id;
+        })
+        setArr.splice(setToDelete, 1);
+        setArr.forEach((set, index) => {
+            if (set.set !== index + 1) {
+                set.set = index + 1;
+            }
+        })
+        setSetsCount(setArr.length + 1)
+        setAllSets([...setArr]);
+    }
+
+    const deleteWorkoutCard = (id) => {
+        const workArr = allWorkouts;
+        const workoutToDelete = workArr.findIndex((workout) => {
+            return workout.id === id;
+        })
+        workArr.splice(workoutToDelete, 1);
+        setAllWorkouts([...workArr]);
+    }
+
 
     return (
         <div className="training__day__form__container">
@@ -158,6 +183,8 @@ const TrainingDayForm = ({ trainingDate }) => {
                 saveSet={saveSet}
                 saveWorkout={saveWorkout}
                 allWorkouts={allWorkouts}
+                deleteSet={deleteSet}
+                deleteWorkoutCard={deleteWorkoutCard}
             />
 
         </div>

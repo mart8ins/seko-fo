@@ -3,7 +3,19 @@ import "./trainingDayFormBottom.css";
 import { v4 as uuidv4 } from 'uuid';
 import WorkoutCard from './WorkoutCard';
 
-const TrainingDayFormBottom = ({ allSets, setsCount, weight, reps, workout, setsInputHandler, saveSet, saveWorkout, allWorkouts }) => {
+const TrainingDayFormBottom = ({
+    allSets,
+    setsCount,
+    weight,
+    reps,
+    workout,
+    setsInputHandler,
+    saveSet,
+    saveWorkout,
+    allWorkouts,
+    deleteSet,
+    deleteWorkoutCard
+}) => {
 
     return (
         <div className="training__day__form__bottom">
@@ -22,7 +34,7 @@ const TrainingDayFormBottom = ({ allSets, setsCount, weight, reps, workout, sets
                     </div>
 
                     <div className="training__day__form__bottom__set__options__buttons">
-                        <button>Delete</button>
+                        <button onClick={() => deleteSet(set.id)}>Delete</button>
                     </div>
                 </div>
             })}
@@ -66,7 +78,7 @@ const TrainingDayFormBottom = ({ allSets, setsCount, weight, reps, workout, sets
                     <h4>Current workouts for session</h4>
                     <div className="training__day__form__bottom__sessions__workouts">
                         {allWorkouts.map((workout) => {
-                            return <WorkoutCard workout={workout} />
+                            return <WorkoutCard workout={workout} deleteWorkoutCard={deleteWorkoutCard} />
                         })}
                     </div>
                 </div>

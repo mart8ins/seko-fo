@@ -8,7 +8,7 @@
 
 .training__day__form__bottom__sessions__workout__card__delete {
     position: absolute;
-    z-index: 3;
+    z-index: 5;
     bottom: 0;
     right: 0;
     border: none;
