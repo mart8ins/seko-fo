@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
+import "./userWorkoutContent.css";
 import { getAllUserTrainingSessions } from "../../fetch/workout";
 import { AuthContext } from '../../context/auth-context';
-import { WorkoutContext } from '../../context/workout-context';
+import StatsHeaderForContent from "../../utils/statsHeaderForContent/StatsHeaderForContent";
+import LinkToWorkout from "./components/linkToWorkout/LinkToWorkout";
 
 const UserWorkoutContent = ({ user }) => {
-    const { authData: { token } } = useContext(AuthContext);
-    // const { userTrainingSessions } = useContext(WorkoutContext);
+    const { authData: { token, userId } } = useContext(AuthContext);
     const [trainingSessions, setTrainingSessions] = useState([]);
 
     useEffect(() => {
@@ -22,7 +23,12 @@ const UserWorkoutContent = ({ user }) => {
     console.log(trainingSessions)
     return (
         <div>
-            UserWorkoutContent
+
+            {user && String(user._id) === userId && <StatsHeaderForContent title="My workouts" contentStats={[]} />}
+
+            {trainingSessions.map((session) => {
+                return <LinkToWorkout />
+            })}
         </div>
     )
 }

@@ -1,4 +1,4 @@
-.story__header__container {
+.stats__header__container {
     width: 82%;
     margin: 0 auto;
     display: flex;
@@ -7,7 +7,7 @@
     background-color: rgb(54, 51, 51);
 }
 
-.left__side p {
+.stats__header__left__side p {
     margin: 0;
     padding: 5px 10px;
     font-size: 1.5rem;
@@ -19,12 +19,12 @@
     border-radius: 4px;
 }
 
-.right__side__stories__stats {
+.stats__header__right__side {
     width: 95%;
     margin: 8px auto;
 }
 
-.story__stat {
+.content__stat {
     display: flex;
     margin-top: 4px;
     justify-content: space-between;
@@ -36,14 +36,14 @@
     box-shadow: 0 2px 12px black;
 }
 
-.story__stat .story__stat__title {
+.content__stat .content__stat__title {
     color: white;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 0.6rem;
 }
 
-.story__stat .story__stat__result {
+.content__stat .content__stat__result {
     font-size: 0.7rem;
     padding: 5px 10px;
     border-radius: 4px;
@@ -54,27 +54,27 @@
 
 @media screen and (min-width: 768px) {
 
-    .left__side {
+    .stats__header__left__side {
         width: 30%;
     }
 
-    .left__side p {
+    .stats__header__left__side p {
         font-size: 2.3rem;
     }
 
-    .story__stat {
+    .content__stat {
         width: 60%;
         margin: 10px auto;
         flex-direction: row;
         justify-content: space-between;
     }
 
-    .story__stat .story__stat__title {
+    .content__stat .content__stat__title {
         align-self: center;
         font-size: 0.9rem;
     }
 
-    .story__stat .story__stat__result {
+    .content__stat .content__stat__result {
         font-size: 1rem;
         margin: 0;
     }

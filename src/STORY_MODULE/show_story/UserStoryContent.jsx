@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid';
 import { AuthContext } from "../../context/auth-context";
 import { getAllUserStories } from "../../fetch/story";
 import globalVariables from '../../globalVariables';
-import UserStoryStatsHeader from "./components/UserStoryStatsHeader";
+import StatsHeaderForContent from "../../utils/statsHeaderForContent/StatsHeaderForContent";
 import "./userStoryContent.css";
 
 import LinkToStory from "./components/linkToStory/LinkToStory";
@@ -12,7 +12,7 @@ import LinkToStory from "./components/linkToStory/LinkToStory";
 const UserStoryContent = ({ user }) => {
     const { authData } = useContext(AuthContext);
     const [userStories, setUserStories] = useState();
-    const [userStoriesStats, setUserStoriesStats] = useState();
+    const [userStoriesStats, setUserStoriesStats] = useState([]);
     useEffect(() => {
         if (user) {
             fetchUserStories();
@@ -28,8 +28,7 @@ const UserStoryContent = ({ user }) => {
 
     return (
         <div>
-            {user && String(user._id) === authData.userId && <UserStoryStatsHeader userStoriesStats={userStoriesStats} />}
-
+            {user && String(user._id) === authData.userId && <StatsHeaderForContent contentStats={userStoriesStats} title="My stories" />}
 
             {userStories && userStories.reverse().map((story) => {
                 const storyId = story._id;

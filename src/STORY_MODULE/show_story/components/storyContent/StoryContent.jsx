@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import { AuthContext } from "../../../context/auth-context";
-import "./userStory.css";
-import globalVariables from '../../../globalVariables';
-import StoryCommentsSection from './storyComments/StoryCommentsSection';
-import StorySection from "./storySection/StorySection";
+import { AuthContext } from "../../../../context/auth-context";
+import "./storyContent.css";
+import globalVariables from '../../../../globalVariables';
+import StoryCommentsSection from '../storyComments/StoryCommentsSection';
+import StorySection from "../storySection/StorySection";
 
-import { getStory } from "../../../fetch/story";
+import { getStory } from "../../../../fetch/story";
 
 const StoryContent = () => {
     const { authData: { userId, token } } = useContext(AuthContext);

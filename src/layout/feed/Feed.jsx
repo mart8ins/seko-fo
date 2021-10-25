@@ -12,14 +12,14 @@ import UserProfile from "../../profile/UserProfile/UserProfile";
 import MyProfile from "../../profile/MyProfile/MyProfile";
 import CreateStory from "../../STORY_MODULE/create_story/CreateStory";
 import CreateWorkout from "../../WORKOUT_MODULE/create_workout/CreateWorkout";
-import Story from "../../STORY_MODULE/show_story/components/UserStory"
+import Story from "../../STORY_MODULE/show_story/components/storyContent/StoryContent"
 
 import { AuthContext } from "../../context/auth-context";
 import RouteGuard from "../../utils/RouteGuard";
 
 function Feed() {
 
-    const { authData: { isLoggedIn, userId } } = useContext(AuthContext);
+    const { authData: { isLoggedIn } } = useContext(AuthContext);
 
     return <Switch>
         <RouteGuard path="/create/story" component={CreateStory} auth={isLoggedIn} />
