@@ -1,28 +1,29 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { AuthContext } from "./auth-context";
 
-import {getAllUserTrainingSessions} from "../fetch/workout";
+import {getAllTrainingSessions} from "../fetch/workout";
 
 export const WorkoutContext = createContext();
 
 const WorkoutContextProvieder = ({children}) => {
-    const {authData: {token, userId}} = useContext(AuthContext);
+    const {authData: {token}} = useContext(AuthContext);
 
-    const [trainingSessions, setTrainingSessions] = useState([]);
+    const [allTrainingSessions, setAllTrainingSessions] = useState([]);
 
+    // FETCH ALL TRAINING SESSIONS
     useEffect(()=> {
-        fetchAllUserTrainingSessions();
+        fetchAllTrainingSessions(token);
     },[token])
 
-    const fetchAllUserTrainingSessions = async () => {
-        const res = await getAllUserTrainingSessions(token, userId);
-        setTrainingSessions(res.data.userTrainingSessions)
+    const fetchAllTrainingSessions = async (token) => {
+        const res = await getAllTrainingSessions(token);
+        setAllTrainingSessions(res.data.trainingSessions)
     }
 
-    console.log(trainingSessions)
     return (
         <WorkoutContext.Provider value={{
-            trainingSessions, setTrainingSessions
+            allTrainingSessions,
+            fetchAllTrainingSessions
         }}>
             {children}
         </WorkoutContext.Provider>

@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { postTrainingSession } from "../../../../fetch/workout";
 
 import { AuthContext } from "../../../../context/auth-context";
+import { WorkoutContext } from '../../../../context/workout-context';
 
 import TrainingDayFormTop from "./components/TrainingDayFormTop";
 import TrainingDayFormMiddle from './components/TrainingDayFormMiddle';
@@ -12,6 +13,7 @@ import TrainingDayFormBottom from './components/TrainingDayFormBottom';
 
 const TrainingDayForm = ({ trainingDate }) => {
     const { authData: { token } } = useContext(AuthContext);
+    const { fetchAllTrainingSessions } = useContext(WorkoutContext);
 
     const history = useHistory();
 
@@ -117,9 +119,6 @@ const TrainingDayForm = ({ trainingDate }) => {
         setWorkoutImage(undefined);
         setSetsCount(1);
         workoutInputReset.current.selected = true;
-
-        console.log(workoutToSave);
-        console.log("Workout saved")
     }
 
     const saveSession = async () => {
@@ -128,13 +127,10 @@ const TrainingDayForm = ({ trainingDate }) => {
             workouts: allWorkouts
         }
         const res = await postTrainingSession(token, sessionToSave);
-
+        // update context for all sessions in db
+        await fetchAllTrainingSessions(token);
         setCanSaveSession(false);
         history.push("/userContentFeed?type=workout")
-
-        console.log(sessionToSave);
-        console.log("Session saved");
-        console.log(res)
     }
 
     // DELETE BUTTONS

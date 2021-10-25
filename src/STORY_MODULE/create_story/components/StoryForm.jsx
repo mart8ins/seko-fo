@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import "./storyForm.css";
 import { postStory } from '../../../fetch/story';
@@ -48,7 +48,6 @@ const StoryForm = () => {
 
     const [editStory, setEditStory] = useState(false);
     const [storyToEditId, setStoryToEditId] = useState(undefined);
-    const location = useLocation();
     const history = useHistory();
 
     // EFFECT TO CHECK IF USER WHANTS TO CREATE OR EDIT STORY
@@ -203,7 +202,7 @@ const StoryForm = () => {
                         </div>
                         <div className="image__preview">
                             {imagePreview && <img alt="story image preview" src={imagePreview} />}
-                            {editStory && formState.image && !imagePreview && <img alt="story image" src={formState.image} />}
+                            {editStory && formState.image && !imagePreview && <img alt={formState.image} src={formState.image} />}
                             {!imagePreview && !formState.image && "Image preview"}
                         </div>
                     </div>

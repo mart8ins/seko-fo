@@ -15,7 +15,20 @@ const postTrainingSession = async (token, workout) => {
     return res;
 }
 
-// GET ALL USERS TRAINING DATA
+// GET ALL SESSIONS DATA
+const getAllTrainingSessions = async (token) => {
+    const config = {
+        headers: {
+            Authorization: "Bearer " + token
+        }
+    };
+
+    const url = `${baseUrl}sessions`;
+    const res = axios.get(url, config);
+    return res;
+}
+
+// GET ALL USER SESSIONS DATA
 const getAllUserTrainingSessions = async (token, userId) => {
     const config = {
         headers: {
@@ -23,7 +36,7 @@ const getAllUserTrainingSessions = async (token, userId) => {
         }
     };
 
-    const url = `${baseUrl}${userId}/sessions`;
+    const url = `${baseUrl}sessions/${userId}`;
     const res = axios.get(url, config);
     return res;
 }
@@ -31,5 +44,6 @@ const getAllUserTrainingSessions = async (token, userId) => {
 
 export {
     postTrainingSession,
+    getAllTrainingSessions,
     getAllUserTrainingSessions
 };

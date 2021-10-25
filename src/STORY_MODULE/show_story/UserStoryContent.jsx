@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/auth-context";
 import { getAllUserStories } from "../../fetch/story";
 import globalVariables from '../../globalVariables';
 import UserStoryStatsHeader from "./components/UserStoryStatsHeader";
-import "./userStoriesFeed.css";
+import "./userStoryContent.css";
 
 import LinkToStory from "./components/linkToStory/LinkToStory";
 

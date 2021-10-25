@@ -3,7 +3,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import queryString from 'query-string';
 import "./userContentFeed.css";
 
-import UserStoryContent from "../../STORY_MODULE/show_story/UserStoriesFeed";
+import UserStoryContent from "../../STORY_MODULE/show_story/UserStoryContent";
 import UserWorkoutContent from "../../WORKOUT_MODULE/show_workout/UserWorkoutContent";
 
 const UserContentFeed = ({ user }) => {
