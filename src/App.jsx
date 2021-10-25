@@ -6,6 +6,7 @@ import AuthContextProvider from "./context/auth-context";
 import ConnectionsContextProvider from "./context/connections-context";
 import MessageContextProvider from "./context/message-context";
 import StoryContextProvider from "./context/story-context";
+import WorkoutContextProvieder from "./context/workout-context";
 
 function App() {
     return (
@@ -14,10 +15,12 @@ function App() {
                 <ConnectionsContextProvider>
                     <MessageContextProvider>
                         <StoryContextProvider>
-                            <BrowserRouter>
-                                <Header />
-                                <MainContainer />
-                            </BrowserRouter>
+                            <WorkoutContextProvieder>
+                                <BrowserRouter>
+                                    <Header />
+                                    <MainContainer />
+                                </BrowserRouter>
+                            </WorkoutContextProvieder>
                         </StoryContextProvider>
                     </MessageContextProvider>
                 </ConnectionsContextProvider>

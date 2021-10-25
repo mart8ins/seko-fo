@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useHistory } from "react-router-dom";
+import { postTrainingSession } from "../../../../fetch/workout";
+
+import { AuthContext } from "../../../../context/auth-context";
 
 import TrainingDayFormTop from "./components/TrainingDayFormTop";
 import TrainingDayFormMiddle from './components/TrainingDayFormMiddle';
@@ -8,6 +11,8 @@ import TrainingDayFormBottom from './components/TrainingDayFormBottom';
 
 
 const TrainingDayForm = ({ trainingDate }) => {
+    const { authData: { token } } = useContext(AuthContext);
+
     const history = useHistory();
 
     const [workoutInputReset, setWorkoutInputReset] = useState();
@@ -67,10 +72,10 @@ const TrainingDayForm = ({ trainingDate }) => {
 
     const setsInputHandler = (e) => {
         if (e.target.name === "weight") {
-            setWeight(e.target.value)
+            setWeight(Number(e.target.value))
         }
         if (e.target.name === "reps") {
-            setReps(e.target.value)
+            setReps(Number(e.target.value))
         }
     }
 
@@ -84,7 +89,7 @@ const TrainingDayForm = ({ trainingDate }) => {
                 ...allSets,
                 {
                     id: uuidv4(),
-                    set: setsCount,
+                    set: Number(setsCount),
                     weight,
                     reps
                 }
@@ -100,7 +105,7 @@ const TrainingDayForm = ({ trainingDate }) => {
         const workoutToSave = {
             id: uuidv4(),
             name: workout,
-            image: workoutImage,
+            imageName: workoutImage,
             sets: allSets
         }
         setAllWorkouts([
@@ -117,17 +122,19 @@ const TrainingDayForm = ({ trainingDate }) => {
         console.log("Workout saved")
     }
 
-    const saveSession = () => {
+    const saveSession = async () => {
         const sessionToSave = {
-            id: uuidv4(),
             ...session,
             workouts: allWorkouts
         }
+        const res = await postTrainingSession(token, sessionToSave);
+
         setCanSaveSession(false);
         history.push("/userContentFeed?type=workout")
 
         console.log(sessionToSave);
         console.log("Session saved");
+        console.log(res)
     }
 
     // DELETE BUTTONS

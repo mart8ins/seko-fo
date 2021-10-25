@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import "./trainingDayFormMiddle.css";
+import { v4 as uuidv4 } from 'uuid';
 import { workoutsSeed } from "../../../../../utils/workouts/workouts";
 import { dumbbell } from "../../../../../utils/appIcons/appIcons";
 
@@ -17,7 +18,7 @@ const TrainingDayFormMiddle = ({ workoutHandler, workout, workoutImage, setWorko
                 <select onChange={workoutHandler} value={workout}>
                     <option ref={workoutInputRef} value="" selected disabled hidden>Select workout</option>
                     {workoutsSeed.map((w) => {
-                        return <option value={w.name}>{w.name}</option>
+                        return <option key={uuidv4()} value={w.name}>{w.name}</option>
                     })}
                 </select>
             </div>

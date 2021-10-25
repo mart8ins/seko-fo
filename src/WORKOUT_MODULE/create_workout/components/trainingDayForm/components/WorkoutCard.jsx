@@ -14,7 +14,7 @@ const WorkoutCard = ({ workout, deleteWorkoutCard }) => {
     return (
         <div className="training__day__form__bottom__sessions__workout__card">
             <button onClick={() => deleteWorkoutCard(workout.id)} className="training__day__form__bottom__sessions__workout__card__delete">Delete</button>
-            <img src={`/images/workout_images/${workout.image}.jpg`} alt={workout.name} />
+            <img src={`/images/workout_images/${workout.imageName}.jpg`} alt={workout.nameName} />
             <div className="training__day__form__bottom__sessions__workout__card__meta">
                 <div className="training__day__form__bottom__sessions__workout__card__title">
                     {workout.name}

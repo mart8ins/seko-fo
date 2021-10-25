@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import "./messages.css";
+import { v4 as uuidv4 } from 'uuid';
 import { ConnectionsContext } from "../context/connections-context";
 import { AuthContext } from "../context/auth-context";
 import socket from "../socket/socket";
@@ -59,7 +60,7 @@ function Messages() {
     const renderConnectedContacts = (contact) => {
         const userId = String(contact._id);
         const image = contact.photo && contact.photo.profile ? `${globalVariables.server}${contact.photo.profile}` : "/images/no_image.png";
-        return <div style={contact.isConnected ? { borderLeft: "3px solid rgb(69, 187, 69)" } : { borderLeft: "3px solid rgb(177, 72, 72)" }} onClick={() => chooseActiveUser(contact)} className={`contact ${activeUser && activeUser.userId === userId && "activeUser"}`}>
+        return <div key={uuidv4()} style={contact.isConnected ? { borderLeft: "3px solid rgb(69, 187, 69)" } : { borderLeft: "3px solid rgb(177, 72, 72)" }} onClick={() => chooseActiveUser(contact)} className={`contact ${activeUser && activeUser.userId === userId && "activeUser"}`}>
             <p>{contact.firstName} {contact.lastName}</p>
             <img src={image} alt={contact.firstName + contact.lastName} />
         </div>
@@ -152,7 +153,7 @@ function Messages() {
                 <p className="contact__name"><span style={{ color: "red", fontSize: "0.6rem" }}>{!activeUser.isConnected && "not connected"}</span> {activeUser.firstName} {activeUser.lastName}</p>
                 <div className="see__messages">
                     {messages.map((msg) => {
-                        return <div ref={messageContainerRef} className={msg.sent ? "sent" : "recieved"}>
+                        return <div key={uuidv4()} ref={messageContainerRef} className={msg.sent ? "sent" : "recieved"}>
                             {msg.text}
                         </div>
                     })}

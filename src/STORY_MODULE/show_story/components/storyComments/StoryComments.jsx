@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
 import { AuthContext } from '../../../../context/auth-context';
 import "./storyComments.css";
 
@@ -9,7 +10,7 @@ const StoryComments = ({ comments, storyAuthorId }) => {
     return (
         <div className="all__story__comments__container">
             {comments.map((comment) => {
-                return <div className="story__comment">
+                return <div key={uuidv4()} className="story__comment">
                     <div className="story__comment__author">
                         {comment.author.userId === storyAuthorId ?
                             <p><span>story author</span> {comment.author.fullName}</p>

@@ -34,30 +34,33 @@ const TrainingDayFormBottom = ({
                     </div>
 
                     <div className="training__day__form__bottom__set__options__buttons">
-                        <button onClick={() => deleteSet(set.id)}>Delete</button>
+                        <button data-delete onClick={() => deleteSet(set.id)}>Delete</button>
                     </div>
                 </div>
             })}
 
 
-            <div className="training__day__form__bottom__add">
-                <div className="training__day__form__bottom__set__inputs">
-                    <div className="training__day__form__bottom__set__inputs__set__count">
-                        {setsCount}
+            {workout &&
+                <div className="training__day__form__bottom__add">
+                    <div className="training__day__form__bottom__set__inputs">
+                        <div className="training__day__form__bottom__set__inputs__set__count">
+                            {setsCount}
+                        </div>
+                        <label htmlFor="weight">Weight</label>
+                        <input onChange={setsInputHandler} id="weight" name="weight" type="number" step="2.5" min="2.5" placeholder={weight} value={weight} />
+                        <label htmlFor="reps">Repetitions</label>
+                        <input onChange={setsInputHandler} id="reps" name="reps" type="number" min="1" placeholder={reps} value={reps} />
                     </div>
-                    <label htmlFor="weight">Weight</label>
-                    <input onChange={setsInputHandler} id="weight" name="weight" type="number" step="2.5" min="2.5" placeholder={weight} value={weight} />
-                    <label htmlFor="reps">Repetitions</label>
-                    <input onChange={setsInputHandler} id="reps" name="reps" type="number" min="1" placeholder={reps} value={reps} />
-                </div>
 
-                <div className="training__day__form__bottom__set__options__buttons">
-                    {workout && weight && reps ?
-                        <button onClick={saveSet}>Save</button>
-                        :
-                        <button disabled>Save</button>}
+                    <div className="training__day__form__bottom__set__options__buttons">
+                        {workout && weight && reps ?
+                            <button onClick={saveSet}>Save</button>
+                            :
+                            <button disabled>Save</button>}
+                    </div>
                 </div>
-            </div>
+            }
+
 
 
             <div className="training__day__form__bottom__workout__options__buttons">
@@ -78,7 +81,7 @@ const TrainingDayFormBottom = ({
                     <h4>Current workouts for session</h4>
                     <div className="training__day__form__bottom__sessions__workouts">
                         {allWorkouts.map((workout) => {
-                            return <WorkoutCard workout={workout} deleteWorkoutCard={deleteWorkoutCard} />
+                            return <WorkoutCard key={uuidv4()} workout={workout} deleteWorkoutCard={deleteWorkoutCard} />
                         })}
                     </div>
                 </div>

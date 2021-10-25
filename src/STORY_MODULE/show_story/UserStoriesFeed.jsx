@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
+import { v4 as uuid } from 'uuid';
 import { AuthContext } from "../../context/auth-context";
 import { getAllUserStories } from "../../fetch/story";
 import globalVariables from '../../globalVariables';
@@ -35,6 +36,7 @@ const UserStoryContent = ({ user }) => {
                 const image = story.image ? `${globalVariables.server}${story.image}` : "/images/no_image.png";
                 const date = new Date(story.date).toLocaleDateString();
                 return <LinkToStory
+                    key={uuid()}
                     storyId={storyId}
                     title={story.title}
                     image={image}
