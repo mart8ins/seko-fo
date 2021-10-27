@@ -16,34 +16,58 @@ const postTrainingSession = async (token, workout) => {
 }
 
 // GET ALL SESSIONS DATA
-const getAllTrainingSessions = async (token) => {
+const getAllTrainingDays = async (token) => {
     const config = {
         headers: {
             Authorization: "Bearer " + token
         }
     };
 
-    const url = `${baseUrl}sessions`;
+    const url = `${baseUrl}all`;
     const res = axios.get(url, config);
     return res;
 }
 
 // GET ALL USER SESSIONS DATA
-const getAllUserTrainingSessions = async (token, userId) => {
+const getAllUserTrainingDays = async (token, userId) => {
     const config = {
         headers: {
             Authorization: "Bearer " + token
         }
     };
-
-    const url = `${baseUrl}sessions/${userId}`;
+    const url = `${baseUrl}${userId}`;
     const res = axios.get(url, config);
+    return res;
+}
+
+// GET SPECIFIC TRAINING DAY
+const getTrainingDay = async (token, trainingDayId) => {
+    const config = {
+        headers: {
+            Authorization: "Bearer " + token
+        }
+    };
+    const url = `${baseUrl}trainingday/${trainingDayId}`;
+    const res = axios.get(url, config);
+    return res;
+}
+
+const deleteTrainingDay = async (token, trainingDayId) => {
+    const config = {
+        headers: {
+            Authorization: "Bearer " + token
+        }
+    };
+    const url = `${baseUrl}trainingday/delete`;
+    const res = axios.post(url,{trainingDayId}, config);
     return res;
 }
 
 
 export {
     postTrainingSession,
-    getAllTrainingSessions,
-    getAllUserTrainingSessions
+    getAllTrainingDays,
+    getAllUserTrainingDays,
+    getTrainingDay,
+    deleteTrainingDay
 };

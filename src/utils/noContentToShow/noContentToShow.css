@@ -1,0 +1,41 @@
+.user__no__content__to__show {
+    width: 90%;
+    height: 200px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 12px black;
+    background-color: whitesmoke;
+}
+
+.user__no__content__to__show p {
+    font-size: 0.8rem;
+    margin: 0 0 15px;
+    text-align: center;
+}
+
+.user__no__content__to__show a {
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-left: 10px;
+    color: rgb(100, 81, 81);
+    text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+
+    .user__no__content__to__show p {
+        font-size: 1rem;
+        margin: 0 0 20px;
+    }
+
+    .user__no__content__to__show a {
+        font-size: 1.1rem;
+    }
+
+    .user__no__content__to__show a:hover {
+        color: black;
+    }
+}

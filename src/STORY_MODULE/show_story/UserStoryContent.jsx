@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from "react-router-dom";
 import { v4 as uuid } from 'uuid';
 import { AuthContext } from "../../context/auth-context";
 import { getAllUserStories } from "../../fetch/story";
+import NoContentToShow from "../../utils/noContentToShow/NoContentToShow";
 import globalVariables from '../../globalVariables';
 import StatsHeaderForContent from "../../utils/statsHeaderForContent/StatsHeaderForContent";
 import "./userStoryContent.css";
@@ -45,11 +45,9 @@ const UserStoryContent = ({ user }) => {
                     privateStory={story.privateStory}
                     comments={story.comments_allowed} />
             })}
-            {userStories && !userStories.length &&
-                <div className="user__no__stories">
-                    <p>No stories to show</p>
-                    {authData && authData.userId === user._id ? <Link to="/create/story">Add a story</Link> : null}
-                </div>}
+            {userStories && !userStories.length && user &&
+                <NoContentToShow contentType={"stories"} linkToContent={"story"} loggedUserID={authData.userId} userID={String(user._id)} />
+            }
         </div>
     )
 }

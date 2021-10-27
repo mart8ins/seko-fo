@@ -1,1 +1,90 @@
-@media screen and (min-width: 768px) {}
+.link__to__workout {
+    color: black;
+    text-decoration: none;
+}
+
+.to__workout {
+    border: 1px solid black;
+    width: 75%;
+    margin: 15px auto;
+    padding: 20px;
+    background-color: rgb(54, 51, 51);
+    box-shadow: 0px 4px 8px black;
+    border-radius: 4px;
+}
+
+.to__workout__date {
+    box-shadow: 0 2px 12px black;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.to__workout__date p {
+    margin: 0px;
+    font-size: 1.8rem;
+    text-align: center;
+    font-family: 'Abril Fatface', cursive;
+    color: rgb(204, 245, 110);
+}
+
+.to__workout__sessions__count {
+    box-shadow: 0px 1px 2px black;
+    padding: 4px;
+    text-align: center;
+    color: white;
+}
+
+.to__workout__sessions__count p {
+    margin: 0px;
+    font-size: 0.8rem;
+}
+
+.to__workout__sessions__count .sessions__count {
+    font-weight: bold;
+    margin: 4px;
+    font-size: 1.2rem;
+    color: rgb(204, 245, 110);
+}
+
+@media screen and (min-width: 768px) {
+    .to__workout {
+        width: 65%;
+        margin: 15px auto;
+        padding: 20px;
+        display: flex;
+    }
+
+    .to__workout:hover {
+        transform: scale(1.05);
+        background-color: rgb(71, 68, 68);
+        cursor: pointer;
+    }
+
+    .to__workout__date {
+        flex: 3;
+    }
+
+    .to__workout__date p {
+        font-size: 3.3rem;
+        padding: 4px 8px;
+    }
+
+    .to__workout__sessions__count {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 15px 10px;
+    }
+
+
+    .to__workout__sessions__count p {
+        margin: 0px;
+        font-size: 0.9rem;
+    }
+
+    .to__workout__sessions__count .sessions__count {
+        font-size: 1.4rem;
+    }
+}

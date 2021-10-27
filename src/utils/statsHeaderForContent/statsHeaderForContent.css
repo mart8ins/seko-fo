@@ -10,7 +10,7 @@
 .stats__header__left__side p {
     margin: 0;
     padding: 5px 10px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-align: center;
     text-transform: uppercase;
     color: white;
@@ -55,7 +55,7 @@
 @media screen and (min-width: 768px) {
 
     .stats__header__left__side {
-        width: 30%;
+        width: 40%;
     }
 
     .stats__header__left__side p {

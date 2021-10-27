@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useHistory } from "react-router-dom";
+import { workoutsSeed } from '../../../../utils/workouts/workouts';
 import { postTrainingSession } from "../../../../fetch/workout";
 
 import { AuthContext } from "../../../../context/auth-context";
@@ -13,7 +14,7 @@ import TrainingDayFormBottom from './components/TrainingDayFormBottom';
 
 const TrainingDayForm = ({ trainingDate }) => {
     const { authData: { token } } = useContext(AuthContext);
-    const { fetchAllTrainingSessions } = useContext(WorkoutContext);
+    const { fetchAllTrainingDays } = useContext(WorkoutContext);
 
     const history = useHistory();
 
@@ -108,8 +109,14 @@ const TrainingDayForm = ({ trainingDate }) => {
             id: uuidv4(),
             name: workout,
             imageName: workoutImage,
-            sets: allSets
+            sets: allSets,
+            wID: undefined
         }
+        workoutsSeed.forEach((workout) => {
+            if (workout.name === workoutToSave.name) {
+                workoutToSave.wID = workout.wID
+            }
+        })
         setAllWorkouts([
             ...allWorkouts,
             workoutToSave
@@ -128,7 +135,7 @@ const TrainingDayForm = ({ trainingDate }) => {
         }
         const res = await postTrainingSession(token, sessionToSave);
         // update context for all sessions in db
-        await fetchAllTrainingSessions(token);
+        await fetchAllTrainingDays(token);
         setCanSaveSession(false);
         history.push("/userContentFeed?type=workout")
     }
@@ -160,7 +167,7 @@ const TrainingDayForm = ({ trainingDate }) => {
 
 
     return (
-        <div className="training__day__form__container">
+        <div>
 
             <TrainingDayFormTop
                 sessionTitleHandler={sessionTitleHandler}

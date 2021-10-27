@@ -12,7 +12,9 @@ import UserProfile from "../../profile/UserProfile/UserProfile";
 import MyProfile from "../../profile/MyProfile/MyProfile";
 import CreateStory from "../../STORY_MODULE/create_story/CreateStory";
 import CreateWorkout from "../../WORKOUT_MODULE/create_workout/CreateWorkout";
-import Story from "../../STORY_MODULE/show_story/components/storyContent/StoryContent"
+import StoryContent from "../../STORY_MODULE/show_story/components/storyContent/StoryContent";
+import WorkoutDay from "../../WORKOUT_MODULE/show_workout/components/workoutDay/WorkoutDay";
+import WorkoutById from "../../WORKOUT_MODULE/show_workout/components/workoutData/WorkoutById";
 
 import { AuthContext } from "../../context/auth-context";
 import RouteGuard from "../../utils/RouteGuard";
@@ -25,8 +27,9 @@ function Feed() {
         <RouteGuard path="/create/story" component={CreateStory} auth={isLoggedIn} />
         <RouteGuard path="/create/workout" component={CreateWorkout} auth={isLoggedIn} />
 
-        <RouteGuard path="/story/:storyId" component={Story} auth={isLoggedIn} />
-
+        <RouteGuard path="/story/:storyId" component={StoryContent} auth={isLoggedIn} />
+        <RouteGuard path="/workoutday/:workoutDayId" component={WorkoutDay} auth={isLoggedIn} />
+        <RouteGuard path="/about/workout/:wID" component={WorkoutById} auth={isLoggedIn} />
 
         <RouteGuard path="/contentFeed" component={ContentFeed} auth={isLoggedIn} />
         <RouteGuard path="/create" component={Create} auth={isLoggedIn} />

@@ -18,7 +18,7 @@ const TrainingDayFormMiddle = ({ workoutHandler, workout, workoutImage, setWorko
                 <select onChange={workoutHandler} value={workout}>
                     <option ref={workoutInputRef} value="" selected disabled hidden>Select workout</option>
                     {workoutsSeed.map((w) => {
-                        return <option key={uuidv4()} value={w.name}>{w.name}</option>
+                        return <option data-wID={w.wID} key={uuidv4()} value={w.name}>{w.name}</option>
                     })}
                 </select>
             </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import "./trainingDayFormBottom.css";
 import { v4 as uuidv4 } from 'uuid';
-import WorkoutCard from './WorkoutCard';
+import WorkoutCard from "../../../../../utils/workouts/workoutCard/WorkoutCard";
 
 const TrainingDayFormBottom = ({
     allSets,
@@ -81,7 +81,12 @@ const TrainingDayFormBottom = ({
                     <h4>Current workouts for session</h4>
                     <div className="training__day__form__bottom__sessions__workouts">
                         {allWorkouts.map((workout) => {
-                            return <WorkoutCard key={uuidv4()} workout={workout} deleteWorkoutCard={deleteWorkoutCard} />
+                            return <WorkoutCard
+                                key={uuidv4()}
+                                workout={workout}
+                                deleteWorkoutCard={deleteWorkoutCard}
+                                hover={false}
+                                asLink={false} />
                         })}
                     </div>
                 </div>
