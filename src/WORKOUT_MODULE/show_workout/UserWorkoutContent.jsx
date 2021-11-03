@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Link } from "react-router-dom";
 import "./userWorkoutContent.css";
+import { v4 as uuidv4 } from 'uuid';
 import NoContentToShow from "../../utils/noContentToShow/NoContentToShow";
 import { getAllUserTrainingDays } from "../../fetch/workout";
 import { AuthContext } from '../../context/auth-context';
@@ -28,7 +28,7 @@ const UserWorkoutContent = ({ user }) => {
 
             <div className="container__for__links__to__workouts__days">
                 {trainingDays.map((training) => {
-                    return <LinkToWorkout training={training} />
+                    return <LinkToWorkout key={uuidv4} training={training} />
                 })}
             </div>
 

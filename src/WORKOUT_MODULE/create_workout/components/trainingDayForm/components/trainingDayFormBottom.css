@@ -102,7 +102,6 @@
     padding: 10px;
     font-weight: bold;
     border-radius: 5px;
-    box-shadow: 0 2px 12px black;
     margin: 5px;
     background-color: rgb(184, 250, 84);
     color: rgb(100, 81, 81);
@@ -118,7 +117,7 @@
     margin: 20px auto;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 2px 10px black;
+    box-shadow: 0 2px 12px black;
     padding: 10px;
     background-color: rgb(95, 90, 90);
     flex-wrap: nowrap;
@@ -127,7 +126,9 @@
 .training__day__form__bottom__created__workouts h4 {
     margin: 0 auto 20px;
     color: white;
-    box-shadow: 0 2px 10px black;
+    border-radius: 8px;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
     padding: 10px;
     max-width: max-content;
 }
@@ -137,6 +138,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-top: 2px solid white;
+    padding-top: 20px;
 }
 
 @media screen and (min-width: 786px) {
@@ -166,12 +169,13 @@
 
     .training__day__form__bottom__set__options__buttons button:hover {
         cursor: pointer;
-        box-shadow: 0 2px 12px rgb(184, 250, 84);
+        box-shadow: 0 2px 15px rgb(184, 250, 84);
     }
 
     .training__day__form__bottom__set__options__buttons button[disabled]:hover {
         cursor: default;
         box-shadow: none;
+        box-shadow: 0 2px 15px black;
     }
 
     .training__day__form__bottom__workout__options__buttons {
@@ -181,7 +185,7 @@
 
     .training__day__form__bottom__workout__options__buttons button:hover {
         cursor: pointer;
-        box-shadow: 0 2px 12px rgb(184, 250, 84);
+        box-shadow: 0 2px 15px black;
     }
 
     .training__day__form__bottom__workout__options__buttons button[disabled]:hover {

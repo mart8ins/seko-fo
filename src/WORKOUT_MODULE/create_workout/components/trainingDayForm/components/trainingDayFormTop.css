@@ -51,7 +51,6 @@
     text-align: center;
     font-size: 1rem;
     border-radius: 4px;
-    font-family: 'Rampart One', cursive;
     color: black;
     box-shadow: 0 2px 15px black;
 }
@@ -72,7 +71,6 @@
     color: rgb(100, 81, 81);
     border: none;
     border-radius: 4px;
-    box-shadow: 0 2px 15px black;
 }
 
 .training__day__form__top__session__save button[disabled] {
@@ -82,13 +80,15 @@
 
 @media screen and (min-width: 786px) {
     .training__day__form__top {
+        width: 90%;
+        margin: 15px auto;
         flex-direction: row;
         justify-content: space-between;
     }
 
     .training__day__form__top__title__and__rate {
         flex-direction: row;
-        justify-content: space-evenly;
+        justify-content: space-around;
     }
 
     .training__day__form__top__title {
@@ -99,6 +99,7 @@
 
     .training__day__form__top__title input {
         font-size: 0.9rem;
+        width: 320px;
     }
 
     .training__day__form__top__rate {
@@ -112,11 +113,10 @@
 
     .training__day__form__top__session__save button:hover {
         cursor: pointer;
-        box-shadow: 0 2px 12px rgb(184, 250, 84);
+        box-shadow: 0 2px 15px black;
     }
 
     .training__day__form__top__session__save button[disabled]:hover {
         cursor: default;
-        box-shadow: none;
     }
 }

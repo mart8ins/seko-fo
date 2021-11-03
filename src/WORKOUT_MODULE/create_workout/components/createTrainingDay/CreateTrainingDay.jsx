@@ -25,6 +25,7 @@ const CreateTrainingDay = ({ createTrainingDay, newTrainingDay }) => {
 
             {!newTrainingDay &&
                 <div className="create__training__day__add">
+
                     <div className="create__training__day__date">
                         <h4>Choose date</h4>
                         <input onChange={handleDateChange} type="date" />
@@ -32,6 +33,7 @@ const CreateTrainingDay = ({ createTrainingDay, newTrainingDay }) => {
                     <div className="create__training__day__date__button">
                         {handledDate && <button onClick={submitTrainingDate}>Add</button>}
                     </div>
+
                 </div>
             }
         </div>

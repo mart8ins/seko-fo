@@ -100,14 +100,16 @@
     }
 
     .create__training__day__add {
+        position: relative;
         flex: 3;
-        display: flex;
-        align-items: center;
     }
 
     .create__training__day__date__button button {
         font-size: 1.4rem;
         margin-left: 300px;
+        position: absolute;
+        top: 50px;
+        right: 50px;
     }
 
     .create__training__day__date__button button:hover {

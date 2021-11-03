@@ -86,7 +86,8 @@ const TrainingDayFormBottom = ({
                                 workout={workout}
                                 deleteWorkoutCard={deleteWorkoutCard}
                                 hover={false}
-                                asLink={false} />
+                                asLink={false}
+                                data={true} />
                         })}
                     </div>
                 </div>

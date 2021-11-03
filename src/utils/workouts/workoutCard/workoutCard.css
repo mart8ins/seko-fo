@@ -62,7 +62,7 @@
     border-radius: 40px;
 }
 
-.card__on__hoover:hover {
+.card__on__hover:hover {
     cursor: pointer;
     box-shadow: 0 4px 18px black;
 }

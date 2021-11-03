@@ -21,7 +21,7 @@ const TrainingSessionBox = ({ session }) => {
                 showData &&
                 <div className="training__session__tab__data">
                     {session.workouts.map((workout) => {
-                        return <WorkoutCard key={uuidv4()} workout={workout} hoover={true} asLink={true} />
+                        return <WorkoutCard key={uuidv4()} workout={workout} hover={true} asLink={true} />
                     })}
                 </div>
             }
