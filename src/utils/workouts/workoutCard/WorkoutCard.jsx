@@ -4,7 +4,6 @@ import "./workoutCard.css";
 
 
 const WorkoutCard = ({ workout, deleteWorkoutCard, hover, asLink, data }) => {
-    console.log(workout)
 
     // state for image depending what renders card, db data or workouts seed data
     const [image, setImage] = useState();

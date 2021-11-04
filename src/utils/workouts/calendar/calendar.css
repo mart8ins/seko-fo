@@ -1,3 +1,7 @@
+.calendar__container {
+    margin: 45px;
+}
+
 .calendar {
     width: max-content;
     margin: 20px auto;

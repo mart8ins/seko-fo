@@ -1,57 +1,134 @@
-.create__option__container {
-    width: 120px;
-    height: 170px;
-    margin: 5px;
-    background-size: cover;
-    border: 5px solid rgb(119, 143, 62);
-    border-radius: 10px;
-    padding: 5px;
-    box-shadow: 0px 2px 5px black;
-}
-
-.link__to__create__option {
+.reversable__card {
     text-decoration: none;
     color: black;
     margin: 2px;
+    position: relative;
+    width: 120px;
+    height: 170px;
 }
 
-.create__option__name {
+/* FRONT */
+.create__option__container__front {
+    display: none;
+}
+
+.create__option__name__front {
     text-align: center;
     font-weight: bold;
     text-transform: uppercase;
     color: rgb(235, 227, 227);
     background-color: black;
-    max-width: fit-content;
+    font-size: 0.8rem;
     padding: 5px 10px;
     border-radius: 5px;
+    max-width: fit-content;
     margin: 80px auto;
-    font-size: 0.9rem;
 }
 
+/* BACK */
+.create__option__container__back {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.create__option__name__back {
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgb(235, 227, 227);
+    background-color: black;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.create__option__container__back a {
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    width: 75px;
+    padding: 3px;
+    text-align: center;
+    box-shadow: 0 5px 12px black;
+    background-color: rgba(50, 187, 57, 0.9);
+    font-size: 0.8rem;
+    color: white;
+    font-weight: bold;
+}
+
+/* BOTH */
+.create__option__container__front,
+.create__option__container__back {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0px 2px 5px black;
+    position: absolute;
+}
+
+
+
+
 @media screen and (min-width: 768px) {
-    .create__option__container {
-        width: 150px;
-        height: 210px;
+
+    .reversable__card {
+        margin: 15px;
+        width: 190px;
+        height: 250px;
         margin: 5px;
     }
 
-    .link__to__create__option {
-        margin: 15px;
+    .reversable__card:hover {
+        cursor: pointer;
     }
 
-    .create__option__name {
-        font-size: 1.3rem;
+    .reversable__card:hover .create__option__name__front {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        background-color: black;
+    }
+
+    /* FRONT */
+
+    .create__option__container__front {
+        display: block;
+    }
+
+    .reversable__card:hover .create__option__container__front {
+        display: none;
+    }
+
+    .create__option__name__front {
+        font-size: 1.6rem;
         background-color: rgba(0, 0, 0, 0.664);
     }
 
-    .link__to__create__option:hover {
-        cursor: pointer;
-        transform: scale(1.1)
+    /* BACK */
+
+    .create__option__container__back {
+        display: none;
     }
 
-    .link__to__create__option:hover .create__option__name {
-        font-size: 1.4rem;
-        letter-spacing: 2px;
-        background-color: black;
+    .reversable__card:hover .create__option__container__back {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .create__option__name__back {
+        margin-top: +20px;
+        font-size: 1.3rem;
+    }
+
+    .create__option__container__back a {
+        font-size: 1rem;
+    }
+
+    .create__option__container__back a:hover {
+        background-color: rgba(33, 150, 38, 0.9);
     }
 }

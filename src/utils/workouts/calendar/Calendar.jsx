@@ -11,7 +11,7 @@ const Calendar = ({ year }) => {
     }
 
     return (
-        <div>
+        <div className="calendar__container">
             <h3 onClick={toogleMonth} className={`calendar ${monthToogle && "monthToogleActive"}`}><span>{year.year}</span> years data</h3>
             {
                 monthToogle && <Year months={year.months} />
