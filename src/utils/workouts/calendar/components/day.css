@@ -1,0 +1,32 @@
+.month__day {
+    padding: 5px;
+    width: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    border-radius: 10px;
+    margin: 3px;
+    color: rgb(204, 245, 110);
+    font-weight: bold;
+    box-shadow: 0px 2px 10px black;
+}
+
+.month__day:hover {
+    cursor: pointer;
+    background-color: rgb(78, 75, 75);
+    color: white;
+}
+
+.dayHasWorkout {
+    background-color: rgb(188, 247, 52);
+    color: black;
+}
+
+@media screen and (min-width: 768px) {
+
+    .month__day {
+        font-size: 1.2rem;
+        width: 25px;
+    }
+}

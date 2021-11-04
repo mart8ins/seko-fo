@@ -1,0 +1,16 @@
+.year__top__container {
+    width: 88%;
+    margin: 10px auto;
+    padding: 5px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media screen and (min-width: 768px) {
+    .year__top__container {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+}
