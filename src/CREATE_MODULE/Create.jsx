@@ -23,7 +23,7 @@ function Create() {
             <div>
                 <CreateOption
                     createPath={"/create/workout"}
-                    learnPath={1}
+                    learnPath={"/about/workouts"}
                     viewPath={"/userContentFeed?type=workout"}
                     name={"Workout"}
                     background={workoutBackground}
