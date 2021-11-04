@@ -5,7 +5,6 @@ import NoContentToShow from "../../utils/noContentToShow/NoContentToShow";
 import { getAllUserTrainingDays } from "../../fetch/workout";
 import { AuthContext } from '../../context/auth-context';
 import StatsHeaderForContent from "../../utils/statsHeaderForContent/StatsHeaderForContent";
-import LinkToWorkout from "./components/linkToWorkout/LinkToWorkout";
 import Calendar from "../../utils/workouts/calendar/Calendar";
 
 const UserWorkoutContent = ({ user }) => {
@@ -86,9 +85,22 @@ const UserWorkoutContent = ({ user }) => {
             }
         })
 
-        console.log(trainingYears)
+        // sort months ascending
+        let lowestToHighestMonth = [];
+        let sortedMonths;
+        let yearForSortedMonths;
+        trainingYears.forEach((year) => {
+            yearForSortedMonths = year.year;
+            sortedMonths = year.months.sort((a, b) => {
+                return a.month - b.month
+            })
+            lowestToHighestMonth.push({
+                year: yearForSortedMonths,
+                months: sortedMonths
+            })
+        })
 
-        setYears(trainingYears)
+        setYears(lowestToHighestMonth)
     }, [trainingDays])
 
 
@@ -101,14 +113,6 @@ const UserWorkoutContent = ({ user }) => {
             {years.map((year) => {
                 return <Calendar key={uuidv4()} year={year} />
             })}
-
-
-
-            {/* <div className="container__for__links__to__workouts__days">
-                {trainingDays.map((training) => {
-                    return <LinkToWorkout key={uuidv4} training={training} />
-                })}
-            </div> */}
 
             {trainingDays && !trainingDays.length && user &&
                 <NoContentToShow contentType={"workouts"} linkToContent={"workout"} loggedUserID={userId} userID={String(user._id)} />

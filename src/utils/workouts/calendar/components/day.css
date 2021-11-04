@@ -12,13 +12,8 @@
     box-shadow: 0px 2px 10px black;
 }
 
-.month__day:hover {
-    cursor: pointer;
-    background-color: rgb(78, 75, 75);
-    color: white;
-}
-
 .dayHasWorkout {
+    cursor: pointer;
     background-color: rgb(188, 247, 52);
     color: black;
 }
