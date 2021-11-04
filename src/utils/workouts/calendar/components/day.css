@@ -23,6 +23,10 @@
     color: black;
 }
 
+.dayHasWorkout:hover {
+    background-color: rgb(160, 197, 72);
+}
+
 @media screen and (min-width: 768px) {
 
     .month__day {

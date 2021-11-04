@@ -5,12 +5,12 @@
     border-radius: 4px;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
 }
 
 
 @media screen and (min-width: 768px) {
     .year__top__container {
         flex-direction: row;
-        flex-wrap: nowrap;
     }
 }

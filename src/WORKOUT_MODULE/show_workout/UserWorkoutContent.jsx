@@ -47,8 +47,6 @@ const UserWorkoutContent = ({ user }) => {
             // current days month
             const m = splitingDate[1];
             const mW0 = m[0] === "0" ? m[1] : m; // remove 0 from front of the month if there is
-            // current days date
-            const d = splitingDate[2];
             // get curent years and months days count
             const daysInMonth = String(getDaysInMonth(y, mW0));
 
@@ -87,6 +85,8 @@ const UserWorkoutContent = ({ user }) => {
                 })
             }
         })
+
+        console.log(trainingYears)
 
         setYears(trainingYears)
     }, [trainingDays])
