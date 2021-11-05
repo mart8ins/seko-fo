@@ -12,6 +12,8 @@ const UserWorkoutContent = ({ user }) => {
     // user training days
     const [trainingDays, setTrainingDays] = useState([]);
 
+    const [workoutStats, setWorkoutStats] = useState([]);
+
     const [years, setYears] = useState([]);
 
     useEffect(() => {
@@ -22,10 +24,11 @@ const UserWorkoutContent = ({ user }) => {
 
     const fetchAllUserSessions = async () => {
         const res = await getAllUserTrainingDays(token, user._id);
-        setTrainingDays(res.data.userTrainingSessions)
+        setTrainingDays(res.data.userTrainingSessions);
+        setWorkoutStats(res.data.stats);
     }
 
-
+    console.log(workoutStats, "stats")
 
 
     // to get current years/months day count - returns nummber of dates in month
@@ -108,7 +111,7 @@ const UserWorkoutContent = ({ user }) => {
 
     return (
         <div>
-            {user && String(user._id) === userId && <StatsHeaderForContent title="My workouts" contentStats={[]} />}
+            {user && String(user._id) === userId && <StatsHeaderForContent title="My workouts" contentStats={workoutStats} />}
 
             {years.map((year) => {
                 return <Calendar key={uuidv4()} year={year} />

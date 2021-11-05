@@ -1,0 +1,52 @@
+.workout__by__id__container {
+    width: 95%;
+    margin: auto;
+}
+
+.workout__by__id__top {
+    display: flex;
+    flex-direction: column;
+}
+
+.workout__by__id__title,
+.workout__by__id__type {
+    text-align: center;
+    margin: 5px;
+}
+
+.workout__by__id__title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 20px;
+    color: white;
+    background-color: rgb(54, 51, 51);
+    flex: 2;
+}
+
+.workout__by__id__type {
+    font-size: 0.7rem;
+    color: white;
+    background-color: rgb(110, 104, 104);
+    color: rgb(204, 245, 110);
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+@media screen and (min-width: 768px) {
+    .workout__by__id__top {
+        flex-direction: row;
+    }
+
+    .workout__by__id__title {
+        font-size: 2.1rem;
+        padding: 10px;
+        text-transform: uppercase;
+    }
+
+    .workout__by__id__type {
+        font-size: 1.3rem;
+    }
+}

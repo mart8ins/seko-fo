@@ -75,6 +75,7 @@ const WorkoutDay = () => {
                         <h3>{workoutDay.date}</h3>
                     </div>
 
+                    <h3 className="sessions__title">Sessions</h3>
                     <div>
                         {workoutDay.sessions.map((session) => {
                             return <TrainingSessionBox key={uuidv4()} session={session} />

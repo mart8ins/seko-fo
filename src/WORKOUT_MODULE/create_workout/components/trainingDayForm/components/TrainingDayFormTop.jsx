@@ -2,7 +2,7 @@ import React from 'react';
 import "./trainingDayFormTop.css";
 
 
-const TrainingDayFormTop = ({ sessionTitleHandler, feelingHandler, canSaveSession, saveSession }) => {
+const TrainingDayFormTop = ({ sessionTitleHandler, feelingHandler, feeling, canSaveSession, saveSession }) => {
 
     return (
         <div className="training__day__form__top">
@@ -12,7 +12,7 @@ const TrainingDayFormTop = ({ sessionTitleHandler, feelingHandler, canSaveSessio
                 </div>
 
                 <div className="training__day__form__top__rate">
-                    <select onChange={feelingHandler}>
+                    <select onChange={feelingHandler} value={feeling}>
                         <option value="" selected disabled hidden>Felt?</option>
                         <option value="Hard">Hard</option>
                         <option value="Moderate">Moderate</option>

@@ -172,6 +172,7 @@ const TrainingDayForm = ({ trainingDate }) => {
             <TrainingDayFormTop
                 sessionTitleHandler={sessionTitleHandler}
                 feelingHandler={feelingHandler}
+                feeling={session.feeling}
                 canSaveSession={canSaveSession}
                 saveSession={saveSession}
             />
