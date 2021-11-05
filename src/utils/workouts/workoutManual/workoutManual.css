@@ -21,6 +21,13 @@
     height: 250px;
 }
 
+.workout__manual__movement div {
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .workout__manual__movement h4 {
     font-size: 1rem;
     margin: 0 0 8px;
@@ -30,10 +37,10 @@
 }
 
 .workout__manual__movement img {
-    width: 100%;
-    height: 80%;
+    width: 90%;
+    height: 75%;
     border-radius: 4px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 

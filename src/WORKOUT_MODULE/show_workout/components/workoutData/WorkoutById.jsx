@@ -1,33 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import "./workoutById.css";
+import { workoutsSeed } from "../../../../utils/workouts/workouts";
 
 import WorkoutManual from "../../../../utils/workouts/workoutManual/WorkoutManual";
 
 const WorkoutById = () => {
     const { wID } = useParams();
     const [workoutData, setWorkoutData] = useState();
-    console.log(wID)
 
     useEffect(() => {
-
+        workoutsSeed.forEach((workout) => {
+            if (workout.wID === wID) {
+                setWorkoutData(workout)
+            }
+        })
     }, [wID])
-
 
     return (
         <div className="workout__by__id__container">
 
             <div className="workout__by__id__top">
                 <div className="workout__by__id__title">
-                    Bench press
+                    {workoutData && workoutData.name}
                 </div>
 
                 <div className="workout__by__id__type">
-                    Upperbody workout
+                    {workoutData && workoutData.body_part} workout
                 </div>
             </div>
 
             <WorkoutManual workoutData={workoutData} />
+
+
+            <div className="mans_darbs">
+                MANA STATISTIKA
+            </div>
         </div>
     )
 }

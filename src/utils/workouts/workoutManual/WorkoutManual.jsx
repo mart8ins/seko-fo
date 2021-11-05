@@ -2,6 +2,9 @@ import React from 'react';
 import "./workoutManual.css";
 
 const WorkoutManual = ({ workoutData }) => {
+    console.log(workoutData)
+
+
     return (
         <div className="workout__manual__container">
 
@@ -9,17 +12,23 @@ const WorkoutManual = ({ workoutData }) => {
             <div className="workout__manual__start__movement__finish__container">
                 <div className="workout__manual__movement">
                     <h4>Start position</h4>
-                    <img src="/images/no_image.png" alt="" />
+                    <div>
+                        <img src={`/images/workout_images/${workoutData && workoutData.image}/${workoutData && workoutData.about.start_position}.jpg`} alt="" />
+                    </div>
                 </div>
 
                 <div className="workout__manual__movement">
                     <h4>Movement</h4>
-                    <img src="/images/no_image.png" alt="" />
+                    <div>
+                        <img src={`/images/workout_images/${workoutData && workoutData.image}/${workoutData && workoutData.about.movement_position}.jpg`} alt="" />
+                    </div>
                 </div>
 
                 <div className="workout__manual__movement">
                     <h4>End position</h4>
-                    <img src="/images/no_image.png" alt="" />
+                    <div>
+                        <img src={`/images/workout_images/${workoutData && workoutData.image}/${workoutData && workoutData.about.end_position}.jpg`} alt="" />
+                    </div>
                 </div>
             </div>
 
@@ -28,29 +37,20 @@ const WorkoutManual = ({ workoutData }) => {
 
                 <div className="workout__manual__muscles">
                     <h4>Trained muscles</h4>
-                    <p>Biceps</p>
-                    <p>Triceps</p>
-                    <p>Triceps</p>
-                    <p>Triceps</p>
+                    {workoutData && workoutData.about.muscle_groups.map((muscle) => {
+                        return <p>{muscle}</p>
+                    })}
                 </div>
             </div>
 
 
             <div className="workout__manual__workout__description__container">
                 <div className="workout__manual__description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-                    obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-                    nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-                    tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-                    quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
-                    sapiente officiis modi at sunt excepturi expedita sint?
+                    {workoutData && workoutData.about.instructions}
                 </div>
 
                 <div className="workout__manual__video">
-                    <iframe src="https://www.youtube.com/embed/MHTXEACrjFM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src={`${workoutData && workoutData.video}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>
             </div>
 
