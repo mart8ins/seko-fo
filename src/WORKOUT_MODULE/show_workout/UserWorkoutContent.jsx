@@ -28,8 +28,6 @@ const UserWorkoutContent = ({ user }) => {
         setWorkoutStats(res.data.stats);
     }
 
-    console.log(workoutStats, "stats")
-
 
     // to get current years/months day count - returns nummber of dates in month
     const getDaysInMonth = (year, month) => {

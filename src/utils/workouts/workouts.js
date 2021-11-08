@@ -152,6 +152,19 @@ const workoutsSeed = [
             },
             video: "https://www.youtube.com/embed/I5GaxSYLCSc"
     },
+    { 
+        wID: "w19",
+        body_part: "Full body",
+        name: "Deadlift",
+        image: "deadlift",
+        about: {
+            start_position: "deadlift_start",
+            movement_position: "deadlift__movement",
+            end_position: "deadlift_finish",
+            muscle_groups: [""],
+            instructions: "Do something."
+        }
+    },
    { 
         wID: "w21l",
         body_part: "Lower body",
@@ -167,16 +180,19 @@ const workoutsSeed = [
     },
     { 
         wID: "w2",
+        body_part: "Upper body",
         name: "Tricep Pushdown Rope",
         image: "tricep_pushdown_rope"
     },
     { 
         wID: "w3",
+        body_part: "Upper body",
         name: "Chest fly machine",
         image: "chest_fly_machine"
     },
     { 
         wID: "w4",
+        body_part: "Upper body",
         name: "Bench press",
         image: "bench_press"
     },
@@ -246,22 +262,20 @@ const workoutsSeed = [
         image: "back_extension"
     },
     { 
-        wID: "w19",
-        name: "Deadlift",
-        image: "deadlift"
-    },
-    { 
         wID: "w20",
+        body_part: "Lower body",
         name: "Seated calf raise",
         image: "seated_calf_raise"
     },
     { 
         wID: "w22",
+        body_part: "Lower body",
         name: "Leg curl",
         image: "leg_curl"
     },
     { 
         wID: "w23",
+        body_part: "Lower body",
         name: "Leg extension",
         image: "leg_extension"
     }

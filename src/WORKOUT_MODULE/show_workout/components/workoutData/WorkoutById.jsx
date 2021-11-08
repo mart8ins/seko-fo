@@ -4,6 +4,7 @@ import "./workoutById.css";
 import { workoutsSeed } from "../../../../utils/workouts/workouts";
 
 import WorkoutManual from "../../../../utils/workouts/workoutManual/WorkoutManual";
+import TrainingStatistics from "../../../training_statistics/TrainingStatistics";
 
 const WorkoutById = () => {
     const { wID } = useParams();
@@ -33,9 +34,7 @@ const WorkoutById = () => {
             <WorkoutManual workoutData={workoutData} />
 
 
-            <div className="mans_darbs">
-                MANA STATISTIKA
-            </div>
+            <TrainingStatistics workoutData={workoutData} />
         </div>
     )
 }
