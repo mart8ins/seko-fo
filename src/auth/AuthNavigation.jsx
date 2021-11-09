@@ -57,7 +57,6 @@ function AuthNavigation() {
             showAuthModal: false
         })
         localStorage.removeItem("authData");
-
     }
 
     return <div className="auth-container">

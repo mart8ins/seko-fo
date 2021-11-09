@@ -3,15 +3,18 @@ import "./signup.css";
 import Input from "../utils/formComponents/Input";
 import loginUser from "../fetch/auth/Login";
 import { AuthContext } from "../context/auth-context";
+import { ConnectionsContext } from "../context/connections-context";
 /* styles used from signup componente, from "./signup" */
 
+import socket from "../socket/socket";
 
 const Login = () => {
     const [serverDownError, setServerDownError] = useState("");
     const [formError, setFormError] = useState("");
     const [loginForm, setLoginForm] = useState({});
 
-    const { setAuthData } = useContext(AuthContext);
+    const { authData, setAuthData } = useContext(AuthContext);
+    const { setUsersOnline } = useContext(ConnectionsContext);
 
     const handleChange = (e) => {
         setLoginForm({
@@ -27,6 +30,10 @@ const Login = () => {
             if (response && response.status === 200) {
                 setFormError("");
                 const tokenExpirationDate = new Date(new Date().getTime() + 1000 * 60 * 60);
+
+                setTimeout(() => {
+                    logoutUser();
+                }, (1000 * 60 * 60));
 
                 const objectToStore = {
                     token: response.data.token,
@@ -53,6 +60,22 @@ const Login = () => {
             }
         }
     }
+
+    // to logout user
+    const logoutUser = () => {
+        socket.emit("USER IS OFFLINE", { userId: authData.userId }, (users) => {
+            setUsersOnline(users)
+        });
+        setAuthData({
+            token: null,
+            userId: null,
+            email: null,
+            isLoggedIn: false,
+            showAuthModal: false
+        })
+        localStorage.removeItem("authData");
+    };
+
 
     return <div className="signup__container">
         <div>

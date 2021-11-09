@@ -4,13 +4,17 @@ import "./signup.css";
 import signupUser from "../fetch/auth/Signup";
 
 import { AuthContext } from "../context/auth-context";
+import { ConnectionsContext } from "../context/connections-context";
+
+import socket from "../socket/socket";
 
 const Signup = () => {
     const [serverDownError, setServerDownError] = useState("");
     const [formError, setFormError] = useState("");
     const [signupForm, setSignupForm] = useState({});
 
-    const { setAuthData } = useContext(AuthContext);
+    const { authData, setAuthData } = useContext(AuthContext);
+    const { setUsersOnline } = useContext(ConnectionsContext);
 
     // handle signup form data change
     const handleChange = (e) => {
@@ -27,6 +31,10 @@ const Signup = () => {
             if (response && response.status === 200) {
                 setFormError("");
                 const tokenExpirationDate = new Date(new Date().getTime() + 1000 * 60 * 60);
+
+                setTimeout(() => {
+                    logoutUser();
+                }, (1000 * 60 * 60));
 
                 const objectToStore = {
                     token: response.data.token,
@@ -52,7 +60,23 @@ const Signup = () => {
                 setServerDownError("Server is down, please try again later.");
             }
         }
-    }
+    };
+
+    // to logout user
+    const logoutUser = () => {
+        socket.emit("USER IS OFFLINE", { userId: authData.userId }, (users) => {
+            setUsersOnline(users)
+        });
+        setAuthData({
+            token: null,
+            userId: null,
+            email: null,
+            isLoggedIn: false,
+            showAuthModal: false
+        })
+        localStorage.removeItem("authData");
+    };
+
 
     return <div className="signup__container">
         <div>
