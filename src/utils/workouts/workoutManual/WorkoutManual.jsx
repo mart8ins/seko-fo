@@ -1,15 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import "./workoutManual.css";
 
 const WorkoutManual = ({ workoutData }) => {
-
-    const [workout, setWorkout] = useState();
-
-    useEffect(() => {
-        setWorkout(workoutData);
-    }, [workoutData])
-
-    console.log(workout, "workout")
 
     return (
         <div className="workout__manual__container">
@@ -19,21 +11,21 @@ const WorkoutManual = ({ workoutData }) => {
                 <div className="workout__manual__movement">
                     <h4>Start position</h4>
                     <div>
-                        <img src={`/images/workout_images/${workout && workout.image}/${workout && workout.about.start_position}.jpg`} alt="" />
+                        <img src={`/images/workout_images/${workoutData && workoutData.image}/${workoutData && workoutData.about.start_position}.jpg`} alt="" />
                     </div>
                 </div>
 
                 <div className="workout__manual__movement">
                     <h4>Movement</h4>
                     <div>
-                        <img src={`/images/workout_images/${workout && workout.image}/${workout && workout.about.movement_position}.jpg`} alt="" />
+                        <img src={`/images/workout_images/${workoutData && workoutData.image}/${workoutData && workoutData.about.movement_position}.jpg`} alt="" />
                     </div>
                 </div>
 
                 <div className="workout__manual__movement">
                     <h4>End position</h4>
                     <div>
-                        <img src={`/images/workout_images/${workout && workout.image}/${workout && workout.about.end_position}.jpg`} alt="" />
+                        <img src={`/images/workout_images/${workoutData && workoutData.image}/${workoutData && workoutData.about.end_position}.jpg`} alt="" />
                     </div>
                 </div>
             </div>
@@ -43,7 +35,7 @@ const WorkoutManual = ({ workoutData }) => {
 
                 <div className="workout__manual__muscles">
                     <h4>Trained muscles</h4>
-                    {workout && workout.about.muscle_groups.map((muscle) => {
+                    {workoutData && workoutData.about.muscle_groups.map((muscle) => {
                         return <p>{muscle}</p>
                     })}
                 </div>
@@ -52,12 +44,12 @@ const WorkoutManual = ({ workoutData }) => {
 
             <div className="workout__manual__workout__description__container">
                 <div className="workout__manual__description">
-                    {workout && workout.about.instructions}
+                    {workoutData && workoutData.about.instructions}
                 </div>
 
-                {workout && workout.video &&
+                {workoutData && workoutData.video &&
                     <div className="workout__manual__video">
-                        <iframe src={`${workout.video}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                        <iframe src={`${workoutData.video}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                 }
             </div>

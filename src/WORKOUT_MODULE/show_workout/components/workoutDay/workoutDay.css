@@ -42,23 +42,32 @@
     position: relative;
 }
 
-.workoutDay__title__container a {
-    text-decoration: none;
-    color: black;
-    text-align: center;
-    font-size: 0.9rem;
-}
 
-.sessions__title {
+.workoutDay__author {
     text-align: center;
-    font-size: 1.2rem;
     margin: 50px auto;
     border-radius: 10px;
-    box-shadow: 0 2px 5px whitesmoke;
+    box-shadow: 0 2px 5px rgb(54, 51, 51);
     padding: 5px 30px;
+    max-width: 200px;
+    background-color: rgb(143, 136, 136);
+}
+
+.workoutDay__author a {
+    color: rgb(54, 51, 51);
+    font-size: 1rem;
     text-transform: uppercase;
-    max-width: fit-content;
+    font-weight: bold;
+}
+
+.workoutDay__author a:hover {
     color: rgb(204, 245, 110);
+}
+
+.workoutDay__author p {
+    font-size: 0.7rem;
+    margin: 0;
+    color: white;
 }
 
 @media screen and (min-width: 768px) {
@@ -76,10 +85,6 @@
         font-size: 2rem;
     }
 
-    .workoutDay__title__container a {
-        margin-right: 20px;
-        font-size: 1rem;
-    }
 
     .workoutDay__title__container button {
         margin: 0;
@@ -98,7 +103,12 @@
         background-color: red;
     }
 
-    .sessions__title {
-        font-size: 2rem;
+
+    .workoutDay__author a {
+        font-size: 1.2rem;
+    }
+
+    .workoutDay__author p {
+        font-size: 1rem;
     }
 }

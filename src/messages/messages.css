@@ -9,7 +9,6 @@
     display: flex;
     flex-direction: column;
     height: 85vh;
-    background-color: rgb(54, 51, 51);
     border-radius: 2px;
 }
 
@@ -24,17 +23,22 @@
 }
 
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+.search__contact {
+    margin-bottom: 20px;
+}
 
 .search__contact input {
-    padding: 5px;
-    border: none;
+    padding: 10px;
+    border: 1px solid grey;
+    width: 85%;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-bottom: 15px;
 }
 
 .search__contact input:focus {
     outline: none;
+    border: 1px solid greenyellow;
 }
 
 .contacts__container__sm {
@@ -53,7 +57,7 @@
     margin: 4px;
     min-width: 110px;
     border-radius: 10px;
-    background-color: rgba(109, 106, 106, 0.2);
+    background-color: rgb(54, 51, 51);
     font-weight: bold;
     border: none;
 }
@@ -88,7 +92,7 @@
 }
 
 .activeUser {
-    background-color: rgb(131, 117, 117);
+    background-color: rgb(114, 116, 113);
 }
 
 
@@ -102,7 +106,7 @@
     height: 85%;
     overflow: auto;
     margin: 5px auto;
-    background-color: rgba(94, 89, 89, 0.705);
+    background-color: rgb(54, 51, 51);
     border-radius: 5px;
 }
 
@@ -188,15 +192,13 @@
     flex: 15%;
     border: none;
     background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    color: grey;
     font-weight: bold;
     margin-top: 5px;
     border-radius: 40px;
     text-transform: uppercase;
     width: 50%;
     margin: 5px auto;
-    color: rgb(204, 245, 110);
-    color: rgb(69, 187, 69);
 }
 
 @media screen and (min-width: 768px) {
@@ -240,7 +242,7 @@
     }
 
     .contact:hover {
-        background-color: rgb(131, 117, 117);
+        background-color: rgb(119, 121, 117);
     }
 
     .contact img {
@@ -301,15 +303,14 @@
 
     .send__messages button {
         flex: 25%;
-        width: 50%;
+        width: 30%;
         margin: 5px auto;
         border-radius: 10px;
-        padding: 5px 15px;
         font-size: 1.3rem;
         cursor: pointer;
     }
 
     .send__messages button:hover {
-        background-color: rgb(100, 121, 53);
+        color: white;
     }
 }

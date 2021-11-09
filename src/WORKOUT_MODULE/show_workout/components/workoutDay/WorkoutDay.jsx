@@ -59,12 +59,6 @@ const WorkoutDay = () => {
                     <div className="workoutDay__title__container">
 
                         {
-                            workoutAuthor &&
-                            <Link to={`/user/${workoutAuthor._id}/profile`}>
-                                <p>{workoutAuthor.firstName} {workoutAuthor.lastName}</p>
-                            </Link>
-                        }
-                        {
                             !workoutAuthor && !confirmDayDeletion && <button onClick={toggleDayDeletionState}>Delete training day</button>
                         }
                         {
@@ -75,7 +69,15 @@ const WorkoutDay = () => {
                         <h3>{workoutDay.date}</h3>
                     </div>
 
-                    <h3 className="sessions__title">Sessions</h3>
+                    {
+                        workoutAuthor &&
+                        <div className="workoutDay__author">
+                            <Link to={`/user/${workoutAuthor._id}/profile`}>
+                                {workoutAuthor.firstName} {workoutAuthor.lastName}
+                            </Link>
+                            <p>training sessions</p>
+                        </div>
+                    }
                     <div>
                         {workoutDay.sessions.map((session) => {
                             return <TrainingSessionBox key={uuidv4()} session={session} />

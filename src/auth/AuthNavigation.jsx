@@ -70,7 +70,8 @@ function AuthNavigation() {
             <div className="logged-in">
                 <div className="user__data">
                     <div className="current__time">{date} <span>{time}</span></div>
-                    <div className="user__name">Logged as <span>{authData.fullName}</span></div>
+                    <div className="user__name">Logged as <Link to="/settings">{authData.fullName}</Link></div>
+                    {/* <div className="user__name">Logged as <span>{authData.fullName}</span></div> */}
                 </div>
                 <NavLink onClick={logoutUser} exact to="/">Logout</NavLink>
             </div>

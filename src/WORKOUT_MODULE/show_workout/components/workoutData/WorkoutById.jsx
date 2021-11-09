@@ -9,7 +9,6 @@ import TrainingStatistics from "../../../training_statistics/TrainingStatistics"
 const WorkoutById = () => {
     const { wID } = useParams();
     const [workoutData, setWorkoutData] = useState();
-
     useEffect(() => {
         workoutsSeed.forEach((workout) => {
             if (workout.wID === wID) {

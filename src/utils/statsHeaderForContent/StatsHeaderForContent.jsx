@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import "./statsHeaderForContent.css";
 import { v4 as uuidv4 } from 'uuid';
+
 
 const StatsHeaderForContent = ({ title, contentStats }) => {
     return (
@@ -13,7 +15,11 @@ const StatsHeaderForContent = ({ title, contentStats }) => {
                     {contentStats.map((stat) => {
                         return <div key={uuidv4()} className="content__stat">
                             <div className="content__stat__title">{stat.title}</div>
-                            <div className="content__stat__result">{stat.stat || stat.default}</div>
+                            {stat.asLink && stat.stat ?
+                                <Link to={`/about/workout/${stat.wID}`} className="content__stat__result">{stat.stat || stat.default}</Link>
+                                :
+                                <div className="content__stat__result">{stat.stat || stat.default}</div>
+                            }
                         </div>
                     })}
                 </div>

@@ -39,8 +39,10 @@ function Feed() {
         <RouteGuard path="/connections" component={Connections} auth={isLoggedIn} />
         <RouteGuard path="/settings" component={Settings} auth={isLoggedIn} />
 
+
         <RouteGuard path="/user/:userId/profile" component={UserProfile} auth={isLoggedIn} />
         <RouteGuard path={`/userContentFeed`} component={MyProfile} auth={isLoggedIn} />
+
 
         <Route exact path="/"><LandingPage /></Route>
 
