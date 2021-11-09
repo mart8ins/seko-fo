@@ -31,20 +31,29 @@ const UserStoryContent = ({ user }) => {
             {user && String(user._id) === authData.userId && <StatsHeaderForContent contentStats={userStoriesStats} title="My stories" />}
 
             {userStories && userStories.reverse().map((story) => {
+                console.log(story)
                 const storyId = story._id;
                 const image = story.image ? `${globalVariables.server}${story.image}` : "/images/no_image.png";
                 const date = new Date(story.date).toLocaleDateString();
-                return <LinkToStory
-                    key={uuid()}
-                    storyId={storyId}
-                    title={story.title}
-                    image={image}
-                    date={date}
-                    author={`${story.author.firstName} ${story.author.lastName}`}
-                    authorId={story.author.userId}
-                    privateStory={story.privateStory}
-                    comments={story.comments_allowed} />
+
+                if (story.private && authData.userId !== story.author.userId) {
+                    return null
+                } else {
+                    return <LinkToStory
+                        key={uuid()}
+                        storyId={storyId}
+                        title={story.title}
+                        image={image}
+                        date={date}
+                        author={`${story.author.firstName} ${story.author.lastName}`}
+                        authorId={story.author.userId}
+                        privateStory={story.private}
+                        comments={story.comments_allowed} />
+                }
             })}
+
+
+
             {userStories && !userStories.length && user &&
                 <NoContentToShow contentType={"stories"} linkToContent={"story"} loggedUserID={authData.userId} userID={String(user._id)} />
             }

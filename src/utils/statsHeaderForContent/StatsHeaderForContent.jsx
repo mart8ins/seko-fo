@@ -13,10 +13,11 @@ const StatsHeaderForContent = ({ title, contentStats }) => {
             {contentStats &&
                 <div className="stats__header__right__side">
                     {contentStats.map((stat) => {
+                        let url = stat.wID ? `/about/workout/${stat.wID}` : `/story/${stat.storyId}`;
                         return <div key={uuidv4()} className="content__stat">
                             <div className="content__stat__title">{stat.title}</div>
                             {stat.asLink && stat.stat ?
-                                <Link to={`/about/workout/${stat.wID}`} className="content__stat__result">{stat.stat || stat.default}</Link>
+                                <Link to={url} className="content__stat__result">{stat.stat || stat.default}</Link>
                                 :
                                 <div className="content__stat__result">{stat.stat || stat.default}</div>
                             }
