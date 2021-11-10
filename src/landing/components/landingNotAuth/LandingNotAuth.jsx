@@ -4,7 +4,6 @@ import { notLogged } from "../../landingSeed";
 
 
 const LandingNotAuth = ({ language }) => {
-    console.log(notLogged)
     return (
         <div className="landing__not__auth__container">
 

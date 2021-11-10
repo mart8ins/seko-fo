@@ -31,7 +31,6 @@ const UserStoryContent = ({ user }) => {
             {user && String(user._id) === authData.userId && <StatsHeaderForContent contentStats={userStoriesStats} title="My stories" />}
 
             {userStories && userStories.reverse().map((story) => {
-                console.log(story)
                 const storyId = story._id;
                 const image = story.image ? `${globalVariables.server}${story.image}` : "/images/no_image.png";
                 const date = new Date(story.date).toLocaleDateString();

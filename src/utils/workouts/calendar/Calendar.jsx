@@ -9,8 +9,6 @@ const Calendar = ({ year }) => {
     const toogleMonth = () => {
         setMonthToogle(!monthToogle)
     }
-
-    console.log(year)
     return (
         <div className="calendar__container">
             <h3 onClick={toogleMonth} className={`calendar ${monthToogle && "monthToogleActive"}`}><span>{year.year}</span> years data</h3>
