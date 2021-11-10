@@ -108,7 +108,8 @@ const UserWorkoutContent = ({ user }) => {
 
 
     return (
-        <div>
+        <div className="workout__content__feed">
+
             {user && String(user._id) === userId && <StatsHeaderForContent title="My workouts" contentStats={workoutStats} />}
 
             {years.map((year) => {

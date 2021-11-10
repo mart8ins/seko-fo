@@ -1,23 +1,29 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/auth-context";
-import { ConnectionsContext } from "../context/connections-context";
+import LandingNotAuth from "./components/landingNotAuth/LandingNotAuth";
+import LandingAuth from "./components/landingAuth/LandingAuth";
+import "./landingPage.css";
 
-import socket from "../socket/socket";
+
 
 function LandingPage() {
     const { authData } = useContext(AuthContext);
-    const { usersOnline, setUsersOnline } = useContext(ConnectionsContext);
 
-    // AFTER AUTHENTIFICATION STORE USER ID AND SOCKET ID IN BACKEND, AND FRONT END USERONLINE ARRAY
-    useEffect(() => {
-        socket.emit("USER IS ONLINE", { userId: authData.userId }, (users) => {
-            setUsersOnline(users)
-        });
-    }, [authData.userId])
+    const [language, setLanguage] = useState("eng");
 
-    return <div>
-        {authData.userId ? `USER IS LOGGED. ALSO THERE IS MORE LOGED USERS - COUNT ${usersOnline.length} ` : "ANONĪMS USERS"}
-        <p>Landing.jsx</p>
+    const toogleLanguage = () => {
+        language === "lv" ? setLanguage("eng") : setLanguage("lv");
+    }
+
+    return <div className="landing__main__container">
+
+        <div className="landing__language__btns__container">
+            <button onClick={toogleLanguage} className={`landing__language__btn ${language === "eng" && "language__btn__active"}`}>ENG</button>
+            <button onClick={toogleLanguage} className={`landing__language__btn ${language === "lv" && "language__btn__active"}`}>LV</button>
+        </div>
+
+        {authData.userId ? <LandingAuth language={language} /> : <LandingNotAuth language={language} />}
+
     </div>
 
 }

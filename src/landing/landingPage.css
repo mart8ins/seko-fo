@@ -1,0 +1,43 @@
+.landing__main__container {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.landing__language__btns__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing__language__btn {
+    width: 55px;
+    margin: 5px;
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+    box-shadow: 0 2px 5px black;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.7rem;
+}
+
+.language__btn__active {
+    background-color: rgb(54, 51, 51);
+    color: rgb(204, 245, 110);
+    box-shadow: 0 2px 5px greenyellow;
+}
+
+.landing__language__btn:hover {
+    cursor: pointer;
+    color: rgb(204, 245, 110);
+    background-color: rgb(54, 51, 51);
+}
+
+@media screen and (min-width: 768px) {
+
+    .landing__language__btn {
+        width: 65px;
+        font-size: 1rem;
+    }
+
+}

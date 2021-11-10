@@ -2,6 +2,7 @@
     width: 80%;
     margin: 0 auto;
     padding-bottom: 150px;
+    position: relative;
 }
 
 .user__profile__button__container {
@@ -34,6 +35,19 @@
     color: rgb(204, 245, 110);
 }
 
+.workout__is__saved {
+    position: relative;
+    top: 0px;
+    background-color: rgb(110, 172, 18);
+    color: rgb(204, 245, 110);
+    max-width: fit-content;
+    margin: 3px auto;
+    padding: 5px 20px;
+    font-size: 0.7rem;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
 @media screen and (min-width: 768px) {
     .user__profile__button__container {
         flex-direction: row;
@@ -52,5 +66,10 @@
         cursor: pointer;
         border-left: 5px solid rgb(204, 245, 110);
         color: rgb(204, 245, 110);
+    }
+
+    .workout__is__saved {
+        margin: 5px auto;
+        font-size: 1rem;
     }
 }
