@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { getContentFeed } from "../fetch/contentFeed";
-import { AuthContext } from "../context/auth-context";
+import { getContentFeed } from "../../fetch/contentFeed";
+import { AuthContext } from "../../context/auth-context";
 
 const ContentFeed = () => {
     const { authData: { token } } = useContext(AuthContext);
@@ -19,7 +19,15 @@ const ContentFeed = () => {
 
     return (
         <div>
-            ContentFeed.jsx
+            <div>
+                {contentFeed.map((content) => {
+                    return <div>
+                        <h1>{content.type}</h1>
+                        <p>{content.content.title}</p>
+
+                    </div>
+                })}
+            </div>
         </div>
     )
 }

@@ -1,26 +1,16 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useState } from 'react'
 import "./landingAuth.css";
-import { AuthContext } from '../../../context/auth-context';
-import { ConnectionsContext } from '../../../context/connections-context';
-import socket from "../../../socket/socket";
 
-import MyCV from '../myCV/MyCV';
+import CVProfile from '../myCV/CVProfile';
+import CVContent from "../myCV/CVContent";
 
-const LandingAuth = () => {
-    const { authData } = useContext(AuthContext);
-    const { usersOnline, setUsersOnline } = useContext(ConnectionsContext);
-
-
-    // AFTER AUTHENTIFICATION STORE USER ID AND SOCKET ID IN BACKEND, AND FRONT END USERONLINE ARRAY
-    useEffect(() => {
-        socket.emit("USER IS ONLINE", { userId: authData.userId }, (users) => {
-            setUsersOnline(users)
-        });
-    }, [authData.userId])
+const LandingAuth = ({ language }) => {
+    const [activeCvData, setActiveCvData] = useState("aboutProject")
 
     return (
-        <div>
-            <MyCV />
+        <div className="landing__is__auth__container">
+            <CVProfile language={language} activeCvData={activeCvData} setActiveCvData={setActiveCvData} />
+            <CVContent language={language} activeCvData={activeCvData} />
         </div>
     )
 }

@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 import LandingPage from "../../landing/LandingPage";
 
-import ContentFeed from "../../CONTENT_FEED_MODULE/ContentFeed";
+import ContentFeed from "../../CONTENT_FEED_MODULE/publicContentFeed/ContentFeed";
 import Create from "../../CREATE_MODULE/Create";
 import Connections from "../../connections/Connections";
 import Messages from "../../messages/Messages";

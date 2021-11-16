@@ -1,0 +1,12 @@
+.landing__is__auth__container {
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+    .landing__is__auth__container {
+        flex-direction: row;
+    }
+}
