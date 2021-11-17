@@ -1,7 +1,7 @@
 import "./feed.css";
 import React, { useContext } from "react";
 import { Route, Switch } from "react-router-dom";
-import LandingPage from "../../landing/LandingPage";
+import LandingPage from "../../LANDING_MODULE/LandingPage";
 
 import ContentFeed from "../../CONTENT_FEED_MODULE/publicContentFeed/ContentFeed";
 import Create from "../../CREATE_MODULE/Create";

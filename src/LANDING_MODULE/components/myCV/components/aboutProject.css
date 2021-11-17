@@ -1,0 +1,40 @@
+.cv__aboutProject__container {
+    padding: 10px;
+}
+
+.cv__aboutProject__container div {
+    box-shadow: 0 2px 12px black;
+    padding: 10px;
+    border-radius: 2px;
+    background-color: rgb(54, 51, 51);
+    margin-bottom: 10px;
+}
+
+.cv__aboutProject__container div h3 {
+    margin: 0;
+    font-size: 0.8rem;
+    color: white;
+    margin-bottom: 3px;
+}
+
+.cv__aboutProject__container div p {
+    text-align: justify;
+    font-size: 0.7rem;
+    color: black;
+    background-color: white;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+    .cv__aboutProject__container div h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: greenyellow;
+        text-align: right;
+    }
+
+    .cv__aboutProject__container div p {
+        font-size: 1rem;
+    }
+}

@@ -27,10 +27,11 @@
 
 @media screen and (min-width: 768px) {
     .cv__aboutMe__container div h3 {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        margin-bottom: 2px;
     }
 
     .cv__aboutMe__container div p {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 }

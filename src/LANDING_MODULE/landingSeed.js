@@ -62,6 +62,38 @@ export const isLogged = {
             programmesana: "Programmēšana"
         }
     },
+    aboutProject: [
+        {
+            type: "Design",
+            eng: "sfdfsf",
+            lv: ""
+        },
+        {
+            type: "User",
+            eng: "",
+            lv: ""
+        },
+        {
+            type: "Connections",
+            eng: "",
+            lv: ""
+        },
+        {
+            type: "Messages",
+            eng: "",
+            lv: ""
+        },
+        {
+            type: "Content creation",
+            eng: "",
+            lv: ""
+        },
+        {
+            type: "Content visibility",
+            eng: "",
+            lv: ""
+        }
+    ],
     aboutMe: {
         personality: {
             eng: {
@@ -128,7 +160,7 @@ export const isLogged = {
             eng: {   
                 diploma: {
                     year: "2016",
-                    title: "Year of dilpoma"
+                    title: "Year of diploma"
                 },
                 school: "University of Latvia, Faculty of Economics and Management",
                 education: "Bachelor's degree in the study program - Organizational Management"
@@ -147,7 +179,7 @@ export const isLogged = {
             eng: {   
                 diploma: {
                     year: "2005",
-                    title: "Year of dilpoma"
+                    title: "Year of diploma"
                 },
                 school: "Ogre Secondary School No. 1",
                 education: "Secondary education"
@@ -166,7 +198,7 @@ export const isLogged = {
             eng: {   
                 diploma: {
                     year: "2002",
-                    title: "Year of dilpoma"
+                    title: "Year of diploma"
                 },
                 school: "Ogresgala primary school",
                 education: "Elementary Education"
@@ -287,5 +319,138 @@ export const isLogged = {
                 to: "2006.gada Augusts"
             }
         }
-    ]
+    ],
+    coding: {
+        title: {
+            eng: "My coding skills",
+            lv: "Manas programmēšanas prasmes"
+        },
+        stack: [
+            {
+                name: "HTML",
+                frameworks: [],
+                eng: {
+                    text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis`
+                },
+                lv: {
+                    text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis`
+                }
+            },
+            {
+                name: "CSS",
+                frameworks: [
+                    {
+                        name: "Bootstrap",
+                        eng: "",
+                        lv: ""
+                    }
+                ],
+                eng: {
+    
+                },
+                lv: {
+                    
+                }
+            },
+            {
+                name: "JS",
+                frameworks: [
+                    {
+                        name: "React",
+                        eng: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                        optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+                        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam`
+                        ,
+                        lv: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                        optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+                        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam`
+                    },
+                    {
+                        name: "Angular",
+                        eng: "Very baad",
+                        lv: "Looti slikti"
+                    }
+                ],
+                eng: {
+                    text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis`
+                },
+                lv: {
+                    text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis`
+                }
+            },
+            {
+                name: "NodeJs",
+                frameworks: [
+                    {
+                        name: "Express",
+                        eng: "",
+                        lv: ""
+                    }
+                ],
+                eng: {
+                    text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis`
+                },
+                lv: {
+                    text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis`
+                }
+            },
+            {
+                name: "MongoDB",
+                frameworks: [
+                    {
+                        name: "Mongoose",
+                        eng: "",
+                        lv: ""
+                    }
+                ],
+                eng: {
+                    text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis`
+                },
+                lv: {
+                    text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis`
+                }
+            },
+            {
+                name: "HTTP",
+                frameworks: [],
+                eng: {
+    
+                },
+                lv: {
+                    
+                }
+            }
+        ]
+    }
 }
