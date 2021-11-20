@@ -4,7 +4,7 @@ import "./workoutManual.css";
 const WorkoutManual = ({ workoutData }) => {
 
     return (
-        <div className="workout__manual__container">
+        <div id={`${workoutData && workoutData.about.start_position}`} className="workout__manual__container">
 
 
             <div className="workout__manual__start__movement__finish__container">

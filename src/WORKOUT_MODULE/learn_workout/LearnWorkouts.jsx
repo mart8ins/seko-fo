@@ -72,7 +72,8 @@ const LearnWorkouts = () => {
             <div className="learn__workouts__workout__navigation__description__container">
                 <div className="learn__workouts__side__navigation">
                     {activeBodyGroupWorkouts && activeBodyGroupWorkouts.map((work) => {
-                        return <button onClick={chooseActiveWorkout} id={work.name} className={`learn__workout__option ${work.name === activeWorkout && "active__workout"}`}>{work.name}</button>
+                        return <a href={`#${work.about.start_position}`} onClick={chooseActiveWorkout} id={work.name} className={`learn__workout__option ${work.name === activeWorkout && "active__workout"}`}>{work.name}</a>
+                        // return <button onClick={chooseActiveWorkout} id={work.name} className={`learn__workout__option ${work.name === activeWorkout && "active__workout"}`}>{work.name}</button>
                     })}
                 </div>
 

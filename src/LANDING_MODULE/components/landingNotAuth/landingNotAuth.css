@@ -40,6 +40,8 @@
 
 .landing__not__auth__redirect {
     text-align: right;
+    margin-bottom: 5px;
+    padding: 5px;
 }
 
 .landing__not__auth__redirect button {

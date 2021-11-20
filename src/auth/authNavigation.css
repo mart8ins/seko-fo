@@ -6,6 +6,11 @@
     align-items: center;
 }
 
+.not-logged-in {
+    position: relative;
+    z-index: 20;
+}
+
 .not-logged-in,
 .logged-in {
     display: flex;

@@ -4,30 +4,32 @@ export const notLogged = {
         lv: "Par projektu"
     },
     description: {
-        eng: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-        optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-        nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-        tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-        quia.`,
-        lv: `Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
-        sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
-        recusandae alias error harum maxime adipisci amet laborum. Perspiciatis 
-        minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit 
-        quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur 
-        fugiat, temporibus enim commodi iusto libero magni deleniti quod quam 
-        consequuntur! Commodi minima excepturi repudiandae velit hic maxime
-        doloremque. Quaerat provident commodi consectetur veniam similique ad 
-        earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo 
-        fugiat, dolorum eligendi quam cupiditate excepturi`
+        eng: `Dear visitor! My name is Martins Meisters. Thank you for your time to visit this website and 
+        to get to know me. In my work experience and education you will not find anything related to the field of IT, 
+        but there is a great desire and motivation to change my career. The aim of this project is to address potential 
+        employers in the field of IT and to show what and what technologies I have been able to learn and master. I have a 
+        great desire to continue to develop myself, acquiring new technologies and knowledge in general, in order to achieve 
+        the main goal - work in the field of IT. By logging in, you will be able to get more information about me - a description 
+        of my personality, work experience, education and how I came to the desire to change my career in the field of IT. Of course, 
+        you will also be able to see the project itself, and I will also provide more detailed information on what and how I have done 
+        in the project itself. Thanks, and I look forward to seeing you soon!`,
+
+        lv: `Esiet sveicināti! Mani sauc Mārtiņš Meisters. Paldies, ka esat gatavi veltīt savu laiku šīs mājaslapas apskatei un
+         manis iepazīšanai. Manā darba pieredzē un izglītībā neatradīsiet neko saistītu ar IT sfēru, bet ir ļoti liela vēlme un 
+         motivācija mainīt savu karjeru. Šis projekts ir tapis ar mērķi uzrunāt potenciālos darba devējus IT sfērā un parādīt, ko un 
+         kādas tehnoloģijas es esmu spējis iemācīties un apgūt. Manī ir ļoti liela vēlme turpināt attīstīt sevi, apgūstot jaunas 
+         tehnoloģijas un zināšanas kopumā, lai sasniegtu galveno mērķi – darbu IT sfērā. Autorizējoties varēsiet iegūt plašāku 
+         informāciju par mani - manas personības aprakstu, darba pieredzi, iglītību un to, kā nonācu līdz vēlmei mainīt savu karjeru 
+         uz IT sfēru. Protams, apskatīt varēs arī pašu projektu, tāpat arī sniegšu arī sīkāku informāciju par to, ko un kā es esmu paveicis 
+         pašā projektā. Paldies, un es ceru uz drīzu tikšanos!`
     },
     btn: {
         eng: "See more",
         lv: "Apskatīt vairāk"
     }
 }
+
+
 
 export const isLogged = {
     profile: {

@@ -1,6 +1,7 @@
 .landing__main__container {
     width: 85%;
     margin: 0 auto;
+    padding-bottom: 50px;
 }
 
 .landing__language__btns__container {
