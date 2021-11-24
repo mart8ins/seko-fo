@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 import LandingPage from "../../LANDING_MODULE/LandingPage";
 
-import ContentFeed from "../../CONTENT_FEED_MODULE/publicContentFeed/ContentFeed";
+import PublicContentFeed from "../../CONTENT_FEED_MODULE/publicContentFeed/PublicContentFeed";
 import Create from "../../CREATE_MODULE/Create";
 import Connections from "../../connections/Connections";
 import Messages from "../../messages/Messages";
@@ -33,7 +33,7 @@ function Feed() {
         <RouteGuard path="/about/workout/:wID" component={WorkoutById} auth={isLoggedIn} />
         <RouteGuard path="/about/workouts" component={LearnWorkouts} auth={isLoggedIn} />
 
-        <RouteGuard path="/contentFeed" component={ContentFeed} auth={isLoggedIn} />
+        <RouteGuard path="/contentFeed" component={PublicContentFeed} auth={isLoggedIn} />
         <RouteGuard path="/create" component={Create} auth={isLoggedIn} />
         <RouteGuard path="/messages" component={Messages} auth={isLoggedIn} />
         <RouteGuard path="/connections" component={Connections} auth={isLoggedIn} />

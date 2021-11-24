@@ -1,0 +1,12 @@
+.connections__online__container {
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid red;
+}
+
+@media screen and (min-width: 786px) {
+    .connections__online__container {
+        max-width: 25%;
+        margin-left: 0;
+    }
+}

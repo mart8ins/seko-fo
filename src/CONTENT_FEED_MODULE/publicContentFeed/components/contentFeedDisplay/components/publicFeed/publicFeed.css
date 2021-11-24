@@ -1,0 +1,53 @@
+.public__feed__container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.public__feed__content__container {
+    margin: auto;
+    border-left: 2px solid whitesmoke;
+    border-right: 2px solid whitesmoke;
+    display: flex;
+    flex-direction: column;
+}
+
+.public__feed__tools {
+    box-shadow: 0 2px 2px black;
+    background-color: whitesmoke;
+    border-radius: 2px;
+}
+
+.public__feed__tools div {
+    height: 150px;
+    background-color: tomato;
+    margin: 5px;
+}
+
+.public__content__for__feed {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+
+
+@media screen and (min-width: 786px) {
+    .public__feed__container {
+        max-width: 75%;
+        margin-left: 0;
+    }
+
+    .public__feed__content__container {
+        width: 99%;
+        flex-direction: row;
+    }
+
+    .public__feed__tools {
+        width: 25%;
+    }
+
+    .public__content__for__feed {
+        width: 65%;
+        margin: 0 auto;
+    }
+}

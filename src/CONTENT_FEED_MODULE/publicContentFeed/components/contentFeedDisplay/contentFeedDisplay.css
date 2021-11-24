@@ -1,0 +1,11 @@
+.content__feed__display__container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+@media screen and (min-width: 786px) {
+    .content__feed__display__container {
+        flex-direction: row;
+    }
+}
