@@ -38,10 +38,6 @@ const PublicFeed = () => {
     }, [filterType, contentFeed])
 
 
-
-    console.log(filterType)
-
-
     return (
         <div className="public__feed__container">
             <ContentFeedFilter setFilterType={setFilterType} filterType={filterType} />
