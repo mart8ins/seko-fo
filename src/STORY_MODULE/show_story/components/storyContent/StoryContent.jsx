@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../../../context/auth-context";
 import "./storyContent.css";
-import globalVariables from '../../../../globalVariables';
+import globalVariables from '../../../../globalvar';
 import StoryCommentsSection from '../storyComments/StoryCommentsSection';
 import StorySection from "../storySection/StorySection";
 

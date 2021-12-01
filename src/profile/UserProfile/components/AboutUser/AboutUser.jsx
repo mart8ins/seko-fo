@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import globalVariables from "../../../../globalVariables";
+import globalVariables from "../../../../globalvar";
 import { AuthContext } from "../../../../context/auth-context";
 
 import ProfileOptionButtons from "./ProfileOptionButtons";

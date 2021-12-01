@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import "./myStories.css";
 import LinkToStory from "../../show_story/components/linkToStory/LinkToStory";
 import { StoryContext } from '../../../context/story-context';
-import globalVariables from '../../../globalVariables';
+import globalVariables from '../../../globalvar';
 
 const MyStories = () => {
     const { userStories } = useContext(StoryContext);

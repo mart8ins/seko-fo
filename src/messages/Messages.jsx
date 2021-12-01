@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { ConnectionsContext } from "../context/connections-context";
 import { AuthContext } from "../context/auth-context";
 import socket from "../socket/socket";
-import globalVariables from "../globalVariables";
+import globalVariables from "../globalvar";
 import formsValidator from "../utils/formComponents/formsValidator";
 
 

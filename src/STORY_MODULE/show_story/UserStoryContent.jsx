@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 import { AuthContext } from "../../context/auth-context";
 import { getAllUserStories } from "../../fetch/story";
 import NoContentToShow from "../../utils/noContentToShow/NoContentToShow";
-import globalVariables from '../../globalVariables';
+import globalVariables from '../../globalvar';
 import StatsHeaderForContent from "../../utils/statsHeaderForContent/StatsHeaderForContent";
 import "./userStoryContent.css";
 

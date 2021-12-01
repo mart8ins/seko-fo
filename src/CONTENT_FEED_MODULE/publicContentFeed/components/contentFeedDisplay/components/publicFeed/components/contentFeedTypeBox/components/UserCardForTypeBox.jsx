@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./userCardForTypeBox.css";
 import { AuthContext } from '../../../../../../../../../context/auth-context';
 import { fetchUser } from "../../../../../../../../../fetch/connections";
-import globalVariables from '../../../../../../../../../globalVariables';
+import globalVariables from '../../../../../../../../../globalvar';
 
 const UserCardForTypeBox = ({ authorId, firstName, lastName }) => {
     const { authData: { token } } = useContext(AuthContext);

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import globalVariables from "../../globalVariables";
+import globalVariables from "../../globalvar";
 const baseUrl = globalVariables.server + "api/auth/signup";
 
 const signupUser = async (userData) => {

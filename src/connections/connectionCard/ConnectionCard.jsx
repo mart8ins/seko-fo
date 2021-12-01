@@ -1,7 +1,7 @@
 import React from "react";
 import OptionButtons from "../optionButtons/OptionButtons";
 import "./connectionCard.css";
-import globalVariables from "../../globalVariables";
+import globalVariables from "../../globalvar";
 
 const ConnectionCard = ({ user, connected, userSentRequest, userRecievedRequest }) => {
 

@@ -7,7 +7,7 @@ import { AuthContext } from "../../../context/auth-context";
 import { StoryContext } from "../../../context/story-context";
 import queryString from 'query-string';
 import { getStory } from "../../../fetch/story";
-import globalVariables from '../../../globalVariables';
+import globalVariables from '../../../globalvar';
 
 // FORM VALIDATOR
 import formsValidator from "../../../utils/formComponents/formsValidator";

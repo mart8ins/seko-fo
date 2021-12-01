@@ -1,5 +1,5 @@
 import axios from "axios";
-import globalVariables from "../globalVariables";
+import globalVariables from "../globalvar";
 const baseUrl = globalVariables.server + "api/connections/";
 
 // fetch all users which is not connected and without logged user
