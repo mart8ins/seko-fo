@@ -18,15 +18,16 @@
     margin: 0 auto;
 }
 
-.workout__box__session__title span {
-    font-size: 0.7rem;
-}
-
 .workout__box__session__title p {
     color: white;
     text-align: center;
     font-size: 0.8rem;
-    /* font-style: italic; */
+    color: greenyellow;
+}
+
+.workout__box__session__title span {
+    font-size: 0.7rem;
+    color: white;
 }
 
 .workout__box__session__workouts {
@@ -37,7 +38,7 @@
 
 .workout__box__session__workouts h5 {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: white;
     padding: 5px;
     text-align: center;
@@ -59,6 +60,11 @@
     font-size: 0.5rem;
 }
 
+.workout__box__bottom {
+    margin-top: 10px;
+    background-color: rgb(100, 95, 95);
+}
+
 
 @media screen and (min-width: 786px) {
 
@@ -74,7 +80,7 @@
     }
 
     .workout__box__session__title p {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .workout__box__session__workouts {
@@ -83,7 +89,7 @@
     }
 
     .workout__box__session__workouts h5 {
-        font-size: 1rem;
+        font-size: 0.9rem;
         text-align: right;
     }
 

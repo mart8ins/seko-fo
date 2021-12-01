@@ -9,27 +9,27 @@
     padding-top: 10px;
     box-shadow: 0 2px 5px black;
     border-radius: 2px;
-    /* background-color: rgb(28, 133, 151); */
-    /* background-color: rgb(44, 180, 39); */
+    background-color: whitesmoke;
     color: white;
 }
 
 .content__feed__type__box__bottom a {
     font-size: 0.7rem;
-    color: rgb(217, 230, 218);
+    color: rgb(107, 128, 108);
     font-weight: bold;
     letter-spacing: 1px;
+    border-bottom: 1px solid green;
 }
 
 .content__feed__type__box__bottom a:hover {
-    color: white;
+    color: rgb(43, 70, 44);
 }
 
 .content__feed__type__box__bottom img {
     width: 80px;
+    width: 90%;
+    height: 150px;
     margin: 8px auto 8px;
-    border-radius: 50%;
-    height: 70px;
     object-fit: cover;
     box-shadow: 0 2px 5px black;
 }
@@ -41,10 +41,5 @@
 
     .content__feed__type__box__bottom a {
         font-size: 0.9rem;
-    }
-
-    .content__feed__type__box__bottom img {
-        width: 100px;
-        height: 100px;
     }
 }

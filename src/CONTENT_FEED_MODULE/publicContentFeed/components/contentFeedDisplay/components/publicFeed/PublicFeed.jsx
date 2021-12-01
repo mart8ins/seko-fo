@@ -6,6 +6,7 @@ import { AuthContext } from "../../../../../../context/auth-context";
 
 import ContentFeedFilter from './components/contentFeedFilter/ContentFeedFilter';
 import ContentFeedTypeBox from "./components/contentFeedTypeBox/ContentFeedTypeBox";
+import FeedActivityBlock from "./components/feedActivityBlock/FeedActivityBlock";
 
 
 
@@ -45,8 +46,7 @@ const PublicFeed = () => {
             <div className="public__feed__content__container">
 
                 <div className="public__feed__tools">
-                    <div>Pedejie komenti</div>
-                    <div>Pedejie vertejumi</div>
+                    <FeedActivityBlock />
                 </div>
 
                 <div className="public__content__for__feed">

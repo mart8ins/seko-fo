@@ -6,7 +6,7 @@ import { isLogged } from "../../../landingSeed";
 const Coding = ({ language }) => {
     const lang = language === "eng" ? "eng" : "lv";
 
-    const [activeStackItem, setActiveStackItem] = useState("HTML");
+    const [activeStackItem, setActiveStackItem] = useState("HTML, HTTP");
 
     const handleStackItem = (e) => {
         setActiveStackItem(e.target.id);

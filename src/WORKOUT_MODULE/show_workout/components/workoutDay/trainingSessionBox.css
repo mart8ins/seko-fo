@@ -57,7 +57,7 @@ SESSION DATA
 */
 
 .training__session__tab__data {
-    padding: 50px;
+    padding: 40px;
     background-color: white;
     display: flex;
     justify-content: center;
@@ -112,7 +112,7 @@ SESSION DATA
 
 */
     .training__session__tab__data {
-        justify-content: flex-start;
+        justify-content: flex-center;
         padding-left: 41px;
     }
 

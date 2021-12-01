@@ -1,12 +1,49 @@
-import React from 'react';
-import "./storyTemplate.css"
+import React, { useEffect, useState, useContext } from 'react';
+import "./storyTemplate.css";
+import { getStory } from "../../../../../../../../../fetch/story";
+import { AuthContext } from '../../../../../../../../../context/auth-context';
 
-const StoryTemplate = ({ storyTitle, storyContent, activeBackgroundIdStyle, storyId }) => {
-    // jāfečo storyId un komentu skaits, rating???
+const StoryTemplate = ({ storyTitle, storyContent, storyId }) => {
+    const { authData: { token } } = useContext(AuthContext);
+    const [story, setStory] = useState();
+    const [rating, setRating] = useState(undefined);
+    const [date, setDate] = useState(undefined);
+
+    useEffect(() => {
+        fetchStory();
+    }, [storyId]);
+
+    useEffect(() => {
+        let avarageRating = undefined;
+
+        let rateSum = 0;
+        if (story && story.rating.length) {
+            story.rating.forEach((rate) => {
+                rateSum += rate.rate;
+            });
+            avarageRating = rateSum / story.rating.length;
+        }
+        setRating(avarageRating);
+
+        if (story && story.date) {
+            const d = story.date;
+            let dateForText = new Date(new Date(d)).toDateString();
+            setDate(dateForText);
+        }
+    }, [story])
+
+    const fetchStory = async () => {
+        const res = await getStory(token, storyId);
+        setStory(res.data.story);
+    }
+
+    const typeBackgroundColor = {
+        backgroundColor: "rgb(28, 133, 151)"
+    };
 
     return (
         <div className="content__feed__type__box__top">
-            <p className="content__feed__type" style={activeBackgroundIdStyle}>Story</p>
+            <p className="content__feed__type" style={typeBackgroundColor}>Story</p>
 
             <div className="story__box__top">
                 <div className="story__box__top__title">
@@ -19,13 +56,16 @@ const StoryTemplate = ({ storyTitle, storyContent, activeBackgroundIdStyle, stor
 
             <div className="story__box__bottom">
                 <div className="story__box__bottom__coments">
-                    <div><span>3</span> comments</div>
+                    <div><span>{story && story.comments.length}</span> comments</div>
                 </div>
                 <div className="story__box__bottom__rate">
-                    <div><span>5.6</span> rating</div>
+                    {!rating ? <div><span className="not__rated">Not rated</span></div>
+                        :
+                        <div><span>{rating}</span>avarage rating</div>
+                    }
                 </div>
                 <div className="story__box__bottom__date">
-                    <div>2021.02.22</div>
+                    <div>{story && date}</div>
                 </div>
             </div>
         </div>

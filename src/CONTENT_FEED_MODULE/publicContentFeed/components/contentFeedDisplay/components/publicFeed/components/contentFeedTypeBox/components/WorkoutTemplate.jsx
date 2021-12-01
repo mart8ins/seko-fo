@@ -1,10 +1,15 @@
 import React from 'react';
 import "./workoutTemplate.css"
 
-const WorkoutTemplate = ({ activeBackgroundIdStyle, workoutDay, sessionTitle, allWorkouts }) => {
+const WorkoutTemplate = ({ workoutDay, sessionTitle, allWorkouts }) => {
+
+    const typeBackgroundColor = {
+        backgroundColor: "rgb(44, 180, 139)"
+    };
+
     return (
         <div className="content__feed__type__box__top">
-            <p className="content__feed__type" style={activeBackgroundIdStyle}>Training day</p>
+            <p className="content__feed__type" style={typeBackgroundColor}>Training day</p>
             <div className="workout__box__top">
                 <div></div>
                 <div className="workout__box__top__date">

@@ -55,10 +55,15 @@
     background-color: rgba(0, 0, 0, 0.4);
 }
 
+.training__day__form__bottom__sessions__workout__card__sets p {
+    margin-top: 15px;
+}
+
 .training__day__form__bottom__sessions__workout__card__sets span {
     color: greenyellow;
     background-color: black;
     padding: 5px 10px;
+    margin-top: 5px;
     border-radius: 40px;
 }
 

@@ -89,6 +89,11 @@
     box-shadow: none;
 }
 
+.story__box__bottom__rate div .not__rated {
+    color: white;
+    font-size: 0.9rem;
+}
+
 @media screen and (min-width: 786px) {
     .content__feed__type__box__top {
         width: 70%;
