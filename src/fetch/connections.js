@@ -25,7 +25,6 @@ const fetchUser = async(token, userId) => {
     return res;
 }
 
-// fetch all users which is not connected and without logged user
 const fetchRequestConnection = async (token, exploredUserId) => {
     const config = {
         headers: {
