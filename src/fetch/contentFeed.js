@@ -13,6 +13,18 @@ const getContentFeed = async(token) => {
     return res;
 }
 
+const getContentFeedActivity = async(token) => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + token 
+          }
+    }
+    const url = `${baseUrl}contentFeed/activity`;
+    const res = axios.get(url, config);
+    return res;
+}
+
 export {
-    getContentFeed
+    getContentFeed,
+    getContentFeedActivity
 };

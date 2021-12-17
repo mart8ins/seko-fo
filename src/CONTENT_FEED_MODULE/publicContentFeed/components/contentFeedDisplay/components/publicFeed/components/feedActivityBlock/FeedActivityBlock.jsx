@@ -1,59 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import "./feedActivityBlock.css";
 import ActivityBlock from "./components/ActivityBlock";
+import { getContentFeedActivity } from "../../../../../../../../fetch/contentFeed";
+import { AuthContext } from "../../../../../../../../context/auth-context";
 
 const FeedActivityBlock = () => {
-    // fetchot jaunu modeli, kas seko lidzi activity???
+    const { authData: { token } } = useContext(AuthContext);
 
-    const activity = {
-        type: "comment",
-        fromUser: "Aiga Meistere",
-        toUser: "Martins Meisters",
-        story: "Brauciens uz kipru! Un bija labs piedziivojums, kad bijam tur",
-        storyId: "1",
-        data: {
-            comment: "Labs stāsts, vienmēr esmu gribējusi brukt uz Kipru!!!! Un kur tiesi tu biji tur? ko a?",
-            givenRate: "9",
-            storiesAvarageRate: "5.1"
-        },
-        date: "09102021"
+    const [allActivity, setAllActivity] = useState([]);
+
+    useEffect(() => {
+        fetchActitvity();
+    }, [setAllActivity])
+
+    const fetchActitvity = async () => {
+        const res = await getContentFeedActivity(token);
+        setAllActivity(res.data.activity.reverse());
     }
-
-    const activity1 = {
-        type: "rate",
-        fromUser: "Aiga Meistere",
-        toUser: "Martins Meisters",
-        story: "Brauciens uz kipru! Un bija labs piedziivojums, kad bijam tur",
-        data: {
-            comment: "Labs stāsts, vienmēr esmu gribējusi brukt uz Kipru!!!! Un kur tiesi tu biji tur? ko a?",
-            givenRate: "9",
-            storiesAvarageRate: "5.1"
-        },
-        date: "09102021"
-    }
-
 
     return (
         <div className="activity__block__container">
-            <ActivityBlock
-                type={activity.type}
-                fromUser={activity.fromUser}
-                toUser={activity.toUser}
-                story={activity.story}
-                storyId={activity.storyId}
-                data={activity.data}
-                date={activity.date}
-            />
 
-            <ActivityBlock
-                type={activity1.type}
-                fromUser={activity1.fromUser}
-                toUser={activity1.toUser}
-                story={activity1.story}
-                storyId={activity1.storyId}
-                data={activity1.data}
-                date={activity1.date}
-            />
+            <p className="last__activity__title">
+                Latest user activity
+            </p>
+
+            {allActivity.map((act) => {
+                return <ActivityBlock
+                    type={act.type}
+                    fromUser={act.fromUser}
+                    toUser={act.toUser}
+                    story={act.story}
+                    storyId={act.storyId}
+                    data={act.data}
+                    date={act.date}
+                />
+            })}
         </div>
     )
 }
