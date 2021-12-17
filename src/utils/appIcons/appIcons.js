@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // react font 
 // import {faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 // import {faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import {faDumbbell } from '@fortawesome/free-solid-svg-icons';
+// import {faGithub } from '@fortawesome/free-solid-svg-icons';
 
 
 // const plusSign = <FontAwesomeIcon icon={faPlusCircle}/>

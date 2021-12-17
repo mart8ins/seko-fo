@@ -4,18 +4,21 @@
     padding-bottom: 50px;
 }
 
+.public__content__for__feed__no__data {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    text-align: center;
+}
+
 .public__feed__content__container {
     margin: auto;
     border-left: 2px solid whitesmoke;
     border-right: 2px solid whitesmoke;
     display: flex;
     flex-direction: column;
-}
-
-.public__feed__tools {
-    border-radius: 2px;
-    max-height: 500px;
-    overflow: auto;
 }
 
 .public__content__for__feed {
@@ -34,13 +37,14 @@
         margin-left: 0;
     }
 
+    .public__content__for__feed__no__data {
+        height: 600px;
+        font-size: 1.3rem;
+    }
+
     .public__feed__content__container {
         width: 99%;
         flex-direction: row;
-    }
-
-    .public__feed__tools {
-        width: 25%;
     }
 
     .public__content__for__feed {

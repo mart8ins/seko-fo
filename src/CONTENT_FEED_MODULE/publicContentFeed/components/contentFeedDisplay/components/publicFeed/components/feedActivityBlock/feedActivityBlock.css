@@ -1,9 +1,10 @@
 .activity__block__container {
-    height: 150px;
-    background-color: tomato;
-    margin: 5px;
+    max-height: 1000px;
+    overflow: auto;
 }
 
 @media screen and (min-width: 786px) {
-
+    .activity__block__container {
+        width: 25%;
+    }
 }

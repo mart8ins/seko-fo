@@ -15,7 +15,6 @@ const UserCardForTypeBox = ({ authorId, firstName, lastName }) => {
 
     const gethUser = async () => {
         const res = await fetchUser(token, authorId);
-        console.log(res.data.user.photo.profile);
         if (res.data.user.photo.profile) {
             setAuthorImage(globalVariables.server + res.data.user.photo.profile);
         }

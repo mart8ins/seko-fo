@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import "./cvProfile.css";
 import { isLogged } from "../../landingSeed";
 
@@ -30,6 +31,12 @@ const CVProfile = ({ language, activeCvData, setActiveCvData }) => {
                     <p>
                         {language === "eng" ? `${isLogged.profile.eng.country}, ${isLogged.profile.eng.city}` : `${isLogged.profile.lv.country}, ${isLogged.profile.lv.city}`}
                     </p>
+
+                    <div className="my__github__icon">
+                        <a href="https://github.com/mart8ins" target="_blank">
+                            <i class="fab fa-github-square"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 

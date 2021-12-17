@@ -45,14 +45,16 @@ const PublicFeed = () => {
 
             <div className="public__feed__content__container">
 
-                <div className="public__feed__tools">
-                    <FeedActivityBlock />
-                </div>
+                <FeedActivityBlock />
 
                 <div className="public__content__for__feed">
-                    {filteredContentFeed && filteredContentFeed.length && filteredContentFeed.map((content) => {
+                    {filteredContentFeed && filteredContentFeed.length ? filteredContentFeed.map((content) => {
                         return <ContentFeedTypeBox content={content} />
-                    })}
+                    }) :
+                        <div className="public__content__for__feed__no__data">
+                            No content to show, try later...
+                        </div>
+                    }
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@
 }
 
 .cv__aboutMe__container div h3 {
-    margin: 0;
+    margin: 0px;
     font-size: 0.8rem;
     color: white;
 }
@@ -21,7 +21,7 @@
     font-size: 0.7rem;
     color: black;
     background-color: white;
-    padding: 10px;
+    padding: 20px;
     border-radius: 4px;
 }
 

@@ -1,3 +1,8 @@
+import globalVariables from "../globalvar";
+const url = globalVariables.server;
+
+// `<a href=${url + "/contentFeed"}></a>`
+
 export const notLogged = {
     title: {
         eng: "About this project",
@@ -19,7 +24,7 @@ export const notLogged = {
          motivācija mainīt savu karjeru. Šis projekts ir tapis ar mērķi uzrunāt potenciālos darba devējus IT sfērā un parādīt, ko un 
          kādas tehnoloģijas es esmu spējis iemācīties un apgūt. Manī ir ļoti liela vēlme turpināt attīstīt sevi, apgūstot jaunas 
          tehnoloģijas un zināšanas kopumā, lai sasniegtu galveno mērķi – darbu IT sfērā. Autorizējoties varēsiet iegūt plašāku 
-         informāciju par mani - manas personības aprakstu, darba pieredzi, iglītību un to, kā nonācu līdz vēlmei mainīt savu karjeru 
+         informāciju par mani - manas personības aprakstu, darba pieredzi, izglītību un to, kā nonācu līdz vēlmei mainīt savu karjeru 
          uz IT sfēru. Protams, apskatīt varēs arī pašu projektu, tāpat arī sniegšu arī sīkāku informāciju par to, ko un kā es esmu paveicis 
          pašā projektā. Paldies, un es ceru uz drīzu tikšanos!`
     },
@@ -72,31 +77,32 @@ export const isLogged = {
         },
         {
             type: "User",
-            eng: "The project has authentication. The user can register and log in if they are already registered. The user is authorized to access and change only their own content - add, edit and delete also edit their profile data. The user password on the server is encrypted. After authentication, a token with a validity period of 1 hour is sent to the user. After that hour, the application automatically redirects the user to the landing page and logs off user. ",
+            eng: "The project has authentication. The user can register and log in if they are already registered. The user is authorized to access and change only their own content - add, edit and delete also edit their profile data. The user password on the server is encrypted. After authentication, a token with a validity period of 1 hour is sent to the client. After that hour, the application automatically redirects the user to the landing page and logs off user. ",
             lv: "Projektā ir autentifikācija. Lietotājs var reģistrēties un ienākt sistēmā, ja jau ir reģistrēts.  Lietotājs ir autorizēts piekļūt un ietekmēt tikai savu saturu – pievienot, rediģēt un dzēst savu saturu, labot sava profila datus. Uz servera lietotāja parole ir šifrēta. Ienākot sistēmā klientam tiek atsūtīts tokens, kura derīguma termiņš ir 1 stunda. Pēc tās stundas aplikācija automātiski izlogo un pārvirza klientu uz galveno lapu."
         },
         {
             type: "Connections",
-            eng: "",
-            lv: "Ir trīs galvenie bloki šai aplikcijas sadaļai – bloks, kur redzami visi aplikācijas lietotāji (izņemot pastāvošās draudzības lietotāji). Bloks, kur redzami lietotāji, kas ir draugu lokā un bloks, kas parāda lietotājus, kam draudzības uzaicinājums ir nosūtīts un lietotājus no kuriem uzaicinājums ir saņemts. Katrs lietotājs ir attēlots kartiņā, kur ir opciju pogas. Opcijas pogas – poga, lai nosūtīt ātru ziņu lietotājam, poga, lai uzaicinātu draudzēties vai atceltu draudzību. Tiek parādīts arī draudzības un nosūtīta/saņemta aicinājuma status. Ir arī poga, kas aizved uz lietotāja profilu, kur arī ir iespējams veikt visas iepriekš minētās darbības."
+            eng: `There are three main blocks for this section of the application - the block, which shows all users of the application (except users of the existing friendship, meaning user connections). A block where are users with accepted user connections. Last block is where you can see the users to whom a friend request has been sent and the users from whom the friend request has been received. Each user is represented on a user card where also are option buttons.
+With these option buttons you can send direct message to user, visit his profile and also there is button what indicates if you recieved connections request from user or you already sent him requests yourself and offcourse option to send connection request if neather of previosly mentioned happend.`,
+            lv: "Ir trīs galvenie bloki šai aplikcijas sadaļai – bloks, kur redzami visi aplikācijas lietotāji (izņemot pastāvošās draudzības lietotāji). Bloks, kur redzami lietotāji, kas ir draugu lokā. Bloks, kas parāda lietotājus, kam draudzības uzaicinājums ir nosūtīts un lietotājus no kuriem uzaicinājums ir saņemts. Katrs lietotājs ir attēlots kartiņā, kur ir opciju pogas. Poga, lai nosūtīt ātru ziņu lietotājam. Poga, lai uzaicinātu draudzēties vai atceltu draudzību. Tiek parādīts arī draudzības un nosūtīta/saņemta aicinājuma status. Poga, kas aizved uz lietotāja profilu, kur arī ir iespējams veikt visas iepriekš minētās darbības un redzēt aicinājumu statusus."
         },
         {
             type: "Messages",
-            eng: "",
-            lv: "Šajā aplikācijas sadaļā pēc noklusējuma var nosūtīt ziņu tikai lietotājiem, kas ir draugu listē. Ir arī iespēja sarakstīties ar lietotājiem, kas nav draugu lokā un tas ir iespējams tad, ja pats lietotājs vai otra persona ir nosūtījusi ātro ziņu caur lietotāja kartiņu vai lietotāja profilu. Sarakstē izmantoju Socket.IO tehnoloģiju, kas ļauj sarakstīties arī tiešsaistē redzot nosūtītās un saņemtās ziņas reālā laikā."
+            eng: "By default, this section of the app can be used only to send messages to connected users list. It is also possible to chat with users who are not in your connection list, and this is possible if you or another person has sent an instant message via the user's card or user profile. After that in messages section this user automaticly shows in user list with whom you can start to chat. I use Socket.IO technology for messaging, which allows you to chat online in real time.",
+            lv: "Šajā aplikācijas sadaļā pēc noklusējuma var nosūtīt ziņu tikai lietotājiem, kas ir draugu listē. Ir arī iespēja sarakstīties ar lietotājiem, kas nav draugu lokā un tas ir iespējams tad, ja pats lietotājs vai otra persona ir nosūtījusi ātro ziņu caur lietotāja kartiņu vai lietotāja profilu. Sarakstē izmantoju Socket.IO tehnoloģiju, kas ļauj sarakstīties tiešsaistē redzot nosūtītās un saņemtās ziņas reālā laikā."
         },
         {
             type: "Content creation",
-            eng: "",
-            lv: "Uz doto brīdi aplikācijā ir iespējams izveidot divu dažāda veida saturu – stāstu jeb ‘’Story’’ un ievadīt treniņa datus jeb ‘’Workout’’. ‘’Story’’ ir tāds kā blogs vai stāsts ko lietotājs var uzrakstīt. Citi lietotāji to var novērtēt un komentēt. Pats lietotājs stāstu var padarīt privātu vai publisku, tāpat arī nobloķēt komentārus. ‘’Workout’’ ir lietotāja treniņa dienas datu saglabāšana. Izvēlas dienu, kad trenējās, ievada sesijas nosaukumu un savada treniņa datus – izpildītos vingrinājumus un atkārtojumu skaitu, svaru. Treniņa dienā var pievienot vairākas treniņa sesijas. "
+            eng: `In the application at the moment it is possible to create two different types of content  - "Story" and "Workout". A "Story" is like a blog or story what user can write. Other users can rate and comment on it. The user can make the story private or public, as well as block the comments. "Workout" is the storage of user workout day data. You can select the day of training, enter the name of the training session and save the training data. Training data includes a variety of possible exercises performed, sets for repetitions and corresponding weight for repetition. You can add several training sessions per training day.`,
+            lv: `Uz doto brīdi aplikācijā ir iespējams izveidot divu dažāda veida saturu – stāstu jeb "Story" un ievadīt treniņa datus jeb "Workout". "Story" ir tāds kā blogs vai stāsts ko lietotājs var uzrakstīt. Citi lietotāji to var novērtēt un komentēt. Pats lietotājs stāstu var padarīt privātu vai publisku, tāpat arī nobloķēt komentārus. "Workout" ir lietotāja treniņa dienas datu saglabāšana. Izvēlas dienu, kad trenējās, ievada sesijas nosaukumu un savada treniņa datus – izpildītos vingrinājumus un atkārtojumu skaitu, svaru. Treniņa dienā var pievienot vairākas treniņa sesijas.`
         },
         {
             type: "Content visibility",
-            eng: "",
-            lv: ""
+            eng: `The project has a main content feed page what shows all the content that the application users have added (currently "Story" and "Workout"), which can also be filtered by type. This feed's page also shows the most recently left comments and rated stories. You can also see friends who are currently online. Each user has their own content profile where they can view all their content. Each content type also has a statistics section with statistics on that content, such as the most commented "Story" or "Workout" most common workout exercise, etc.. In the "Create" section you can find content creation cards which contains option buttons. The main buttons are 1) create a new content and 2) view everything already existing for content type.
+Additionaly for the Workout card, there is also a button that takes you to the training page, where you can view all the training exercises in the system, get instructions on how to do each. As for viewing other users profiles, you can see everything the same as in your own content profile, except for statistics and possible "Story", which are set as private. I would also like to highlight the workout content in more detail. All training days are grouped into a calendar. The outer cover of the content shows the year in which the training data is available. When you open the year, you can see all the months in which the training days exist. Training days are highlighted each month, with each date linking to a more detailed view of the training day. When viewing a specific training day, there is an option to delete it as well. All sessions of the training day are also visible. Each session can be expanded to see all the training exercises performed, the repetitions performed and the weight information. The training exercise card takes you to a more detailed view, where there are instructions on how to do it and it is possible to follow the progress of this exercise and statistics.`,
+            lv: `Projektā ir galvenā satura plūsmas lapa, kur ir redzams vis saturs, ko aplikācijas lietotāji ir pievienojuši (uz šo brīdi "Story" un "Workout"), ko ir iespējams arī filtrēt pēc tipiem. Tāpat arī šajā plūsmas lapā ir redzama pēdējā aktivitāte atstātajos komentāros un vērtējumos lietotāju "Story". Redzami arī draudzībā esošie lietotāji, kas uz konkrēto brīdi ir tiešsaistē. Katram lietotājam ir savs satura profils, kur viņš var apskatīt visu savu veidoto saturu. Katram satura tipam ir arī statistikas sadaļa, kur ir attiecīgā satura statistika, piemēram, komentētākais "Story" vai "Workout" visbiežāk veiktais treniņa vingrinājums utt.. Sadaļā, kur ir iespējams radīt saturu, ir satura kartiņas ar iespēju pogām. Pamata pogas ir 1) izveidot jaunu un 2) apskatīt visu jau esošo. "Workout" kartiņai papildus ir arī poga, kas aizved uz mācību lapu, kur ir iespējams apskatīt visus sistēmā esošos treniņa vingrinājumus, iegūt instrukciju par to, kā katrs ir veicams. Kas attiecas uz citu lietotāju profila apskati, tad redzams ir vis tas pats, kas pašam savā satura profilā, izņemot statistiku un iespējamos "Story", kas ir uzstādīti kā lietotāja privātie. Vēlos arī izcelt detalizētāk "Workout" satura apskati. Visas treniņu dienas tiek sagrupētas kalendāra veidā. Satura ārējā apvalkā redzams gads, kurā ir eksistējoši treniņu dati. Atverot gadu, redzami visi mēneši, kuros eksistē treniņu dienas. Treniņu dienas katrā mēnesī ir izceltas, kur katrs datums ir links uz detlaizētāku treniņa dienas apskati. Apskatot konkrētu treniņa dienu, pastāv opcija viņu arī nodzēst. Tāpat arī redzamas visas treniņu dienas sesijas. Katru sesiju ir iespējams paplašināt, redzot visus veiktos treniņa vingrinājumus, vispārīgu atkārtojumu un svara informāciju. Treniņa vingrinājuma kartiņa aizved uz detalizētāku tā apskati, kur ir instrukcijas, kā tas ir veicams un ir iespējams sekot līdzi progresam šī vingrinājumu izpildijumā un statistikai.`
         }
-    ]
-    ,
+    ]    ,
     aboutMe: {
         personality: {
             eng: {
@@ -239,7 +245,7 @@ export const isLogged = {
             company: "SIA Augstceltne",
             profession: "Salesman",
             from: "Year 2009, December",
-            to: "Year 20011, September"
+            to: "Year 2011, September"
         },
         lv: {
             company: "SIA Augstceltne",
@@ -334,7 +340,7 @@ export const isLogged = {
                         name: "React",
                         eng: ` After learning the basics of Javascript and gaining practice, React is the frameworks I've focused on the most. I have knowledge on practically for all the main principles - JSX, element rendering, component structure and how data is transferred between different components via props (child -> parent, parent -> child), including globally in the application - using '' Context ''. I also have expierence on handling events, on controlled and uncontrolled forms, on the state of components and their lifecycle (including when used in conjunction with WEB requests). While learning React, I use mostly functional components and the hooks offered by React and also make some custom hooks myself. I also use the React Router in my projects.`
                         ,
-                        lv: `Pēc Javascript pamatu apgūšanas un prakses iegūšanas, React ir frameworks uz ko esmu koncentrējies visvairāk. Pārvaldu praktiski visus galvenos principus – JSX, elementu renderēšanu, komponenšu uzbūvi un to, kā tiek nodoti dati starp dažādām komponentēm (child -> parent, parent -> child), tai skaitā globāli aplikācijā - izmantojot ‘’Context’’. Pārvaldu arī ‘’eventus’’, kontrolētas un nekontrolētas formas, komponenšu ’’state’’ un to  dzīvesciklu (tai skaitā arī izmantojot kopā ar WEB pieprasījumiem). Mācoties React izmantoju pārsvarā funckionālās komponentes un React piedāvātos ‘’hooks’’, tai skaitā esmu veidojis savus pielāgotos hooks. Savos projektos izmantoju arī React Router.`
+                        lv: `Pēc Javascript pamatu apgūšanas un prakses iegūšanas, React ir frameworks uz ko esmu koncentrējies visvairāk. Pārvaldu praktiski visus galvenos principus – JSX, elementu renderēšanu, komponenšu uzbūvi un to, kā tiek nodoti dati starp dažādām komponentēm (child -> parent, parent -> child), tai skaitā globāli aplikācijā - izmantojot "Context". Pārvaldu arī "eventus", kontrolētas un nekontrolētas formas, komponenšu "state" un to  dzīvesciklu (tai skaitā arī izmantojot kopā ar WEB pieprasījumiem). Mācoties React izmantoju pārsvarā funckionālās komponentes un React piedāvātos "hooks", tai skaitā esmu veidojis savus pielāgotos hooks. Savos projektos izmantoju arī React Router.`
                     },
                     {
                         name: "Angular",
