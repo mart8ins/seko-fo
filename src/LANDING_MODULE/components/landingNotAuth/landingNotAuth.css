@@ -36,6 +36,7 @@
     border-radius: 2px;
     text-indent: 40px;
     font-size: 0.8rem;
+    line-height: 1.6rem;
 }
 
 .landing__not__auth__redirect {

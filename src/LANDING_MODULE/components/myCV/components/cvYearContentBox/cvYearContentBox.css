@@ -2,9 +2,10 @@
     border-radius: 5px;
     padding: 15px;
     width: 60%;
-    margin: 5px auto;
+    margin: 10px auto;
     color: black;
-    background-color: rgb(54, 51, 51);
+    background-color: whitesmoke;
+    box-shadow: 0px 1px 2px black;
 }
 
 .cv__content__target__year {
@@ -20,13 +21,13 @@
     text-align: center;
     font-size: 1.2rem;
     font-weight: bold;
-    color: rgb(62, 218, 145);
+    color: rgb(87, 85, 85);
 }
 
 .year__title {
     font-size: 0.9rem;
     margin-right: 5px;
-    color: white;
+    color: black;
 }
 
 .cv__content__target__details__container {
@@ -47,6 +48,7 @@
     box-shadow: 0 2px 5px black;
     border-radius: 5px;
     padding: 10px;
+    background-color: rgb(54, 54, 54);
     border: 1px solid whitesmoke;
     color: white;
 }
@@ -56,7 +58,7 @@
     font-size: 0.8rem;
     text-align: center;
     font-style: italic;
-    color: white;
+    color: black;
 }
 
 @media screen and (min-width: 768px) {
