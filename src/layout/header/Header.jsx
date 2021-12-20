@@ -16,7 +16,7 @@ function Header() {
     }
 
     return <div className="header-container">
-        <div onClick={handleClick} className="brand-container"><Link to="/">PROGRESS</Link></div>
+        <div onClick={handleClick} className="brand-container"><Link to="/">Martins Meisters <span>CV</span></Link></div>
         <AuthNavigation />
     </div>
 }
