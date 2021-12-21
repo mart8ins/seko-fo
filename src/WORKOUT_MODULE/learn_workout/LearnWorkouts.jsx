@@ -3,6 +3,7 @@ import "./learnWorkouts.css";
 import WorkoutManual from "../../utils/workouts/workoutManual/WorkoutManual";
 import { workoutsSeed } from "../../utils/workouts/workouts";
 import TrainingStatistics from "../training_statistics/TrainingStatistics";
+import { v4 as uuidv4 } from 'uuid';
 
 const LearnWorkouts = () => {
     const [workoutData, setWorkoutData] = useState(workoutsSeed);
@@ -72,7 +73,7 @@ const LearnWorkouts = () => {
             <div className="learn__workouts__workout__navigation__description__container">
                 <div className="learn__workouts__side__navigation">
                     {activeBodyGroupWorkouts && activeBodyGroupWorkouts.map((work) => {
-                        return <a href={`#${work.about.start_position}`} onClick={chooseActiveWorkout} id={work.name} className={`learn__workout__option ${work.name === activeWorkout && "active__workout"}`}>{work.name}</a>
+                        return <a key={uuidv4} href={`#${work.about.start_position}`} onClick={chooseActiveWorkout} id={work.name} className={`learn__workout__option ${work.name === activeWorkout && "active__workout"}`}>{work.name}</a>
                         // return <button onClick={chooseActiveWorkout} id={work.name} className={`learn__workout__option ${work.name === activeWorkout && "active__workout"}`}>{work.name}</button>
                     })}
                 </div>

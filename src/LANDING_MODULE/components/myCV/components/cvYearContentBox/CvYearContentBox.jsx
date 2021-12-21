@@ -1,5 +1,6 @@
 import React from 'react';
 import "./cvYearContentBox.css";
+import { v4 as uuidv4 } from 'uuid';
 
 const CvYearContentBox = ({ data, language }) => {
     return (
@@ -9,7 +10,7 @@ const CvYearContentBox = ({ data, language }) => {
                 if (language === "eng") {
 
                     if (year.type === "education") {
-                        return <div className="cv__content__target">
+                        return <div key={uuidv4()} className="cv__content__target">
 
                             <div className="cv__content__target__year">
                                 <p><span className="year__title">{year.eng.diploma.title}</span> {year.eng.diploma.year}</p>
@@ -23,7 +24,7 @@ const CvYearContentBox = ({ data, language }) => {
                     }
 
                     if (year.type === "workExp") {
-                        return <div className="cv__content__target">
+                        return <div key={uuidv4()} className="cv__content__target">
 
                             <div className="cv__content__target__year">
                                 <p><span className="year__title">From</span>{year.eng.from}</p>
@@ -43,7 +44,7 @@ const CvYearContentBox = ({ data, language }) => {
                 else if (language === "lv") {
 
                     if (year.type === "education") {
-                        return <div className="cv__content__target">
+                        return <div key={uuidv4()} className="cv__content__target">
 
                             <div className="cv__content__target__year">
                                 <p><span className="year__title">{year.lv.diploms.title}</span> {year.lv.diploms.gads}</p>
@@ -57,7 +58,7 @@ const CvYearContentBox = ({ data, language }) => {
                     }
 
                     if (year.type === "workExp") {
-                        return <div className="cv__content__target">
+                        return <div key={uuidv4()} className="cv__content__target">
 
                             <div className="cv__content__target__year">
                                 <p><span className="year__title">No</span>{year.lv.from}</p>

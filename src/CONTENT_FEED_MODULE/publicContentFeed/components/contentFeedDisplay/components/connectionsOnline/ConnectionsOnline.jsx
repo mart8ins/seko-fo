@@ -29,9 +29,6 @@ const ConnectionsOnline = () => {
             });
             setUserFriendsOnline(users1);
         }
-        // return () => {
-        //     setUserFriendsOnline([]);
-        // }
     }, [usersOnline, connectedWith]);
 
     return (

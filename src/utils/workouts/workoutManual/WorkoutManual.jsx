@@ -1,5 +1,6 @@
 import React from 'react';
 import "./workoutManual.css";
+import { v4 as uuidv4 } from 'uuid';
 
 const WorkoutManual = ({ workoutData }) => {
 
@@ -36,7 +37,7 @@ const WorkoutManual = ({ workoutData }) => {
                 <div className="workout__manual__muscles">
                     <h4>Trained muscles</h4>
                     {workoutData && workoutData.about.muscle_groups.map((muscle) => {
-                        return <p>{muscle}</p>
+                        return <p key={uuidv4}>{muscle}</p>
                     })}
                 </div>
             </div>

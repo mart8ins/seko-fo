@@ -1,9 +1,13 @@
 /* ********************
         FONTS
 *************************/
-/* NAVIGATION FONT font-family: 'Bebas Neue', cursive; */
-/* BRAND FONT - font-family: 'Righteous', cursive;*/
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Righteous&display=swap');
+/* NAVIGATION FONT */
+/* BRAND FONT*/
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Indie+Flower&family=Righteous&display=swap');
+/* font-family: 'Bebas Neue', cursive; */
+/* font-family: 'Indie Flower', cursive; */
+/* font-family: 'Righteous', cursive; */
 
 /*
 ALL BODY FONTS - font-family: 'Lora', serif;
