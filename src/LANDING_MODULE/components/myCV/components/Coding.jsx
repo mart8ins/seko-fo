@@ -31,6 +31,8 @@ const Coding = ({ language }) => {
                 {isLogged.coding.stack.map((item) => {
                     if (item.name === activeStackItem) {
                         return <p>{item[lang].text}</p>
+                    } else {
+                        return
                     }
                 })}
 
@@ -44,6 +46,8 @@ const Coding = ({ language }) => {
                                         <p>{it[lang]}</p>
                                     </div>
                                 })
+                            } else {
+                                return
                             }
                         })}
                     </div>

@@ -25,7 +25,7 @@ const StorySection = ({
 }) => {
     return (
         <div className="user__story__container">
-            {backGroundImage && <img className="user__story__image__background" src={backGroundImage} alt="Background image for users story" />}
+            {backGroundImage && <img className="user__story__image__background" src={backGroundImage} alt="Background for users story" />}
 
             <div className="user__story__view">
                 <div className="user__story__view__top">
@@ -33,7 +33,7 @@ const StorySection = ({
 
                     {userId === authorId ?
                         <div className="user__story__view__top__rate">
-                            <div>Rating <span className="rating__story__rate">{rating}/10</span> <span>- {ratings && ratings.length || "0"} users rated</span></div>
+                            <div>Rating <span className="rating__story__rate">{rating}/10</span> <span>- {ratings && ratings.length ? ratings.length : "0"} users rated</span></div>
                         </div>
                         :
                         <StoryRater storyId={storyId} storyIsRated={storyIsRated} userRated={userRated} storyRating={rating} storyRatings={ratings} fetchStory={fetchStory} />

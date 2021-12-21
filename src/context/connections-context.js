@@ -2,7 +2,6 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 import {fetchAllUsers} from "../fetch/connections";
 
 import {AuthContext} from "./auth-context";
-import socket from "../socket/socket";
 
 
 export const ConnectionsContext = createContext();
@@ -29,7 +28,7 @@ const ConnectionsContextProvider = ({children})=> {
             });
         });
         setConnectedWith(conn);
-    },[explore]);
+    },[explore, userId]);
 
     // USER WHO IS NOT CONNECTED BUT EXISTS MESSAGES
     const [notConnectedButMessages, setNotConnectedButMessages] = useState([]);
@@ -48,7 +47,7 @@ const ConnectionsContextProvider = ({children})=> {
              });
           });
         setNotConnectedButMessages(notConn);
-    },[explore, connectedWith]);
+    },[explore, connectedWith, userId]);
 
 
     

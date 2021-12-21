@@ -32,7 +32,7 @@ const ConnectionsOnline = () => {
         // return () => {
         //     setUserFriendsOnline([]);
         // }
-    }, [usersOnline]);
+    }, [usersOnline, connectedWith]);
 
     return (
         <div className="connections__online__container">

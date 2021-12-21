@@ -25,7 +25,7 @@ const TrainingDayFormMiddle = ({ workoutHandler, workout, workoutImage, setWorko
 
             <div className="training__day__form__middle__workout__image">
                 {workoutImage ?
-                    <img src={`/images/workout_images/${workoutImage}.jpg`} />
+                    <img src={`/images/workout_images/${workoutImage}.jpg`} alt={workoutImage} />
                     :
                     <div className="training__day__form__middle__workout__image__dumbbell__icon">{dumbbell}</div>
                 }

@@ -133,7 +133,7 @@ const TrainingDayForm = ({ trainingDate }) => {
             ...session,
             workouts: allWorkouts
         }
-        const res = await postTrainingSession(token, sessionToSave);
+        await postTrainingSession(token, sessionToSave);
         // update context for all sessions in db
         await fetchAllTrainingDays(token);
         setCanSaveSession(false);

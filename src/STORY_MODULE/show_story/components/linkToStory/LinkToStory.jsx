@@ -9,7 +9,7 @@ const LinkToStory = ({ storyId, title, image, date, author, privateStory, commen
     return (
         <Link to={`/story/${storyId}`}>
             <div className="to__story">
-                <img className="link__image" src={image} />
+                <img className="link__image" src={image} alt={image} />
                 <div className="to__story__left">
                     <div className="story__title">{title}</div>
                     {authorId !== userId ? <div className="story__author">Published by {author}</div> : null}

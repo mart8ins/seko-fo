@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Link } from "react-router-dom";
 import "./userCardForTypeBox.css";
 import { AuthContext } from '../../../../../../../../../context/auth-context';
 import { fetchUser } from "../../../../../../../../../fetch/connections";
@@ -22,11 +21,8 @@ const UserCardForTypeBox = ({ authorId, firstName, lastName }) => {
 
     return (
         <div className="content__feed__type__box__bottom">
-            {/* <Link to={`/user/${authorId}/profile`}>
-                
-            </Link> */}
             <p>{firstName + " " + lastName}</p>
-            <img src={authorImage} />
+            <img src={authorImage} alt={firstName + " " + lastName} />
         </div>
     )
 }

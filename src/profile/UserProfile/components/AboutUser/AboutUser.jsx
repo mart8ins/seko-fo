@@ -47,7 +47,7 @@ const AboutUser = ({ user, getUser }) => {
             isRequestRecieved: isRequestRecieved,
             isRequestSent: isRequestSent
         })
-    }, [user])
+    }, [user, authData.userId])
 
 
     return <div>

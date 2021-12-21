@@ -10,10 +10,6 @@ const StoryTemplate = ({ storyTitle, storyContent, storyId }) => {
     const [date, setDate] = useState(undefined);
 
     useEffect(() => {
-        fetchStory();
-    }, [storyId]);
-
-    useEffect(() => {
         let avarageRating = undefined;
 
         let rateSum = 0;
@@ -36,6 +32,11 @@ const StoryTemplate = ({ storyTitle, storyContent, storyId }) => {
         const res = await getStory(token, storyId);
         setStory(res.data.story);
     }
+
+
+    useEffect(() => {
+        fetchStory();
+    }, [storyId]);
 
     const typeBackgroundColor = {
         backgroundColor: "rgb(28, 133, 151)"

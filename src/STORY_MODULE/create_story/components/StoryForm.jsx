@@ -73,12 +73,12 @@ const StoryForm = () => {
             })();
             setEditStory(true);
         }
-    }, []);
+    }, [authData.token, history.location.search]);
 
     // EFFECT FOR IMAGE UPLOAD
     useEffect(() => {
         if (pickedImage) {
-            const fileReader = new FileReader;
+            const fileReader = new FileReader();
             fileReader.onload = () => {
                 setImagePreview(fileReader.result);
             }
@@ -146,7 +146,7 @@ const StoryForm = () => {
                 }
             }
 
-            const res = await postStory(authData.token, formData);
+            await postStory(authData.token, formData);
 
             setFormState({
                 title: "",
@@ -201,7 +201,7 @@ const StoryForm = () => {
                             {editStory ? "Change image" : "Add image"}
                         </div>
                         <div className="image__preview">
-                            {imagePreview && <img alt="story image preview" src={imagePreview} />}
+                            {imagePreview && <img alt="story preview" src={imagePreview} />}
                             {editStory && formState.image && !imagePreview && <img alt={formState.image} src={formState.image} />}
                             {!imagePreview && !formState.image && "Image preview"}
                         </div>

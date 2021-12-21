@@ -38,7 +38,7 @@ const StoryContent = () => {
             r = r / story.rating.length;
             setRating(r);
         };
-    }, [story]);
+    }, [story, userId]);
 
     // to check if user is alreadu rated this story
     useEffect(() => {

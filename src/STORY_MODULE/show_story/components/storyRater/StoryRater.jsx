@@ -12,7 +12,7 @@ const StoryRater = ({ storyIsRated, userRated, storyRating, storyRatings, fetchS
     }
 
     const sendRate = async () => {
-        const res = await rateStory(authData.token, storyId, rating);
+        await rateStory(authData.token, storyId, rating);
         fetchStory();
     }
 
@@ -21,7 +21,7 @@ const StoryRater = ({ storyIsRated, userRated, storyRating, storyRatings, fetchS
             {storyIsRated ?
                 <div className="user__story__rater">
                     <p className="user__story__rater__rating__left">Your rating -  <span>{userRated}</span></p>
-                    <p className="user__story__rater__rating__total">Story total - <span>{storyRating}/10</span> from <span>{storyRatings && storyRatings.length || "0"}</span> users</p>
+                    <p className="user__story__rater__rating__total">Story total - <span>{storyRating}/10</span> from <span>{storyRatings && storyRatings.length ? storyRatings.length : "0"}</span> users</p>
                 </div>
                 :
                 <div className="user__story__rater">

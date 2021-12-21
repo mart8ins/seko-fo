@@ -27,7 +27,7 @@ const WorkoutDay = () => {
         if (workoutDay && authData.userId !== workoutDay.userId) {
             getUser(authData.token, workoutDay.userId)
         }
-    }, [workoutDay]);
+    }, [workoutDay, authData.token, authData.userId]);
 
     const fetchTrainingDay = async (workoutDayId) => {
         const res = await getTrainingDay(authData.token, workoutDayId);

@@ -1,0 +1,16 @@
+.workout__stats__container {
+    width: 90%;
+    margin: 0 auto;
+    background-color: whitesmoke;
+    padding: 10px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.under__development {
+    font-size: 2rem;
+    text-align: center;
+}

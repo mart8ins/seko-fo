@@ -9,7 +9,7 @@ const AcceptConnection = ({ userId }) => {
     const { getAllUsers } = useContext(ConnectionsContext);
 
     const acceptRequest = async () => {
-        const res = await fetchAcceptConnection(authData.token, userId);
+        await fetchAcceptConnection(authData.token, userId);
         getAllUsers(authData.token);
     }
 

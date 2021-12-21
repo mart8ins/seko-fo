@@ -1,7 +1,3 @@
-import globalVariables from "../globalvar";
-const url = globalVariables.server;
-
-// `<a href=${url + "/contentFeed"}></a>`
 
 export const notLogged = {
     title: {

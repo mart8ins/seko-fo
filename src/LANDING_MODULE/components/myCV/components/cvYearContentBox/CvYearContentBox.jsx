@@ -40,7 +40,7 @@ const CvYearContentBox = ({ data, language }) => {
                 }
 
 
-                if (language === "lv") {
+                else if (language === "lv") {
 
                     if (year.type === "education") {
                         return <div className="cv__content__target">
@@ -72,6 +72,8 @@ const CvYearContentBox = ({ data, language }) => {
                         </div>
                     }
 
+                } else {
+                    return
                 }
 
             })}

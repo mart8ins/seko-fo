@@ -20,7 +20,7 @@ const PublicFeed = () => {
 
     useEffect(() => {
         fetchContentFeed(token);
-    }, [])
+    }, [token])
 
     const fetchContentFeed = async (token) => {
         const res = await getContentFeed(token);

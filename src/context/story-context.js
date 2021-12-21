@@ -23,7 +23,7 @@ const StoryContextProvider = ({children}) => {
             return story.author.userId === userId;
         })
         setUserStories(user.reverse());
-    },[stories]);
+    },[stories, userId]);
 
     return <StoryContext.Provider value={{
         stories, 

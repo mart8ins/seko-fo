@@ -1,6 +1,7 @@
 .workout__by__id__container {
     width: 95%;
     margin: auto;
+    padding-bottom: 100px;
 }
 
 .workout__by__id__top {

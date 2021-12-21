@@ -41,7 +41,7 @@ const ExploreConnections = ({ explore }) => {
     }
 
     useEffect(() => {
-        if (containerRef.current.childElementCount == 0) {
+        if (containerRef.current.childElementCount === 0) {
             setNoConnections(true)
         }
         if (containerRef.current.childElementCount > 1 && containerRef.current.children[1].className === "card__container") {

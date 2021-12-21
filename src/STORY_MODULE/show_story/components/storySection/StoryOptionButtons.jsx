@@ -17,7 +17,7 @@ const StoryOptionButtons = ({ storyId }) => {
     }
 
     const deleteComplete = async () => {
-        const res = await deleteStory(authData.token, storyId);
+        await deleteStory(authData.token, storyId);
         await fetchAllStories();
         history.push("/userContentFeed");
     }

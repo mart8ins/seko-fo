@@ -10,7 +10,7 @@ const RequestConnection = ({ userId }) => {
     const { getAllUsers } = useContext(ConnectionsContext);
 
     const sendRequest = async () => {
-        const res = await fetchRequestConnection(authData.token, userId);
+        await fetchRequestConnection(authData.token, userId);
         getAllUsers(authData.token); // after connection request is sent fetch updated data / all users for connection context
     }
 

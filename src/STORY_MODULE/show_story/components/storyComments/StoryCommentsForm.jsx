@@ -19,7 +19,7 @@ const StoryCommentsForm = ({ storyId, updateStory }) => {
             userId: authData.userId,
             commented_story: storyId
         }
-        const res = await postStoryComment(authData.token, commentObject);
+        await postStoryComment(authData.token, commentObject);
         await updateStory();
         setComment("");
     }

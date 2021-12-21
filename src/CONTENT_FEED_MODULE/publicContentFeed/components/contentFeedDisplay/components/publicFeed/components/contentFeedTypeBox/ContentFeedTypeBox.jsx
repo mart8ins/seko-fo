@@ -20,8 +20,8 @@ const ContentFeedTypeBox = ({ content }) => {
 
     // ALL
     const authorId = content.author.id;
-    const linkTo = content.type === "story" && `/story/${content.content.storyId}` || content.type === "workout" && `/workoutday/${content.content.workoutDayId}`
-
+    // const linkTo = content.type === "story" && `/story/${content.content.storyId}` || content.type === "workout" && `/workoutday/${content.content.workoutDayId}`
+    const linkTo = content.type === "story" ? `/story/${content.content.storyId}` : `/workoutday/${content.content.workoutDayId}`;
 
     return (
         <Link to={linkTo} className="content__feed__type__box">

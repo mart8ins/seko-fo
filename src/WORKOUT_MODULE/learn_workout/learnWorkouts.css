@@ -1,6 +1,7 @@
 .learn__workouts__container {
     width: 95%;
     margin: 10px auto;
+    padding-bottom: 100px;
 }
 
 .learn__workouts__top__navigation {
@@ -36,7 +37,7 @@
 .learn__workouts__side__navigation {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     padding: 5px;
     min-height: 200px;

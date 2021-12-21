@@ -1,14 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "./connections.css";
 import ExploreConnections from "./exploreConnections/ExploreConnections";
 import MyConnections from "./myConnections/MyConnections";
 import ConnectionRequest from "./connectionRequest/ConnectionRequest";
 import { ConnectionsContext } from "../context/connections-context";
-import { AuthContext } from "../context/auth-context"
 
 function Connections() {
-
-    const { authData } = useContext(AuthContext);
     const { explore } = useContext(ConnectionsContext);
 
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import "./cvProfile.css";
 import { isLogged } from "../../landingSeed";
 
@@ -33,7 +32,7 @@ const CVProfile = ({ language, activeCvData, setActiveCvData }) => {
                     </p>
 
                     <div className="my__github__icon">
-                        <a href="https://github.com/mart8ins" target="_blank">
+                        <a href="https://github.com/mart8ins" target="_blank" rel="noreferrer">
                             <i className="fab fa-github-square"></i>
                         </a>
                     </div>

@@ -13,11 +13,6 @@ const UserStoryContent = ({ user }) => {
     const { authData } = useContext(AuthContext);
     const [userStories, setUserStories] = useState();
     const [userStoriesStats, setUserStoriesStats] = useState([]);
-    useEffect(() => {
-        if (user) {
-            fetchUserStories();
-        }
-    }, [user]);
 
     const fetchUserStories = async () => {
         const res = await getAllUserStories(authData.token, user._id);
@@ -25,6 +20,12 @@ const UserStoryContent = ({ user }) => {
         setUserStoriesStats(res.data.stats);
         setUserStories(rev);
     }
+
+    useEffect(() => {
+        if (user) {
+            fetchUserStories();
+        }
+    }, [user]);
 
     return (
         <div>
@@ -50,8 +51,6 @@ const UserStoryContent = ({ user }) => {
                         comments={story.comments_allowed} />
                 }
             })}
-
-
 
             {userStories && !userStories.length && user &&
                 <NoContentToShow contentType={"stories"} linkToContent={"story"} loggedUserID={authData.userId} userID={String(user._id)} />
