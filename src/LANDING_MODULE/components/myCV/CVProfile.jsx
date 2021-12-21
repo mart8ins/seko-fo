@@ -34,7 +34,7 @@ const CVProfile = ({ language, activeCvData, setActiveCvData }) => {
 
                     <div className="my__github__icon">
                         <a href="https://github.com/mart8ins" target="_blank">
-                            <i class="fab fa-github-square"></i>
+                            <i className="fab fa-github-square"></i>
                         </a>
                     </div>
                 </div>

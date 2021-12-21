@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 import {fetchAllUsers} from "../fetch/connections";
 
 import {AuthContext} from "./auth-context";
+import socket from "../socket/socket";
 
 
 export const ConnectionsContext = createContext();
@@ -11,7 +12,7 @@ const ConnectionsContextProvider = ({children})=> {
 
      // ALL USER ON MOMENT WHO IS ONLINE
     const [usersOnline, setUsersOnline] = useState([]);
-     
+    
     // ALL USERS
     const [explore, setExplore] = useState([]);
 
@@ -64,7 +65,6 @@ const ConnectionsContextProvider = ({children})=> {
         const {allUsers} = res.data;
         setExplore(allUsers);
     }
-    
 
     return <ConnectionsContext.Provider value={
         {

@@ -13,16 +13,12 @@
     color: white;
 }
 
-.content__feed__type__box__bottom a {
+.content__feed__type__box__bottom p {
+    margin: 0;
     font-size: 0.7rem;
     color: rgb(107, 128, 108);
     font-weight: bold;
     letter-spacing: 1px;
-    border-bottom: 1px solid green;
-}
-
-.content__feed__type__box__bottom a:hover {
-    color: rgb(43, 70, 44);
 }
 
 .content__feed__type__box__bottom img {
@@ -39,7 +35,7 @@
         width: 25%;
     }
 
-    .content__feed__type__box__bottom a {
+    .content__feed__type__box__bottom p {
         font-size: 0.9rem;
     }
 }

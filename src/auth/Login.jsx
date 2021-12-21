@@ -26,6 +26,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         try {
             e.preventDefault();
+
             const response = await loginUser(loginForm);
             if (response && response.status === 200) {
                 setFormError("");
@@ -49,6 +50,10 @@ const Login = () => {
 
                 localStorage.setItem("authData", JSON.stringify(objectToStore))
                 setAuthData(objectToStore) // set auth status context for the app
+
+                socket.emit("USER IS ONLINE", { userId: String(response.data.userId) }, (users) => {
+                    setUsersOnline(users)
+                });
             } else {
                 setServerDownError("Something went wrong, please try again later.");
             }

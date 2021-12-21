@@ -42,6 +42,10 @@
         align-items: center;
     }
 
+    .connections__online__no__users {
+        text-align: center;
+    }
+
     .user__online {
         width: 90%;
         display: flex;

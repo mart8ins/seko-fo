@@ -1,5 +1,6 @@
 import React from 'react';
-import "./workoutTemplate.css"
+import "./workoutTemplate.css";
+import { v4 as uuidv4 } from 'uuid';
 
 const WorkoutTemplate = ({ workoutDay, sessionTitle, allWorkouts }) => {
 
@@ -25,7 +26,7 @@ const WorkoutTemplate = ({ workoutDay, sessionTitle, allWorkouts }) => {
 
                     <div className="workout__box__session__workouts__container">
                         {allWorkouts.map((element) => {
-                            return <p>{element.name}</p>
+                            return <p key={uuidv4()}>{element.name}</p>
                         })}
                     </div>
                 </div>

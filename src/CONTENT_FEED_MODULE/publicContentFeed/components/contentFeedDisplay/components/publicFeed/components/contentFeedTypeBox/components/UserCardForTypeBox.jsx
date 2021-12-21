@@ -22,9 +22,10 @@ const UserCardForTypeBox = ({ authorId, firstName, lastName }) => {
 
     return (
         <div className="content__feed__type__box__bottom">
-            <Link to={`/user/${authorId}/profile`}>
-                {firstName + " " + lastName}
-            </Link>
+            {/* <Link to={`/user/${authorId}/profile`}>
+                
+            </Link> */}
+            <p>{firstName + " " + lastName}</p>
             <img src={authorImage} />
         </div>
     )

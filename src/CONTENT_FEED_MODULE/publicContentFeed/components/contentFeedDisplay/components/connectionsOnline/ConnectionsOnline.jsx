@@ -1,23 +1,38 @@
 import React, { useState, useEffect, useContext } from 'react';
 import "./connectionsOnline.css";
-import { AuthContext } from "../../../../../../context/auth-context";
-import { fetchAllUsers } from "../../../../../../fetch/connections";
+import { ConnectionsContext } from '../../../../../../context/connections-context';
 import UserAvatar from "./UserAvatar";
+import socket from "../../../../../../socket/socket";
+import { v4 as uuidv4 } from 'uuid';
 
 const ConnectionsOnline = () => {
-    const { authData } = useContext(AuthContext);
+    const { usersOnline, setUsersOnline, connectedWith } = useContext(ConnectionsContext);
 
-    // pagaidu varant pirms socket implementēšanas
-    const [usersFromDb, setUsersFromDb] = useState([]);
+    const [userFriendsOnline, setUserFriendsOnline] = useState([])
 
+    // UPDATE ON EVERY NEW LOGIN IN THE APP
+    socket.on("SEND UPDATE ON USERS ONLINE", (users) => {
+        setUsersOnline(users);
+        socket.emit("USERS ONLINE UPDATED");
+    });
+
+    // FILTER friends online
     useEffect(() => {
-        getUsersFromDB();
-    }, [setUsersFromDb]);
-
-    const getUsersFromDB = async () => {
-        const res = await fetchAllUsers(authData.token);
-        setUsersFromDb(res.data.allUsers)
-    }
+        const users1 = [];
+        if (usersOnline.length && connectedWith.length) {
+            usersOnline.forEach((userOnline) => {
+                connectedWith.forEach((userFriend) => {
+                    if (String(userFriend._id) === String(userOnline.userId)) {
+                        users1.push(userFriend);
+                    }
+                })
+            });
+            setUserFriendsOnline(users1);
+        }
+        // return () => {
+        //     setUserFriendsOnline([]);
+        // }
+    }, [usersOnline]);
 
     return (
         <div className="connections__online__container">
@@ -28,15 +43,15 @@ const ConnectionsOnline = () => {
 
             <div className="connections__online">
 
-                {!usersFromDb.length &&
-                    <div>
-                        All conencted user are offline
+                {!userFriendsOnline.length &&
+                    <div className="connections__online__no__users">
+                        All connected users are offline
                     </div>
                 }
 
                 {
-                    usersFromDb.map((user) => {
-                        return <UserAvatar user={user} />
+                    userFriendsOnline.map((user) => {
+                        return <UserAvatar key={uuidv4()} user={user} />
                     })
                 }
 

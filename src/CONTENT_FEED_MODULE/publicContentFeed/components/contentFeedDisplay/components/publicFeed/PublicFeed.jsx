@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import "./publicFeed.css";
+import { v4 as uuidv4 } from 'uuid';
 
 import { getContentFeed } from "../../../../../../fetch/contentFeed";
 import { AuthContext } from "../../../../../../context/auth-context";
@@ -49,7 +50,7 @@ const PublicFeed = () => {
 
                 <div className="public__content__for__feed">
                     {filteredContentFeed && filteredContentFeed.length ? filteredContentFeed.map((content) => {
-                        return <ContentFeedTypeBox content={content} />
+                        return <ContentFeedTypeBox key={uuidv4()} content={content} />
                     }) :
                         <div className="public__content__for__feed__no__data">
                             No content to show, try later...
