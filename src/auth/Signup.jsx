@@ -50,6 +50,10 @@ const Signup = () => {
 
                 localStorage.setItem("authData", JSON.stringify(objectToStore))
                 setAuthData(objectToStore);
+
+                socket.emit("USER IS ONLINE", { userId: String(response.data.userId) }, (users) => {
+                    setUsersOnline(users)
+                });
             } else {
                 setServerDownError("Something went wrong, please try again later.")
             }

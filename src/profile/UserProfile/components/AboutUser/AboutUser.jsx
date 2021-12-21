@@ -1,11 +1,30 @@
 import React, { useContext, useState, useEffect } from "react";
 import globalVariables from "../../../../globalvar";
 import { AuthContext } from "../../../../context/auth-context";
+import { ConnectionsContext } from "../../../../context/connections-context";
 
 import ProfileOptionButtons from "./ProfileOptionButtons";
+import socket from "../../../../socket/socket";
 
 const AboutUser = ({ user, getUser }) => {
+    const uId = String(user._id);
+    const [userIsOnline, setUserIsOnline] = useState(false);
+
     const { authData } = useContext(AuthContext);
+    const { usersOnline, setUsersOnline } = useContext(ConnectionsContext);
+
+    useEffect(() => {
+        const isOnline = usersOnline.some((user) => {
+            return user.userId === uId;
+        });
+        setUserIsOnline(isOnline)
+    }, [uId, userIsOnline]);
+
+    // UPDATE ON EVERY NEW LOGIN IN THE APP
+    socket.on("SEND UPDATE ON USERS ONLINE", (users) => {
+        setUsersOnline(users);
+    });
+
 
     const image = user.photo && user.photo.profile ? `${globalVariables.server}${user.photo.profile}` : "/images/no_image.png";
     const [status, setStatus] = useState({
@@ -53,7 +72,9 @@ const AboutUser = ({ user, getUser }) => {
     return <div>
         <div className="user__profile">
             <div className="connected__status">
-                {status.isConnected ? <div className="connected__status__true">Connected</div> : <div className="connected__status__false">Not connected</div>}
+                {userIsOnline ? <p className="user__online__status__online">User is online</p> : <p className="user__online__status__offline">User is offline</p>}
+
+                {status.isConnected ? <div className="connected__status__true">Connected with you</div> : <div className="connected__status__false">Not connected with you</div>}
             </div>
             <div className="user__profile__data">
                 <div className="user__profile__header">
