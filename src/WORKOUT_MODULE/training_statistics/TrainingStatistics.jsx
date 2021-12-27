@@ -8,7 +8,7 @@ const TrainingStatistics = ({ workoutData }) => {
             <h4>Exercise progress data...</h4>
 
             <div className="under__development">
-                Under develpoment
+                Under development
             </div>
         </div>
     )

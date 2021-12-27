@@ -18,9 +18,14 @@
     padding: 5px 15px;
     margin: 0px 10px;
     width: max-content;
-    background-color: rgba(243, 175, 14, 0.1);
+    background-color: rgb(82, 75, 75);
+    box-shadow: 0 1px 1px 1px black;
     border-radius: 10px;
     letter-spacing: 2px;
+}
+
+.brand-container:hover {
+    background-color: rgb(66, 61, 61);
 }
 
 .brand-container a {

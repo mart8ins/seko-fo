@@ -122,7 +122,7 @@ const workoutsSeed = [
     },
   {   wID: "w8u",
         body_part: "Upper body",
-        name: "Shoulder press machine",
+        name: "Shoulder press",
         image: "shoulder_press",
         about: {
             start_position: "shoulder_press_start",
