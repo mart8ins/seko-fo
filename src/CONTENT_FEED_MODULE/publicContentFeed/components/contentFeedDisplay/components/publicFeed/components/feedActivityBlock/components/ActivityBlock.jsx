@@ -4,10 +4,10 @@ import "./activityBlock.css";
 
 const ActivityBlock = ({ type, fromUser, toUser, story, data, date, storyId }) => {
     const background1 = {
-        backgroundColor: "rgb(100, 125, 85)"
+        backgroundColor: "rgb(100, 95, 95)"
     }
     const background2 = {
-        backgroundColor: "rgb(131, 124, 114)"
+        backgroundColor: "rgb(100, 95, 95)"
     }
 
     let dateForText = new Date(new Date(date)).toDateString();

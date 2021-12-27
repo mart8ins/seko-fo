@@ -9,7 +9,6 @@ const ConnectionsOnline = () => {
     const { usersOnline, setUsersOnline, connectedWith } = useContext(ConnectionsContext);
 
     const [userFriendsOnline, setUserFriendsOnline] = useState([])
-
     // UPDATE ON EVERY NEW LOGIN IN THE APP
     socket.on("SEND UPDATE ON USERS ONLINE", (users) => {
         setUsersOnline(users);
