@@ -24,15 +24,14 @@ const changeProfilePassword = async (token, passwords) => {
     return res;
 }
 
-const changeProfilePhoto = async (token, file) => {
+const changeProfilePhoto = async (token, imageUrl) => {
     const config = {
         headers: {
-             Authorization: 'Bearer ' + token,
-             'Content-Type': 'multipart/form-data'
+             Authorization: 'Bearer ' + token
         }
     }
     const url = `${baseUrl}/change/photo`;
-    const res = await axios.post(url, file, config);
+    const res = await axios.post(url, {data: imageUrl}, config);
     return res;
 }
 

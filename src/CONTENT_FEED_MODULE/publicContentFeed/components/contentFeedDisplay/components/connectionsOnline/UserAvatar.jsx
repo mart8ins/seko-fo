@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import globalVariables from "../../../../../../globalvar";
 
 const UserAvatar = ({ user }) => {
-    const image = user.photo.profile ? `${globalVariables.server}${user.photo.profile}` : "./images/no_image.png";
+    const image = user.photo && user.photo.profile || "./images/no_image.png";
 
 
     return (

@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { ConnectionsContext } from "../context/connections-context";
 import { AuthContext } from "../context/auth-context";
 import socket from "../socket/socket";
-import globalVariables from "../globalvar";
 import formsValidator from "../utils/formComponents/formsValidator";
 
 
@@ -59,7 +58,7 @@ function Messages() {
     // for large display render all contacts
     const renderConnectedContacts = (contact) => {
         const userId = String(contact._id);
-        const image = contact.photo && contact.photo.profile ? `${globalVariables.server}${contact.photo.profile}` : "/images/no_image.png";
+        const image = contact.photo && contact.photo.profile || "/images/no_image.png";
         return <div key={uuidv4()} style={contact.isConnected ? { borderLeft: "6px solid rgb(69, 187, 69)" } : { borderLeft: "6px solid rgb(177, 72, 72)" }} onClick={() => chooseActiveUser(contact)} className={`contact ${activeUser && activeUser.userId === userId && "activeUser"}`}>
             <p>{contact.firstName} {contact.lastName}</p>
             <img src={image} alt={contact.firstName + contact.lastName} />

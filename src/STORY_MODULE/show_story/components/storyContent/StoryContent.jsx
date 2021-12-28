@@ -52,7 +52,7 @@ const StoryContent = () => {
             setBackGroundImage(globalVariables.server + res.data.story.image);
         }
         if (res.data.story.author.photo) {
-            setUserProfileImage(globalVariables.server + res.data.story.author.photo)
+            setUserProfileImage(res.data.story.author.photo)
         }
     }
     return (

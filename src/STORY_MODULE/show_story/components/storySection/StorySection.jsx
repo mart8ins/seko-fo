@@ -20,8 +20,7 @@ const StorySection = ({
     userProfileImage,
     storyIsRated,
     userRated,
-    fetchStory,
-    imagePath
+    fetchStory
 }) => {
     return (
         <div className="user__story__container">

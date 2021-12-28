@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { AuthContext } from "../../context/auth-context";
 import "./profilePhotoPicker.css";
-import globalVariables from "../../globalvar";
+import axios from "axios";
 
 import { changeProfilePhoto } from "../../fetch/profile";
+
 
 
 const ProfilePhotoPicker = () => {
@@ -56,36 +57,44 @@ const ProfilePhotoPicker = () => {
     }, [authData]);
 
 
-    // send photo to backend
-    const savePhoto = async () => {
-        const fd = new FormData();
-        fd.append("profile_photo", pickedPhoto); // to enable/convert to enctype="multipart/form-data"
-        const res = await changeProfilePhoto(authData.token, fd);
 
+    const saveImageToCloudinary = async () => {
+        const fd = new FormData();
+        fd.append("file", pickedPhoto); // to enable/convert to enctype="multipart/form-data"
+        fd.append("upload_preset", "mycvapp");
+        fd.append("cloud_name", "elementi");
+
+        const res = await axios.post(`https://api.cloudinary.com/v1_1/elementi/image/upload`, fd);
+        setExistingImage(res.data.secure_url);
+        setPhotoSaved(true);
         setAuthData({
             ...authData,
-            profilePhoto: res.data.photo
+            profilePhoto: res.data.secure_url
         });
-        // UPDATE LOCAL STORAGE
         localStorage.setItem("authData", JSON.stringify({
             ...authData,
-            profilePhoto: res.data.photo
-        }))
-        setPhotoSaved(true);
+            profilePhoto: res.data.secure_url
+        }));
+        await changeProfilePhoto(authData.token, res.data.secure_url)
+        console.log(res)
     }
+
+    console.log(pickedPhoto)
+
+
 
     return <div className="change__image">
         <div className="image__container">
             <input ref={filePickerRef} name="profile_photo" onChange={photoHandler} style={{ display: "none" }} type="file" accept=".jpg,.png,.jpeg" />
             <img
-                src={existingImage && globalVariables.server + existingImage || photoPreview || `./images/no_image.png`}
+                src={existingImage || photoPreview || `./images/no_image.png`}
                 alt="Photo preview" />
         </div>
         <div className="image__buttons__container">
             {!photoPreview || photoSaved ?
                 <button onClick={openPhotoWindow}>Choose</button>
                 :
-                <button className="save__button" onClick={savePhoto}>Save photo</button>
+                <button className="save__button" onClick={saveImageToCloudinary}>Save photo</button>
             }
         </div>
     </div>

@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from 'react';
 import "./userCardForTypeBox.css";
 import { AuthContext } from '../../../../../../../../../context/auth-context';
 import { fetchUser } from "../../../../../../../../../fetch/connections";
-import globalVariables from '../../../../../../../../../globalvar';
 
 const UserCardForTypeBox = ({ authorId, firstName, lastName }) => {
     const { authData: { token } } = useContext(AuthContext);
@@ -15,7 +14,7 @@ const UserCardForTypeBox = ({ authorId, firstName, lastName }) => {
     const gethUser = async () => {
         const res = await fetchUser(token, authorId);
         if (res.data.user.photo.profile) {
-            setAuthorImage(globalVariables.server + res.data.user.photo.profile);
+            setAuthorImage(res.data.user.photo.profile);
         }
     }
 

@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import globalVariables from "../../../../globalvar";
 import { AuthContext } from "../../../../context/auth-context";
 import { ConnectionsContext } from "../../../../context/connections-context";
 
@@ -26,7 +25,7 @@ const AboutUser = ({ user, getUser }) => {
     });
 
 
-    const image = user.photo && user.photo.profile ? `${globalVariables.server}${user.photo.profile}` : "/images/no_image.png";
+    const image = user.photo && user.photo.profile || "/images/no_image.png";
     const [status, setStatus] = useState({
         isConnected: false,
         isRequestRecieved: false,

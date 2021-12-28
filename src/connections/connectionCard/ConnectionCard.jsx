@@ -1,11 +1,9 @@
 import React from "react";
 import OptionButtons from "../optionButtons/OptionButtons";
 import "./connectionCard.css";
-import globalVariables from "../../globalvar";
 
 const ConnectionCard = ({ user, connected, userSentRequest, userRecievedRequest }) => {
-
-    const image = user.photo.profile ? `${globalVariables.server}${user.photo.profile}` : "./images/no_image.png";
+    const image = user.photo.profile || "./images/no_image.png";
 
     return (
         <div className="card__container">
