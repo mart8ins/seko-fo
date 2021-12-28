@@ -22,6 +22,7 @@ const ProfilePhotoPicker = () => {
 
     // state for buttons if picked image is saved
     const [photoSaved, setPhotoSaved] = useState(false);
+    const [photoIsSaving, setPhotoIsSaving] = useState(false);
 
     // reference to input filed with type file and event handler
     const openPhotoWindow = () => {
@@ -57,14 +58,16 @@ const ProfilePhotoPicker = () => {
     }, [authData]);
 
 
-
+    // save image to cloudinary and store ref in db
     const saveImageToCloudinary = async () => {
+        setPhotoIsSaving(true);
         const fd = new FormData();
         fd.append("file", pickedPhoto); // to enable/convert to enctype="multipart/form-data"
         fd.append("upload_preset", "mycvapp");
         fd.append("cloud_name", "elementi");
 
         const res = await axios.post(`https://api.cloudinary.com/v1_1/elementi/image/upload`, fd);
+        setPhotoIsSaving(false);
         setExistingImage(res.data.secure_url);
         setPhotoSaved(true);
         setAuthData({
@@ -76,10 +79,7 @@ const ProfilePhotoPicker = () => {
             profilePhoto: res.data.secure_url
         }));
         await changeProfilePhoto(authData.token, res.data.secure_url)
-        console.log(res)
     }
-
-    console.log(pickedPhoto)
 
 
 
@@ -94,7 +94,7 @@ const ProfilePhotoPicker = () => {
             {!photoPreview || photoSaved ?
                 <button onClick={openPhotoWindow}>Choose</button>
                 :
-                <button className="save__button" onClick={saveImageToCloudinary}>Save photo</button>
+                <button className="save__button" onClick={saveImageToCloudinary}>{photoIsSaving ? "Saving..." : "Save photo"}</button>
             }
         </div>
     </div>

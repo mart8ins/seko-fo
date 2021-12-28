@@ -64,7 +64,7 @@ const MessageModal = ({ userId, firstName, lastName }) => {
 
                     <textarea onChange={handleChange} name="message"></textarea>
                     <button onClick={send}>Send</button>
-                    {!validForm.valid && <p class="message__invalid">{validForm.message}</p>}
+                    {!validForm.valid && <p className="message__invalid">{validForm.message}</p>}
                 </div>
                 :
                 <div className="message__sent__success">

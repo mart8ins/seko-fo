@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import "./myStories.css";
 import LinkToStory from "../../show_story/components/linkToStory/LinkToStory";
 import { StoryContext } from '../../../context/story-context';
-import globalVariables from '../../../globalvar';
 
 const MyStories = () => {
     const { userStories } = useContext(StoryContext);
@@ -12,7 +11,7 @@ const MyStories = () => {
             <h2>My stories</h2>
             {userStories.map((story) => {
                 const storyId = story._id;
-                const image = story.image ? `${globalVariables.server}${story.image}` : "/images/no_image.png";
+                const image = story.image || "/images/no_image.png";
                 const date = new Date(story.date).toLocaleDateString();
                 return <LinkToStory
                     key={storyId}

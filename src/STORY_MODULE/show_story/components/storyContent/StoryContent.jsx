@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../../../context/auth-context";
 import "./storyContent.css";
-import globalVariables from '../../../../globalvar';
 import StoryCommentsSection from '../storyComments/StoryCommentsSection';
 import StorySection from "../storySection/StorySection";
 
@@ -49,7 +48,7 @@ const StoryContent = () => {
         const res = await getStory(token, storyId);
         setStory(res.data.story);
         if (res.data.story.image) {
-            setBackGroundImage(globalVariables.server + res.data.story.image);
+            setBackGroundImage(res.data.story.image);
         }
         if (res.data.story.author.photo) {
             setUserProfileImage(res.data.story.author.photo)

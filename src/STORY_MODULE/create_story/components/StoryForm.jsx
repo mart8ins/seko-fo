@@ -7,7 +7,7 @@ import { AuthContext } from "../../../context/auth-context";
 import { StoryContext } from "../../../context/story-context";
 import queryString from 'query-string';
 import { getStory } from "../../../fetch/story";
-import globalVariables from '../../../globalvar';
+import axios from "axios";
 
 // FORM VALIDATOR
 import formsValidator from "../../../utils/formComponents/formsValidator";
@@ -26,12 +26,12 @@ const StoryForm = () => {
         comments_allowed: true
     });
 
-    // OLD IMAGE STATE, IF USER CHOOSE EDIT STORY AND ALSO CHANGE IMAGE, OLD IS DELETED FROM SERVER
-    const [oldImageToDeleteIfEdit, setOldImageToDeleteIfEdit] = useState(undefined);
+    const [savingInProgress, setSavingInProgress] = useState(false);
+    const [buttonIsActive, setButtonIsActive] = useState(false);
 
     // STATE FOR STORY FORMS VALIDATION ERRORS
     const [validForm, setValidForm] = useState({
-        valid: undefined,
+        valid: false,
         message: ""
     });
 
@@ -62,14 +62,10 @@ const StoryForm = () => {
                 setFormState({
                     title: res.data.story.title,
                     story: res.data.story.story,
-                    // image: res.data.story.image ? `${globalVariables.server}${res.data.story.image}` : "",
-                    image: res.data.story.image ? `${globalVariables.server}${res.data.story.image}` : undefined,
+                    image: res.data.story.image ? res.data.story.image : undefined,
                     private: res.data.story.private,
                     comments_allowed: res.data.story.comments_allowed
                 });
-                if (res.data.story.image) {
-                    setOldImageToDeleteIfEdit(res.data.story.image);
-                }
             })();
             setEditStory(true);
         }
@@ -84,9 +80,10 @@ const StoryForm = () => {
             }
             fileReader.readAsDataURL(pickedImage)
         }
+        // if(edit && formState.image) {
+        //     setImagePreview(formState.image)
+        // }
     }, [pickedImage])
-
-
 
     // HANDLE FORMS TEXT
     const handleChange = (e) => {
@@ -113,7 +110,6 @@ const StoryForm = () => {
                 image: e.target.files[0]
             })
         }
-
     }
 
     // OPEN IMAGE PICKER
@@ -121,32 +117,53 @@ const StoryForm = () => {
         imagePickerRef.current.click();
     }
 
+    useEffect(() => {
+        if (formState.title.length > 5 && formState.story.length > 50) {
+            setButtonIsActive(true);
+        }
+    }, [formState])
+
     const submitForm = async (e) => {
         e.preventDefault();
-
+        setSavingInProgress(true);
         const { valid, message } = formsValidator(
             [{ type: "title", payload: formState.title },
             { type: "story", payload: formState.story }]
         );
+        setValidForm({
+            valid,
+            message
+        });
 
         if (valid) {
+            const imageData = new FormData();
             const formData = new FormData();
+
+            if (pickedImage) {
+                imageData.append("file", pickedImage);
+                imageData.append("upload_preset", "mycvapp");
+                imageData.append("cloud_name", "elementi");
+                const res = await axios.post(`https://api.cloudinary.com/v1_1/elementi/image/upload`, imageData);
+                setSavingInProgress(false);
+                formData.append("image", res.data.secure_url || formState.image);
+            }
+
             formData.append("title", formState.title);
             formData.append("story", formState.story);
-            if (pickedImage) {
-                formData.append("image", formState.image);
-            }
             formData.append("private", formState.private);
             formData.append("comments_allowed", formState.comments_allowed);
 
             if (editStory) {
                 formData.append("edit_story", storyToEditId);
-                if (oldImageToDeleteIfEdit) {
-                    formData.append("image_to_delete", oldImageToDeleteIfEdit)
-                }
+                formData.append("image", formState.image);
             }
 
             await postStory(authData.token, formData);
+
+            setValidForm({
+                valid: undefined,
+                message: ""
+            })
 
             setFormState({
                 title: "",
@@ -158,17 +175,16 @@ const StoryForm = () => {
             setPickedImage(undefined);
             setImagePreview(undefined);
             fetchAllStories();
-            setValidForm({
-                valid: undefined,
-                message: ""
-            })
             setEditStory(false);
-        } else {
-            setValidForm({
-                valid,
-                message
-            })
+            setButtonIsActive(false);
+            setSavingInProgress(false);
         }
+        // else {
+        //     setValidForm({
+        //         valid,
+        //         message
+        //     })
+        // }
     }
 
     return (
@@ -234,7 +250,15 @@ const StoryForm = () => {
                     </label>
                 </div>
 
-                <button className="story__submit__btn" onClick={submitForm}>Save</button>
+                {
+                    buttonIsActive &&
+                    <button className="story__submit__btn" onClick={submitForm}>
+                        {
+                            !savingInProgress && buttonIsActive && "Save" || savingInProgress && "Saving..."
+                        }
+                    </button>
+                }
+
             </form>
         </div>
 

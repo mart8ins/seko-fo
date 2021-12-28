@@ -3,7 +3,6 @@ import { v4 as uuid } from 'uuid';
 import { AuthContext } from "../../context/auth-context";
 import { getAllUserStories } from "../../fetch/story";
 import NoContentToShow from "../../utils/noContentToShow/NoContentToShow";
-import globalVariables from '../../globalvar';
 import StatsHeaderForContent from "../../utils/statsHeaderForContent/StatsHeaderForContent";
 import "./userStoryContent.css";
 
@@ -33,7 +32,7 @@ const UserStoryContent = ({ user }) => {
 
             {userStories && userStories.reverse().map((story) => {
                 const storyId = story._id;
-                const image = story.image ? `${globalVariables.server}${story.image}` : "/images/no_image.png";
+                const image = story.image || "/images/no_image.png";
                 const date = new Date(story.date).toLocaleDateString();
 
                 if (story.private && authData.userId !== story.author.userId) {
