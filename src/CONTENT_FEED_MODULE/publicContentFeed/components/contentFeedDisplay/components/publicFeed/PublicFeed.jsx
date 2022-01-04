@@ -37,16 +37,20 @@ const PublicFeed = () => {
         } else {
             setFilteredContentFeed(contentFeed)
         }
-    }, [filterType, contentFeed])
+    }, [filterType, contentFeed]);
 
 
     return (
         <div className="public__feed__container">
             <ContentFeedFilter setFilterType={setFilterType} filterType={filterType} />
-
             <div className="public__feed__content__container">
 
-                <FeedActivityBlock />
+
+
+                <div className="activity__block__container">
+                    <p className="last__activity__title">Latest user activity</p>
+                    <FeedActivityBlock />
+                </div>
 
                 <div className="public__content__for__feed">
                     {filteredContentFeed && filteredContentFeed.length ? filteredContentFeed.map((content) => {

@@ -20,12 +20,7 @@ const FeedActivityBlock = () => {
     }
 
     return (
-        <div className="activity__block__container">
-
-            <p className="last__activity__title">
-                Latest user activity
-            </p>
-
+        <div className="activity__block__items">
             {allActivity.map((act) => {
                 return <ActivityBlock
                     key={uuidv4()}

@@ -29,6 +29,17 @@
     overflow: auto;
 }
 
+.activity__block__container {
+    display: none;
+}
+
+.last__activity__title {
+    margin: 0;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 5px;
+    border-bottom: 2px solid whitesmoke;
+}
 
 
 @media screen and (min-width: 786px) {
@@ -50,5 +61,10 @@
     .public__content__for__feed {
         width: 65%;
         margin: 0 auto;
+    }
+
+    .activity__block__container {
+        width: 25%;
+        display: block;
     }
 }
