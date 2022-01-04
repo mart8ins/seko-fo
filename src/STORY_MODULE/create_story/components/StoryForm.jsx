@@ -196,12 +196,12 @@ const StoryForm = () => {
                     onChange={handleChange}
                     className="new__story__title"
                     type="text" name="title"
-                    value={formState.title} placeholder="Write title..." required />
+                    value={formState.title} placeholder="Title at least 5 characters long..." required />
 
                 <div className="new__story__text__image">
                     <textarea
                         onChange={handleChange}
-                        placeholder="Write some text..."
+                        placeholder="Story must be at least 50 characters long..."
                         value={formState.story}
                         name="story"
                         required></textarea>

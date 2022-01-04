@@ -38,7 +38,7 @@
 
 .new__story__title {
     padding: 5px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     border: none;
     border-radius: 5px;
     margin-bottom: 5px;
@@ -53,6 +53,7 @@
     resize: none;
     min-height: 250px;
     overflow: auto;
+    font-size: 0.7rem;
 }
 
 .new__story__image {
@@ -191,6 +192,7 @@
     .new__story__text__image textarea {
         width: 65%;
         min-height: 350px;
+        font-size: 0.9rem;
     }
 
     .new__story__image {

@@ -55,7 +55,7 @@
     padding: 5px;
     border-radius: 3px;
     background-color: rgb(51, 48, 48);
-    width: 70%;
+    width: 100%;
     margin: 25px auto;
 }
 
@@ -100,6 +100,10 @@ p {
     .cv__coding__stack__item__btn {
         padding: 4px 10px;
         font-size: 1.2rem;
+    }
+
+    .cv__coding__framework {
+        width: 70%;
     }
 
     .cv__coding__stack__description,

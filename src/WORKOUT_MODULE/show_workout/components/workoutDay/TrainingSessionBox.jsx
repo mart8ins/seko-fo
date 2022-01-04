@@ -13,8 +13,10 @@ const TrainingSessionBox = ({ session }) => {
         <div className="training__session__main__container">
             <div onClick={openTab} className="training__session__tab">
                 <p>{session.title}</p>
-                <p>Felt <span>{session.feeling}</span></p>
-                <p>Workouts <span>{session.workouts.length}</span></p>
+                <div>
+                    <p>Felt <span>{session.feeling}</span></p>
+                    <p>Workouts <span>{session.workouts.length}</span></p>
+                </div>
             </div>
 
             {

@@ -39,7 +39,7 @@ const Coding = ({ language }) => {
                 })}
 
                 <div>
-                    <div className="cv__coding__stack__frameworks">
+                    <div>
                         {isLogged.coding.stack.map((item) => {
                             if (item.name === activeStackItem && item.frameworks.length) {
                                 return item.frameworks.map((it) => {

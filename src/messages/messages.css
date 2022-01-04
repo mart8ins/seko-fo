@@ -189,7 +189,7 @@
 }
 
 .send__messages button {
-    flex: 15%;
+    flex: 25%;
     border: none;
     background-color: rgba(0, 0, 0, 0.5);
     color: grey;
