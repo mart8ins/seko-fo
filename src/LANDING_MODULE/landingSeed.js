@@ -15,7 +15,7 @@ export const notLogged = {
         you will also be able to see the project itself, and I will also provide more detailed information on what and how I have done 
         in the project itself. Thanks, and I look forward to seeing you soon!`,
 
-        lv: `Esiet sveicināti! Mani sauc Mārtiņš Meisters. Paldies, ka esat gatavi veltīt savu laiku šīs mājaslapas apskatei un
+        lv: `Esiet sveicināti! Mans vārds ir Mārtiņš Meisters. Paldies, ka esat gatavi veltīt savu laiku šīs mājaslapas apskatei un
          manis iepazīšanai. Manā darba pieredzē un izglītībā neatradīsiet neko saistītu ar IT sfēru, bet ir ļoti liela vēlme un 
          motivācija mainīt savu karjeru. Šis projekts ir tapis ar mērķi uzrunāt potenciālos darba devējus IT sfērā un parādīt, ko un 
          kādas tehnoloģijas es esmu spējis iemācīties un apgūt. Manī ir ļoti liela vēlme turpināt attīstīt sevi, apgūstot jaunas 
