@@ -102,9 +102,8 @@
 .right__side {
     display: flex;
     flex-direction: column;
-    width: 90%;
-    height: 85%;
-    overflow: auto;
+    width: 70%;
+    /* height: 70%; */
     margin: 5px auto;
     background-color: rgb(54, 51, 51);
     border-radius: 5px;
@@ -133,37 +132,40 @@
 
 .see__messages {
     font-size: 0.7rem;
-    margin-top: 2px;
+    margin-top: 3px;
     overflow: auto;
-    background-color: white;
-    padding: 8px;
+    background-color: rgb(231, 230, 230);
+    padding: 7px;
     border-radius: 3px;
+    height: 250px;
     overflow: auto;
-    flex: 65%;
     display: flex;
     flex-direction: column;
 }
 
 .see__messages .sent,
 .recieved {
-    border-radius: 15px;
-    padding: 8px;
+    border-radius: 10px;
+    padding: 3px 10px;
     margin-bottom: 5px;
     color: rgb(255, 255, 255);
 }
 
 .see__messages .sent {
-    background-color: rgb(119, 119, 119);
+    background-color: rgb(194, 109, 11);
+    background-color: rgb(124, 122, 120);
     border-bottom-right-radius: 0px;
+    border-top-right-radius: 17px;
 }
 
 .see__messages .recieved {
+    background-color: rgb(148, 163, 8);
     border-top-left-radius: 0px;
-    background-color: rgb(159, 160, 159);
+    border-bottom-left-radius: 17px;
+
 }
 
 .send__messages {
-    flex: 35%;
     width: 90%;
     margin: 10px auto;
     display: flex;
@@ -172,32 +174,27 @@
 
 .send__messages textarea {
     font-size: 0.7rem;
-    flex: 75%;
+    height: 100px;
     resize: none;
-    max-width: 95%;
-    padding: 5px;
+    padding: 7px;
     border: none;
-    border-radius: 15px;
-    text-align: center;
-    transition: 0.5s;
-}
-
-.send__messages textarea:focus {
-    outline: none;
     border-radius: 5px;
     text-align: left;
 }
 
+.send__messages textarea:focus {
+    outline-color: greenyellow;
+}
+
 .send__messages button {
-    flex: 25%;
     border: none;
     background-color: rgba(0, 0, 0, 0.5);
-    color: grey;
+    padding: 8px 15px;
+    color: white;
     font-weight: bold;
     margin-top: 5px;
-    border-radius: 40px;
+    border-radius: 10px;
     text-transform: uppercase;
-    width: 50%;
     margin: 5px auto;
 }
 
@@ -251,14 +248,14 @@
 
     .right__side {
         padding: 40px;
-        width: 75%;
+        width: 70%;
         overflow: auto;
     }
 
     .see__messages {
         font-size: 0.9rem;
         height: 75%;
-        width: 70%;
+        width: 50%;
         margin: 0 auto;
         padding: 15px 25px;
         font-family: 'Roboto', sans-serif;
@@ -272,14 +269,12 @@
     }
 
     .see__messages .sent {
-        border-bottom-right-radius: 0px;
         text-align: right;
         margin-left: auto;
         margin-right: 20px;
     }
 
     .see__messages .recieved {
-        border-top-left-radius: 0px;
         margin-right: auto;
         margin-left: 20px;
     }
@@ -296,18 +291,16 @@
 
     .send__messages textarea {
         font-size: 0.9rem;
-        padding: 15px;
+        padding: 10px;
         text-align: left;
-        padding-left: 25px;
     }
 
     .send__messages button {
-        flex: 25%;
-        width: 30%;
         margin: 5px auto;
         border-radius: 10px;
         font-size: 1.3rem;
         cursor: pointer;
+        color: grey;
     }
 
     .send__messages button:hover {

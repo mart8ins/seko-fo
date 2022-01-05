@@ -149,7 +149,9 @@ function Messages() {
 
         {activeUser ?
             <div className="right__side">
+
                 <p className="contact__name"><span style={{ color: "red", fontSize: "0.6rem" }}>{!activeUser.isConnected && "not connected"}</span> {activeUser.firstName} {activeUser.lastName}</p>
+
                 <div className="see__messages">
                     {messages.map((msg) => {
                         return <div key={uuidv4()} ref={messageContainerRef} className={msg.sent ? "sent" : "recieved"}>
@@ -157,10 +159,12 @@ function Messages() {
                         </div>
                     })}
                 </div>
+
                 <div className="send__messages">
                     <textarea onChange={messageTextHandler} value={messageText} placeholder="Send message..."></textarea>
                     <button onClick={sendMessage}>Send</button>
                 </div>
+
             </div>
             :
             <div className="right__side">
