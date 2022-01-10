@@ -26,7 +26,7 @@ const Projects = ({ language }) => {
             <div className="other__projects__project__btns">
                 <button style={pageToShow === "elementi" ? color : undefined} onClick={choosePage} id="elementi">{lang === "eng" ? "E-shop" : "E-veikals"}</button>
                 <button style={pageToShow === "blogzzz" ? color : undefined} onClick={choosePage} id="blogzzz">{lang === "eng" ? "Bloging site" : "Blogošanas lapa"}</button>
-                <button style={pageToShow === "tvShows" ? color : undefined} onClick={choosePage} id="tvShows">{lang === "eng" ? "Tv šovi" : "Tv shows"}</button>
+                <button style={pageToShow === "tvShows" ? color : undefined} onClick={choosePage} id="tvShows">{lang === "eng" ? "Tv shows" : "Tv šovi"}</button>
                 {/* tvShows */}
             </div>
 
