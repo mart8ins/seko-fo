@@ -64,6 +64,11 @@ const CVProfile = ({ language, activeCvData, setActiveCvData }) => {
                     id="coding"
                     onClick={handleButtonClick}
                     className={`cv__profile__button ${activeCvData === "coding" && "cv__profile__active__btn"}`}>{language === "eng" ? isLogged.navigation.eng.coding : isLogged.navigation.lv.programmesana}</button>
+
+                <button
+                    id="projects"
+                    onClick={handleButtonClick}
+                    className={`cv__profile__button ${activeCvData === "projects" && "cv__profile__active__btn"}`}>{language === "eng" ? isLogged.navigation.eng.projects : isLogged.navigation.lv.projekti}</button>
             </div>
 
         </div>

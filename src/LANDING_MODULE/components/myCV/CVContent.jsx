@@ -6,6 +6,7 @@ import Education from "./components/Education";
 import WorkExp from "./components/WorkExp";
 import Coding from "./components/Coding";
 import AboutProject from "./components/AboutProject";
+import Projects from "./components/Projects";
 
 const CVContent = ({ activeCvData, language }) => {
     return (
@@ -15,6 +16,7 @@ const CVContent = ({ activeCvData, language }) => {
             {activeCvData === "education" && <Education language={language} />}
             {activeCvData === "workExp" && <WorkExp language={language} />}
             {activeCvData === "coding" && <Coding language={language} />}
+            {activeCvData === "projects" && <Projects language={language} />}
         </div>
     )
 }

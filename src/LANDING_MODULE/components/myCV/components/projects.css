@@ -1,0 +1,112 @@
+.other__projects__main__title {
+    padding: 10px;
+}
+
+.other__projects__main__title h4 {
+    margin: 0;
+    text-transform: uppercase;
+    border-bottom: 1px solid black;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.other__projects__project__btns {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    border-bottom: 2px solid whitesmoke;
+    padding-bottom: 10px;
+}
+
+.other__projects__project__btns button {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: rgb(68, 65, 65);
+    color: white;
+    font-family: 'Lora', serif;
+    box-shadow: 0 2px 2px black;
+    width: 100px;
+    margin: 5px auto;
+    font-size: 0.8rem;
+}
+
+.other__projects__project__btns button:hover {
+    cursor: pointer;
+}
+
+.other__project {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: whitesmoke;
+}
+
+.other__project__about {
+    padding: 15px;
+    text-align: justify;
+    background-color: white;
+    color: black;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    line-height: 1.6rem;
+}
+
+.other__project__link {
+    text-decoration: underline;
+    color: yellowgreen;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.other__project__link:hover {
+    color: black;
+}
+
+.span__title {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.span__login {
+    font-size: 0.9rem;
+    background-color: rgb(051, 51, 51);
+    color: rgb(204, 245, 110);
+    padding: 0px 8px;
+    border-radius: 5px;
+}
+
+@media screen and (min-width: 768px) {
+    .other__projects__main__title h4 {
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    .other__projects__project__btns {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .other__projects__project__btns button {
+        width: 150px;
+        font-size: 1.1rem;
+    }
+
+    .other__project__about {
+        padding: 15px;
+        font-size: 1rem;
+    }
+
+    .span__login {
+        font-size: 1.2rem;
+    }
+
+    .other__project__link {
+        font-size: 1.7rem;
+        text-transform: uppercase;
+    }
+}

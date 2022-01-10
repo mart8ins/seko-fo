@@ -55,7 +55,6 @@ const Coding = ({ language }) => {
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }

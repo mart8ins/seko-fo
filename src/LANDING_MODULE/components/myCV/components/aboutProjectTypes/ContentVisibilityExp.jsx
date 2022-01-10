@@ -23,7 +23,7 @@ const ContentVisibilityExp = ({ lang }) => {
                         existing for content type. Additionaly for the Workout card, there is also a button that takes you to the <a className="about__link__to__content" href="/about/workouts" target="_blank">learning page</a>, where you can <span className="content__visibility__highlight">view all the training exercises</span> in the system, get instructions on how to do each.
 
 
-                        As for viewing other <span className="content__visibility__highlight">users profiles</span>, you can see everything the same as in your own content profile, except for
+                        As for viewing other users profiles, you can see everything the same as in your own content profile, except for
                         statistics and possible "Story", which are set as private. I would also like to highlight the workout content in
                         more detail.
 
@@ -33,7 +33,7 @@ const ContentVisibilityExp = ({ lang }) => {
                         the training data is available. When you open the year, you can see <span className="content__visibility__highlight">all the months in which the training days exist</span>.
                         Training days are highlighted each month, with <span className="content__visibility__highlight">each date linking to a more detailed view</span> of the training day. When
                         viewing a specific training day, there is an option to delete it as well. All sessions of the training day are also
-                        visible. Each <span className="content__visibility__highlight">session can be expanded to see all the training exercises performed</span>, the repetitions performed and the
+                        visible. Each session can be expanded to see all the training exercises performed, the repetitions performed and the
                         weight information. The <span className="content__visibility__highlight">training exercise card takes you</span> to a more detailed view, where there are instructions on how
                         to do it and it is possible to follow the progress of this exercise and statistics.</p>
                 </div> :
@@ -62,7 +62,7 @@ const ContentVisibilityExp = ({ lang }) => {
                         Satura ārējā apvalkā redzams gads, kurā ir eksistējoši treniņu dati. Atverot gadu, redzami visi
                         mēneši, kuros eksistē treniņu dienas. <span className="content__visibility__highlight">Treniņu dienas katrā mēnesī ir izceltas</span>, kur katrs datums ir links uz
                         detlaizētāku treniņa dienas apskati. Apskatot konkrētu treniņa dienu, pastāv opcija viņu arī nodzēst. Tāpat arī
-                        redzamas visas treniņu dienas sesijas. Katru <span className="content__visibility__highlight">sesiju ir iespējams paplašināt</span>, redzot visus veiktos treniņa
+                        redzamas visas treniņu dienas sesijas. Katru sesiju ir iespējams paplašināt, redzot visus veiktos treniņa
                         vingrinājumus, vispārīgu atkārtojumu un svara informāciju. <span className="content__visibility__highlight">Treniņa vingrinājuma kartiņa</span> aizved uz detalizētāku
                         tā apskati, kur ir instrukcijas, kā tas ir veicams un ir iespējams sekot līdzi progresam šī vingrinājumu izpildijumā
                         un statistikai.</p>

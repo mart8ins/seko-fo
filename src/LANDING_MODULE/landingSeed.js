@@ -55,14 +55,16 @@ export const isLogged = {
             aboutMe: "About me",
             education: "Education",
             workExp: "Work experience",
-            coding: "Coding"
+            coding: "Coding",
+            projects: "Other projects"
         },
         lv: {
             parProjektu: "Par projektu",
             parMani: "Par mani",
             izglitiba: "Izglītība",
             darbaPieredze: "Darba pieredze",
-            programmesana: "Programmēšana"
+            programmesana: "Programmēšana",
+            projekti: "Citi projekti"
         }
     },
     aboutProject: [
