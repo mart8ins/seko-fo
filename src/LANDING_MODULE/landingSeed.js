@@ -13,7 +13,7 @@ export const notLogged = {
         the main goal - work in the field of IT. By logging in, you will be able to get more information about me - a description 
         of my personality, work experience, education and how I came to the desire to change my career in the field of IT. Of course, 
         you will also be able to see the project itself, and I will also provide more detailed information on what and how I have done 
-        in the project itself. Thanks, and I look forward to seeing you soon!`,
+        in the project itself. Thanks, and I look forward to seeing you soon! You can register as new user or login with my profile, email - "martins.meisters@inbox.lv", password - "123". This is a profile with already added data for better view expierence.`,
 
         lv: `Esiet sveicināti! Mans vārds ir Mārtiņš Meisters. Paldies, ka esat gatavi veltīt savu laiku šīs mājaslapas apskatei un
          manis iepazīšanai. Manā darba pieredzē un izglītībā neatradīsiet neko saistītu ar IT sfēru, bet ir ļoti liela vēlme un 
@@ -22,7 +22,7 @@ export const notLogged = {
          tehnoloģijas un zināšanas kopumā, lai sasniegtu galveno mērķi – darbu IT sfērā. Autorizējoties varēsiet iegūt plašāku 
          informāciju par mani - manas personības aprakstu, darba pieredzi, izglītību un to, kā nonācu līdz vēlmei mainīt savu karjeru 
          uz IT sfēru. Protams, apskatīt varēs arī pašu projektu, tāpat arī sniegšu arī sīkāku informāciju par to, ko un kā es esmu paveicis 
-         pašā projektā. Paldies, un es ceru uz drīzu tikšanos!`
+         pašā projektā. Paldies, un es ceru uz drīzu tikšanos! Variet reģistrēties kā jauns lietotājs vai ienākt sistēmā ar manu profilu - "martins.meisters@inbox.lv", parole - "123". Šis ir profils, kas jau ir piepildīts ar dažādiem datiem.`
     },
     btn: {
         eng: "See more",
