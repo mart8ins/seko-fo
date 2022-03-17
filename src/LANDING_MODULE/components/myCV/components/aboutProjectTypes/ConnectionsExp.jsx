@@ -5,28 +5,21 @@ const ConnectionsExp = ({ lang }) => {
     return (
         <div>
             {lang === "eng" ?
-                <div>
+                <div className="content">
                     <h3>Connections</h3>
-                    <p>There are <a className="about__link__to__content" href="/connections" target="_blank">three main blocks</a> for this section of the application - the block,
-                        which shows all users of the application (except users of the existing friendship,
-                        meaning user connections). A block where are users with accepted user connections.
-                        Last block is where you can see the users to whom a friend request has been sent and the users
-                        from whom the friend request has been recieved. Each user is represented on a user card where also
-                        are option buttons. With these option buttons you can send direct message to user,
-                        visit his profile and also there is button what indicates if you recieved connections
-                        request from user or you already sent him requests yourself and offcourse option to send
-                        connection request if neather of previosly mentioned happend.</p>
+                    <p>This is one of the biggest <a className="about__link__to__content" href="/connections" target="_blank">parts</a> of the project, including the functionality and logic of 
+                        the user's existing friendships with other users. Section with recieved and sent friendship
+                         requests and section with all app users. Relevant friendship statuses on the user profile
+                          card and in the user profile itself and also throughout all the application. Ability to
+                           send an instant message via the user's profile card or the profile itself.</p>
                 </div> :
-                <div>
+                <div className="content">
                     <h3>Kontakti</h3>
-                    <p>Ir trīs <a className="about__link__to__content" href="/connections" target="_blank">galvenie bloki</a> šai aplikcijas sadaļai – bloks, kur redzami visi aplikācijas lietotāji
-                        (izņemot pastāvošās draudzības lietotāji). Bloks,
-                        kur redzami lietotāji, kas ir draugu lokā. Bloks, kas parāda lietotājus,
-                        kam draudzības uzaicinājums ir nosūtīts un lietotājus no kuriem uzaicinājums ir
-                        saņemts. Katrs lietotājs ir attēlots kartiņā, kur ir opciju pogas. Poga, lai nosūtīt ātru ziņu lietotājam.
-                        Poga, lai uzaicinātu draudzēties vai atceltu draudzību. Tiek parādīts arī draudzības un nosūtīta/saņemta aicinājuma
-                        status. Poga, kas aizved uz lietotāja profilu, kur arī ir iespējams veikt visas iepriekš minētās darbības
-                        un redzēt aicinājumu statusus.</p>
+                    <p>Šī ir viena no lielākajām projekta <a className="about__link__to__content" href="/connections" target="_blank">daļām</a> ietverot funkcionalitāti un loģiku par lietotāja 
+                        esošajām draudzībām ar citiem lietotājiem. Saņemtie un nosūtītie uzaicinājumi. Visi aplikācijas 
+                        lietotāji un savā draugu lokā esošie aplikācijas lietotāji. Attiecīgie statusi lietotāja profila 
+                        kartiņai un pašā lietotāja profilā un viscaur aplikācijā. Iespēja nosūtīt ātro ziņu caur lietotāja 
+                        profila kartiņu vai pašu profilu. </p>
                 </div>}
         </div>
     )

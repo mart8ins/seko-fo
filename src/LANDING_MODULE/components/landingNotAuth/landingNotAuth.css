@@ -31,13 +31,18 @@
 }
 
 .landing__not__auth__intro__about__project p {
-    background-color: whitesmoke;
     padding: 10px;
     text-indent: 20px;
     text-align: justify;
     border-radius: 2px;
     font-size: 0.7rem;
     line-height: 1.4rem;
+}
+
+.landing__not__auth__intro__about__project p span {
+    /* font-weight: bold; */
+    font-style: italic;
+    /* text-decoration: underline; */
 }
 
 .landing__not__auth__redirect {
@@ -75,7 +80,9 @@
     }
 
     .landing__not__auth__intro__about__project p {
-        font-size: 1rem;
+        font-size: 1.4rem;
+        letter-spacing: 1.5;
+        line-height: 2rem;
         padding: 20px;
     }
 }

@@ -29,14 +29,16 @@
 
 @media screen and (min-width: 768px) {
     .cv__aboutProject__container div h3 {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         margin-right: 5px;
         margin-bottom: 10px;
         color: rgb(139, 132, 132);
-        text-align: right;
+        text-align: center;
     }
 
     .cv__aboutProject__container div p {
-        font-size: 1rem;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        padding: 30px;
     }
 }

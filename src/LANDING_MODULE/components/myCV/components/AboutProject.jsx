@@ -1,7 +1,6 @@
 import React from 'react'
 import "./aboutProject.css";
 import Overview from "./aboutProjectTypes/Overview";
-import UserExp from "./aboutProjectTypes/UserExp";
 import ConnectionsExp from "./aboutProjectTypes/ConnectionsExp";
 import MessageExp from "./aboutProjectTypes/MessageExp";
 import ContentCreation from "./aboutProjectTypes/ContentCreation";
@@ -13,7 +12,6 @@ const AboutProject = ({ language }) => {
     return (
         <div className="cv__aboutProject__container">
             <Overview lang={lang} />
-            <UserExp lang={lang} />
             <ConnectionsExp lang={lang} />
             <MessageExp lang={lang} />
             <ContentCreation lang={lang} />

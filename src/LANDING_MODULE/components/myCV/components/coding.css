@@ -108,8 +108,9 @@ p {
 
     .cv__coding__stack__description,
     .cv__coding__framework p {
-        font-size: 1rem;
-        line-height: 1.6rem;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        padding: 30px;
     }
 
     .cv__coding__framework span {
