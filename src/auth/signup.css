@@ -3,11 +3,12 @@
     padding: 25px;
     text-align: center;
     border-radius: 5px;
-    font-family: 'Bebas Neue', cursive;
+    font-family: "Bebas Neue", cursive;
     letter-spacing: 1px;
     position: relative;
     z-index: 11;
-    margin-top: 100px;
+    width: 50%;
+    margin: 100px auto;
 }
 
 .signup__container form {
@@ -15,7 +16,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .signup__container input {
@@ -25,7 +25,7 @@
     padding: 4px;
     font-size: 0.6rem;
     border-radius: 5px;
-    font-family: 'Bebas Neue', cursive;
+    font-family: "Bebas Neue", cursive;
     text-align: center;
     letter-spacing: 1px;
 }
@@ -65,6 +65,8 @@
 
 @media screen and (min-width: 768px) {
     .signup__container {
+        width: 25%;
+        margin: 150px auto;
         padding: 50px;
     }
 

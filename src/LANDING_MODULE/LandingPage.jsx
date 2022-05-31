@@ -1,31 +1,17 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AuthContext } from "../context/auth-context";
-import LandingNotAuth from "./components/landingNotAuth/LandingNotAuth";
-import LandingAuth from "./components/landingAuth/LandingAuth";
 import "./landingPage.css";
-
-
+import Login from "../auth/Login";
+import Signup from "../auth/Signup";
 
 function LandingPage() {
-    const { authData } = useContext(AuthContext);
+    const { authData, signin } = useContext(AuthContext);
 
-    const [language, setLanguage] = useState("eng");
-
-    const toogleLanguage = () => {
-        language === "lv" ? setLanguage("eng") : setLanguage("lv");
-    }
-
-    return <div className="landing__main__container">
-
-        <div className="landing__language__btns__container">
-            <button onClick={toogleLanguage} className={`landing__language__btn ${language === "eng" && "language__btn__active"}`}>ENG</button>
-            <button onClick={toogleLanguage} className={`landing__language__btn ${language === "lv" && "language__btn__active"}`}>LV</button>
+    return (
+        <div className="landing__main__container">
+            {!authData.userId && <div className="authentification__container">{signin ? <Login /> : <Signup />}</div>}
         </div>
-
-        {authData.userId ? <LandingAuth language={language} /> : <LandingNotAuth language={language} />}
-
-    </div>
-
+    );
 }
 
 export default LandingPage;

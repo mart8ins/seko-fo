@@ -36,15 +36,15 @@
     display: none;
 }
 
-.not-logged-in a,
+.not-logged-in .authOptions,
 .logged-in a {
     color: white;
     text-decoration: none;
-    font-family: 'Bebas Neue', cursive;
+    font-family: "Bebas Neue", cursive;
     font-size: 1rem;
 }
 
-.not-logged-in a {
+.not-logged-in .authOptions {
     margin: 0px 20px;
 }
 
@@ -98,16 +98,15 @@
         color: rgb(204, 245, 110);
     }
 
-    .not-logged-in a,
+    .not-logged-in .authOptions,
     .logged-in a {
         font-size: 1.2rem;
         justify-content: flex-end;
     }
 
-    .not-logged-in a:hover,
+    .not-logged-in .authOptions:hover,
     .logged-in a:hover {
         color: rgb(204, 245, 110);
-        /* transform: scale(1.02); */
     }
 
     .active a {
