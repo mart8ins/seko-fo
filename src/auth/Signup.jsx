@@ -20,9 +20,9 @@ const Signup = () => {
     const handleChange = (e) => {
         setSignupForm({
             ...signupForm,
-            [e.target.name]: e.target.value
-        })
-    }
+            [e.target.name]: e.target.value,
+        });
+    };
 
     const submitHandler = async (e) => {
         try {
@@ -34,28 +34,27 @@ const Signup = () => {
 
                 setTimeout(() => {
                     logoutUser();
-                }, (1000 * 60 * 60));
+                }, 1000 * 60 * 60);
 
                 const objectToStore = {
                     token: response.data.token,
                     userId: response.data.userId,
                     email: response.data.email,
                     isLoggedIn: true,
-                    showAuthModal: false,
                     expiration: tokenExpirationDate,
                     fullName: response.data.fullName,
                     about: "",
-                    profilePhoto: undefined
-                }
+                    profilePhoto: undefined,
+                };
 
-                localStorage.setItem("authData", JSON.stringify(objectToStore))
+                localStorage.setItem("authData", JSON.stringify(objectToStore));
                 setAuthData(objectToStore);
 
                 socket.emit("USER IS ONLINE", { userId: String(response.data.userId) }, (users) => {
-                    setUsersOnline(users)
+                    setUsersOnline(users);
                 });
             } else {
-                setServerDownError("Something went wrong, please try again later.")
+                setServerDownError("Something went wrong, please try again later.");
             }
         } catch (e) {
             if (e.response) {
@@ -69,39 +68,37 @@ const Signup = () => {
     // to logout user
     const logoutUser = () => {
         socket.emit("USER IS OFFLINE", { userId: authData.userId }, (users) => {
-            setUsersOnline(users)
+            setUsersOnline(users);
         });
         setAuthData({
             token: null,
             userId: null,
             email: null,
             isLoggedIn: false,
-            showAuthModal: false
-        })
+        });
         localStorage.removeItem("authData");
     };
 
+    return (
+        <div className="signup__container">
+            <div>
+                {formError ? <p className="signupError">{formError}</p> : <p className="greeting">Welcome new friend!</p>}
+                {serverDownError && <p className="serverError">{serverDownError}</p>}
+            </div>
 
-    return <div className="signup__container">
-        <div>
-            {formError ? <p className="signupError">{formError}</p> : <p className="greeting">Welcome new friend!</p>}
-            {serverDownError && <p className="serverError">{serverDownError}</p>}
+            <form onSubmit={submitHandler}>
+                <Input onChange={handleChange} type="text" name="firstName" id="firstName" placeholder="First name" required />
+
+                <Input onChange={handleChange} type="text" name="lastName" id="lastName" placeholder="Last name" required />
+
+                <Input onChange={handleChange} type="email" name="email" id="email" placeholder="E-mail" required />
+
+                <Input onChange={handleChange} type="password" name="password" id="password" placeholder="Password" required />
+
+                <button className="signup__btn">Signup</button>
+            </form>
         </div>
-
-
-        <form onSubmit={submitHandler}>
-            <Input onChange={handleChange} type="text" name="firstName" id="firstName" placeholder="First name" required />
-
-            <Input onChange={handleChange} type="text" name="lastName" id="lastName" placeholder="Last name" required />
-
-            <Input onChange={handleChange} type="email" name="email" id="email" placeholder="E-mail" required />
-
-            <Input onChange={handleChange} type="password" name="password" id="password" placeholder="Password" required />
-
-            <button className="signup__btn">Signup</button>
-
-        </form>
-    </div>
-}
+    );
+};
 
 export default Signup;

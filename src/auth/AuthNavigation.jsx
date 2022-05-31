@@ -32,7 +32,6 @@ function AuthNavigation() {
             userId: null,
             email: null,
             isLoggedIn: false,
-            showAuthModal: false,
         });
         localStorage.removeItem("authData");
     };

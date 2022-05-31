@@ -21,32 +21,34 @@ import { AuthContext } from "../../context/auth-context";
 import RouteGuard from "../../utils/RouteGuard";
 
 function Feed() {
+    const {
+        authData: { isLoggedIn },
+    } = useContext(AuthContext);
 
-    const { authData: { isLoggedIn } } = useContext(AuthContext);
+    return (
+        <Switch>
+            <RouteGuard path="/create/story" component={CreateStory} auth={isLoggedIn} />
+            <RouteGuard path="/create/workout" component={CreateWorkout} auth={isLoggedIn} />
 
-    return <Switch>
-        <RouteGuard path="/create/story" component={CreateStory} auth={isLoggedIn} />
-        <RouteGuard path="/create/workout" component={CreateWorkout} auth={isLoggedIn} />
+            <RouteGuard path="/story/:storyId" component={StoryContent} auth={isLoggedIn} />
+            <RouteGuard path="/workoutday/:workoutDayId" component={WorkoutDay} auth={isLoggedIn} />
+            <RouteGuard path="/about/workout/:wID" component={WorkoutById} auth={isLoggedIn} />
+            <RouteGuard path="/about/workouts" component={LearnWorkouts} auth={isLoggedIn} />
 
-        <RouteGuard path="/story/:storyId" component={StoryContent} auth={isLoggedIn} />
-        <RouteGuard path="/workoutday/:workoutDayId" component={WorkoutDay} auth={isLoggedIn} />
-        <RouteGuard path="/about/workout/:wID" component={WorkoutById} auth={isLoggedIn} />
-        <RouteGuard path="/about/workouts" component={LearnWorkouts} auth={isLoggedIn} />
+            <RouteGuard path="/contentFeed" component={PublicContentFeed} auth={isLoggedIn} />
+            <RouteGuard path="/create" component={Create} auth={isLoggedIn} />
+            <RouteGuard path="/messages" component={Messages} auth={isLoggedIn} />
+            <RouteGuard path="/connections" component={Connections} auth={isLoggedIn} />
+            <RouteGuard path="/settings" component={Settings} auth={isLoggedIn} />
 
-        <RouteGuard path="/contentFeed" component={PublicContentFeed} auth={isLoggedIn} />
-        <RouteGuard path="/create" component={Create} auth={isLoggedIn} />
-        <RouteGuard path="/messages" component={Messages} auth={isLoggedIn} />
-        <RouteGuard path="/connections" component={Connections} auth={isLoggedIn} />
-        <RouteGuard path="/settings" component={Settings} auth={isLoggedIn} />
+            <RouteGuard path="/user/:userId/profile" component={UserProfile} auth={isLoggedIn} />
+            <RouteGuard path={`/userContentFeed`} component={MyProfile} auth={isLoggedIn} />
 
-
-        <RouteGuard path="/user/:userId/profile" component={UserProfile} auth={isLoggedIn} />
-        <RouteGuard path={`/userContentFeed`} component={MyProfile} auth={isLoggedIn} />
-
-
-        <Route exact path="/"><LandingPage /></Route>
-
-    </Switch>
+            <Route exact path="/">
+                <LandingPage />
+            </Route>
+        </Switch>
+    );
 }
 
 export default Feed;

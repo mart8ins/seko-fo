@@ -11,7 +11,6 @@ const AuthContextProvider = ({ children }) => {
         fullName: null,
         email: null,
         isLoggedIn: false,
-        showAuthModal: false,
         expiration: undefined,
         profilePhoto: undefined,
     };
